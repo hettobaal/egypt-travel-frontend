@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, {useMemo, useState, useCallback}  from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Tooltip, Pagination, Input } from "@nextui-org/react";
 import { EyeIcon } from "@/components/reuseable/EyeIcon";
 import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
@@ -24,13 +24,13 @@ function ViewReviews({ reviewsData }) {
     // console.log("data",CategoryData);
 
 
-    const [data, setData] = React?.useState(reviewsData);
-    const [filterValue, setFilterValue] = React?.useState("");
-    const [page, setPage] = React.useState(1);
+    const [data, setData] = useState(reviewsData);
+    const [filterValue, setFilterValue] = useState("");
+    const [page, setPage] = useState(1);
 
     // Search bar
     const hasSearchFilter = Boolean(filterValue);
-    const filteredItems = React?.useMemo(() => {
+    const filteredItems = useMemo(() => {
         let filteredUsers = [...data];
         if (hasSearchFilter) {
             filteredUsers = filteredUsers?.filter((data) =>
@@ -40,7 +40,7 @@ function ViewReviews({ reviewsData }) {
         return filteredUsers;
     }, [data, filterValue, hasSearchFilter]);
 
-    const onSearchChange = React.useCallback((value) => {
+    const onSearchChange = useCallback((value) => {
         if (value) {
             setFilterValue(value);
             setPage(1);
@@ -49,12 +49,12 @@ function ViewReviews({ reviewsData }) {
         }
     }, [setFilterValue, setPage]);
 
-    const onClear = React.useCallback(() => {
+    const onClear = useCallback(() => {
         setFilterValue("")
         setPage(1)
     }, [setFilterValue, setPage])
 
-    const topContent = React.useMemo(() => {
+    const topContent = useMemo(() => {
         return (
             <Input
                 isClearable
@@ -81,7 +81,7 @@ function ViewReviews({ reviewsData }) {
     // pagination
     const rowsPerPage = 4;
     const pages = Math?.ceil(filteredItems?.length / rowsPerPage);
-    const items = React.useMemo(() => {
+    const items = useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         const end = start + rowsPerPage;
 
@@ -89,7 +89,7 @@ function ViewReviews({ reviewsData }) {
     }, [page, filteredItems]);
 
 
-    const renderCell = React.useCallback((categoryData, columnKey) => {
+    const renderCell = useCallback((categoryData, columnKey) => {
         const cellValue = categoryData[columnKey];
 
         switch (columnKey) {
@@ -127,7 +127,7 @@ function ViewReviews({ reviewsData }) {
     }, []);
 
     // Actions
-    const Delete = React.useCallback(
+    const Delete = useCallback(
         async (id) => {
             const res = await DeleteCategory(id);
             if (res?.status === "Success") {
