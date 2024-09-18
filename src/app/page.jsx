@@ -22,9 +22,6 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 
 async function page() {
 
-  const SERVER_URL = process?.env?.NEXT_PUBLIC_SERVER_URL
-
-  console.log(SERVER_URL);
   
   return (
     <>

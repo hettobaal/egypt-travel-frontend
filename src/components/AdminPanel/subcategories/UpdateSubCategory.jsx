@@ -27,6 +27,8 @@ const formSchema = z.object({
 })
 
 function UpdateSubCategory({ data, setData, id }) {
+    
+    
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [loader, setLoader] = useState(false);

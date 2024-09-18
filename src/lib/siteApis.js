@@ -1,7 +1,6 @@
 
 const SERVER_URL = process?.env?.NEXT_PUBLIC_SERVER_URL
 
-console.log(SERVER_URL);
 
 // Category
 export const createCategory = async (data) => {
@@ -137,7 +136,7 @@ export const getSubCategories = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-cache'
+        cache: 'no-store'
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -170,18 +169,22 @@ export const DeleteSubCategory = async (id) => {
 }
 
 export const updateSubCategoryById = async (data, id) => {
-
+    
+    
     const Url = SERVER_URL + `admin/subcategory/update-subcategory/${id}`;
     const formData = new FormData();
-    if (data?.categoryImage?.length > 0) {
-        formData.append('subCategoryImage', data?.subCategoryImage[0]);
+    
+    if (data?.subCategoryImage) {
+        formData.append('subCategoryImage', data?.subCategoryImage);
     }
     formData?.append('subCategoryName', data?.subCategoryName);
+    
 
     return fetch(Url, {
         method: 'PUT',
         body: formData,
         mode: 'cors',
+        cache:"no-store"
     },
     )
         .then((response) => response?.json())
@@ -206,6 +209,7 @@ export const addReview = async (data) => {
         method: 'POST',
         body: formData,
         mode: 'cors',
+        cache:"no-store"
     },
     )
         .then((response) => response?.json())
