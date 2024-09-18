@@ -1,0 +1,272 @@
+
+const SERVER_URL = process?.env?.NEXT_PUBLIC_SERVER_URL
+
+
+// Category
+export const createCategory = async (data) => {
+    const Url = SERVER_URL + 'admin/category/add-category';
+    const formData = new FormData();
+    formData?.append('categoryName', data?.categoryName);
+    formData?.append('categoryImage', data?.categoryImage[0]);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const getCategories = async () => {
+
+    const Url = SERVER_URL + 'api/public/get-all-categories';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const getSingleCategory = async (id) => {
+
+    const Url = SERVER_URL + `api/public/get-category/${id}`;
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const DeleteCategory = async (id) => {
+
+    const url = SERVER_URL + `admin/category/delete-category/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            console.log("Response from server:", data);
+            return data;
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+            return error;
+        });
+}
+
+export const updateCategoryById = async (data, id) => {
+
+    const Url = SERVER_URL + `admin/category/update-category/${id}`;
+    const formData = new FormData();
+    if (data?.categoryImage?.length > 0) {
+        formData.append('categoryImage', data?.categoryImage[0]);
+    }
+    formData?.append('categoryName', data?.categoryName);
+
+    return fetch(Url, {
+        method: 'PUT',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
+// sub Category
+export const createSubCategory = async (data) => {
+    const Url = SERVER_URL + 'admin/subCategory/add-subcategory';
+    const formData = new FormData();
+    formData?.append('categoryId', data?.categoryId);
+    formData?.append('subCategoryName', data?.subCategoryName);
+    formData?.append('subCategoryImage', data?.subCategoryImage[0]);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const getSubCategories = async () => {
+
+    const Url = SERVER_URL + 'api/public/get-all-subcategories';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const DeleteSubCategory = async (id) => {
+
+    const url = SERVER_URL + `admin/subcategory/delete-subcategory/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            console.log("Response from server:", data);
+            return data;
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+            return error;
+        });
+}
+
+export const updateSubCategoryById = async (data, id) => {
+
+    const Url = SERVER_URL + `admin/subcategory/update-subcategory/${id}`;
+    const formData = new FormData();
+    if (data?.categoryImage?.length > 0) {
+        formData.append('subCategoryImage', data?.subCategoryImage[0]);
+    }
+    formData?.append('subCategoryName', data?.subCategoryName);
+
+    return fetch(Url, {
+        method: 'PUT',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
+// Reviews
+export const addReview = async (data) => {
+    const Url = SERVER_URL + 'admin/subCategory/add-subcategory';
+    const formData = new FormData();
+    formData?.append('categoryId', data?.categoryId);
+    formData?.append('subCategoryName', data?.subCategoryName);
+    formData?.append('subCategoryImage', data?.subCategoryImage[0]);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
+export const getReviews = async () => {
+
+    const Url = SERVER_URL + 'api/public/get-reviews';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+// tours 
+export const addTour = async (data) => {
+    const Url = SERVER_URL + 'admin/tour/add-tour';
+    const formData = new FormData();
+    formData?.append('subCategoryId', data?.subCategoryId);
+    formData?.append('title', data?.title);
+    formData?.append('tag', data?.tag);
+    formData?.append('description', data?.description);
+    formData?.append('strikePrice', data?.strikePrice);
+    formData?.append('priceAdult', data?.priceAdult);
+    formData?.append('priceChild', data?.priceChild);
+    formData?.append('duration', data?.duration);
+    formData?.append('cardImage', data?.cardImage[0]);
+    formData?.append('tourImages', data?.tourImages);
+    formData?.append('HighlightPoint', data?.HighlightPoint);
+    formData?.append('fulDescription', data?.fulDescription);
+    formData?.append('includes', data?.includes);
+    formData?.append('heading', data?.ImportantInformationHeading);
+    formData?.append('points', data?.ImportantInformationPoint);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};

@@ -1,0 +1,25 @@
+.custom-pagination .swiper-pagination-fraction,
+.custom-pagination .swiper-pagination-fraction .swiper-pagination-current,
+.custom-pagination .swiper-pagination-fraction .swiper-pagination-total {
+    color: white;
+    font-weight: 600;
+}
+
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: white;
+    font-weight: 600;
+    /* Set the color to white */
+    width: 10px;
+    /* Set the width to make the button smaller */
+    height: 30px;
+    /* Set the height to make the button smaller */
+}
+
+/* Reduce the size of the arrow icons inside the buttons */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 1.3rem;
+    /* Adjust the font size to make the arrows smaller */
+}

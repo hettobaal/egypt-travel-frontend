@@ -1,0 +1,26 @@
+export const images = [
+    {
+        pic:'/images/a.webp'
+    },
+    {
+        pic:'/images/a2.webp'
+    },
+    {
+        pic:'/images/a.webp'
+    },
+    {
+        pic:'/images/a2.webp'
+    },
+    {
+        pic:'/images/a.webp'
+    },
+    {
+        pic:'/images/a2.webp'
+    },
+    {
+        pic:'/images/a.webp'
+    },
+    {
+        pic:'/images/a2.webp'
+    },
+]

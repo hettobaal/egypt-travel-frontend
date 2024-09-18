@@ -1,0 +1,16 @@
+import React from 'react'
+import dynamic from 'next/dynamic';
+const BlogHero = dynamic(() => import('@/components/blogs/BlogHero'));
+const BlogCards = dynamic(() => import('@/components/blogs/BlogCards'));
+const Journey = dynamic(() => import('@/components/reuseable/Journey'));
+function page() {
+    return (
+        <>
+            <BlogHero />
+            <BlogCards />
+            <Journey />
+        </>
+    )
+}
+
+export default page;
