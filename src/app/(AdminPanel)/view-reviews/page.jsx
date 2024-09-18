@@ -1,3 +1,5 @@
+import dynamic from 'next/dynamic'
+
 import React from 'react'
 import Heading from '@/components/reuseable/Heading'
 import { getReviews } from '@/lib/siteApis'
