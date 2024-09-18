@@ -7,7 +7,7 @@ export const Menu = [
     { heading: 'Main Menu' },
     {
         Icon: CiGrid41,
-        title: 'Category',
+        title: 'Categories',
         subMenu: [
             {
                 subTitle: 'Create Category',
@@ -21,7 +21,7 @@ export const Menu = [
     },
     {
         Icon: MdCategory,
-        title: 'Sub Category',
+        title: 'Subcategories',
         subMenu: [
             {
                 subTitle: 'Create SubCategory',
@@ -51,14 +51,42 @@ export const Menu = [
 
     {
         Icon: MdDiscount,
-        title: 'Discounted Tour',
+        title: 'Discounted Tours',
         subMenu: [
             {
                 subTitle: 'Create Discounted Tour',
                 url: 'create-discounted-tour'
             },
             {
-                subTitle: 'View Discounted Tour',
+                subTitle: 'View Discounted Tours',
+                url: 'view-discounted-tour'
+            },
+        ]
+    },
+    {
+        Icon: MdDiscount,
+        title: 'Popular Tours',
+        subMenu: [
+            {
+                subTitle: 'Add Popular Tour',
+                url: 'create-discounted-tour'
+            },
+            {
+                subTitle: 'View Popular Tours',
+                url: 'view-discounted-tour'
+            },
+        ]
+    },
+    {
+        Icon: MdDiscount,
+        title: 'Best Selling Tours',
+        subMenu: [
+            {
+                subTitle: 'Add Best Selling Tour',
+                url: 'create-discounted-tour'
+            },
+            {
+                subTitle: 'View Best Selling Tours',
                 url: 'view-discounted-tour'
             },
         ]
