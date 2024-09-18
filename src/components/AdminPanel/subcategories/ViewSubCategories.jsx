@@ -11,7 +11,6 @@ import UpdateSubCategory from "./UpdateSubCategory";
 
 const columns = [
     { name: "Image", uid: "subCategoryImage" },
-    { name: "Category", uid: "subCategoryName" },
     { name: "SubCategory Name", uid: "subCategoryName" },
     { name: "Actions", uid: "actions" },
 ];

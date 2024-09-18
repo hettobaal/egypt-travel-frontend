@@ -20,7 +20,7 @@ const columns = [
 
 function CategoryDetails({ CategoryData }) {
    
-    const [data, setData] = React?.useState(CategoryData);
+    const [data, setData] = React?.useState(CategoryData || []);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 

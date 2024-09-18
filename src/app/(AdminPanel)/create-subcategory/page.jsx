@@ -6,6 +6,7 @@ import { getCategories } from '@/lib/siteApis'
 async function page() {
 
     const data = await getCategories()
+    
 
     return (
         <>

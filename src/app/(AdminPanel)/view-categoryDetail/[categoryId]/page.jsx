@@ -7,7 +7,6 @@ async function page({ params }) {
 
     const id = params?.categoryId
     const data = await getSingleCategory(id)
-    console.log("detail", data?.data?.categoryName);
 
     return (
         <>

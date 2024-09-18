@@ -243,11 +243,13 @@ export const getReviews = async () => {
 
 // tours 
 export const addTour = async (data) => {
+    console.log("id",data?.subCategoryId);
+    
     const Url = SERVER_URL + 'admin/tour/add-tour';
     const formData = new FormData();
     formData?.append('subCategoryId', data?.subCategoryId);
     formData?.append('title', data?.title);
-    formData?.append('tag', data?.tag);
+    formData?.append('tags', data?.tag);
     formData?.append('description', data?.description);
     formData?.append('strikePrice', data?.strikePrice);
     formData?.append('priceAdult', data?.priceAdult);

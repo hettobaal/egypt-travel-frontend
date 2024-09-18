@@ -27,8 +27,8 @@ const formSchema = z.object({
 })
 
 function UpdateSubCategory({ data, setData, id }) {
-    
-    
+
+
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [loader, setLoader] = useState(false);
@@ -50,12 +50,13 @@ function UpdateSubCategory({ data, setData, id }) {
         if (res?.status == "Success") {
             setLoader(false)
             toast?.success(res?.message)
+            const newImageId = res?.data?.subCategoryImage;
             setData((prevData) =>
                 prevData?.map((item) =>
                     item?._id === id
                         ? {
                             ...item, subCategoryName: subCategoryData?.subCategoryName,
-                            subCategoryImage: subCategoryData?.subCategoryImage
+                            subCategoryImage: newImageId
                         }
                         : item
                 )

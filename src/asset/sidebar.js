@@ -5,6 +5,7 @@ import { MdDiscount } from "react-icons/md";
 import { MdOutlineReviews } from "react-icons/md";
 export const Menu = [
     { heading: 'Main Menu' },
+    
     {
         Icon: CiGrid41,
         title: 'Categories',
@@ -19,6 +20,7 @@ export const Menu = [
             },
         ]
     },
+
     {
         Icon: MdCategory,
         title: 'Subcategories',
@@ -51,46 +53,49 @@ export const Menu = [
 
     {
         Icon: MdDiscount,
-        title: 'Discounted Tours',
+        title: 'Discount Tours',
         subMenu: [
             {
-                subTitle: 'Create Discounted Tour',
-                url: 'create-discounted-tour'
+                subTitle: 'Create Discount Tour',
+                url: 'create-discount-tour'
             },
             {
-                subTitle: 'View Discounted Tours',
-                url: 'view-discounted-tour'
+                subTitle: 'View Discount Tours',
+                url: 'view-discount-tour'
             },
         ]
     },
+
     {
         Icon: MdDiscount,
         title: 'Popular Tours',
         subMenu: [
             {
                 subTitle: 'Add Popular Tour',
-                url: 'create-discounted-tour'
+                url: 'create-popular-tour'
             },
             {
                 subTitle: 'View Popular Tours',
-                url: 'view-discounted-tour'
+                url: 'view-popular-tour'
             },
         ]
     },
+
     {
         Icon: MdDiscount,
         title: 'Best Selling Tours',
         subMenu: [
             {
                 subTitle: 'Add Best Selling Tour',
-                url: 'create-discounted-tour'
+                url: 'create-selling-tour'
             },
             {
                 subTitle: 'View Best Selling Tours',
-                url: 'view-discounted-tour'
+                url: 'view-selling-tour'
             },
         ]
     },
+    
     {
         Icon: MdOutlineReviews,
         title: 'Reviews',

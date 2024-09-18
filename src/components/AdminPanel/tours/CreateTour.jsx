@@ -108,17 +108,17 @@ function CreateTour({ data }) {
     const onSubmit = async (data) => {
         console.log("sub category id",data?.subCategoryId);
 
-        // setLoader(true)
-        // const res = await addTour(data)
-        // console.log("res", res);
-        // setLoader(false)
-        // if (res?.status == "Success") {
-        //     setLoader(false)
-        //     toast?.success(res?.message)
-        // } else {
-        //     setLoader(false)
-        //     toast?.error(res?.message)
-        // }
+        setLoader(true)
+        const res = await addTour(data)
+        console.log("res", res);
+        setLoader(false)
+        if (res?.status == "Success") {
+            setLoader(false)
+            toast?.success(res?.message)
+        } else {
+            setLoader(false)
+            toast?.error(res?.message)
+        }
 
     };
 
