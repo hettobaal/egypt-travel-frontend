@@ -1,20 +1,21 @@
-import React from 'react'
+import CreateDiscountTour from '@/components/AdminPanel/discoutTours/CreateDiscountTour'
 import Heading from '@/components/reuseable/Heading'
-import ViewTours from '@/components/AdminPanel/tours/ViewTours'
 import { getTours } from '@/lib/siteApis'
+import React from 'react'
 
 async function page() {
 
     const data = await getTours()
-    console.log("tours", data);
+    console.log(data);
+
 
 
     return (
         <>
             <Heading>
-                View Tour
+                Create Discount Tour
             </Heading>
-            <ViewTours TourData={data?.data} />
+            <CreateDiscountTour data={data?.data}/>
         </>
     )
 }

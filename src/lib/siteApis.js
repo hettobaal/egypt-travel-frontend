@@ -169,22 +169,22 @@ export const DeleteSubCategory = async (id) => {
 }
 
 export const updateSubCategoryById = async (data, id) => {
-    
-    
+
+
     const Url = SERVER_URL + `admin/subcategory/update-subcategory/${id}`;
     const formData = new FormData();
-    
+
     if (data?.subCategoryImage) {
         formData.append('subCategoryImage', data?.subCategoryImage);
     }
     formData?.append('subCategoryName', data?.subCategoryName);
-    
+
 
     return fetch(Url, {
         method: 'PUT',
         body: formData,
         mode: 'cors',
-        cache:"no-store"
+        cache: "no-store"
     },
     )
         .then((response) => response?.json())
@@ -209,7 +209,7 @@ export const addReview = async (data) => {
         method: 'POST',
         body: formData,
         mode: 'cors',
-        cache:"no-store"
+        cache: "no-store"
     },
     )
         .then((response) => response?.json())
@@ -243,8 +243,8 @@ export const getReviews = async () => {
 
 // tours 
 export const addTour = async (data) => {
-    console.log("id",data?.subCategoryId);
-    
+    console.log("id", data?.subCategoryId);
+
     const Url = SERVER_URL + 'admin/tour/add-tour';
     const formData = new FormData();
     formData?.append('subCategoryId', data?.subCategoryId);
@@ -277,3 +277,89 @@ export const addTour = async (data) => {
             return error
         });
 };
+
+export const getTours = async () => {
+
+    const Url = SERVER_URL + 'api/public/get-all-tours';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+export const DeleteTour = async (id) => {
+
+    const url = SERVER_URL + `admin/tour/delete-tour/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            console.log("Response from server:", data);
+            return data;
+        })
+        .catch(error => {
+            console.error("Fetch error:", error);
+            return error;
+        });
+}
+
+
+// discount tour
+export const addDiscountTour = async (data) => {
+
+    const Url = SERVER_URL + 'admin/discountedtour/add-discountedtour';
+
+    const json = {
+        tourId: data?.tourId
+    }
+
+    return fetch(Url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(json),
+        mode: 'cors',
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const getDiscountTours = async () => {
+
+    const Url = SERVER_URL + 'api/public/get-discountedtours';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+

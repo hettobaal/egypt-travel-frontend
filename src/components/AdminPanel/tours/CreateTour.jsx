@@ -106,7 +106,7 @@ function CreateTour({ data }) {
 
 
     const onSubmit = async (data) => {
-        console.log("sub category id",data?.subCategoryId);
+        console.log("sub category id", data?.subCategoryId);
 
         setLoader(true)
         const res = await addTour(data)
@@ -146,8 +146,8 @@ function CreateTour({ data }) {
 
                                                 <Select
                                                     {...field}
-                                                    aria-label='Select Category Name'
-                                                    placeholder="Select Category Name"
+                                                    aria-label='Select Category'
+                                                    placeholder="Select Category"
                                                     selectedKeys={value}
                                                     className="   border border-gray-400 outline-none rounded-lg focus-visible:ring-0 focus:ring-0 dark:bg-darkModeSecondary  "
                                                     onSelectionChange={setValue}
@@ -163,7 +163,7 @@ function CreateTour({ data }) {
                                                         data?.map((item) => {
                                                             return (
                                                                 <SelectItem
-                                                                    key={item?.categoryId
+                                                                    key={item?._id
                                                                     }>
                                                                     {item?.subCategoryName}
                                                                 </SelectItem>

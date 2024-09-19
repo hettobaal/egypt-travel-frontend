@@ -5,26 +5,25 @@ import { EyeIcon } from "@/components/reuseable/EyeIcon";
 import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
-import { DeleteCategory } from "@/lib/siteApis";
+import { DeleteTour } from "@/lib/siteApis";
 import toast from "react-hot-toast";
-import Link from "next/link";
 import UpdateSubCategory from "../subcategories/UpdateSubCategory";
 
 
 const columns = [
-    { name: "CARD IMAGE", uid: "categoryImage" },
-    { name: "TITLE", uid: "categoryName" },
-    { name: "DURATION", uid: "actions" },
-    { name: "ADULT PRICE", uid: "actions" },
-    { name: "CHILD PRICE", uid: "actions" },
-    { name: "STRIKE PRICE", uid: "actions" },
-    { name: "STRIKE ACTIONS", uid: "actions" },
+    { name: "CARD IMAGE", uid: "cardImage" },
+    { name: "TITLE", uid: "title" },
+    { name: "DURATION", uid: "duration" },
+    { name: "ADULT PRICE", uid: "priceAdult" },
+    { name: "CHILD PRICE", uid: "priceChild" },
+    { name: "STRIKE PRICE", uid: "strikePrice" },
+    { name: "ACTIONS", uid: "actions" },
 ];
 
 
-function ViewTours({ CategoryData }) {
+function ViewTours({ TourData }) {
 
-    const [data, setData] = React?.useState(CategoryData || []);
+    const [data, setData] = React?.useState(TourData || []);
 
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
@@ -35,7 +34,7 @@ function ViewTours({ CategoryData }) {
         let filteredUsers = [...data];
         if (hasSearchFilter) {
             filteredUsers = filteredUsers?.filter((data) =>
-                data?.categoryName?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+                data?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
         return filteredUsers;
@@ -90,39 +89,33 @@ function ViewTours({ CategoryData }) {
     }, [page, filteredItems]);
 
 
-    const renderCell = React.useCallback((categoryData, columnKey) => {
-        const cellValue = categoryData[columnKey];
+    const renderCell = React.useCallback((TourData, columnKey) => {
+        const cellValue = TourData[columnKey];
+        // console.log("tours", TourData);
 
         switch (columnKey) {
-            case "categoryImage":
+            case "cardImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={categoryData?.categoryImage} />
+                        <ImageModal id={TourData?.cardImage} />
                     </div>
                 );
             case "actions":
                 return (
                     <div className="relative flex items-center gap-2">
-                        <Tooltip content="Details">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <Link href={`/view-categoryDetail/${categoryData?.slug}`}>
-                                    <EyeIcon />
-                                </Link>
-                            </span>
-                        </Tooltip>
                         <Tooltip content="Edit user">
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                                 {/* <EditIcon /> */}
                                 <UpdateSubCategory
-                                    data={categoryData}
+                                    data={TourData}
                                     setData={setData}
-                                    id={categoryData?._id}
+                                    id={TourData?._id}
                                 />
                             </span>
                         </Tooltip>
                         <Tooltip color="danger" content="Delete user">
                             <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                <DeleteIcon onClick={() => Delete(categoryData?._id)} />
+                                <DeleteIcon onClick={() => Delete(TourData?._id)} />
                             </span>
                         </Tooltip>
                     </div>
@@ -135,7 +128,11 @@ function ViewTours({ CategoryData }) {
     // Actions
     const Delete = React.useCallback(
         async (id) => {
-            const res = await DeleteCategory(id);
+            console.log("id", id);
+
+            const res = await DeleteTour(id);
+            console.log("delete testing", res);
+
             if (res?.status === "Success") {
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));

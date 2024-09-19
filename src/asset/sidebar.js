@@ -61,7 +61,7 @@ export const Menu = [
             },
             {
                 subTitle: 'View Discount Tours',
-                url: 'view-discount-tour'
+                url: 'view-discount-tours'
             },
         ]
     },
