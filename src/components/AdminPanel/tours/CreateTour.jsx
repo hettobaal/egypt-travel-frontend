@@ -106,11 +106,11 @@ function CreateTour({ data }) {
 
 
     const onSubmit = async (data) => {
-        console.log("sub category id", data?.subCategoryId);
+        // console.log("sub category id", data?.subCategoryId);
 
         setLoader(true)
         const res = await addTour(data)
-        console.log("res", res);
+        // console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
