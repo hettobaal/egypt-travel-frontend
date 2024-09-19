@@ -263,7 +263,7 @@ console.log("includes ", data?.includes);
     formData?.append('includes', JSON.stringify(data?.includes));
     formData?.append('heading', data?.ImportantInformationHeading);
     formData?.append('points', data?.ImportantInformationPoint);
-
+console.log("a")
     return fetch(Url, {
         method: 'POST',
         body: formData,
