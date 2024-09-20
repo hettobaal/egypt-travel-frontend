@@ -72,11 +72,9 @@ export const DeleteCategory = async (id) => {
     })
         .then(response => response?.json())
         .then(data => {
-            console.log("Response from server:", data);
             return data;
         })
         .catch(error => {
-            console.error("Fetch error:", error);
             return error;
         });
 }
@@ -159,11 +157,9 @@ export const DeleteSubCategory = async (id) => {
     })
         .then(response => response?.json())
         .then(data => {
-            console.log("Response from server:", data);
             return data;
         })
         .catch(error => {
-            console.error("Fetch error:", error);
             return error;
         });
 }
@@ -255,13 +251,13 @@ export const addTour = async (data) => {
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
     formData?.append('duration', data?.Duration);
-    formData?.append('tourImages', data?.tourImages);
-    // formData?.append('highlights', data?.HighlightPoint);
+    data.tourImages.forEach((image, index) => {
+        formData.append(`tourImages`, image);  
+      });
     formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
     formData?.append('fulDescription', data?.fulDescription);
     formData?.append('includes', JSON?.stringify(data?.includes));
     formData?.append('heading', data?.ImportantInformationHeading);
-    // formData?.append('importantInformation', data?.ImportantInformationPoint);
     formData?.append('importantInformation', JSON?.stringify(data?.ImportantInformationPoint));
 
     return fetch(Url, {
@@ -352,11 +348,9 @@ export const DeleteTour = async (id) => {
     })
         .then(response => response?.json())
         .then(data => {
-            console.log("Response from server:", data);
             return data;
         })
         .catch(error => {
-            console.error("Fetch error:", error);
             return error;
         });
 }
