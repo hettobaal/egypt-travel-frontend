@@ -106,8 +106,6 @@ function CreateTour({ data }) {
 
 
     const onSubmit = async (data) => {
-        console.log("Tour", data);
-
         setLoader(true)
         const res = await addTour(data)
         console.log("res", res);
