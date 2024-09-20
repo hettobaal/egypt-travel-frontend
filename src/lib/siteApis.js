@@ -243,8 +243,6 @@ export const getReviews = async () => {
 
 // tours 
 export const addTour = async (data) => {
-    // console.log("id", data?.subCategoryId);
-console.log("includes ", data?.includes);
 
     const Url = SERVER_URL + 'admin/tour/add-tour';
     const formData = new FormData();
@@ -255,14 +253,14 @@ console.log("includes ", data?.includes);
     formData?.append('strikePrice', data?.strikePrice);
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
-    formData?.append('duration', data?.duration);
+    formData?.append('duration', data?.Duration);
     formData?.append('cardImage', data?.cardImage[0]);
     formData?.append('tourImages', data?.tourImages);
-    formData?.append('HighlightPoint', data?.HighlightPoint);
+    formData?.append('highlights', data?.HighlightPoint);
     formData?.append('fulDescription', data?.fulDescription);
-    formData?.append('includes', JSON.stringify(data?.includes));
+    formData?.append('includes', JSON?.stringify(data?.includes));
     formData?.append('heading', data?.ImportantInformationHeading);
-    formData?.append('points', data?.ImportantInformationPoint);
+    formData?.append('importantInformation', data?.ImportantInformationPoint);
 
     return fetch(Url, {
         method: 'POST',
