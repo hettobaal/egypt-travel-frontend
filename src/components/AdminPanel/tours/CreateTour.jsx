@@ -34,14 +34,18 @@ const formSchema = z.object({
     tourImages: z.array(
         z.any().refine((file) => file instanceof File, 'File is required.')
     ),
-    HighlightPoint: z.array(z.string().min(1, { message: "required" })),
+    HighlightPoint: z.array(z.object({
+        point: z.string().min(1, { message: "required" }),
+    })),
     fulDescription: z.string().min(1, { message: "Description is required" }),
     includes: z.array(z.object({
         point: z.string().min(1, { message: "Include point is required" }),
         option: z.enum(["tick", "cross"], { errorMap: () => ({ message: "Select either tick or cross" }) }),
     })),
     ImportantInformationHeading: z.string().min(1, { message: "Description is required" }),
-    ImportantInformationPoint: z.array(z.string().min(1, { message: "required" })),
+    ImportantInformationPoint: z.array(z.object({
+        point: z.string().min(1, { message: "required" }),
+    })),
 
 })
 
@@ -64,11 +68,11 @@ function CreateTour({ data }) {
             Duration: "",
             cardImage: "",
             tourImages: [],
-            HighlightPoint: [" "],
+            HighlightPoint: [{ point: " " }],
             fulDescription: "",
             includes: [{ point: " ", option: "tick" }],
             ImportantInformationHeading: "",
-            ImportantInformationPoint: [" "],
+            ImportantInformationPoint: [{ point: " " }],
         },
     })
 
@@ -106,6 +110,8 @@ function CreateTour({ data }) {
 
 
     const onSubmit = async (data) => {
+        console.log("form  data", data);
+
         setLoader(true)
         const res = await addTour(data)
         console.log("res", res);
@@ -381,7 +387,7 @@ function CreateTour({ data }) {
                                             <FormField
                                                 key={field.id}
                                                 control={form.control}
-                                                name={`HighlightPoint.${index}`}
+                                                name={`HighlightPoint.${index}.point`}
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-base dark:text-white font-semibold">
@@ -550,7 +556,7 @@ function CreateTour({ data }) {
                                             <FormField
                                                 key={field.id}
                                                 control={form.control}
-                                                name={`ImportantInformationPoint.${index}`}
+                                                name={`ImportantInformationPoint.${index}.point`}
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-base dark:text-white font-semibold">

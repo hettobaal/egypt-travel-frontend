@@ -256,11 +256,13 @@ export const addTour = async (data) => {
     formData?.append('duration', data?.Duration);
     formData?.append('cardImage', data?.cardImage[0]);
     formData?.append('tourImages', data?.tourImages);
-    formData?.append('highlights', data?.HighlightPoint);
+    // formData?.append('highlights', data?.HighlightPoint);
+    formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
     formData?.append('fulDescription', data?.fulDescription);
     formData?.append('includes', JSON?.stringify(data?.includes));
     formData?.append('heading', data?.ImportantInformationHeading);
-    formData?.append('importantInformation', data?.ImportantInformationPoint);
+    // formData?.append('importantInformation', data?.ImportantInformationPoint);
+    formData?.append('importantInformation', JSON?.stringify(data?.ImportantInformationPoint));
 
     return fetch(Url, {
         method: 'POST',
@@ -292,6 +294,47 @@ export const getTours = async () => {
         })
         .catch((error) => {
             return error;
+        });
+};
+
+export const getSingleTour = async (id) => {
+
+    const Url = SERVER_URL + `api/public/get-tour/${id}`;
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const updateTourById = async (data, id) => {
+
+    const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
+    const formData = new FormData();
+    formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
+    formData?.append('includes', JSON?.stringify(data?.HighlightPoint));
+
+    return fetch(Url, {
+        method: 'PUT',
+        body: formData,
+        mode: 'cors',
+        cache: "no-store"
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
         });
 };
 

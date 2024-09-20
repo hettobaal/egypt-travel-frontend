@@ -8,6 +8,7 @@ import { SearchIcon } from "lucide-react";
 import { DeleteTour } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 import UpdateSubCategory from "../subcategories/UpdateSubCategory";
+import Link from "next/link";
 
 
 const columns = [
@@ -91,7 +92,6 @@ function ViewTours({ TourData }) {
 
     const renderCell = React.useCallback((TourData, columnKey) => {
         const cellValue = TourData[columnKey];
-        // console.log("tours", TourData);
 
         switch (columnKey) {
             case "cardImage":
@@ -103,7 +103,14 @@ function ViewTours({ TourData }) {
             case "actions":
                 return (
                     <div className="relative flex items-center gap-2">
-                        <Tooltip content="Edit user">
+                        <Tooltip content="Details">
+                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                                <Link href={`/view-tourdetail/${TourData?._id}`}>
+                                    <EyeIcon />
+                                </Link>
+                            </span>
+                        </Tooltip>
+                        <Tooltip content="Edit">
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                                 {/* <EditIcon /> */}
                                 <UpdateSubCategory
@@ -113,7 +120,7 @@ function ViewTours({ TourData }) {
                                 />
                             </span>
                         </Tooltip>
-                        <Tooltip color="danger" content="Delete user">
+                        <Tooltip color="danger" content="Delete">
                             <span className="text-lg text-danger cursor-pointer active:opacity-50">
                                 <DeleteIcon onClick={() => Delete(TourData?._id)} />
                             </span>

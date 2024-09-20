@@ -96,12 +96,12 @@ function ViewSubCategories({ SubCategoryData }) {
             case "actions":
                 return (
                     <div className="relative flex items-center gap-2">
-                        <Tooltip content="Edit user">
+                        <Tooltip content="Edit">
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                                 <UpdateSubCategory data={categoryData} setData={setData} id={categoryData?._id} />
                             </span>
                         </Tooltip>
-                        <Tooltip color="danger" content="Delete user">
+                        <Tooltip color="danger" content="Delete">
                             <span className="text-lg text-danger cursor-pointer active:opacity-50">
                                 <DeleteIcon onClick={() => Delete(categoryData?._id)} />
                             </span>
