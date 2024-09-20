@@ -7,7 +7,6 @@ async function page({ params }) {
 
     const id = params?.tourId
     const data = await getSingleTour(id)
-
     return (
         <>
             <Heading>

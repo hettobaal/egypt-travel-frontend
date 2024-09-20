@@ -246,6 +246,7 @@ export const addTour = async (data) => {
 
     const Url = SERVER_URL + 'admin/tour/add-tour';
     const formData = new FormData();
+    formData?.append('cardImage', data?.cardImage[0]);
     formData?.append('subCategoryId', data?.subCategoryId);
     formData?.append('title', data?.title);
     formData?.append('tags', data?.tag);
@@ -254,7 +255,6 @@ export const addTour = async (data) => {
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
     formData?.append('duration', data?.Duration);
-    formData?.append('cardImage', data?.cardImage[0]);
     formData?.append('tourImages', data?.tourImages);
     // formData?.append('highlights', data?.HighlightPoint);
     formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
@@ -321,6 +321,7 @@ export const updateTourById = async (data, id) => {
     const formData = new FormData();
     formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
     formData?.append('includes', JSON?.stringify(data?.HighlightPoint));
+    formData?.append('title', JSON?.stringify(data?.title));
 
     return fetch(Url, {
         method: 'PUT',
