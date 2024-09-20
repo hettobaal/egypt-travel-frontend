@@ -254,6 +254,8 @@ export const addTour = async (data) => {
     data.tourImages.forEach((image, index) => {
         formData.append(`tourImages`, image);  
       });
+      console.log("a");
+      
     formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
     formData?.append('fulDescription', data?.fulDescription);
     formData?.append('includes', JSON?.stringify(data?.includes));
