@@ -3,9 +3,11 @@ import { MdTour } from "react-icons/md";
 import { MdCategory } from "react-icons/md";
 import { MdDiscount } from "react-icons/md";
 import { MdOutlineReviews } from "react-icons/md";
+import { FaBattleNet } from "react-icons/fa";
+import { FaSellsy } from "react-icons/fa";
 export const Menu = [
     { heading: 'Main Menu' },
-    
+
     {
         Icon: CiGrid41,
         title: 'Categories',
@@ -67,7 +69,7 @@ export const Menu = [
     },
 
     {
-        Icon: MdDiscount,
+        Icon: FaBattleNet,
         title: 'Popular Tours',
         subMenu: [
             {
@@ -82,7 +84,7 @@ export const Menu = [
     },
 
     {
-        Icon: MdDiscount,
+        Icon: FaSellsy,
         title: 'Best Selling Tours',
         subMenu: [
             {
@@ -95,7 +97,7 @@ export const Menu = [
             },
         ]
     },
-    
+
     {
         Icon: MdOutlineReviews,
         title: 'Reviews',

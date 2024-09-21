@@ -7,12 +7,13 @@ async function page({ params }) {
 
     const id = params?.tourId
     const data = await getSingleTour(id)
+
     return (
         <>
             <Heading>
                 Tour Detail
             </Heading>
-            <ViewTourDetail data={data?.data} />
+            <ViewTourDetail tourDetail={data?.data} />
         </>
     )
 }

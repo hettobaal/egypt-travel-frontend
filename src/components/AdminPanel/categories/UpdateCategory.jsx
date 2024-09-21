@@ -44,12 +44,13 @@ function UpdateCategory({ data, setData, id }) {
     const onSubmit = async (categoryData) => {
         setLoader(true)
         const res = await updateCategoryById(categoryData, id)
+
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
             const newImageId = res?.data?.categoryImage;
             setData((prevData) =>
-                prevData.map((item) =>
+                prevData?.map((item) =>
                     item?._id === id
                         ? { ...item, categoryName: categoryData?.categoryName, categoryImage: newImageId }
                         : item

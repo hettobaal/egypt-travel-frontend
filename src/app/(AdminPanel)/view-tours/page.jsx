@@ -6,9 +6,7 @@ import { getTours } from '@/lib/siteApis'
 async function page() {
 
     const data = await getTours()
-    console.log("tours", data);
-
-
+    
     return (
         <>
             <Heading>

@@ -37,11 +37,8 @@ function CreateDiscountTour({ data }) {
 
 
     const onSubmit = async (data) => {
-        console.log("id", data);
-
         setLoader(true)
         const res = await addDiscountTour(data)
-        console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)

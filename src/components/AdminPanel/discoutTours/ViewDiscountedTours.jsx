@@ -1,14 +1,11 @@
 "use client"
 import React from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Tooltip, Pagination, Input } from "@nextui-org/react";
-import { EyeIcon } from "@/components/reuseable/EyeIcon";
 import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
-import { DeleteTour } from "@/lib/siteApis";
+import { DeleteDiscountTour } from "@/lib/siteApis";
 import toast from "react-hot-toast";
-import UpdateSubCategory from "../subcategories/UpdateSubCategory";
-import Link from "next/link";
 
 
 const columns = [
@@ -22,7 +19,7 @@ const columns = [
 ];
 
 
-function ViewTours({ TourData }) {
+function ViewDiscountedTours({ TourData }) {
 
     const [data, setData] = React?.useState(TourData || []);
 
@@ -35,7 +32,7 @@ function ViewTours({ TourData }) {
         let filteredUsers = [...data];
         if (hasSearchFilter) {
             filteredUsers = filteredUsers?.filter((data) =>
-                data?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+                data?.tourId?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
         return filteredUsers;
@@ -91,35 +88,18 @@ function ViewTours({ TourData }) {
 
 
     const renderCell = React.useCallback((TourData, columnKey) => {
-        const cellValue = TourData[columnKey];
+        const cellValue = TourData?.tourId[columnKey];
 
         switch (columnKey) {
             case "cardImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={TourData?.cardImage} />
+                        <ImageModal id={TourData?.tourId?.cardImage} />
                     </div>
                 );
             case "actions":
                 return (
                     <div className="relative flex items-center gap-2">
-                        <Tooltip content="Details">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <Link href={`/view-tourdetail/${TourData?._id}`}>
-                                    <EyeIcon />
-                                </Link>
-                            </span>
-                        </Tooltip>
-                        <Tooltip content="Edit">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                {/* <EditIcon /> */}
-                                <UpdateSubCategory
-                                    data={TourData}
-                                    setData={setData}
-                                    id={TourData?._id}
-                                />
-                            </span>
-                        </Tooltip>
                         <Tooltip color="danger" content="Delete">
                             <span className="text-lg text-danger cursor-pointer active:opacity-50">
                                 <DeleteIcon onClick={() => Delete(TourData?._id)} />
@@ -135,7 +115,7 @@ function ViewTours({ TourData }) {
     // Actions
     const Delete = React.useCallback(
         async (id) => {
-            const res = await DeleteTour(id);
+            const res = await DeleteDiscountTour(id);
             if (res?.status === "Success") {
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));
@@ -203,4 +183,4 @@ function ViewTours({ TourData }) {
     )
 }
 
-export default ViewTours;
+export default ViewDiscountedTours;

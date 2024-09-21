@@ -21,7 +21,6 @@ const columns = [
 
 
 function ViewReviews({ reviewsData }) {
-    // console.log("data",CategoryData);
 
 
     const [data, setData] = useState(reviewsData);

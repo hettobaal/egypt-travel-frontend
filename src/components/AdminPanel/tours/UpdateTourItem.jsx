@@ -15,19 +15,22 @@ import {
 import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
-import { EditIcon } from '@/components/reuseable/EditIcon'
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react'
 import { updateTourById } from '@/lib/siteApis'
 
 
 const formSchema = z.object({
-    // highlights: z.string().optional()
-    title: z.string().optional()
+    cardImage: z
+        .any(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    strikePrice: z.coerce.number().optional(),
+    priceAdult: z.coerce.number().optional(),
+    priceChild: z.coerce.number().optional(),
+    duration: z.coerce.number().optional(),
 })
 
-function UpdateTourItem({ data, id }) {
-    // console.log("modal", data);
-    // console.log("modal id", id);
+function UpdateTourItem({ TourData, id, setData }) {
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [loader, setLoader] = useState(false);
@@ -36,30 +39,39 @@ function UpdateTourItem({ data, id }) {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            // highlights: data
-            title: data
+            cardImage: '',
+            title: TourData?.title,
+            description: TourData?.description,
+            strikePrice: TourData?.strikePrice,
+            priceAdult: TourData?.priceAdult,
+            priceChild: TourData?.priceChild,
+            duration: TourData?.duration,
         },
     })
 
 
     const onSubmit = async (data) => {
-        console.log("UpdateData", data);
-
         setLoader(true)
         const res = await updateTourById(data, id)
-        console.log("res", res);
-
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
-            // const newImageId = res?.data?.categoryImage;
-            // setData((prevData) =>
-            //     prevData.map((item) =>
-            //         item?._id === id
-            //             ? { ...item, categoryName: categoryData?.categoryName, categoryImage: newImageId }
-            //             : item
-            //     )
-            // );
+            const newImageId = res?.data?.cardImage;
+            setData((prevData) => {
+                if (prevData?._id === id) {
+                    return {
+                        ...prevData,
+                        title: data?.title,
+                        cardImage: newImageId,
+                        description: data?.description,
+                        strikePrice: data?.strikePrice,
+                        priceAdult: data?.priceAdult,
+                        priceChild: data?.priceChild,
+                        duration: data?.duration,
+                    };
+                }
+                return prevData;
+            });
             onClose();
         } else {
             setLoader(false)
@@ -68,14 +80,16 @@ function UpdateTourItem({ data, id }) {
 
     };
 
+    const fileRef = form.register("cardImage");
 
     return (
         <>
-
-            <EditIcon
-                aria-label="Edit User"
+            <Button
+                className="w-32  text-white bg-blue hover:bg-darkBlue"
                 onClick={onOpen}
-            />
+            >
+                Update
+            </Button>
             <Modal
                 size="xl"
                 className="dark:bg-darkMode pb-3"
@@ -90,10 +104,29 @@ function UpdateTourItem({ data, id }) {
                                     <div className='gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
                                         <FormField
                                             control={form.control}
+                                            name="cardImage"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Card Image</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            {...fileRef} onChange={(event) => {
+                                                                field.onChange(event.target?.files?.[0] ?? undefined);
+                                                            }}
+                                                            type="file"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
                                             name="title"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">title</FormLabel>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Title</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             {...field}
@@ -102,6 +135,95 @@ function UpdateTourItem({ data, id }) {
                                                         />
                                                     </FormControl>
                                                     <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="description"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Description</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="text"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="strikePrice"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Strike Price</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="number"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="priceAdult"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Adult Price</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="number"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="priceChild"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Child Price</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="number"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="duration"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Duration</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="number"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
                                                 </FormItem>
                                             )}
                                         />

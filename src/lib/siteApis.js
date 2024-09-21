@@ -245,17 +245,16 @@ export const addTour = async (data) => {
     formData?.append('cardImage', data?.cardImage[0]);
     formData?.append('subCategoryId', data?.subCategoryId);
     formData?.append('title', data?.title);
-    formData?.append('tags', data?.tag);
+    formData?.append('tag', data?.tag);
     formData?.append('description', data?.description);
     formData?.append('strikePrice', data?.strikePrice);
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
     formData?.append('duration', data?.Duration);
     data.tourImages.forEach((image, index) => {
-        formData.append(`tourImages`, image);  
-      });
-      console.log("a");
-      
+        formData.append(`tourImages`, image);
+    });
+
     formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
     formData?.append('fulDescription', data?.fulDescription);
     formData?.append('includes', JSON?.stringify(data?.includes));
@@ -317,9 +316,15 @@ export const updateTourById = async (data, id) => {
 
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
     const formData = new FormData();
-    formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
-    formData?.append('includes', JSON?.stringify(data?.HighlightPoint));
-    formData?.append('title', JSON?.stringify(data?.title));
+    if (data?.cardImage) {
+        formData.append('cardImage', data?.cardImage[0]);
+    }
+    formData?.append('title', data?.title);
+    formData?.append('description', data?.description);
+    formData?.append('strikePrice', data?.strikePrice);
+    formData?.append('priceAdult', data?.priceAdult);
+    formData?.append('priceChild', data?.priceChild);
+    formData?.append('duration', data?.duration);
 
     return fetch(Url, {
         method: 'PUT',
@@ -336,7 +341,6 @@ export const updateTourById = async (data, id) => {
             return error
         });
 };
-
 
 export const DeleteTour = async (id) => {
 
@@ -401,4 +405,24 @@ export const getDiscountTours = async () => {
             return error;
         });
 };
+
+export const DeleteDiscountTour = async (id) => {
+
+    const url = SERVER_URL + `admin/discountedtour/delete-discountedtour/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+}
+
 
