@@ -35,7 +35,6 @@ function UpdateTourItem({ TourData, id, setData }) {
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [loader, setLoader] = useState(false);
 
-
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -48,7 +47,6 @@ function UpdateTourItem({ TourData, id, setData }) {
             duration: TourData?.duration,
         },
     })
-
 
     const onSubmit = async (data) => {
         setLoader(true)
