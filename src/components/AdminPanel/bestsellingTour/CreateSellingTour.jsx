@@ -15,14 +15,14 @@ import {
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { Select, SelectItem } from '@nextui-org/react'
-import { addDiscountTour } from '@/lib/siteApis'
+import { addSellingTour } from '@/lib/siteApis'
 
 const formSchema = z.object({
     tourId: z.string().min(1, { message: "Please select Name" }),
 })
 
 
-function CreateDiscountTour({ data }) {
+function CreateSellingTour({ data }) {
 
     const [value, setValue] = React.useState(new Set([]));
     const [loader, setLoader] = useState(false);
@@ -37,7 +37,7 @@ function CreateDiscountTour({ data }) {
 
     const onSubmit = async (data) => {
         setLoader(true)
-        const res = await addDiscountTour(data)
+        const res = await addSellingTour(data)
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -121,4 +121,4 @@ function CreateDiscountTour({ data }) {
     )
 }
 
-export default CreateDiscountTour;
+export default CreateSellingTour;

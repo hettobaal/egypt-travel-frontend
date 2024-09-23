@@ -23,7 +23,10 @@ const formSchema = z.object({
     cardImage: z
         .any(),
     title: z.string().optional(),
+    tag: z.string().optional(),
+    heading: z.string().optional(),
     description: z.string().optional(),
+    fullDescription: z.string().optional(),
     strikePrice: z.coerce.number().optional(),
     priceAdult: z.coerce.number().optional(),
     priceChild: z.coerce.number().optional(),
@@ -40,7 +43,10 @@ function UpdateTourItem({ TourData, id, setData }) {
         defaultValues: {
             cardImage: '',
             title: TourData?.title,
+            tag: TourData?.tag,
+            heading: TourData?.heading,
             description: TourData?.description,
+            fullDescription: TourData?.fullDescription,
             strikePrice: TourData?.strikePrice,
             priceAdult: TourData?.priceAdult,
             priceChild: TourData?.priceChild,
@@ -54,14 +60,18 @@ function UpdateTourItem({ TourData, id, setData }) {
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
+            toast?.success(res?.message)
             const newImageId = res?.data?.cardImage;
             setData((prevData) => {
                 if (prevData?._id === id) {
                     return {
                         ...prevData,
                         title: data?.title,
+                        tag: data?.tag,
+                        heading: data?.heading,
                         cardImage: newImageId,
                         description: data?.description,
+                        fullDescription: data?.fullDescription,
                         strikePrice: data?.strikePrice,
                         priceAdult: data?.priceAdult,
                         priceChild: data?.priceChild,
@@ -90,7 +100,7 @@ function UpdateTourItem({ TourData, id, setData }) {
             </Button>
             <Modal
                 size="xl"
-                className="dark:bg-darkMode pb-3"
+                className="dark:bg-darkMode pb-3  max-h-[80vh] overflow-y-auto"
                 isOpen={isOpen}
                 onOpenChange={onOpenChange}>
                 <ModalContent>
@@ -119,6 +129,43 @@ function UpdateTourItem({ TourData, id, setData }) {
                                                 </FormItem>
                                             )}
                                         />
+
+                                        <FormField
+                                            control={form.control}
+                                            name="tag"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Tag</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="text"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        
+                                          <FormField
+                                            control={form.control}
+                                            name="heading"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Include Heading </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="text"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+
                                         <FormField
                                             control={form.control}
                                             name="title"
@@ -222,6 +269,19 @@ function UpdateTourItem({ TourData, id, setData }) {
                                                     </FormControl>
                                                     <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
 
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="fullDescription"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">full Description</FormLabel>
+                                                    <FormControl>
+                                                        <textarea {...field} className='outline-none dark:bg-darkModeSecondary flex min-h-14 max-h-52 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50' />
+                                                    </FormControl>
+                                                    <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
                                                 </FormItem>
                                             )}
                                         />

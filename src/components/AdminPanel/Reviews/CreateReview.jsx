@@ -41,7 +41,6 @@ function CreateReview() {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await createCategory(data)
-        console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)

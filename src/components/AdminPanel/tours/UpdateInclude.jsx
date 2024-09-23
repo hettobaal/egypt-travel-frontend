@@ -15,46 +15,44 @@ import {
 import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
-import { EditIcon } from '@/components/reuseable/EditIcon'
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react'
-import { updateCategoryById } from '@/lib/siteApis'
+import { updateTourIncludePoint } from '@/lib/siteApis'
 
 
 const formSchema = z.object({
-    categoryName: z.string().min(1, { message: "Category Name is required " }),
-    categoryImage: z
-        .any()
+    includePoint: z.string().optional(),
 })
 
-function UpdateCategory({ data, setData, id }) {
+function UpdateInclude({ TourData, id, setData }) {
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [loader, setLoader] = useState(false);
 
-
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            categoryName: data?.categoryName,
-            categoryImage: null,
+            includePoint: TourData?.point,
         },
     })
 
-
-    const onSubmit = async (categoryData) => {
+    const onSubmit = async (data) => {
         setLoader(true)
-        const res = await updateCategoryById(categoryData, id)
+        const res = await updateTourIncludePoint(data, id, TourData?._id)
+
         setLoader(false)
         if (res?.status == "Success") {
-            setLoader(false)
-            const newImageId = res?.data?.categoryImage;
-            setData((prevData) =>
-                prevData?.map((item) =>
-                    item?._id === id
-                        ? { ...item, categoryName: categoryData?.categoryName, categoryImage: newImageId }
-                        : item
-                )
-            );
+            toast?.success(res?.message)
+            setData((prevData) => {
+                return {
+                    ...prevData,
+                    includes: prevData?.includes?.map((include) =>
+                        include?._id === TourData?._id
+                            ? { ...include, point: data?.includePoint }
+                            : include
+                    ),
+                };
+            });
+
             onClose();
         } else {
             setLoader(false)
@@ -64,14 +62,14 @@ function UpdateCategory({ data, setData, id }) {
     };
 
 
-    const fileRef = form.register("categoryImage");
     return (
         <>
-
-            <EditIcon
-                aria-label="Edit User"
+            <Button
+                className="w-32  text-white bg-blue hover:bg-darkBlue"
                 onClick={onOpen}
-            />
+            >
+                Update
+            </Button>
             <Modal
                 size="xl"
                 className="dark:bg-darkMode pb-3"
@@ -79,41 +77,22 @@ function UpdateCategory({ data, setData, id }) {
                 onOpenChange={onOpenChange}>
                 <ModalContent>
                     <>
-                        <ModalHeader className="flex flex-col gap-1">Update Category</ModalHeader>
+                        <ModalHeader className="flex flex-col gap-1">Update Tour</ModalHeader>
                         <ModalBody>
                             <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                    <div className='gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
+                                <form onSubmit={form?.handleSubmit(onSubmit)} className="space-y-8">
+                                    <div className='gap-6 grid  grid-cols-1  w-full'>
                                         <FormField
                                             control={form.control}
-                                            name="categoryName"
+                                            name="includePoint"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">Category Name</FormLabel>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">include Point</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             {...field}
                                                             className='dark:bg-darkModeSecondary  outline-none '
                                                             type="text"
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                        <FormField
-                                            control={form.control}
-                                            name="categoryImage"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">Category Image</FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            className='dark:bg-darkModeSecondary  outline-none '
-                                                            {...fileRef} onChange={(event) => {
-                                                                field.onChange(event.target?.files?.[0] ?? undefined);
-                                                            }}
-                                                            type="file"
                                                         />
                                                     </FormControl>
                                                     <FormMessage />
@@ -139,4 +118,4 @@ function UpdateCategory({ data, setData, id }) {
     )
 }
 
-export default UpdateCategory;
+export default UpdateInclude;

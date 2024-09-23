@@ -8,8 +8,6 @@ const ViewReviews = dynamic(() => import('@/components/AdminPanel/Reviews/ViewRe
 async function page() {
 
     const data = await getReviews()
-    console.log(data);
-
 
     return (
         <>

@@ -58,12 +58,12 @@ export const Menu = [
         title: 'Discount Tours',
         subMenu: [
             {
-                subTitle: 'Create Discount Tour',
-                url: 'create-discount-tour'
+                subTitle: 'Add Discount Tour',
+                url: '/create-discount-tour'
             },
             {
                 subTitle: 'View Discount Tours',
-                url: 'view-discount-tours'
+                url: '/view-discount-tours'
             },
         ]
     },
@@ -74,11 +74,11 @@ export const Menu = [
         subMenu: [
             {
                 subTitle: 'Add Popular Tour',
-                url: 'create-popular-tour'
+                url: '/create-popular-tour'
             },
             {
                 subTitle: 'View Popular Tours',
-                url: 'view-popular-tour'
+                url: '/view-popular-tour'
             },
         ]
     },
@@ -89,11 +89,11 @@ export const Menu = [
         subMenu: [
             {
                 subTitle: 'Add Best Selling Tour',
-                url: 'create-selling-tour'
+                url: '/create-selling-tour'
             },
             {
                 subTitle: 'View Best Selling Tours',
-                url: 'view-selling-tour'
+                url: '/view-selling-tour'
             },
         ]
     },
@@ -108,7 +108,7 @@ export const Menu = [
             },
             {
                 subTitle: 'View Reviews',
-                url: 'view-reviews'
+                url: '/view-reviews'
             },
         ]
     },

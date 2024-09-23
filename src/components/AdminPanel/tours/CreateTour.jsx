@@ -37,7 +37,7 @@ const formSchema = z.object({
     HighlightPoint: z.array(z.object({
         point: z.string().min(1, { message: "required" }),
     })),
-    fulDescription: z.string().min(1, { message: "Description is required" }),
+    fullDescription: z.string().min(1, { message: "Description is required" }),
     includes: z.array(z.object({
         point: z.string().min(1, { message: "Include point is required" }),
         option: z.enum(["tick", "cross"], { errorMap: () => ({ message: "Select either tick or cross" }) }),
@@ -69,7 +69,7 @@ function CreateTour({ data }) {
             cardImage: "",
             tourImages: [],
             HighlightPoint: [{ point: " " }],
-            fulDescription: "",
+            fullDescription: "",
             includes: [{ point: " ", option: "tick" }],
             ImportantInformationHeading: "",
             ImportantInformationPoint: [{ point: " " }],
@@ -110,6 +110,8 @@ function CreateTour({ data }) {
 
 
     const onSubmit = async (data) => {
+        
+        
         setLoader(true)
         const res = await addTour(data)
         setLoader(false)
@@ -432,7 +434,7 @@ function CreateTour({ data }) {
                                     <div className='mt-4'>
                                         <FormField
                                             control={form.control}
-                                            name="fulDescription"
+                                            name="fullDescription"
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-base dark:text-white  font-semibold">Description</FormLabel>

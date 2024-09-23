@@ -1,4 +1,4 @@
-import CreateDiscountTour from '@/components/AdminPanel/discoutTours/CreateDiscountTour'
+import CreateSellingTour from '@/components/AdminPanel/bestsellingTour/CreateSellingTour'
 import Heading from '@/components/reuseable/Heading'
 import { getTours } from '@/lib/siteApis'
 import React from 'react'
@@ -10,9 +10,9 @@ async function page() {
     return (
         <>
             <Heading>
-                Add Discount Tour
+                Add Selling Tour
             </Heading>
-            <CreateDiscountTour data={data?.data} />
+            <CreateSellingTour data={data?.data} />
         </>
     )
 }
