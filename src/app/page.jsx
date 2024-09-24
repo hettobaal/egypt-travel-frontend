@@ -29,7 +29,6 @@ async function page() {
   const fourCategory = data?.data[3]
   const fiveCategory = data?.data[4]
 
-
   return (
     <>
       <WebHeader />
