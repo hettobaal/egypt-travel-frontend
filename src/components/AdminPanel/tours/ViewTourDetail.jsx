@@ -108,7 +108,7 @@ function ViewTourDetail({ tourDetail }) {
                 <Heading>
                     Highlights
                 </Heading>
-                <ul className='flex flex-col gap-y-2 mt-2'>
+                <ul className='flex flex-col gap-y-6 mt-2'>
                     {
                         data?.highlights?.map((item, index) => {
                             return (
@@ -131,7 +131,7 @@ function ViewTourDetail({ tourDetail }) {
                 <Heading>
                     Includes
                 </Heading>
-                <ul className='flex flex-col gap-y-2 mt-2'>
+                <ul className='flex flex-col gap-y-6 mt-2'>
                     {
                         data?.includes?.map((item, index) => {
                             return (
@@ -154,7 +154,7 @@ function ViewTourDetail({ tourDetail }) {
                 <Heading>
                     Images
                 </Heading>
-                <div className='mt-2'>
+                <div className='mt-2 flex flex-col gap-y-6'>
                     {
                         data?.tourImages?.map((item, index) => {
                             return (

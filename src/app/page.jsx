@@ -2,6 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { categories } from '@/asset/HomeCategoryData';
 import './globals.css'
+import { getCategories } from '@/lib/siteApis';
 const Hero = dynamic(() => import('@/components/home/Hero'));
 const WebHeader = dynamic(() => import('@/components/WebHeader/WebHeader'));
 const Search = dynamic(() => import('@/components/home/Search'));
@@ -22,18 +23,25 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 
 async function page() {
 
-  
+  const data = await getCategories()
+  const firstCategory = data?.data[0]
+  const secondCategory = data?.data[1]
+  const thirdCategory = data?.data[2]
+  const fourCategory = data?.data[3]
+  const fiveCategory = data?.data[4]
+
+
   return (
     <>
       <WebHeader />
       <Hero />
       <Search />
       <PopularTour />
-      <HomeCategoryOne data={categories} />
-      <HomeCategoryTwo data={categories} />
-      <HomeCategoryThree data={categories} />
-      <HomeCategoryFour data={categories} />
-      <HomeCategoryFive data={categories} />
+      <HomeCategoryOne data={firstCategory} />
+      <HomeCategoryTwo data={secondCategory} />
+      <HomeCategoryThree data={thirdCategory} />
+      <HomeCategoryFour data={fourCategory} />
+      <HomeCategoryFive data={fiveCategory} />
       <DiscountedTour />
       <HomeSellingTour />
       <WhyChooseUs />

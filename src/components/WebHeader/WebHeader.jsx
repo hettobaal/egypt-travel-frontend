@@ -8,10 +8,12 @@ import { usePathname } from 'next/navigation';
 import MobileMenu from './MobileMenu';
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import { ChevronDown } from 'lucide-react';
+import { getCategories } from '@/lib/siteApis';
 
 function WebHeader() {
     const [scrolled, setScrolled] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [categoryData, setCategoryData] = useState([]);
     const route = usePathname();
 
     useEffect(() => {
@@ -30,6 +32,17 @@ function WebHeader() {
     }, []);
 
     const isTourDetailPage = route?.startsWith('/tourdetail');
+
+
+    useEffect(() => {
+        const getData = async () => {
+            const data = await getCategories()
+            setCategoryData(data?.data)
+        }
+        getData()
+
+    }, [])
+
 
     return (
         <header className={`w-full lg:h-[75px] h-[65px] fixed z-50 top-0 lg:py-2 py-3 box-border transition-colors duration-300 ${scrolled ? 'bg-white' : 'bg-transparent'}`}>
@@ -98,61 +111,23 @@ function WebHeader() {
                             <DropdownMenu
                                 aria-label="Static Actions"
                             >
-                                <DropdownItem
-                                    key="new"
-                                    className='data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
-                                >
-                                    <Link
-                                        href={'/category/Action&Abenteuer'}
-                                        className='text-base font-medium text-black'
-                                    >
-                                        Action & Abenteuer
-                                    </Link>
-                                </DropdownItem>
-                                <DropdownItem
-                                    key="new"
-                                    className='data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
-                                >
-                                    <Link
-                                        href={'/category/Rund-ums-Meer'}
-                                        className='text-base font-medium text-black'
-                                    >
-                                        Rund ums Meer
-                                    </Link>
-                                </DropdownItem>
-                                <DropdownItem
-                                    key="new"
-                                    className='data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
-                                >
-                                    <Link
-                                        href={'/category/Lands-Leute'}
-                                        className='text-base font-medium text-black'
-                                    >
-                                        Lands & Leute
-                                    </Link>
-                                </DropdownItem>
-                                <DropdownItem
-                                    key="new"
-                                    className='data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
-                                >
-                                    <Link
-                                        href={'/category/Familienausflüge'}
-                                        className='text-base font-medium text-black'
-                                    >
-                                        Familienausflüge
-                                    </Link>
-                                </DropdownItem>
-                                <DropdownItem
-                                    key="new"
-                                    className='data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
-                                >
-                                    <Link
-                                        href={'/category/Kultur'}
-                                        className='text-base font-medium text-black'
-                                    >
-                                        Kultur
-                                    </Link>
-                                </DropdownItem>
+                                {
+                                    categoryData?.map((item, index) => {
+                                        return (
+                                            <DropdownItem
+                                                key={index}
+                                                className='data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
+                                            >
+                                                <Link
+                                                    href={`/category/${item?.slug}`}
+                                                    className='text-base font-medium text-black'
+                                                >
+                                                    {item?.categoryName}
+                                                </Link>
+                                            </DropdownItem>
+                                        )
+                                    })
+                                }
                             </DropdownMenu>
                         </Dropdown>
                     </li>

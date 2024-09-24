@@ -5,11 +5,36 @@ import Link from 'next/link';
 import Image from 'next/image';
 import CategoryCarousel from './CategoryCarousel';
 
-function CategoryHero({ id }) {
+async function CategoryHero({ id, data }) {
 
+    const currentData = data?.find(item => {
+        return item?.slug?.toLowerCase() === id?.toLowerCase();
+    });
+
+    // console.log("currentData", currentData);
+
+
+    const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000&v=${Date.now()}`
+    // const heroImageMobile = currentData
+    //     ? `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w500&v=${Date.now()}`
+    //     : '/images/aboutHeroMob.webp';
+
+    // console.log("heroImageDesktop", heroImageDesktop);
+
+    const backgroundImageStyle = {
+        backgroundImage: `url(${heroImageDesktop})`,
+    };
+
+    console.log("backgroundImageStyle",backgroundImageStyle);
+
+    // sm:bg-[url('${heroImageDesktop})]
     return (
-        <section
-            className="hero-section  sm:h-[90vh] h-[80vh]  bg-cover bg-center  bg-no-repeat relative  text-white sm:bg-[url('/images/category.webp')] bg-[url('/images/categoryMob.webp')] flex flex-col justify-end items-center" >
+        <div
+            style={backgroundImageStyle} // Use inline style for background image
+            className="sm:h-[90vh] h-[80vh] bg-cover bg-center bg-no-repeat relative text-white flex flex-col justify-end items-center"
+
+
+        >
             <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 justify-center items-center max-w-screen-lg mx-auto h-full   lg:px-0 md:px-8 mt-8'
             >
                 <h3 className='sm:text-xl text-base font-medium '>
@@ -27,34 +52,42 @@ function CategoryHero({ id }) {
             </MaxWidthWrapper>
             <MaxWidthWrapper className='' >
                 <div className='xl:flex hidden justify-between '>
-                    <Link href={"/category/Action&Abenteuer"} scroll={false}
-                        className={`${id === "Action&Abenteuer" && 'bg-white'} flex justify-center items-center gap-x-2     py-2 px-8 rounded-t-xl  whitespace-nowrap`}>
-                        {
-                            id === "Action&Abenteuer" ?
-                                < Image
-                                    src='/images/worldBlack.svg'
-                                    width={20}
-                                    height={21}
-                                    loading='lazy'
-                                    alt='worldBlack'
-                                />
-                                :
-                                < Image
-                                    src='/images/world.svg'
-                                    width={20}
-                                    height={21}
-                                    loading='lazy'
-                                    alt='world'
-                                />
-                        }
+                    {
+                        data?.map((item, index) => {
+                            return (
+                                <Link
+                                    key={index}
+                                    href={`/category/${item?.slug}`} scroll={false}
+                                    className={`${id === item?.slug && 'bg-white'} flex justify-center items-center gap-x-2     py-2 px-8 rounded-t-xl  whitespace-nowrap`}>
+                                    {
+                                        id === item?.slug ?
+                                            < Image
+                                                src='/images/worldBlack.svg'
+                                                width={20}
+                                                height={21}
+                                                loading='lazy'
+                                                alt='worldBlack'
+                                            />
+                                            :
+                                            < Image
+                                                src='/images/world.svg'
+                                                width={20}
+                                                height={21}
+                                                loading='lazy'
+                                                alt='world'
+                                            />
+                                    }
 
-                        <h5
-                            className={`text-xl font-semibold ${id === 'Action&Abenteuer' ? 'text-black' : 'text-white'}`}
-                        >
-                            Action & Abenteuer
-                        </h5>
-                    </Link>
-                    <Link
+                                    <h5
+                                        className={`text-xl font-semibold ${id === item?.slug ? 'text-black' : 'text-white'}`}
+                                    >
+                                        {item?.categoryName}
+                                    </h5>
+                                </Link>
+                            )
+                        })
+                    }
+                    {/* <Link
                         href='/category/Rund-ums-Meer' scroll={false}
                         className={`${id === "Rund-ums-Meer" && 'bg-white'} flex justify-center items-center gap-x-2     py-4 px-8 rounded-t-xl  whitespace-nowrap`}>
                         {
@@ -162,11 +195,11 @@ function CategoryHero({ id }) {
                         >
                             Kultur
                         </h5>
-                    </Link>
+                    </Link> */}
                 </div>
                 <CategoryCarousel id={id} />
             </MaxWidthWrapper>
-        </section >
+        </div >
     )
 }
 
