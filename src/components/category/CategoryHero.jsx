@@ -25,7 +25,7 @@ async function CategoryHero({ id, data }) {
         backgroundImage: `url(${heroImageDesktop})`,
     };
 
-    console.log("backgroundImageStyle",backgroundImageStyle);
+    console.log("backgroundImageStyle", backgroundImageStyle);
 
     // sm:bg-[url('${heroImageDesktop})]
     return (
@@ -57,7 +57,8 @@ async function CategoryHero({ id, data }) {
                             return (
                                 <Link
                                     key={index}
-                                    href={`/category/${item?.slug}`} scroll={false}
+                                    href={`/category/${item?.slug}`}
+                                    scroll={false}
                                     className={`${id === item?.slug && 'bg-white'} flex justify-center items-center gap-x-2     py-2 px-8 rounded-t-xl  whitespace-nowrap`}>
                                     {
                                         id === item?.slug ?
@@ -87,117 +88,8 @@ async function CategoryHero({ id, data }) {
                             )
                         })
                     }
-                    {/* <Link
-                        href='/category/Rund-ums-Meer' scroll={false}
-                        className={`${id === "Rund-ums-Meer" && 'bg-white'} flex justify-center items-center gap-x-2     py-4 px-8 rounded-t-xl  whitespace-nowrap`}>
-                        {
-                            id === "Rund-ums-Meer" ?
-                                < Image
-                                    src='/images/ShellBlack.svg'
-                                    width={25}
-                                    height={22}
-                                    loading='lazy'
-                                    alt='ShellBlack'
-                                />
-                                :
-                                < Image
-                                    src='/images/shell.webp'
-                                    width={25}
-                                    height={22}
-                                    loading='lazy'
-                                    alt='shell'
-                                />
-                        }
-                        <h5
-                            className={`text-xl font-semibold ${id === 'Rund-ums-Meer' ? 'text-black' : 'text-white'}`}
-                        >
-                            Rund ums Meer
-                        </h5>
-                    </Link>
-                    <Link
-                        href='/category/Lands-Leute' scroll={false}
-                        className={`${id === "Lands-Leute" && 'bg-white'} flex justify-center items-center gap-x-2     py-4 px-8 rounded-t-xl  whitespace-nowrap`}>
-                        {
-                            id === "Lands-Leute" ?
-                                < Image
-                                    src='/images/sunraysBlack.svg'
-                                    width={25}
-                                    height={22}
-                                    loading='lazy'
-                                    alt='sunraysBlack'
-                                />
-                                :
-                                < Image
-                                    src='/images/sun.svg'
-                                    width={25}
-                                    height={22}
-                                    loading='lazy'
-                                    alt='sunrays'
-                                />
-                        }
-
-                        <h5
-                            className={`text-xl font-semibold ${id === 'Lands-Leute' ? 'text-black' : 'text-white'}`}
-                        >
-                            Lands & Leute
-                        </h5>
-                    </Link>
-                    <Link
-                        href='/category/Familienausflüge' scroll={false}
-                        className={`${id === "Familienausflüge" && 'bg-white'} flex justify-center items-center gap-x-2     py-4 px-8 rounded-t-xl  whitespace-nowrap`}>
-                        {
-                            id === "Familienausflüge" ?
-                                < Image
-                                    src='/images/starBlack.svg'
-                                    width={25}
-                                    height={22}
-                                    loading='lazy'
-                                    alt='starBlack'
-                                />
-                                :
-                                < Image
-                                    src='/images/star.svg'
-                                    width={25}
-                                    height={22}
-                                    loading='lazy'
-                                    alt='star'
-                                />
-                        }
-                        <h5
-                            className={`text-xl font-semibold ${id === 'Familienausflüge' ? 'text-black' : 'text-white'}`}
-                        >
-                            Familienausflüge
-                        </h5>
-                    </Link>
-                    <Link
-                        href='/category/Kultur' scroll={false}
-                        className={`${id === "Kultur" && 'bg-white'} flex justify-center items-center gap-x-2     py-4 px-8 rounded-t-xl  whitespace-nowrap`}>
-                        {
-                            id === "Kultur" ?
-                                < Image
-                                    src='/images/mountainBlack.svg'
-                                    width={25}
-                                    height={22}
-                                    loading='lazy'
-                                    alt='mountainBlack'
-                                />
-                                :
-                                < Image
-                                    src='/images/mountain.svg'
-                                    width={25}
-                                    height={22}
-                                    loading='lazy'
-                                    alt='mountain'
-                                />
-                        }
-                        <h5
-                            className={`text-xl font-semibold ${id === 'Kultur' ? 'text-black' : 'text-white'}`}
-                        >
-                            Kultur
-                        </h5>
-                    </Link> */}
                 </div>
-                <CategoryCarousel id={id} />
+                <CategoryCarousel id={id} data={data} />
             </MaxWidthWrapper>
         </div >
     )

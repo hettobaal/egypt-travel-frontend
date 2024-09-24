@@ -5,7 +5,7 @@ import 'swiper/css';
 import Link from 'next/link';
 import Image from 'next/image';
 
-function CategoryCarousel({ id }) {
+function CategoryCarousel({ id, data }) {
 
     const [swiperInstance, setSwiperInstance] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -42,6 +42,47 @@ function CategoryCarousel({ id }) {
                     },
                 }}
             >
+                {
+
+                    data?.map((item, index) => {
+                        return (
+                            <SwiperSlide
+                            key={index}
+                            >
+                                <Link
+                                    scroll={false}
+                                    onClick={() => handleSlideClick(0, '/category/Action&Abenteuer')}
+                                    href={`/category/${item?.slug}`}
+                                    className={`${id === item?.slug && 'bg-white'} flex xl:flex-row flex-col justify-center items-center gap-x-2 gap-y-2 py-4 px-8 rounded-t-xl  whitespace-nowrap`}>
+                                    {
+                                        id === item?.slug ?
+                                            < Image
+                                                src='/images/worldBlack.svg'
+                                                width={20}
+                                                height={21}
+                                                loading='lazy'
+                                                alt='worldBlack'
+                                            />
+                                            :
+                                            < Image
+                                                src='/images/world.svg'
+                                                width={20}
+                                                height={21}
+                                                loading='lazy'
+                                                alt='world'
+                                            />
+                                    }
+
+                                    <h5
+                                        className={`md:text-xl  text-base font-semibold ${id === item?.slug ? 'text-black' : 'text-white'}`}
+                                    >
+                                        {item?.categoryName}
+                                    </h5>
+                                </Link>
+                            </SwiperSlide>
+                        )
+                    })
+                }
                 <SwiperSlide >
                     <Link
                         scroll={false}
@@ -74,7 +115,8 @@ function CategoryCarousel({ id }) {
                         </h5>
                     </Link>
                 </SwiperSlide>
-                <SwiperSlide>
+
+                {/* <SwiperSlide>
                     <Link
                         scroll={false}
                         onClick={() => handleSlideClick(1, '/category/Rund-ums-Meer')}
@@ -197,7 +239,7 @@ function CategoryCarousel({ id }) {
                             Kultur
                         </h5>
                     </Link>
-                </SwiperSlide>
+                </SwiperSlide> */}
             </Swiper>
         </main>
     )
