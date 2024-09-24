@@ -5,32 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import CategoryCarousel from './CategoryCarousel';
 
-async function CategoryHero({ id, data }) {
-
-    const currentData = data?.find(item => {
-        return item?.slug?.toLowerCase() === id?.toLowerCase();
-    });
-
-    // console.log("currentData", currentData);
-
-
-    const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000&v=${Date.now()}`
-    // const heroImageMobile = currentData
-    //     ? `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w500&v=${Date.now()}`
-    //     : '/images/aboutHeroMob.webp';
-
-    // console.log("heroImageDesktop", heroImageDesktop);
-
-    const backgroundImageStyle = {
-        backgroundImage: `url(${heroImageDesktop})`,
-    };
-
-    console.log("backgroundImageStyle", backgroundImageStyle);
+async function CategoryHero({ id, data, ImageUrl }) {
 
     // sm:bg-[url('${heroImageDesktop})]
     return (
         <div
-            style={backgroundImageStyle} // Use inline style for background image
+            style={ImageUrl} // Use inline style for background image
             className="sm:h-[90vh] h-[80vh] bg-cover bg-center bg-no-repeat relative text-white flex flex-col justify-end items-center"
 
 

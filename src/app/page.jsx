@@ -1,6 +1,5 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { categories } from '@/asset/HomeCategoryData';
 import './globals.css'
 import { getCategories } from '@/lib/siteApis';
 const Hero = dynamic(() => import('@/components/home/Hero'));

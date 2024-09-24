@@ -26,9 +26,25 @@ async function page({ params }) {
     const CategoryData = await getCategories()
     const SingleCategoryData = await getSingleCategory(decodedId)
 
+    const currentData = CategoryData?.data?.find(item => {
+        return item?.slug?.toLowerCase() === id?.toLowerCase();
+    });
+
+
+    const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000&v=${Date.now()}`
+    const heroImageMobile = currentData
+        ? `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w500&v=${Date.now()}`
+        : '/images/aboutHeroMob.webp';
+
+    // console.log("heroImageDesktop", heroImageDesktop);
+
+    const backgroundImageStyle = {
+        backgroundImage: `url(${heroImageDesktop})`,
+    };
+
     return (
         <>
-            <CategoryHero id={decodedId} data={CategoryData?.data} />
+            <CategoryHero id={decodedId} data={CategoryData?.data} ImageUrl={backgroundImageStyle} />
             <CategoryTour data={SingleCategoryData?.data} />
             <CategoryRelatedTour />
             <Reviews />

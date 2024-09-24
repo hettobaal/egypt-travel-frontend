@@ -10,7 +10,7 @@ function CategoryCarousel({ id, data }) {
     const [swiperInstance, setSwiperInstance] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const handleSlideClick = (index, route) => {
+    const handleSlideClick = (index) => {
         setActiveIndex(index);
         sessionStorage?.setItem('activeIndex', index);
     };
@@ -22,6 +22,9 @@ function CategoryCarousel({ id, data }) {
         }
     }, [swiperInstance]);
 
+    const handleSlideChange = (swiper) => {
+        setActiveIndex(swiper?.activeIndex); 
+    };
 
     return (
         <main
@@ -30,7 +33,9 @@ function CategoryCarousel({ id, data }) {
             <Swiper
                 onSwiper={(swiper) => setSwiperInstance(swiper)}
                 className='flex justify-end items-end '
+                onSlideChange={handleSlideChange}
                 spaceBetween={20}
+                // allowTouchMove={false}
                 breakpoints={{
                     0: {
                         slidesPerView: 2,
@@ -47,11 +52,11 @@ function CategoryCarousel({ id, data }) {
                     data?.map((item, index) => {
                         return (
                             <SwiperSlide
-                            key={index}
+                                key={index}
                             >
                                 <Link
                                     scroll={false}
-                                    onClick={() => handleSlideClick(0, '/category/Action&Abenteuer')}
+                                    onClick={() => handleSlideClick(index)}
                                     href={`/category/${item?.slug}`}
                                     className={`${id === item?.slug && 'bg-white'} flex xl:flex-row flex-col justify-center items-center gap-x-2 gap-y-2 py-4 px-8 rounded-t-xl  whitespace-nowrap`}>
                                     {
