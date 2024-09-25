@@ -1,6 +1,5 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
-import { categories } from '@/asset/HomeCategoryData';
 import { getCategories, getSingleCategory } from '@/lib/siteApis';
 const CategoryHero = dynamic(() => import('@/components/category/CategoryHero'));
 const CategoryRelatedTour = dynamic(() => import('@/components/category/CategoryRelatedTour'));
@@ -10,13 +9,13 @@ const Journey = dynamic(() => import('@/components/reuseable/Journey'));
 
 
 export async function generateStaticParams() {
-    const posts = categories;
-
-    const array = posts?.map((post) => ({
+    const posts = await getCategories()
+    const array = posts?.data?.map((post) => ({
         categoryId: post?.slug,
     }));
     return array;
 }
+
 
 
 async function page({ params }) {

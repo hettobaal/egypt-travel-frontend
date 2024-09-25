@@ -22,6 +22,9 @@ const formSchema = z.object({
     categoryImage: z
         .any()
         .refine((file) => file?.length == 1, 'File is required.'),
+    categoryMobImage: z
+        .any()
+        .refine((file) => file?.length == 1, 'File is required.'),
 })
 
 
@@ -34,6 +37,7 @@ function CreateCategory() {
         defaultValues: {
             categoryName: "",
             categoryImage: null,
+            categoryMobImage: null,
         },
     })
 
@@ -41,6 +45,7 @@ function CreateCategory() {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await createCategory(data)
+        console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -54,6 +59,7 @@ function CreateCategory() {
 
 
     const fileRef = form.register("categoryImage");
+    const fileRef2 = form.register("categoryMobImage");
 
     return (
         <section className="mt-10 bg-white dark:bg-darkMode px-4 py-6  rounded-md shadow-lg ">
@@ -74,7 +80,7 @@ function CreateCategory() {
                                                 type="text"
                                             />
                                         </FormControl>
-                                         <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
 
                                     </FormItem>
                                 )}
@@ -94,7 +100,63 @@ function CreateCategory() {
                                                 type="file"
                                             />
                                         </FormControl>
-                                         <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="categoryMobImage"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Category Mobile Image</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                {...fileRef2} onChange={(event) => {
+                                                    field.onChange(event.target?.files?.[0] ?? undefined);
+                                                }}
+                                                type="file"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="bannerText"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Banner Title</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                type="text"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="bannerSlogan"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Banner Text</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                type="text"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
 
                                     </FormItem>
                                 )}

@@ -2,6 +2,7 @@ import React from 'react'
 import dynamic from 'next/dynamic';
 import Reviews from '@/components/reuseable/Reviews';
 import Journey from '@/components/reuseable/Journey';
+import { getSingleSubCategory } from '@/lib/siteApis';
 const CatalogHero = dynamic(() => import('@/components/catalog/CatalogHero'));
 const CatalogTour = dynamic(() => import('@/components/catalog/CatalogTour'));
 
@@ -15,10 +16,11 @@ const CatalogTour = dynamic(() => import('@/components/catalog/CatalogTour'));
 // }
 
 
-function page({ params }) {
+async function page({ params }) {
 
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
+    const data = await getSingleSubCategory(decodedId)
     // const data = categories?.find((item) => item?.slug === decodedId);
 
     return (

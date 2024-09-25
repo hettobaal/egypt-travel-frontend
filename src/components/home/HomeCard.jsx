@@ -9,7 +9,7 @@ function HomeCard({ subCategory }) {
                 subCategory?.map((item, index) => {
                     return (
                         <Link
-                            href={`/catalog/${item?.slug}`}
+                            href={`/catalog/${item?._id}`}
                             key={index}
                             className='overflow-hidden  relative group lg:rounded-[10px] rounded-[8px] xl:w-[23.8%] lg:w-[31%] w-[48%]'
                         >

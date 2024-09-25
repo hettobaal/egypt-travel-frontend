@@ -7,7 +7,10 @@ export const createCategory = async (data) => {
     const Url = SERVER_URL + 'admin/category/add-category';
     const formData = new FormData();
     formData?.append('categoryName', data?.categoryName);
+    formData?.append('bannerText', data?.bannerText);
+    formData?.append('bannerSlogan', data?.bannerSlogan);
     formData?.append('categoryImage', data?.categoryImage[0]);
+    formData?.append('categoryMobImage ', data?.categoryMobImage [0]);
 
     return fetch(Url, {
         method: 'POST',
@@ -135,6 +138,24 @@ export const getSubCategories = async () => {
         method: 'GET',
         mode: 'cors',
         cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const getSingleSubCategory = async (id) => {
+
+    const Url = SERVER_URL + `api/public/get-subcategories/${id}`;
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
     })
         .then((response) => response?.json())
         .then((data) => {
