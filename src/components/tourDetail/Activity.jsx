@@ -9,18 +9,13 @@ import { TbClockCancel } from "react-icons/tb";
 import { FaArrowTrendDown } from 'react-icons/fa6'
 import { IoPersonOutline } from 'react-icons/io5'
 import { Button } from '../ui/button'
-function Activity() {
+function Activity({ data }) {
     return (
         <MaxWidthWrapper className='flex lg:flex-row flex-col justify-between gap-x-16 sm:gap-y-10 gap-y-6 sm:mt-8 mt-4'>
             <div className='lg:w-[60%] w-full flex flex-col gap-y-3'>
                 <Para>
-                    Get up close to dolphins on a snorkel trip from Hurghada. Enjoy a boat tour to areas in the open sea where you can swim or snorkel with dolphins among colorful coral reefs.
+                    {data?.description}
                 </Para>
-                {/*    <Input
-                                                    {...field}
-                                                    className='w-full max-w-full outline-none focus:outline-none h-12 border-[#04326359] border-1 rounded-full placeholder:text-ocean placeholder:pl-2 text-ocean placeholder:text-base'
-                                                    type="date"
-                                                    placeholder="Select Date" />w */}
                 <div className='flex flex-col gap-y-3'>
                     <span>
                         <HeadingOne className='md:text-4xl sm:text-3xl text-2xl'>
@@ -95,7 +90,7 @@ function Activity() {
                                     From $26
                                 </Para>
                                 <h4 className=' text-amber font-bold text-[22px]'>
-                                    $ 19.50
+                                    $ {data?.priceAdult}
                                 </h4>
                                 <Para className='text-slate font-semibold'>
                                     per Person

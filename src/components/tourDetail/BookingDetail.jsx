@@ -8,16 +8,18 @@ import { Calendar } from 'lucide-react'
 import { MdPayment } from 'react-icons/md'
 import { Button } from '../ui/button'
 
-function BookingDetail() {
+function BookingDetail({ data }) {
+    console.log("booking data", data);
+
     return (
         <MaxWidthWrapper className='sm:mt-8 mt-8  lg:px-10 md:px-8 sm:px-6 px-2'>
             <div className='lg:w-[60%] w-full flex flex-col gap-y-4 border-navy rounded-[18px] border-2  pt-4'>
                 <div className='md:px-6 px-3'>
                     <HeadingThree className='text-[#131313] sm:text-[22px] font-semibold'>
-                        Boat Cruise, Snorkeling, and Lunch with Shared Transfer
+                        {data?.title}
                     </HeadingThree>
                     <Para className='mt-1 lg:w-[85%] w-full'>
-                        Enjoy a boat trip with drinks and lunch, relax in the middle of the sea, and see the dolphin zone in North Hurghada, plus snorkel in two wonderful spots with colorful coral reefs and unique fishes of all colors. Transfers included; maximum 9 persons.
+                        {data?.description}
                     </Para>
                 </div>
                 <div className=' md:px-6 px-3'>
@@ -25,7 +27,7 @@ function BookingDetail() {
                         <span className='flex gap-x-2'>
                             <TbClockCancel size={25} />
                             <Para className='font-semibold text-ocean'>
-                                7 hours
+                                {data?.duration} hours
                             </Para>
                         </span>
                         <span className='flex gap-x-2'>

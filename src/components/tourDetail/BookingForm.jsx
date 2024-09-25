@@ -53,7 +53,7 @@ const formSchema = z.object({
 
 
 
-function BookingForm() {
+function BookingForm({ data }) {
 
     const [isBookingDetailVisible, setIsBookingDetailVisible] = useState(false);
     const [adults, setAdults] = useState(1);
@@ -392,7 +392,7 @@ function BookingForm() {
                     </Form>
                 </div>
             </MaxWidthWrapper >
-            {isBookingDetailVisible && <BookingDetail />
+            {isBookingDetailVisible && <BookingDetail data={data} />
             }
         </>
     )

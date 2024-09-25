@@ -4,7 +4,8 @@ import HeadingThree from '../reuseable/HeadingThree';
 import MoreDescription from './MoreDescription';
 import { IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline } from 'react-icons/io';
 
-function Description() {
+function Description({ data }) {
+
     return (
         <MaxWidthWrapper className='flex flex-col sm:mt-16 mt-10'>
             {/* first */}
@@ -44,7 +45,7 @@ function Description() {
                             Full description
                         </HeadingThree>
                     </span>
-                    <MoreDescription />
+                    <MoreDescription data={data} />
                 </div>
             </div>
             {/* third */}
