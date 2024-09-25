@@ -4,13 +4,14 @@ const SERVER_URL = process?.env?.NEXT_PUBLIC_SERVER_URL
 
 // Category
 export const createCategory = async (data) => {
+
     const Url = SERVER_URL + 'admin/category/add-category';
     const formData = new FormData();
     formData?.append('categoryName', data?.categoryName);
+    formData?.append('categoryImage', data?.categoryImage[0]);
+    formData?.append('categoryMobImage', data?.categoryMobImage[0]);
     formData?.append('bannerText', data?.bannerText);
     formData?.append('bannerSlogan', data?.bannerSlogan);
-    formData?.append('categoryImage', data?.categoryImage[0]);
-    formData?.append('categoryMobImage ', data?.categoryMobImage [0]);
 
     return fetch(Url, {
         method: 'POST',

@@ -21,6 +21,8 @@ async function page({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
+    console.log("data",data);
+
     // const data = categories?.find((item) => item?.slug === decodedId);
 
     return (

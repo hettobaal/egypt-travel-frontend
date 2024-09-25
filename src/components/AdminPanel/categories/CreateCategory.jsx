@@ -18,13 +18,16 @@ import { createCategory } from '@/lib/siteApis'
 import toast from 'react-hot-toast'
 
 const formSchema = z.object({
-    categoryName: z.string().min(1, { message: "Category Name is required " }),
+    categoryName: z.string().min(1, { message: "Category Name is required" }),
+    categoryName: z.string().min(1, { message: "This field is  required" }),
     categoryImage: z
         .any()
         .refine((file) => file?.length == 1, 'File is required.'),
     categoryMobImage: z
         .any()
         .refine((file) => file?.length == 1, 'File is required.'),
+    bannerText: z.string().min(1, { message: "This field is  required" }),
+    bannerSlogan: z.string().min(1, { message: "This field is  required" }),
 })
 
 
@@ -38,6 +41,8 @@ function CreateCategory() {
             categoryName: "",
             categoryImage: null,
             categoryMobImage: null,
+            bannerText: null,
+            bannerSlogan: null,
         },
     })
 
@@ -45,7 +50,6 @@ function CreateCategory() {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await createCategory(data)
-        console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
