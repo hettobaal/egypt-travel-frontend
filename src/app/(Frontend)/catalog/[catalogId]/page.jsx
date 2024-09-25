@@ -23,7 +23,6 @@ async function page({ params }) {
     const data = await getSingleSubCategory(decodedId)
     console.log("data",data);
 
-    // const data = categories?.find((item) => item?.slug === decodedId);
 
     return (
         <>
