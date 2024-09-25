@@ -57,7 +57,6 @@ function CreateCategory() {
 
     };
 
-
     const fileRef = form.register("categoryImage");
     const fileRef2 = form.register("categoryMobImage");
 
