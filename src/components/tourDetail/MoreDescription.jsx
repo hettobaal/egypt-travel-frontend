@@ -14,7 +14,7 @@ function MoreDescription({ data }) {
     // Define a limit for characters (or lines)
     const characterLimit = 150;
 
-    const isLongText = description.length > characterLimit;
+    const isLongText = description?.length > characterLimit;
 
     return (
         <span className='max-w-screen-sm lg:mt-0 mt-2'>

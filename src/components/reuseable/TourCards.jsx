@@ -6,17 +6,18 @@ import { Button } from '../ui/button';
 import { IoStar } from 'react-icons/io5';
 import TourCardsCarousel from './TourCardsCarousel';
 function TourCards({ ToursData }) {
-
+    
     return (
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
                     ToursData?.data?.map((item, index) => {
+                        console.log(item?.tourId);
                         return (
                             <Link
                                 key={index}
                                 className='w-full'
-                                href={`/tourdetail/${item?.tourId?._id}`}
+                                href={`/tourdetail/${item?.tourId?.slug}`}
                             >
                                 <Card
                                     shadow='none'

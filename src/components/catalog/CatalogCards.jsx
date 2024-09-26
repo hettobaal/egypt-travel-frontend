@@ -16,7 +16,7 @@ function CatalogCards({ data }) {
                             <Link
                                 key={index}
                                 className='w-full'
-                                href={`/tourdetail/${item?._id}`}
+                                href={`/tourdetail/${item?.slug}`}
                             >
                                 <Card
                                     shadow='none'
