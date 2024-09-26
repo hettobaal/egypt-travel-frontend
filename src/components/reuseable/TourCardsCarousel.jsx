@@ -35,7 +35,7 @@ function TourCardsCarousel({ data }) {
                 ref={swiperRef}
             >
                 {
-                    data?.data?.map((item, index) => {
+                    data?.data?.tourId.map((item, index) => {
                         return (
                             <SwiperSlide
                                 key={index}
