@@ -124,7 +124,6 @@ function CreateTour({ data }) {
 
     };
 
-
     const fileRef = form?.register("cardImage");
 
     return (
