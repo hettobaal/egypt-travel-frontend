@@ -7,15 +7,15 @@ import CategoryCarousel from './CategoryCarousel';
 
 async function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
     // console.log("data", data);
-// console.log("imaeg url  ",ImageUrl);
-// console.log("mmob url  ",MobImageUrl);
+console.log("imaeg url  ",ImageUrl);
+console.log("mmob url  ",MobImageUrl);
 
     return (
         <div
             style={{
-                backgroundImage: `url(${ImageUrl})`,
+                backgroundImage: `${ImageUrl}`,
                 '@media (maxWidth: 640px)': {
-                    backgroundImage: `url(${MobImageUrl})`
+                    backgroundImage: `${MobImageUrl}`
                 }
             }}
             className="sm:h-[90vh] h-[80vh] bg-cover bg-center bg-no-repeat relative text-white flex flex-col justify-end items-center"

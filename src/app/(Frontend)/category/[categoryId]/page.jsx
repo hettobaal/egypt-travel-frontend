@@ -30,16 +30,14 @@ async function page({ params }) {
 
 
 
-    const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000&}`
-    const heroImageMobile = `https://drive.google.com/thumbnail?id=${currentData?.categoryMobImage}&sz=w500&v=${Date.now()}`
+    const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000`
+    const heroImageMobile = `https://drive.google.com/thumbnail?id=${currentData?.categoryMobImage}&sz=w500`
 
-    const backgroundImageStyle = {
-        backgroundImage: `url(${heroImageDesktop})`,
-    };
+    const backgroundImageStyle = `url(${heroImageDesktop})`
+    ;
 
-    const backgroundMobImageStyle = {
-        backgroundImage: `url(${heroImageMobile})`,
-    };
+    const backgroundMobImageStyle = `url(${heroImageMobile})`
+    
 
     return (
         <>
