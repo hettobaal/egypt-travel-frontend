@@ -9,5 +9,5 @@ const nextConfig = {
         ],
     },
 };
-
+// req access
 export default nextConfig;
