@@ -9,7 +9,7 @@ import { MdPayment } from 'react-icons/md'
 import { Button } from '../ui/button'
 
 function BookingDetail({ data }) {
-    console.log("booking data", data);
+    // console.log("booking data", data);
 
     return (
         <MaxWidthWrapper className='sm:mt-8 mt-8  lg:px-10 md:px-8 sm:px-6 px-2'>

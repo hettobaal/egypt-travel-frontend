@@ -12,7 +12,7 @@ function TourCards({ ToursData }) {
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
                     ToursData?.data?.map((item, index) => {
-                        console.log(item?.tourId);
+                        // console.log(item?.tourId);
                         return (
                             <Link
                                 key={index}

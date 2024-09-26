@@ -1,6 +1,6 @@
 // Next.js will invalidate the cache when a
 // request comes in, at most once every 60 seconds.
-export const revalidate = 60;
+export const revalidate = 600;
  
 // We'll prerender only the params from `generateStaticParams` at build time.
 // If a request comes in for a path that hasn't been generated,
@@ -31,15 +31,11 @@ async function page({ params }) {
 
     const slug = params?.tourSlug;
     const decodedSlug = decodeURIComponent(slug);
-    // const CategoryData = await getCategories()
-    // const SingleCategoryData = await getSingleCategory(decodedSlug)
     const tour = await getSingleTour(decodedSlug)
-console.log(tour);
-console.log(decodedSlug);
 
 
 
-    // const slug = params?.tourSlug
+
     return (
         <>
             <DetailHero data={tour?.data} />

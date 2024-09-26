@@ -7,8 +7,8 @@ import CategoryCarousel from './CategoryCarousel';
 
 async function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
     // console.log("data", data);
-console.log("imaeg url  ",ImageUrl);
-console.log("mmob url  ",MobImageUrl);
+// console.log("imaeg url  ",ImageUrl);
+// console.log("mmob url  ",MobImageUrl);
 
     return (
         <div
