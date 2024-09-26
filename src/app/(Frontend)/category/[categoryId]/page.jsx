@@ -25,11 +25,12 @@ async function page({ params }) {
     const SingleCategoryData = await getSingleCategory(decodedId)
 
     const currentData = CategoryData?.data?.find(item => {
-        return item?.slug?.toLowerCase() === id?.toLowerCase();
+        return item?.slug?.toLowerCase() === decodedId?.toLowerCase();
     });
 
 
-    const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000&v=${Date.now()}`
+
+    const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000&}`
     const heroImageMobile = `https://drive.google.com/thumbnail?id=${currentData?.categoryMobImage}&sz=w500&v=${Date.now()}`
 
     const backgroundImageStyle = {
