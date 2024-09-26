@@ -46,7 +46,8 @@ async function page() {
       <WebHeader />
       <Hero />
       <Search />
-      <PopularTour popularToursData={popularToursData?.data} />
+
+      {/* <PopularTour popularToursData={popularToursData?.data} /> */}
       <HomeCategoryOne data={firstCategory} />
       <HomeCategoryTwo data={secondCategory} />
       <HomeCategoryThree data={thirdCategory} />
