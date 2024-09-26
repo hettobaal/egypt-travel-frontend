@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import './globals.css'
-import { getCategories, getPopularTours } from '@/lib/siteApis';
+import { getCategories, getDiscountTours, getPopularTours, getSellingTours } from '@/lib/siteApis';
 const Hero = dynamic(() => import('@/components/home/Hero'));
 const WebHeader = dynamic(() => import('@/components/WebHeader/WebHeader'));
 const Search = dynamic(() => import('@/components/home/Search'));
@@ -23,30 +23,37 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 async function page() {
 
   const data = await getCategories()
-  const firstCategory = data?.data[0]
-  const secondCategory = data?.data[1]
-  const thirdCategory = data?.data[2]
-  const fourCategory = data?.data[3]
-  const fiveCategory = data?.data[4]
+  const firstCategory = data?.data?.[0] || null;
+  const secondCategory = data?.data?.[1] || null;
+  const thirdCategory = data?.data?.[2] || null;
+  const fourCategory = data?.data?.[3] || null;
+  const fiveCategory = data?.data?.[4] || null;
 
   // popular tours
   const popularToursData = await getPopularTours()
- 
 
+  // DiscountedTours
+  const DiscountedTours = await getDiscountTours()
+
+
+  // DiscountedTours
+  const SellingTours = await getSellingTours()
+  // console.log("SellingTours",SellingTours);
+  
 
   return (
     <>
       <WebHeader />
       <Hero />
       <Search />
-      <PopularTour popularToursData={popularToursData} />
+      <PopularTour popularToursData={popularToursData?.data} />
       <HomeCategoryOne data={firstCategory} />
       <HomeCategoryTwo data={secondCategory} />
       <HomeCategoryThree data={thirdCategory} />
       <HomeCategoryFour data={fourCategory} />
       <HomeCategoryFive data={fiveCategory} />
-      <DiscountedTour />
-      <HomeSellingTour />
+      <DiscountedTour DiscountedTours={DiscountedTours} />
+      <HomeSellingTour SellingTours={SellingTours?.data}/>
       <WhyChooseUs />
       <Reviews />
       <Journey />

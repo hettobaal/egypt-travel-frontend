@@ -39,8 +39,8 @@ async function page({ params }) {
         <>
             <CatalogHero />
             {data?.data?.tourId.length ?
-<CatalogTour data={data} /> : 
-<h3 className='text-3xl font-bold text-center py-10'> No tours found in this Category.</h3>
+                <CatalogTour data={data} /> :
+                <h3 className='text-3xl font-bold text-center py-10'> No tours found in this Category.</h3>
 
             }
             <Reviews />

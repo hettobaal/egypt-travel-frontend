@@ -1,12 +1,11 @@
 import React from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
-import TourCards from '../reuseable/TourCards';
-import { PopularTourCards } from '@/asset/TourCardsData';
+import DiscountTourCard from './DiscountTourCard';
 
-function DiscountCards() {
+function DiscountCards({ data }) {
     return (
         <MaxWidthWrapper className='sm:py-16 py-8'>
-            <TourCards data={PopularTourCards} />
+            <DiscountTourCard ToursData={data} />
         </MaxWidthWrapper>
     )
 }

@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { IoStar } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 function TourCardsCarousel({ data }) {
+    console.log("popularToursData", data);
 
     const swiperRef = useRef(null);
 
@@ -34,14 +35,14 @@ function TourCardsCarousel({ data }) {
                 ref={swiperRef}
             >
                 {
-                    data?.map((item, index) => {
+                    data?.data?.map((item, index) => {
                         return (
                             <SwiperSlide
                                 key={index}
                             >
                                 <Link
                                     className='w-full'
-                                    href='/'
+                                    href={`/tourdetail/${item?.tourId?.slug}`}
                                 >
                                     <Card
                                         shadow='none'
@@ -49,35 +50,35 @@ function TourCardsCarousel({ data }) {
                                     >
                                         <CardHeader className="p-0  flex-col items-start">
                                             <Image
-                                                src={item?.image}
+                                                src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'
                                                 alt="Popular Tour"
                                             />
-                                            <Button className='bg-amber hover:bg-amber px-6 -mt-4 h-8 mx-auto rounded-full'>
-                                                {item?.category}
-                                            </Button>
+                                            {item?.tourId?.tag && <Button className='bg-amber hover:bg-amber px-6 -mt-4 h-8 mx-auto rounded-full'>
+                                                {item?.tourId?.tag}
+                                            </Button>}
                                         </CardHeader>
                                         <CardBody className="py-6 px-2 flex flex-col justify-between h-full ">
                                             <div  >
-                                                <h4 className='text-black font-bold sm:text-xl text-base leading-tight'>{item?.title}</h4>
+                                                <h4 className='text-black font-bold sm:text-xl text-base leading-tight'> {item?.tourId?.title}</h4>
                                                 <p className='mt-2 text-black font-medium sm:text-base text-sm'>
-                                                    {item?.desc}
+                                                    {item?.tourId?.description}
                                                 </p>
                                             </div>
                                             <div className='mt-2'>
                                                 {
-                                                    item?.oldPrice && <h4 className="w-max text-base font-semibold  text-black relative">
+                                                    item?.tourId?.strikePrice && <h4 className="w-max text-base font-semibold  text-black relative">
                                                         <span className="line-through text-black">
-                                                            From ${item?.oldPrice}
+                                                            From ${item?.tourId?.strikePrice}
                                                         </span>
                                                         <span
                                                             className="absolute  inset-0 h-px bg-amber top-[50%]"
                                                         ></span>
                                                     </h4>
                                                 }
-                                                <h5 className='text-amber font-bold sm:text-xl text-base'>Away {item?.price} {` `} <span className='text-[#363636] font-normal sm:text-base text-sm '> per person</span></h5>
+                                                <h5 className='text-amber font-bold sm:text-xl text-base'>Away {item?.tourId?.priceAdult} {` `} <span className='text-[#363636] font-normal sm:text-base text-sm '> per person</span></h5>
                                                 <div className='mt-1 flex gap-x-2 items-center'>
                                                     {
                                                         Array.from({ length: 5 }, (_, index) => (
@@ -85,7 +86,7 @@ function TourCardsCarousel({ data }) {
                                                         ))
                                                     }
                                                     <h6 className='text-base font-bold'>
-                                                        {item?.rating}
+                                                        5
                                                     </h6>
                                                 </div>
                                             </div>

@@ -88,7 +88,6 @@ function ViewTours({ TourData }) {
         return filteredItems?.slice(start, end);
     }, [page, filteredItems]);
 
-
     const renderCell = React.useCallback((TourData, columnKey) => {
         const cellValue = TourData[columnKey];
 

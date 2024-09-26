@@ -46,6 +46,8 @@ function UpdateSubCategory({ data, setData, id }) {
     const onSubmit = async (subCategoryData) => {
         setLoader(true)
         const res = await updateSubCategoryById(subCategoryData, id)
+        console.log("res", res);
+
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -55,7 +57,8 @@ function UpdateSubCategory({ data, setData, id }) {
                 prevData?.map((item) =>
                     item?._id === id
                         ? {
-                            ...item, subCategoryName: subCategoryData?.subCategoryName,
+                            ...item,
+                            subCategoryName: subCategoryData?.subCategoryName,
                             subCategoryImage: newImageId
                         }
                         : item
