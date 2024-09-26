@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import './globals.css'
-import { getCategories } from '@/lib/siteApis';
+import { getCategories, getPopularTours } from '@/lib/siteApis';
 const Hero = dynamic(() => import('@/components/home/Hero'));
 const WebHeader = dynamic(() => import('@/components/WebHeader/WebHeader'));
 const Search = dynamic(() => import('@/components/home/Search'));
@@ -29,12 +29,17 @@ async function page() {
   const fourCategory = data?.data[3]
   const fiveCategory = data?.data[4]
 
+  // popular tours
+  const popularToursData = await getPopularTours()
+ 
+
+
   return (
     <>
       <WebHeader />
       <Hero />
       <Search />
-      <PopularTour />
+      <PopularTour popularToursData={popularToursData} />
       <HomeCategoryOne data={firstCategory} />
       <HomeCategoryTwo data={secondCategory} />
       <HomeCategoryThree data={thirdCategory} />

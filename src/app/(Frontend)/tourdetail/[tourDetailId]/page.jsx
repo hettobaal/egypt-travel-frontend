@@ -15,7 +15,9 @@ async function page({ params }) {
         <>
             <DetailHero data={data?.data} />
             <Activity data={data?.data} />
-            <BookingForm data={data?.data} />
+            <div id="booking-form">
+                <BookingForm data={data?.data} />
+            </div>
             <Description data={data?.data} />
             <RelatedTours />
             <Reviews />

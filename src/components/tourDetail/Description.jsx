@@ -5,9 +5,7 @@ import MoreDescription from './MoreDescription';
 import { IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline } from 'react-icons/io';
 
 function Description({ data }) {
-    console.log("details", data);
-
-
+  
     return (
         <MaxWidthWrapper className='flex flex-col sm:mt-16 mt-10'>
             {/* first */}

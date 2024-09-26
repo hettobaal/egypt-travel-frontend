@@ -98,18 +98,18 @@ export const Menu = [
         ]
     },
 
-    {
-        Icon: MdOutlineReviews,
-        title: 'Reviews',
-        subMenu: [
-            {
-                subTitle: 'Add Review',
-                url: '/add-review'
-            },
-            {
-                subTitle: 'View Reviews',
-                url: '/view-reviews'
-            },
-        ]
-    },
+    // {
+    //     Icon: MdOutlineReviews,
+    //     title: 'Reviews',
+    //     subMenu: [
+    //         {
+    //             subTitle: 'Add Review',
+    //             url: '/add-review'
+    //         },
+    //         {
+    //             subTitle: 'View Reviews',
+    //             url: '/view-reviews'
+    //         },
+    //     ]
+    // },
 ]

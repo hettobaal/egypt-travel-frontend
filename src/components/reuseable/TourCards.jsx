@@ -5,17 +5,18 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { IoStar } from 'react-icons/io5';
 import TourCardsCarousel from './TourCardsCarousel';
-function TourCards({ data }) {
+function TourCards({ ToursData }) {
+
     return (
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
-                    data?.map((item, index) => {
+                    ToursData?.data?.map((item, index) => {
                         return (
                             <Link
                                 key={index}
                                 className='w-full'
-                                href='/tourdetail/one'
+                                href={`/tourdetail/${item?.tourId?._id}`}
                             >
                                 <Card
                                     shadow='none'
@@ -23,36 +24,38 @@ function TourCards({ data }) {
                                 >
                                     <CardHeader className="p-0  flex-col items-start">
                                         <Image
-                                            src={item?.image}
+                                            src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
                                             width={700}
                                             height={200}
                                             loading='lazy'
                                             alt="Popular Tour"
                                         />
 
-                                        {item?.category && <Button className='bg-amber hover:bg-amber px-6 -mt-4 h-8 mx-auto rounded-full'>
-                                            {item?.category}
+                                        {item?.tourId?.tag && <Button className='bg-amber hover:bg-amber px-6 -mt-4 h-8 mx-auto rounded-full'>
+                                            {item?.tourId?.tag}
                                         </Button>}
                                     </CardHeader>
                                     <CardBody className="py-6 px-2 flex flex-col justify-between h-full ">
                                         <div  >
-                                            <h4 className='text-black font-bold sm:text-xl text-lg leading-tight'>{item?.title}</h4>
+                                            <h4 className='text-black font-bold sm:text-xl text-lg leading-tight'>
+                                                {item?.tourId?.title}
+                                            </h4>
                                             <p className='mt-2 text-black font-medium text-base'>
-                                                {item?.desc}
+                                                {item?.tourId?.description}
                                             </p>
                                         </div>
                                         <div className='mt-2'>
                                             {
-                                                item?.oldPrice && <h4 className="w-max text-base font-semibold text-black relative">
+                                                item?.tourId?.strikePrice && <h4 className="w-max text-base font-semibold text-black relative">
                                                     <span className="line-through text-black">
-                                                        From ${item?.oldPrice}
+                                                        From ${item?.tourId?.strikePrice}
                                                     </span>
                                                     <span
                                                         className="absolute  inset-0 h-px bg-amber top-[50%]"
                                                     ></span>
                                                 </h4>
                                             }
-                                            <h5 className='text-amber font-bold sm:text-xl text-lg'>Away {item?.price} {` `} <span className='text-[#363636] font-normal text-base '> per person</span></h5>
+                                            <h5 className='text-amber font-bold sm:text-xl text-lg'>Away {item?.tourId?.priceAdult} {` `} <span className='text-[#363636] font-normal text-base '> per person</span></h5>
                                             <div className='mt-1 flex gap-x-2 items-center'>
                                                 {
                                                     Array.from({ length: 5 }, (_, index) => (
@@ -60,7 +63,7 @@ function TourCards({ data }) {
                                                     ))
                                                 }
                                                 <h6 className='text-base font-bold'>
-                                                    {item?.rating}
+                                                    5
                                                 </h6>
                                             </div>
                                         </div>
@@ -71,7 +74,7 @@ function TourCards({ data }) {
                     })
                 }
             </section>
-            <TourCardsCarousel data={data} />
+            {/* <TourCardsCarousel data={data} /> */}
         </>
     )
 }

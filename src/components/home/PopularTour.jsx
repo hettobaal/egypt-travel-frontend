@@ -2,11 +2,11 @@ import React from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 import { Button } from '../ui/button';
 import TourCards from '../reuseable/TourCards';
-import { PopularTourCards } from '@/asset/TourCardsData';
 import HeadingOne from '../reuseable/HeadingOne';
 import HeadingThree from '../reuseable/HeadingThree';
 
-function PopularTour() {
+function PopularTour({ popularToursData }) {
+
 
     return (
         <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:py-14 py-8 px-2' >
@@ -19,7 +19,7 @@ function PopularTour() {
                     Ägypten
                 </HeadingOne>
             </span>
-            <TourCards data={PopularTourCards} />
+            <TourCards ToursData={popularToursData} />
             <Button className='w-max mx-auto rounded-full bg-navy hover:bg-navy px-10 h-11'>
                 SEE MORE
             </Button>
