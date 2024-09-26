@@ -23,7 +23,12 @@ import { updateCategoryById } from '@/lib/siteApis'
 const formSchema = z.object({
     categoryName: z.string().min(1, { message: "Category Name is required " }),
     categoryImage: z
-        .any()
+        .any(),
+    categoryMobImage: z
+        .any(),
+    bannerText: z.string().min(1, { message: "Category Name is required " }),
+    bannerSlogan: z.string().min(1, { message: "Category Name is required " }),
+
 })
 
 function UpdateCategory({ data, setData, id }) {
@@ -37,6 +42,9 @@ function UpdateCategory({ data, setData, id }) {
         defaultValues: {
             categoryName: data?.categoryName,
             categoryImage: null,
+            categoryMobImage: null,
+            bannerText: data?.bannerText,
+            bannerSlogan: data?.bannerSlogan,
         },
     })
 
@@ -45,13 +53,22 @@ function UpdateCategory({ data, setData, id }) {
         setLoader(true)
         const res = await updateCategoryById(categoryData, id)
         setLoader(false)
+        
         if (res?.status == "Success") {
             setLoader(false)
             const newImageId = res?.data?.categoryImage;
+            const newMobImageId = res?.data?.categoryMobImage;
             setData((prevData) =>
                 prevData?.map((item) =>
                     item?._id === id
-                        ? { ...item, categoryName: categoryData?.categoryName, categoryImage: newImageId }
+                        ? {
+                            ...item,
+                            categoryName: categoryData?.categoryName,
+                            categoryImage: newImageId,
+                            categoryMobImage: newMobImageId,
+                            bannerText: categoryData?.bannerText,
+                            bannerSlogan: categoryData?.bannerSlogan,
+                        }
                         : item
                 )
             );
@@ -114,6 +131,63 @@ function UpdateCategory({ data, setData, id }) {
                                                                 field.onChange(event.target?.files?.[0] ?? undefined);
                                                             }}
                                                             type="file"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="categoryMobImage"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">
+                                                        category Mobile Image
+                                                    </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            {...fileRef} onChange={(event) => {
+                                                                field.onChange(event.target?.files?.[0] ?? undefined);
+                                                            }}
+                                                            type="file"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="bannerText"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">
+                                                        Banner Title </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="text"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="bannerSlogan"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">
+                                                        Banner Text </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="text"
                                                         />
                                                     </FormControl>
                                                     <FormMessage />

@@ -17,7 +17,6 @@ export async function generateStaticParams() {
 }
 
 
-
 async function page({ params }) {
 
     const id = params?.categoryId;
@@ -31,19 +30,25 @@ async function page({ params }) {
 
 
     const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000&v=${Date.now()}`
-    const heroImageMobile = currentData
-        ? `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w500&v=${Date.now()}`
-        : '/images/aboutHeroMob.webp';
-
-    // console.log("heroImageDesktop", heroImageDesktop);
+    const heroImageMobile = `https://drive.google.com/thumbnail?id=${currentData?.categoryMobImage}&sz=w500&v=${Date.now()}`
 
     const backgroundImageStyle = {
         backgroundImage: `url(${heroImageDesktop})`,
     };
 
+    const backgroundMobImageStyle = {
+        backgroundImage: `url(${heroImageMobile})`,
+    };
+
     return (
         <>
-            <CategoryHero id={decodedId} data={CategoryData?.data} ImageUrl={backgroundImageStyle} />
+            <CategoryHero
+                id={decodedId}
+                data={CategoryData?.data}
+                ImageUrl={backgroundImageStyle}
+                MobImageUrl={backgroundMobImageStyle}
+
+            />
             <CategoryTour data={SingleCategoryData?.data} />
             <CategoryRelatedTour />
             <Reviews />

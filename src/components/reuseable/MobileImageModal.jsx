@@ -8,7 +8,7 @@ import {
 import Image from 'next/image';
 import { X } from 'lucide-react';
 
-function ImageModal({ id }) {
+function MobileImageModal({ id }) {
 
     return (
         <Dialog>
@@ -16,8 +16,8 @@ function ImageModal({ id }) {
                 <Image
                     className="rounded-md"
                     src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000&v=${Date?.now()}`}
-                    width={500}
-                    height={300}
+                    width={100}
+                    height={100}
                     loading="lazy"
                     alt="category"
                 />
@@ -27,8 +27,8 @@ function ImageModal({ id }) {
                     <Image
                         className="rounded-md max-h-[80vh]"
                         src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000&v=${Date?.now()}`}
-                        width={1000}
-                        height={800}
+                        width={500}
+                        height={300}
                         loading="lazy"
                         alt="category"
                     />
@@ -44,4 +44,4 @@ function ImageModal({ id }) {
     )
 }
 
-export default ImageModal;
+export default MobileImageModal;

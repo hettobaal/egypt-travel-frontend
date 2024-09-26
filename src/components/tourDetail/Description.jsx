@@ -5,6 +5,8 @@ import MoreDescription from './MoreDescription';
 import { IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline } from 'react-icons/io';
 
 function Description({ data }) {
+    console.log("details", data);
+
 
     return (
         <MaxWidthWrapper className='flex flex-col sm:mt-16 mt-10'>
@@ -18,21 +20,18 @@ function Description({ data }) {
                     </span>
                     <span className='max-w-screen-sm'>
                         <ul className='list-disc flex flex-col gap-y-2 lg:pl-0 lg:mt-0 mt-2  md:pl-8 sm:pl-6 pl-4'>
-                            <li className='text-base font-normal text-ocean'>
-                                Have a fantastic cruise experience with breathtaking views of the Red Sea
-                            </li>
-                            <li className='text-base font-normal text-ocean'>
-                                Go snorkeling at two of the best coral reef locations in the middle of the sea
-                            </li>
-                            <li className='text-base font-normal text-ocean'>
-                                Engage in fun activities like banana boat and tablet watersports on a speedboat
-                            </li>
-                            <li className='text-base font-normal text-ocean'>
-                                Be welcomed by a friendly crew. Savor the taste of a buffet lunch and drinks
-                            </li>
-                            <li className='text-base font-normal text-ocean'>
-                                Embark on a voyage to observe, search, swim, or snorkel with the lovely dolphins
-                            </li>
+                            {
+                                data?.highlights?.map((item, index) => {
+                                    return (
+                                        <li
+                                            key={index}
+                                            className='text-base font-normal text-ocean'>
+                                            {item?.point}
+                                        </li>
+                                    )
+                                })
+
+                            }
                         </ul>
                     </span>
                 </div>
@@ -58,52 +57,23 @@ function Description({ data }) {
                     </span>
                     <span className='lg:mt-0 mt-2'>
                         <ul className='flex flex-col gap-y-2'>
-                            <span className='flex items-center gap-x-2'>
-                                <span>
-                                    <IoIosCheckmarkCircleOutline size={20} className='text-amber' />
-                                </span>                                <li className='text-base font-normal text-ocean'>
-                                    Pickup and drop-off
-                                </li>
-                            </span>
-                            <span className='flex items-center gap-x-2'>
-                                <span>
-                                    <IoIosCheckmarkCircleOutline size={20} className='text-amber' />
-                                </span>                                <li className='text-base font-normal text-ocean'>
-                                    Air-conditioned transportation
-                                </li>
-                            </span>
-                            <span className='flex items-center gap-x-2'>
-                                <span>
-                                    <IoIosCheckmarkCircleOutline size={20} className='text-amber' />
-                                </span>
-                                <li className='text-base font-normal text-ocean'>
-                                    Private transfer (if option selected)
-                                </li>
-                            </span>
-                            <span className='flex items-center gap-x-2'>
-                                <span>
-                                    <IoIosCheckmarkCircleOutline size={20} className='text-amber' />
-                                </span>
-                                <li className='text-base font-normal text-ocean'>
-                                    Boat cruise
-                                </li>
-                            </span>
-                            <span className='flex items-center gap-x-2'>
-                                <span>
-                                    <IoIosCloseCircleOutline size={20} />
-                                </span>
-                                <li className='text-base font-normal text-ocean'>
-                                    Tourist tax (2.50 $€£ or 125 EGP per adult or child to be paid on the day)
-                                </li>
-                            </span>
-                            <span className='flex items-center gap-x-2'>
-                                <span>
-                                    <IoIosCloseCircleOutline size={20} />
-                                </span>
-                                <li className='text-base font-normal text-ocean'>
-                                    Pickup and drop-off from Makadi Bay, Sahl Hasheesh, and El Gouna
-                                </li>
-                            </span>
+                            {
+                                data?.includes?.map((item, index) => {
+                                    return (
+                                        <span
+                                            key={index}
+                                            className='flex items-center gap-x-2'
+                                        >
+                                            <span>
+                                                <IoIosCheckmarkCircleOutline size={20} className='text-amber' />
+                                            </span>
+                                            <li className='text-base font-normal text-ocean'>
+                                                {item?.point}
+                                            </li>
+                                        </span>
+                                    )
+                                })
+                            }
                         </ul>
                     </span>
                 </div>
@@ -118,26 +88,29 @@ function Description({ data }) {
                     </span>
                     <span className='max-w-screen-sm'>
                         <HeadingThree>
-                            What to bring
+                            {data?.heading}
                         </HeadingThree>
                         <ul className='mt-2 list-disc flex flex-col gap-y-2 lg:pl-0   md:pl-8 sm:pl-6 pl-4'>
-                            <li className='text-base font-normal text-ocean'>
-                                Towel
-                            </li>
-                        </ul>
-                        <HeadingThree className='mt-2'>
-                            Know before you go
-                        </HeadingThree>
-                        <ul className='list-disc flex flex-col gap-y-2 lg:pl-0  mt-2  md:pl-8 sm:pl-6 pl-4'>
-                            <li className='text-base font-normal text-ocean'>
-                                Seeing and swimming with dolphins is a possibility for 95% of our customers, particularly during good weather.
-                            </li>
+
+                            {
+                                data?.importantInformation?.map((item, index) => {
+                                    return (
+                                        <li
+                                            key={index}
+                                            className='text-base font-normal text-ocean'>
+                                            {item?.point}
+                                        </li>
+                                    )
+                                })
+                            }
+
+                            {/* */}
                         </ul>
                     </span>
                 </div>
             </div>
 
-        </MaxWidthWrapper>
+        </MaxWidthWrapper >
     )
 }
 

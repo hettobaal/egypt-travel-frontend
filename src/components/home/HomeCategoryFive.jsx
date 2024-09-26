@@ -15,7 +15,10 @@ function HomeCategoryFive({ data }) {
                             {data?.categoryName}
                         </h2>
                     </span>
-                    <Link href='/' className=' flex justify-end items-end '>
+                    <Link
+                        href={`/category/${data?.slug}`}
+                        className=' flex justify-end items-end'
+                    >
                         <Button className='w-max mx-auto rounded-full bg-navy hover:bg-navy sm:px-10 px-8  sm:h-11 h-10'>
                             View ALL
                         </Button>

@@ -90,7 +90,12 @@ export const updateCategoryById = async (data, id) => {
     if (data?.categoryImage?.length > 0) {
         formData.append('categoryImage', data?.categoryImage[0]);
     }
+    if (data?.categoryImage?.length > 0) {
+        formData.append('categoryMobImage', data?.categoryMobImage[0]);
+    }
     formData?.append('categoryName', data?.categoryName);
+    formData?.append('bannerText', data?.bannerText);
+    formData?.append('bannerSlogan', data?.bannerSlogan);
 
     return fetch(Url, {
         method: 'PUT',
@@ -366,7 +371,6 @@ export const updateTourById = async (data, id) => {
             return error
         });
 };
-
 
 export const updateTourPoint = async (data, id, pointId) => {
 

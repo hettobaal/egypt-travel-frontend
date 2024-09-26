@@ -9,11 +9,15 @@ import { DeleteCategory } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 import UpdateCategory from "./UpdateCategory";
 import Link from "next/link";
+import MobileImageModal from "@/components/reuseable/MobileImageModal";
 
 
 const columns = [
+    { name: "CATEGORY MOBILE IMAGE", uid: "categoryMobImage" },
     { name: "CATEGORY IMAGE", uid: "categoryImage" },
     { name: "CATEGORY NAME", uid: "categoryName" },
+    { name: "BANNER Title", uid: "bannerText" },
+    { name: "BANNER TEXT", uid: "bannerSlogan" },
     { name: "ACTIONS", uid: "actions" },
 ];
 
@@ -90,6 +94,12 @@ function ViewCategories({ CategoryData }) {
         const cellValue = categoryData[columnKey];
 
         switch (columnKey) {
+            case "categoryMobImage":
+                return (
+                    <div className="cursor-pointer">
+                        <MobileImageModal id={categoryData?.categoryMobImage} />
+                    </div>
+                );
             case "categoryImage":
                 return (
                     <div className="cursor-pointer">
