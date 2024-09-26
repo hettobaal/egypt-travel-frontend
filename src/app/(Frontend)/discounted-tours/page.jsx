@@ -1,17 +1,21 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
+import { getDiscountTours } from '@/lib/siteApis';
 const DiscountHero = dynamic(() => import('@/components/discountedTour/DiscountHero'));
 const Search = dynamic(() => import('@/components/home/Search'));
 const DiscountCards = dynamic(() => import('@/components/discountedTour/DiscountCards'));
 const Reviews = dynamic(() => import('@/components/reuseable/Reviews'));
 const Journey = dynamic(() => import('@/components/reuseable/Journey'));
 const InstagramFeed = dynamic(() => import('@/components/reuseable/InstagramFeed'));
-function page() {
+async function page() {
+
+    const data = await getDiscountTours()
+
     return (
         <>
             <DiscountHero />
             <Search />
-            <DiscountCards />
+            <DiscountCards data={data?.data} />
             <Reviews />
             <Journey />
             <InstagramFeed />

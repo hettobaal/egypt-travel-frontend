@@ -6,7 +6,6 @@ import HeadingThree from '../reuseable/HeadingThree';
 import { CatalogData } from '@/asset/catalogData';
 import CatalogCards from './CatalogCards';
 function CatalogTour({ data }) {
-    const tours = data.data?.tourId
 
     return (
         <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:py-14 py-8 px-2' >
@@ -16,7 +15,7 @@ function CatalogTour({ data }) {
                     {data?.data?.subCategoryName}
                 </HeadingOne>
             </span>
-            <CatalogCards data={tours} />
+            <CatalogCards data={data} />
             <Button className='w-max mx-auto rounded-full bg-navy hover:bg-navy px-10 h-11'>
                 SEE MORE
             </Button>

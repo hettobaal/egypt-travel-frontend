@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../ui/button';
 import { IoStar } from 'react-icons/io5';
-function TourCards({ ToursData }) {
-
+import TourCardsCarousel from '../reuseable/TourCardsCarousel';
+function DiscountTourCard({ ToursData }) {
 
 
     return (
@@ -75,9 +75,9 @@ function TourCards({ ToursData }) {
                     })
                 }
             </section>
-            {/* <TourCardsCarousel data={ToursData} /> */}
+            <TourCardsCarousel data={ToursData} />
         </>
     )
 }
 
-export default TourCards;
+export default DiscountTourCard;
