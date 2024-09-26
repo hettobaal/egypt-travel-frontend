@@ -30,14 +30,14 @@ async function page() {
   const fiveCategory = data?.data?.[4] || null;
 
   // popular tours
-  const popularToursData = await getPopularTours()
+  // const popularToursData = await getPopularTours()
 
   // DiscountedTours
-  const DiscountedTours = await getDiscountTours()
+  // const DiscountedTours = await getDiscountTours()
 
 
   // DiscountedTours
-  const SellingTours = await getSellingTours()
+  // const SellingTours = await getSellingTours()
   // console.log("SellingTours",SellingTours);
   
 
@@ -53,8 +53,8 @@ async function page() {
       <HomeCategoryThree data={thirdCategory} />
       <HomeCategoryFour data={fourCategory} />
       <HomeCategoryFive data={fiveCategory} />
-      <DiscountedTour DiscountedTours={DiscountedTours} />
-      <HomeSellingTour SellingTours={SellingTours?.data}/>
+      {/* <DiscountedTour DiscountedTours={DiscountedTours} /> */}
+      {/* <HomeSellingTour SellingTours={SellingTours?.data}/> */}
       <WhyChooseUs />
       <Reviews />
       <Journey />
