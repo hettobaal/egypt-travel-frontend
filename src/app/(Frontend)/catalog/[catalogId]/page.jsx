@@ -23,11 +23,17 @@ async function page({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
+    console.log(data);
+    
     
     return (
         <>
             <CatalogHero />
-            <CatalogTour data={data} />
+            {data?.data?.tourId.length ?
+<CatalogTour data={data} /> : 
+<h3 className='text-3xl font-bold text-center py-10'> No tours found in this Category.</h3>
+
+            }
             <Reviews />
             <Journey />
         </>
