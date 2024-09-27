@@ -11,5 +11,5 @@ const nextConfig = {
         unoptimized: true,
     },
 };
-// req access
+// req access2
 export default nextConfig;
