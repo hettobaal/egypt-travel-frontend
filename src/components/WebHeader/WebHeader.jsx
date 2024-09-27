@@ -32,6 +32,7 @@ function WebHeader() {
     }, []);
 
     const isTourDetailPage = route?.startsWith('/tourdetail');
+    const writeReview = route?.startsWith('/write-review');
 
 
     useEffect(() => {
@@ -69,7 +70,7 @@ function WebHeader() {
                     <li>
                         <Link
                             href='/'
-                            className={`text-base font-medium tracking-wider ${route === '/' ? 'text-amber border-b-2 pb-[1px] border-amber' : isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                            className={`text-base font-medium tracking-wider ${route === '/' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
                             Home
                         </Link>
@@ -77,7 +78,7 @@ function WebHeader() {
                     <li>
                         <Link
                             href='/about-us'
-                            className={`text-base font-medium tracking-wider ${route === '/about-us' ? 'text-amber border-b-2 pb-[1px] border-amber' : isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                            className={`text-base font-medium tracking-wider ${route === '/about-us' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
                             About Us
                         </Link>
@@ -94,13 +95,13 @@ function WebHeader() {
                                 <div className={`flex items-center aria-expanded:opacity-100 aria-expanded:scale-[1] ${route?.startsWith('/category') && 'border-b-2 pb-[2px] border-amber'} `}>
                                     <span
 
-                                        className={`cursor-pointer text-base font-medium tracking-wider ${route?.startsWith('/category') ? 'text-amber ' : isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                                        className={`cursor-pointer text-base font-medium tracking-wider ${route?.startsWith('/category') ? 'text-amber ' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                                     >
                                         Categories
                                     </span>
                                     <span className='p-0'>
                                         <ChevronDown
-                                            color={`${route?.startsWith('/category') ? '#F18700' : isTourDetailPage ? '#252525' : scrolled ? '#000000' : '#FFFFFF'}`}
+                                            color={`${route?.startsWith('/category') ? '#F18700' : writeReview || isTourDetailPage ? '#252525' : scrolled ? '#000000' : '#FFFFFF'}`}
                                             size={20}
                                             className={`transition-transform duration-300 ${isDropdownOpen ? 'transform rotate-180' : ''}`}
                                         />
@@ -134,7 +135,7 @@ function WebHeader() {
                     <li>
                         <Link
                             href='/blogs'
-                            className={`text-base font-medium tracking-wider ${route === '/blogs' ? 'text-amber border-b-2 pb-[1px] border-amber' : isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                            className={`text-base font-medium tracking-wider ${route === '/blogs' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
                             Blogs
                         </Link>
@@ -142,7 +143,7 @@ function WebHeader() {
                     <li>
                         <Link
                             href='/discounted-tours'
-                            className={`text-base font-medium tracking-wider ${route === '/discounted-tours' ? 'text-amber border-b-2 pb-[1px] border-amber' : isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                            className={`text-base font-medium tracking-wider ${route === '/discounted-tours' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
                             Discounted Tours
                         </Link>
@@ -154,7 +155,7 @@ function WebHeader() {
                     </Button>
                 </Link>
                 <span className='lg:hidden'>
-                    <MobileMenu scrolled={scrolled} isTourDetailPage={isTourDetailPage} />
+                    <MobileMenu scrolled={scrolled} isTourDetailPage={isTourDetailPage} writeReview={writeReview} />
                 </span>
             </MaxWidthWrapper>
         </header >

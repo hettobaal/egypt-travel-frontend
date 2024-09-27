@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { Input } from '../ui/input';
 import { ChevronDown } from 'lucide-react';
 
-function MobileMenu({ scrolled, isTourDetailPage }) {
+function MobileMenu({ scrolled, isTourDetailPage, writeReview }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const handleLinkClick = () => {
@@ -24,7 +24,7 @@ function MobileMenu({ scrolled, isTourDetailPage }) {
                 <SheetTrigger>
                     {
                         isOpen ? '' : <>
-                            {isTourDetailPage || scrolled ? (
+                            {writeReview || isTourDetailPage || scrolled ? (
                                 <Image
                                     src='/nav/blackToggle.svg'
                                     width={24}

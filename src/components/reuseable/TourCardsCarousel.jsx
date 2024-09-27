@@ -9,7 +9,7 @@ import Image from 'next/image';
 import { IoStar } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 function TourCardsCarousel({ data }) {
-    console.log("popularToursData", data);
+
 
     const swiperRef = useRef(null);
 
@@ -22,6 +22,9 @@ function TourCardsCarousel({ data }) {
     };
 
     return (
+        // <div>
+        //     hello world
+        // </div>
         <section className='md:hidden flex items-center justify-center gap-x-2 '>
             <button
                 onClick={handlePrev}
@@ -35,7 +38,7 @@ function TourCardsCarousel({ data }) {
                 ref={swiperRef}
             >
                 {
-                    data?.data?.tourId.map((item, index) => {
+                    data?.data?.map((item, index) => {
                         return (
                             <SwiperSlide
                                 key={index}

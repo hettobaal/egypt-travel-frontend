@@ -11,7 +11,7 @@ function HomeSellingTour({ SellingTours }) {
     const [showAll, setShowAll] = useState(false);
 
     const toursToDisplay = showAll ? SellingTours : SellingTours?.slice(0, 4);
-    console.log("toursToDisplay",toursToDisplay);
+;
 
 
     const handleSeeMore = () => {

@@ -7,13 +7,13 @@ import { IoStar } from 'react-icons/io5';
 import TourCardsCarousel from '../reuseable/TourCardsCarousel';
 
 function CatalogCards({ data }) {
-    console.log(data?.data?.tourId);
-    
+   
+
     return (
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
-                    data?.data?.tourId.map((item, index) => {
+                    data?.tourId.map((item, index) => {
                         return (
                             <Link
                                 key={index}

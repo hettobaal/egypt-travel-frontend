@@ -33,7 +33,7 @@ function PopularTour({ popularToursData }) {
                 </HeadingOne>
             </span>
             <TourCards ToursData={toursToDisplay} />
-            {/* <TourCardsCarousel data={popularToursData} /> */}
+            <TourCardsCarousel data={popularToursData} />
             <div className='mx-auto md:block hidden'>
                 {!showAll ? (
                     <Button

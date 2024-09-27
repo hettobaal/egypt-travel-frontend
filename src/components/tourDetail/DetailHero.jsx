@@ -19,9 +19,9 @@ function DetailHero({ data }) {
         "https://picsum.photos/seed/image8/600/400",
         "https://picsum.photos/seed/image9/600/400",
         "https://picsum.photos/seed/image10/600/400"
-      ];
-      
-    
+    ];
+
+
     return (
 
         <section className='md:mt-[100px] mt-[70px]'>
@@ -77,54 +77,51 @@ function DetailHero({ data }) {
                     </span>
 
                 </div> */}
+                <div>
+
+                    <div className='grid grid-cols-4 grid-rows-2 gap-4 br'>
+                        <div className='col-span-2 row-span-2  br'>
+                            <Image
+                                src={imageUrls[0]}
+                                width={100}
+                                height={100}
+                                alt='abc'
+                                className='w-full h-full'
+                            />
+                        </div>
+                        <div className='col-span-1 row-span-2 border  border-blue'>
+                            <Image
+                                src={imageUrls[1]}
+                                width={100}
+                                height={100}
+                                alt='abc'
+                                className='w-full h-full'
+                            />
+                        </div>
+                        <div className='col-span-1 row-span-1  border  border-black'>
+                            <Image
+                                src={imageUrls[2]}
+                                width={100}
+                                height={100}
+                                alt='abc'
+                                className='w-full h-full'
+                            />
+                        </div>
+                        <div className='col-start-4 row-start-2 border relative  border-green-600'>
+                            <Image
+                                src={imageUrls[3]}
+                                width={100}
+                                height={100}
+                                alt='abc'
+                                className='w-full h-full relative'
+                            />
+                            <DetailModal images={imageUrls} />
+                        </div>
+
+                    </div>
 
 
-<h3>Hello world</h3>
-<div>
-
-<div className='grid grid-cols-4 grid-rows-2 gap-4 br'>
-<div className='col-span-2 row-span-2  br'>
-<Image
-    src={imageUrls[0]}
-    width={100}
-    height={100}
-    alt='abc'
-    className='w-full h-full'
-    />    
-</div>
-<div className='col-span-1 row-span-2 border  border-blue'>
-<Image
-    src={imageUrls[1]}
-    width={100}
-    height={100}
-    alt='abc'
-    className='w-full h-full'
-    />    
-</div>
-<div className='col-span-1 row-span-1  border  border-black'>
-<Image
-    src={imageUrls[2]}
-    width={100}
-    height={100}
-    alt='abc'
-    className='w-full h-full'
-    />    
-</div>
-<div className='col-start-4 row-start-2 border relative  border-green-600'>
-<Image
-    src={imageUrls[3]}
-    width={100}
-    height={100}
-    alt='abc'
-    className='w-full h-full relative'
-    />    
-<DetailModal images={imageUrls}/>
-</div>
-
-</div>
-
-
-    {/* {imageUrls.map((image, i)=>{
+                    {/* {imageUrls.map((image, i)=>{
         return(
 
             <div key={i}>
@@ -138,8 +135,8 @@ function DetailHero({ data }) {
             </div>
         )
     })} */}
-    
-</div>
+
+                </div>
 
             </MaxWidthWrapper>
             <div className='md:hidden  '>

@@ -23,38 +23,38 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 async function page() {
 
   const data = await getCategories()
-  const firstCategory = data?.data?.[0] || null;
-  const secondCategory = data?.data?.[1] || null;
-  const thirdCategory = data?.data?.[2] || null;
-  const fourCategory = data?.data?.[3] || null;
-  const fiveCategory = data?.data?.[4] || null;
+  const firstCategory = data?.data?.[0] || [];
+  const secondCategory = data?.data?.[1] || [];
+  const thirdCategory = data?.data?.[2] || [];
+  const fourCategory = data?.data?.[3] || [];
+  const fiveCategory = data?.data?.[4] || [];
 
   // popular tours
-  // const popularToursData = await getPopularTours()
+  const popularToursData = await getPopularTours()
+  // console.log("popularToursData",popularToursData?.data);
 
   // DiscountedTours
-  // const DiscountedTours = await getDiscountTours()
+  const DiscountedTours = await getDiscountTours()
 
 
-  // DiscountedTours
-  // const SellingTours = await getSellingTours()
-  // console.log("SellingTours",SellingTours);
-  
+  // SellingTours
+  const SellingTours = await getSellingTours()
+  // console.log("SellingTours", SellingTours);
+
 
   return (
     <>
       <WebHeader />
       <Hero />
       <Search />
-
-      {/* <PopularTour popularToursData={popularToursData?.data} /> */}
+      <PopularTour popularToursData={popularToursData?.data} />
       <HomeCategoryOne data={firstCategory} />
       <HomeCategoryTwo data={secondCategory} />
       <HomeCategoryThree data={thirdCategory} />
       <HomeCategoryFour data={fourCategory} />
       <HomeCategoryFive data={fiveCategory} />
-      {/* <DiscountedTour DiscountedTours={DiscountedTours} /> */}
-      {/* <HomeSellingTour SellingTours={SellingTours?.data}/> */}
+      <DiscountedTour DiscountedTours={DiscountedTours} />
+      <HomeSellingTour SellingTours={SellingTours?.data} />
       <WhyChooseUs />
       <Reviews />
       <Journey />

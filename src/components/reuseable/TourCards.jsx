@@ -5,13 +5,15 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { IoStar } from 'react-icons/io5';
 function TourCards({ ToursData }) {
+ 
 
     return (
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
-                    ToursData?.data?.map((item, index) => {
-                        // console.log(item?.tourId);
+                    ToursData?.map((item, index) => {
+                   
+                        
                         return (
                             <Link
                                 key={index}
