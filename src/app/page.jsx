@@ -41,7 +41,6 @@ async function page() {
   // SellingTours
   const SellingTours = await getSellingTours()
 
-
   return (
     <>
       <WebHeader />
