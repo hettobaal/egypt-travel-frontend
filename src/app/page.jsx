@@ -32,17 +32,14 @@ async function page() {
 
   // popular tours
   const popularToursData = await getPopularTours()
-  console.log("popularToursData",popularToursData?.data);
 
   // DiscountedTours
   const DiscountedTours = await getDiscountTours()
-  console.log("DiscountedTours ", DiscountedTours);
-  
+
 
 
   // SellingTours
   const SellingTours = await getSellingTours()
-  // console.log("SellingTours", SellingTours);
 
 
   return (
@@ -50,7 +47,6 @@ async function page() {
       <WebHeader />
       <Hero />
       <Search />
-
       <PopularTour popularToursData={popularToursData?.data} />
       <HomeCategoryOne data={firstCategory} />
       <HomeCategoryTwo data={secondCategory} />
