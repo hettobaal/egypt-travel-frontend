@@ -11,6 +11,8 @@ const CatalogTour = dynamic(() => import('@/components/catalog/CatalogTour'));
 export async function generateStaticParams() {
 
     const data = await getSubCategories()
+
+
     const posts = data?.data;
     const array = posts?.map((post) => ({
         catalogId: post?.slug,
@@ -28,10 +30,7 @@ async function page({ params }) {
     return (
         <>
             <CatalogHero />
-            {data?.data?.tourId.length ?
-                <CatalogTour data={data?.data} /> :
-                <h3 className='text-3xl font-bold text-center py-10'> No tours found in this Category.</h3>
-            }
+            <CatalogTour data={data?.data} /> :
             <Reviews />
             <Journey />
         </>

@@ -1,7 +1,6 @@
 "use client"
 import React from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
-import { Button } from '../ui/button';
 import HeadingOne from '../reuseable/HeadingOne';
 import HeadingThree from '../reuseable/HeadingThree';
 import CatalogCards from './CatalogCards';
@@ -14,10 +13,13 @@ function CatalogTour({ data }) {
                     {data?.subCategoryName}
                 </HeadingOne>
             </span>
-            <CatalogCards data={data} />
-            <Button className='w-max mx-auto rounded-full bg-navy hover:bg-navy px-10 h-11'>
-                SEE MORE
-            </Button>
+            {
+                data?.tourId?.length ?
+                    <CatalogCards data={data} />
+                    :
+                    <HeadingThree className='text-center'>No Tour Available</HeadingThree>
+            }
+
         </MaxWidthWrapper>
     )
 }
