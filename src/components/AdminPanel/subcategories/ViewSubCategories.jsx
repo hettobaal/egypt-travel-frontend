@@ -95,7 +95,16 @@ useEffect(()=>{
             case "subCategoryImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={categoryData?.subCategoryImage} />
+                        {/* <ImageModal id={categoryData?.subCategoryImage} /> */}
+                        <img
+                    className="rounded-md w-[300px] h-[300px]"
+                    src={`https://drive.google.com/thumbnail?id=${categoryData?.subCategoryImage}&sz=w300&v=${Date?.now()}`}
+                    // width={500}
+                    // height={300}
+                    // loading="lazy"
+                    // className="w-[300px] h-[300px]"
+                    alt="category"
+                />
                     </div>
                 );
             case "actions":
