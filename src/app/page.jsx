@@ -23,6 +23,7 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 async function page() {
 
   const data = await getCategories()
+
   const firstCategory = data?.data?.[0] || [];
   const secondCategory = data?.data?.[1] || [];
   const thirdCategory = data?.data?.[2] || [];
@@ -53,7 +54,7 @@ async function page() {
       <HomeCategoryThree data={thirdCategory} />
       <HomeCategoryFour data={fourCategory} />
       <HomeCategoryFive data={fiveCategory} />
-      <DiscountedTour DiscountedTours={DiscountedTours} />
+      <DiscountedTour DiscountedTours={DiscountedTours?.data} />
       <HomeSellingTour SellingTours={SellingTours?.data} />
       <WhyChooseUs />
       <Reviews />

@@ -15,9 +15,6 @@ function CategoryTour({ data }) {
             <div className='w-full flex flex-wrap justify-center items-center  sm:gap-5 gap-2'>
                 <HomeCard subCategory={data?.subCategoryId} />
             </div>
-            {/* <Button className='w-max mx-auto rounded-full bg-navy hover:bg-navy px-10 h-11'>
-                SEE MORE
-            </Button> */}
         </MaxWidthWrapper>
     )
 }

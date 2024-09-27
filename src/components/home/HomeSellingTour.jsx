@@ -11,7 +11,7 @@ function HomeSellingTour({ SellingTours }) {
     const [showAll, setShowAll] = useState(false);
 
     const toursToDisplay = showAll ? SellingTours : SellingTours?.slice(0, 4);
-;
+    ;
 
 
     const handleSeeMore = () => {
@@ -32,8 +32,17 @@ function HomeSellingTour({ SellingTours }) {
                     </span>
                 </HeadingOne>
             </span>
-            <TourCards ToursData={toursToDisplay} />
-            <TourCardsCarousel data={SellingTours} />
+
+            {
+                SellingTours?.length ?
+                    <>
+                        <TourCards ToursData={toursToDisplay} />
+                        <TourCardsCarousel data={SellingTours} />
+                    </>
+                    :
+                    <HeadingOne className='text-center'>No Tour Available</HeadingOne>
+            }
+
             <div className='mx-auto md:block hidden'>
                 {!showAll ? (
                     <Button

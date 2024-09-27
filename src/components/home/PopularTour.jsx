@@ -8,6 +8,7 @@ import HeadingThree from '../reuseable/HeadingThree';
 import TourCardsCarousel from '../reuseable/TourCardsCarousel';
 
 function PopularTour({ popularToursData }) {
+
     const [showAll, setShowAll] = useState(false);
 
     const toursToDisplay = showAll ? popularToursData : popularToursData?.slice(0, 4);
@@ -32,8 +33,15 @@ function PopularTour({ popularToursData }) {
                     Ägypten
                 </HeadingOne>
             </span>
-            <TourCards ToursData={toursToDisplay} />
-            <TourCardsCarousel data={popularToursData} />
+            {
+                popularToursData?.length ?
+                    <>
+                        <TourCards ToursData={toursToDisplay} />
+                        <TourCardsCarousel data={popularToursData} />
+                    </>
+                    :
+                    <HeadingOne className='text-center'>No Tour Available</HeadingOne>
+            }
             <div className='mx-auto md:block hidden'>
                 {!showAll ? (
                     <Button

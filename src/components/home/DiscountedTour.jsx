@@ -8,7 +8,7 @@ import Link from 'next/link';
 import TourCardsCarousel from '../reuseable/TourCardsCarousel';
 
 function DiscountedTour({ DiscountedTours }) {
-    const initialTours = DiscountedTours?.data?.slice(0, 4);
+    const initialTours = DiscountedTours?.slice(0, 4);
     return (
         <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:pt-20 pt-12  sm:pb-5 pb-4 px-2' >
             <span className='text-center sm:px-0 px-2'>
@@ -20,8 +20,17 @@ function DiscountedTour({ DiscountedTours }) {
                     Touren
                 </HeadingOne>
             </span>
-            <TourCards ToursData={initialTours} />
-            <TourCardsCarousel data={DiscountedTours} />
+
+            {
+                DiscountedTours?.length ?
+                    <>
+                        <TourCards ToursData={initialTours} />
+                        <TourCardsCarousel data={DiscountedTours} />
+                    </>
+                    :
+                    <HeadingOne className='text-center'>No Tour Available</HeadingOne>
+            }
+
             <Link
                 className='mx-auto'
                 href="/discounted-tours"
