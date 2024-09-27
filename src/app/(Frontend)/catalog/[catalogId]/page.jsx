@@ -1,4 +1,4 @@
-export const revalidate = 600;
+// export const revalidate = 600;
 export const dynamicParams = true
 import React from 'react'
 import dynamic from 'next/dynamic';
