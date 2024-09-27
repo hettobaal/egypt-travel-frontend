@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Dialog,
     DialogClose,
@@ -9,24 +9,29 @@ import Image from 'next/image';
 import { X } from 'lucide-react';
 
 function ImageModal({ id }) {
+    
 
     return (
         <Dialog>
             <DialogTrigger>
-                <Image
-                    className="rounded-md"
-                    src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000&v=${Date?.now()}`}
-                    width={500}
-                    height={300}
-                    loading="lazy"
+                
+                <img
+                    className="rounded-md w-[300px] h-[300px]"
+                    src={`https://drive.google.com/thumbnail?id=${id}&sz=w100&v=${Date?.now()}`}
+                    // width={500}
+                    // height={300}
+                    // loading="lazy"
+                    // className="w-[300px] h-[300px]"
                     alt="category"
                 />
+                
             </DialogTrigger>
             <DialogContent className='max-w-full w-full max-h-[60%] p-0 bg-transparent  flex justify-center items-center border-none '>
                 <div className='relative md:w-[70%] w-[90%] h-[60%]  mx-auto flex justify-center items-center '>
                     <Image
                         className="rounded-md max-h-[80vh]"
-                        src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000&v=${Date?.now()}`}
+                        src={`https://drive.google.com/thumbnail?id=${id}&sz=w200&v=${Date?.now()}`}
+                        // src={`https://drive.usercontent.google.com/download?id=${id}&authuser=0`}
                         width={1000}
                         height={800}
                         loading="lazy"

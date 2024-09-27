@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useEffect } from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Tooltip, Pagination, Input } from "@nextui-org/react";
 import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
 import ImageModal from "@/components/reuseable/ImageModal";
@@ -21,6 +21,11 @@ function ViewSubCategories({ SubCategoryData }) {
     const [data, setData] = React?.useState(SubCategoryData || []);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
+
+useEffect(()=>{
+    console.log("use effect run");
+    
+},[data])
 
     // Search bar
     const hasSearchFilter = Boolean(filterValue);
