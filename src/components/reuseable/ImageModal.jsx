@@ -17,8 +17,8 @@ function ImageModal({ id }) {
 
                 <Image
                     src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000&v=${Date?.now()}`}
-                    width={500}
-                    height={300}
+                    width={200}
+                    height={150}
                     loading="lazy"
                     alt="category"
                 />
@@ -28,7 +28,7 @@ function ImageModal({ id }) {
                 <div className='relative md:w-[70%] w-[90%] h-[60%]  mx-auto flex justify-center items-center '>
                     <Image
                         className="rounded-md max-h-[80vh]"
-                        src={`https://drive.google.com/thumbnail?id=${id}&sz=w200&v=${Date?.now()}`}
+                        src={`https://drive.google.com/thumbnail?id=${id}&sz=w1000&v=${Date?.now()}`}
                         width={1000}
                         height={800}
                         loading="lazy"

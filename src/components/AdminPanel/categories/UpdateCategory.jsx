@@ -53,13 +53,12 @@ function UpdateCategory({ data, setData, id }) {
 
         setLoader(true)
         const res = await updateCategoryById(categoryData, id)
-        console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
+            toast?.success(res?.message)
             setLoader(false)
             const newImageId = res?.data?.categoryImage;
             const newMobImageId = res?.data?.categoryMobImage;
-
             setData((prevData) =>
                 prevData?.map((item) =>
                     item?._id === id

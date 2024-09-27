@@ -480,7 +480,7 @@ function CreateTour({ data }) {
                                                                                     value="tick"
                                                                                     checked={field.value === "tick"}
                                                                                 />
-                                                                                <span>✔️ Tick</span>
+                                                                                <span>✔️ Include</span>
                                                                             </label>
                                                                             <label className="flex items-center space-x-2">
                                                                                 <input
@@ -489,7 +489,7 @@ function CreateTour({ data }) {
                                                                                     value="cross"
                                                                                     checked={field.value === "cross"}
                                                                                 />
-                                                                                <span>❌ Cross</span>
+                                                                                <span>❌ Exclude</span>
                                                                             </label>
                                                                         </div>
                                                                     </FormItem>

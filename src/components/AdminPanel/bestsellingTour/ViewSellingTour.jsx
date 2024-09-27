@@ -7,7 +7,6 @@ import { SearchIcon } from "lucide-react";
 import { DeleteSellingTour } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 
-
 const columns = [
     { name: "CARD IMAGE", uid: "cardImage" },
     { name: "TITLE", uid: "title" },
@@ -18,24 +17,21 @@ const columns = [
     { name: "ACTIONS", uid: "actions" },
 ];
 
-
 function ViewSellingTour({ TourData }) {
-
     const [data, setData] = React?.useState(TourData || []);
-
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
     // Search bar
     const hasSearchFilter = Boolean(filterValue);
     const filteredItems = React?.useMemo(() => {
-        let filteredUsers = [...data];
+        let filteredTours = [...data];
         if (hasSearchFilter) {
-            filteredUsers = filteredUsers?.filter((data) =>
-                data?.tourDetails?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+            filteredTours = filteredTours?.filter((data) =>
+                data?.tourId?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
-        return filteredUsers;
+        return filteredTours;
     }, [data, filterValue, hasSearchFilter]);
 
     const onSearchChange = React.useCallback((value) => {
@@ -48,9 +44,9 @@ function ViewSellingTour({ TourData }) {
     }, [setFilterValue, setPage]);
 
     const onClear = React.useCallback(() => {
-        setFilterValue("")
-        setPage(1)
-    }, [setFilterValue, setPage])
+        setFilterValue("");
+        setPage(1);
+    }, [setFilterValue, setPage]);
 
     const topContent = React.useMemo(() => {
         return (
@@ -63,7 +59,7 @@ function ViewSellingTour({ TourData }) {
                 }}
                 className="w-full sm:max-w-[44%] mb-4 mt-4"
                 placeholder="Search by name..."
-                startContent={< SearchIcon size={20} className="dark:bg-darkModeSecondary" />}
+                startContent={<SearchIcon size={20} className="dark:bg-darkModeSecondary" />}
                 value={filterValue}
                 onClear={() => onClear()}
                 onValueChange={onSearchChange}
@@ -75,8 +71,7 @@ function ViewSellingTour({ TourData }) {
         onClear,
     ]);
 
-
-    // pagination
+    // Pagination
     const rowsPerPage = 4;
     const pages = Math?.ceil(filteredItems?.length / rowsPerPage);
     const items = React.useMemo(() => {
@@ -86,15 +81,14 @@ function ViewSellingTour({ TourData }) {
         return filteredItems?.slice(start, end);
     }, [page, filteredItems]);
 
-
     const renderCell = React.useCallback((TourData, columnKey) => {
-        const cellValue = TourData?.tourDetails[columnKey];
+        const cellValue = TourData?.tourId[columnKey];
 
         switch (columnKey) {
             case "cardImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={TourData?.tourDetails?.cardImage} />
+                        <ImageModal id={TourData?.tourId?.cardImage} />
                     </div>
                 );
             case "actions":
@@ -125,7 +119,6 @@ function ViewSellingTour({ TourData }) {
         },
         [setData]
     );
-
 
     return (
         <section className="mt-10 pb-4 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg ">
