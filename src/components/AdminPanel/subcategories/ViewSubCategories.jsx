@@ -24,6 +24,8 @@ function ViewSubCategories({ SubCategoryData }) {
 
 useEffect(()=>{
     console.log("use effect run");
+    console.log(Date.now());
+    
     
 },[data])
 

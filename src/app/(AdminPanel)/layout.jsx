@@ -9,6 +9,11 @@ import { Toaster } from "react-hot-toast";
 export const metadata = {
   title: "Dashboard",
   description: "CMS system",
+  other: {
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0',
+  },
 };
 
 export default function Layout({ children }) {
