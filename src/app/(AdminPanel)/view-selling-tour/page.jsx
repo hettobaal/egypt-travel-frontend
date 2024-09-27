@@ -7,13 +7,13 @@ async function page() {
 
     const data = await getSellingTours()
     const tourData = data?.data
-    
+
     return (
         <>
             <Heading>
                 View Popular Tours
             </Heading>
-            <ViewSellingTour TourData={tourData} />
+            <ViewSellingTour TourData={tourData || []} />
         </>
     )
 }

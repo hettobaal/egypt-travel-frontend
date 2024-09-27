@@ -13,7 +13,7 @@ async function page() {
             <Heading>
                 View Popular Tours
             </Heading>
-            <ViewPopularTour TourData={tourData} />
+            <ViewPopularTour TourData={tourData || []} />
         </>
     )
 }

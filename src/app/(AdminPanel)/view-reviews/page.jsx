@@ -14,7 +14,7 @@ async function page() {
             <Heading>
                 View Reviews
             </Heading>
-            <ViewReviews reviewsData={data?.data} />
+            <ViewReviews reviewsData={data?.data || []} />
         </>
     )
 }

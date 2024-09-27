@@ -6,13 +6,13 @@ import { getTours } from '@/lib/siteApis'
 async function page() {
 
     const data = await getTours()
-    
+
     return (
         <>
             <Heading>
                 View Tour
             </Heading>
-            <ViewTours TourData={data?.data} />
+            <ViewTours TourData={data?.data || []} />
         </>
     )
 }

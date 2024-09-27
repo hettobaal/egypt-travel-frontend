@@ -13,7 +13,7 @@ async function page({ params }) {
             <Heading>
                 {data?.data?.categoryName}
             </Heading>
-            <CategoryDetails CategoryData={data?.data?.subCategoryId} />
+            <CategoryDetails CategoryData={data?.data?.subCategoryId || []} />
         </>
     )
 }

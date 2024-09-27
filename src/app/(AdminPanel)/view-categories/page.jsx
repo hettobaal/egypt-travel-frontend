@@ -6,14 +6,13 @@ import { getCategories } from '@/lib/siteApis'
 async function page() {
 
     const data = await getCategories()
-    
 
     return (
         <>
             <Heading>
                 View Categories
             </Heading>
-            <ViewCategories CategoryData={data?.data} />
+            <ViewCategories CategoryData={data?.data || []} />
         </>
     )
 }

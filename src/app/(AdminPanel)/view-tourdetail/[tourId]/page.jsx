@@ -13,7 +13,7 @@ async function page({ params }) {
             <Heading>
                 Tour Detail
             </Heading>
-            <ViewTourDetail tourDetail={data?.data} />
+            <ViewTourDetail tourDetail={data?.data || []} />
         </>
     )
 }

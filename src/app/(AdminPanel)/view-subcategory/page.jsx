@@ -6,13 +6,13 @@ import ViewSubCategories from '@/components/AdminPanel/subcategories/ViewSubCate
 async function page() {
 
     const data = await getSubCategories()
-    
+
     return (
         <>
             <Heading>
                 View SubCategory
             </Heading>
-            <ViewSubCategories SubCategoryData={data?.data} />
+            <ViewSubCategories SubCategoryData={data?.data || []} />
         </>
     )
 }
