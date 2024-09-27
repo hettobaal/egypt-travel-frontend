@@ -1,6 +1,7 @@
 // export const revalidate = 600;
 // req
 // req2
+// req3
 export const dynamicParams = true
 import React from 'react'
 import dynamic from 'next/dynamic';
