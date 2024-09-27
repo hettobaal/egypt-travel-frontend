@@ -42,23 +42,28 @@ function PopularTour({ popularToursData }) {
                     :
                     <HeadingOne className='text-center'>No Tour Available</HeadingOne>
             }
-            <div className='mx-auto md:block hidden'>
-                {!showAll ? (
-                    <Button
-                        onClick={handleSeeMore}
-                        className='w-max rounded-full bg-navy hover:bg-navy px-10 h-11'
-                    >
-                        SEE MORE
-                    </Button>
-                ) : (
-                    <Button
-                        onClick={handleShowLess}
-                        className='w-max rounded-full bg-navy hover:bg-navy px-10 h-11'
-                    >
-                        SHOW LESS
-                    </Button>
-                )}
-            </div>
+            {
+                popularToursData?.length > 4 && (
+                    <div className='mx-auto md:block hidden'>
+                        {!showAll ? (
+                            <Button
+                                onClick={handleSeeMore}
+                                className='w-max rounded-full bg-navy hover:bg-navy px-10 h-11'
+                            >
+                                SEE MORE
+                            </Button>
+                        ) : (
+                            <Button
+                                onClick={handleShowLess}
+                                className='w-max rounded-full bg-navy hover:bg-navy px-10 h-11'
+                            >
+                                SHOW LESS
+                            </Button>
+                        )}
+                    </div>
+                )
+            }
+
         </MaxWidthWrapper >
     )
 }

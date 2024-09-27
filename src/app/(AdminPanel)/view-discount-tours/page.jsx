@@ -13,7 +13,7 @@ async function page() {
             <Heading>
                 View Discount Tours
             </Heading>
-            <ViewDiscountedTours TourData={tourData || []} />
+            {/* <ViewDiscountedTours TourData={tourData || []} /> */}
         </>
     )
 }
