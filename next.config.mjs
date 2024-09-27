@@ -8,7 +8,7 @@ const nextConfig = {
             'drive.usercontent.google.com',
             'lh3.googleusercontent.com',
         ],
-        unoptimized: false,
+        unoptimized: true,
     },
 };
 // req access
