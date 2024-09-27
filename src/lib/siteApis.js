@@ -90,7 +90,7 @@ export const updateCategoryById = async (data, id) => {
     if (data?.categoryImage?.length > 0) {
         formData.append('categoryImage', data?.categoryImage[0]);
     }
-    if (data?.categoryImage?.length > 0) {
+    if (data?.categoryMobImage?.length > 0) {
         formData.append('categoryMobImage', data?.categoryMobImage[0]);
     }
     formData?.append('categoryName', data?.categoryName);

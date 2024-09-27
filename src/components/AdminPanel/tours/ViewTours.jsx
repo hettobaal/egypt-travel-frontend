@@ -103,7 +103,7 @@ function ViewTours({ TourData }) {
                     <div className="relative flex items-center gap-2">
                         <Tooltip content="Details">
                             <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <Link href={`/view-tourdetail/${TourData?._id}`}>
+                                <Link href={`/view-tourdetail/${TourData?.slug}`}>
                                     <EyeIcon />
                                 </Link>
                             </span>

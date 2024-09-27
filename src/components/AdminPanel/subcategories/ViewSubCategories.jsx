@@ -7,6 +7,7 @@ import { SearchIcon } from "lucide-react";
 import { DeleteSubCategory } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 import UpdateSubCategory from "./UpdateSubCategory";
+import Image from "next/image";
 
 
 const columns = [
@@ -17,17 +18,14 @@ const columns = [
 
 
 function ViewSubCategories({ SubCategoryData }) {
+    console.log("SubCategoryData", SubCategoryData[0]?.subCategoryImage);
+
 
     const [data, setData] = React?.useState(SubCategoryData || []);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
-useEffect(()=>{
-    console.log("use effect run");
-    console.log(Date.now());
-    
-    
-},[data])
+
 
     // Search bar
     const hasSearchFilter = Boolean(filterValue);
@@ -97,16 +95,7 @@ useEffect(()=>{
             case "subCategoryImage":
                 return (
                     <div className="cursor-pointer">
-                        {/* <ImageModal id={categoryData?.subCategoryImage} /> */}
-                        <img
-                    className="rounded-md w-[300px] h-[300px]"
-                    src={`https://drive.google.com/thumbnail?id=${categoryData?.subCategoryImage}&sz=w300&v=${Date?.now()}`}
-                    // width={500}
-                    // height={300}
-                    // loading="lazy"
-                    // className="w-[300px] h-[300px]"
-                    alt="category"
-                />
+                        <ImageModal id={categoryData?.subCategoryImage} />
                     </div>
                 );
             case "actions":
@@ -147,58 +136,61 @@ useEffect(()=>{
 
 
     return (
-        <section className="mt-10 pb-4 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg ">
-            <ScrollShadow
-                hideScrollBar
-                offset={100}
-                orientation="vertical"
-                className="w-full relative h-full mt-2 ">
-                <Table
-                    aria-label="Example table with dynamic content"
-                    removeWrapper
-                    topContent={topContent}
-                    bottomContent={
-                        data?.length > 4 && <div className="flex w-full justify-center mt-2">
-                            <div className="flex w-full justify-center dark:bg-darkModeSecondary bg-[#f4f4f5] rounded-lg max-w-max">
-                                <Pagination
-                                    isCompact
-                                    key='light'
-                                    variant='light'
-                                    showControls
-                                    showShadow
-                                    page={page}
-                                    total={pages}
-                                    onChange={(page) => setPage(page)}
-                                />
+        <>
+            <section className="mt-10 pb-4 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg ">
+                <ScrollShadow
+                    hideScrollBar
+                    offset={100}
+                    orientation="vertical"
+                    className="w-full relative h-full mt-2 ">
+
+                    <Table
+                        aria-label="Example table with dynamic content"
+                        removeWrapper
+                        topContent={topContent}
+                        bottomContent={
+                            data?.length > 4 && <div className="flex w-full justify-center mt-2">
+                                <div className="flex w-full justify-center dark:bg-darkModeSecondary bg-[#f4f4f5] rounded-lg max-w-max">
+                                    <Pagination
+                                        isCompact
+                                        key='light'
+                                        variant='light'
+                                        showControls
+                                        showShadow
+                                        page={page}
+                                        total={pages}
+                                        onChange={(page) => setPage(page)}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    }
-                >
-                    <TableHeader>
-                        {columns?.map((column) =>
-                            <TableColumn
-                                className="dark:bg-darkModeSecondary dark:text-white text-[15px]"
-                                key={column?.uid}>
-                                {column?.name}
-                            </TableColumn>
-                        )}
-                    </TableHeader>
-                    <TableBody items={items}>
-                        {items?.map((row) =>
-                            <TableRow key={row?._id}>
-                                {columns?.map((column) => (
-                                    <TableCell
-                                        key={column?.uid}
-                                        className="border-b-1 border-gray dark:border-white pb-3 pt-5 text-base">
-                                        {renderCell(row, column?.uid)}
-                                    </TableCell>
-                                ))}
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
-            </ScrollShadow>
-        </section>
+                        }
+                    >
+                        <TableHeader>
+                            {columns?.map((column) =>
+                                <TableColumn
+                                    className="dark:bg-darkModeSecondary dark:text-white text-[15px]"
+                                    key={column?.uid}>
+                                    {column?.name}
+                                </TableColumn>
+                            )}
+                        </TableHeader>
+                        <TableBody items={items}>
+                            {items?.map((row) =>
+                                <TableRow key={row?._id}>
+                                    {columns?.map((column) => (
+                                        <TableCell
+                                            key={column?.uid}
+                                            className="border-b-1 border-gray dark:border-white pb-3 pt-5 text-base">
+                                            {renderCell(row, column?.uid)}
+                                        </TableCell>
+                                    ))}
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
+                </ScrollShadow>
+            </section>
+        </>
     )
 }
 

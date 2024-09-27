@@ -8,7 +8,7 @@ import UpdateInclude from './UpdateInclude';
 import UpdateImage from './UpdateImage';
 
 function ViewTourDetail({ tourDetail }) {
-
+    
     const [data, setData] = useState(tourDetail)
 
     return (

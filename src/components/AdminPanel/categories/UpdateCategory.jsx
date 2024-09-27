@@ -50,15 +50,16 @@ function UpdateCategory({ data, setData, id }) {
 
 
     const onSubmit = async (categoryData) => {
+
         setLoader(true)
         const res = await updateCategoryById(categoryData, id)
+        console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
             const newImageId = res?.data?.categoryImage;
             const newMobImageId = res?.data?.categoryMobImage;
-            console.log("newImageId",newImageId);
-            
+
             setData((prevData) =>
                 prevData?.map((item) =>
                     item?._id === id
@@ -83,6 +84,7 @@ function UpdateCategory({ data, setData, id }) {
 
 
     const fileRef = form.register("categoryImage");
+    const fileRef2 = form.register("categoryMobImage");
     return (
         <>
 
@@ -100,7 +102,7 @@ function UpdateCategory({ data, setData, id }) {
                         <ModalHeader className="flex flex-col gap-1">Update Category</ModalHeader>
                         <ModalBody>
                             <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                                <form onSubmit={form?.handleSubmit(onSubmit)} className="space-y-8">
                                     <div className='gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
                                         <FormField
                                             control={form.control}
@@ -129,7 +131,7 @@ function UpdateCategory({ data, setData, id }) {
                                                         <Input
                                                             className='dark:bg-darkModeSecondary  outline-none '
                                                             {...fileRef} onChange={(event) => {
-                                                                field.onChange(event.target?.files?.[0] ?? undefined);
+                                                                field?.onChange(event.target?.files?.[0] ?? undefined);
                                                             }}
                                                             type="file"
                                                         />
@@ -149,7 +151,7 @@ function UpdateCategory({ data, setData, id }) {
                                                     <FormControl>
                                                         <Input
                                                             className='dark:bg-darkModeSecondary  outline-none '
-                                                            {...fileRef} onChange={(event) => {
+                                                            {...fileRef2} onChange={(event) => {
                                                                 field.onChange(event.target?.files?.[0] ?? undefined);
                                                             }}
                                                             type="file"
