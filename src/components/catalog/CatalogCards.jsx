@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { IoStar } from 'react-icons/io5';
 import TourCardsCarousel from '../reuseable/TourCardsCarousel';
+import CatalogCardCarousel from './CatalogCardCarousel';
 
 function CatalogCards({ data }) {
    
@@ -13,7 +14,7 @@ function CatalogCards({ data }) {
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
-                    data?.data?.tourId?.map((item, index) => {
+                    data?.tourId?.map((item, index) => {
                         return (
                             <Link
                                 key={index}
@@ -75,7 +76,7 @@ function CatalogCards({ data }) {
                     })
                 }
             </section>
-            <TourCardsCarousel data={data} />
+            <CatalogCardCarousel data={data?.tourId} />
         </>
 
 

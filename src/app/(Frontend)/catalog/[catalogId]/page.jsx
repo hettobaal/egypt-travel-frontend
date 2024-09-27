@@ -2,7 +2,7 @@
 // req
 // req2
 // req3
-// req4
+// req
 export const dynamicParams = true
 import React from 'react'
 import dynamic from 'next/dynamic';
@@ -31,10 +31,12 @@ async function page({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
+    // console.log("data ", data.data.tourId);
+    
     return (
         <>
             <CatalogHero />
-            <CatalogTour data={data?.data} /> :
+            <CatalogTour data={data?.data} /> 
             <Reviews />
             <Journey />
         </>

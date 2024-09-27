@@ -8,9 +8,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IoStar } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
-function TourCardsCarousel({ data }) {
+function CatalogCardCarousel({ data }) {
 
-console.log("tourcardscarousel ", data);
+console.log("CatalogCardCarousel ", data);
 
     const swiperRef = useRef(null);
 
@@ -46,7 +46,7 @@ console.log("tourcardscarousel ", data);
                             >
                                 <Link
                                     className='w-full'
-                                    href={`/tourdetail/${item?.tourId?.slug}`}
+                                    href={`/tourdetail/${item?.slug}`}
                                 >
                                     <Card
                                         shadow='none'
@@ -54,35 +54,35 @@ console.log("tourcardscarousel ", data);
                                     >
                                         <CardHeader className="p-0  flex-col items-start">
                                             <Image
-                                                src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
+                                                src={`https://drive.google.com/thumbnail?id=${item?.cardImage}&sz=w200&v=${Date?.now()}`}
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'
                                                 alt="Popular Tour"
                                             />
-                                            {item?.tourId?.tag && <Button className='bg-amber hover:bg-amber px-6 -mt-4 h-8 mx-auto rounded-full'>
-                                                {item?.tourId?.tag}
+                                            {item?.tag && <Button className='bg-amber hover:bg-amber px-6 -mt-4 h-8 mx-auto rounded-full'>
+                                                {item?.tag}
                                             </Button>}
                                         </CardHeader>
                                         <CardBody className="py-6 px-2 flex flex-col justify-between h-full ">
                                             <div  >
-                                                <h4 className='text-black font-bold sm:text-xl text-base leading-tight'> {item?.tourId?.title}</h4>
+                                                <h4 className='text-black font-bold sm:text-xl text-base leading-tight'> {item?.title}</h4>
                                                 <p className='mt-2 text-black font-medium sm:text-base text-sm'>
-                                                    {item?.tourId?.description}
+                                                    {item?.description}
                                                 </p>
                                             </div>
                                             <div className='mt-2'>
                                                 {
-                                                    item?.tourId?.strikePrice && <h4 className="w-max text-base font-semibold  text-black relative">
+                                                    item?.strikePrice && <h4 className="w-max text-base font-semibold  text-black relative">
                                                         <span className="line-through text-black">
-                                                            From ${item?.tourId?.strikePrice}
+                                                            From ${item?.strikePrice}
                                                         </span>
                                                         <span
                                                             className="absolute  inset-0 h-px bg-amber top-[50%]"
                                                         ></span>
                                                     </h4>
                                                 }
-                                                <h5 className='text-amber font-bold sm:text-xl text-base'>Away {item?.tourId?.priceAdult} {` `} <span className='text-[#363636] font-normal sm:text-base text-sm '> per person</span></h5>
+                                                <h5 className='text-amber font-bold sm:text-xl text-base'>Away {item?.priceAdult} {` `} <span className='text-[#363636] font-normal sm:text-base text-sm '> per person</span></h5>
                                                 <div className='mt-1 flex gap-x-2 items-center'>
                                                     {
                                                         Array.from({ length: 5 }, (_, index) => (
@@ -113,4 +113,4 @@ console.log("tourcardscarousel ", data);
     )
 }
 
-export default TourCardsCarousel
+export default CatalogCardCarousel
