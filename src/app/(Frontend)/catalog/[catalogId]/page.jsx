@@ -2,6 +2,7 @@
 // req
 // req2
 // req3
+// req4
 export const dynamicParams = true
 import React from 'react'
 import dynamic from 'next/dynamic';
