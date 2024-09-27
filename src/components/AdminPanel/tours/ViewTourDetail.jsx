@@ -8,7 +8,7 @@ import UpdateInclude from './UpdateInclude';
 import UpdateImage from './UpdateImage';
 
 function ViewTourDetail({ tourDetail }) {
-    
+
     const [data, setData] = useState(tourDetail)
 
     return (
@@ -18,7 +18,8 @@ function ViewTourDetail({ tourDetail }) {
                 <div className='flex justify-center items-center '>
                     <Image
                         className='rounded-lg'
-                        src={`https://drive.google.com/thumbnail?id=${data?.cardImage}&sz=w1000&v=${Date?.now()}`}
+                        // src={`https://drive.google.com/thumbnail?id=${data?.cardImage}&sz=w1000&v=${Date?.now()}`}
+                        src={`https://tourbuckettest.s3.amazonaws.com/${data?.cardImage}`}
                         width={500}
                         height={200}
                         loading='lazy'
@@ -164,7 +165,8 @@ function ViewTourDetail({ tourDetail }) {
                                 >
                                     <Image
                                         className="rounded-md"
-                                        src={`https://drive.google.com/thumbnail?id=${item}&sz=w1000&v=${Date?.now()}`}
+                                        // src={`https://drive.google.com/thumbnail?id=${item}&sz=w1000&v=${Date?.now()}`}
+                                        src={`https://tourbuckettest.s3.amazonaws.com/${item}`}
                                         width={500}
                                         height={300}
                                         loading="lazy"

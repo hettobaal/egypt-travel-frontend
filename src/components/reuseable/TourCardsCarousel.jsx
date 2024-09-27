@@ -10,7 +10,7 @@ import { IoStar } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 function TourCardsCarousel({ data }) {
 
-console.log("tourcardscarousel ", data);
+    console.log("tourcardscarousel ", data);
 
     const swiperRef = useRef(null);
 
@@ -54,7 +54,8 @@ console.log("tourcardscarousel ", data);
                                     >
                                         <CardHeader className="p-0  flex-col items-start">
                                             <Image
-                                                src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
+                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.tourId?.cardImage}`}
+                                                // src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'

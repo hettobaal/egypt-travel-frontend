@@ -14,7 +14,8 @@ function HomeCard({ subCategory }) {
                             className='overflow-hidden  relative group lg:rounded-[10px] rounded-[8px] xl:w-[23.8%] lg:w-[31%] w-[48%]'
                         >
                             <Image
-                                src={`https://drive.google.com/thumbnail?id=${item?.subCategoryImage}&sz=w1000&v=${Date?.now()}`}
+                                // src={`https://drive.google.com/thumbnail?id=${item?.subCategoryImage}&sz=w1000&v=${Date?.now()}`}
+                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.subCategoryImage}`}
                                 width={1000}
                                 height={200}
                                 loading='lazy'

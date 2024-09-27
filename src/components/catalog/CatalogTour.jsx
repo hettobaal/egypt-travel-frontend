@@ -5,9 +5,9 @@ import HeadingOne from '../reuseable/HeadingOne';
 import HeadingThree from '../reuseable/HeadingThree';
 import CatalogCards from './CatalogCards';
 function CatalogTour({ data }) {
-    
+
     console.log("data?.data?.tourId?.length ", data?.tourId);
-    
+
     return (
         <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:py-14 py-8 px-2' >
             <span className='text-center sm:px-0 px-2'>
@@ -18,7 +18,7 @@ function CatalogTour({ data }) {
             </span>
             {
                 data?.tourId?.length ?
-                    <CatalogCards data={data} />
+                    <CatalogCards data={data || []} />
                     :
                     <HeadingThree className='text-center'>No Tour Available</HeadingThree>
             }

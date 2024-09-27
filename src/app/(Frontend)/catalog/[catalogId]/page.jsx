@@ -31,12 +31,12 @@ async function page({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
-    // console.log("data ", data.data.tourId);
+    console.log("data ", data);
 
     return (
         <>
             <CatalogHero />
-            <CatalogTour data={data?.data || []} />
+            <CatalogTour data={data?.data} />
             <Reviews />
             <Journey />
         </>

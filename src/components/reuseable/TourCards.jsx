@@ -5,15 +5,15 @@ import Link from 'next/link';
 import { Button } from '../ui/button';
 import { IoStar } from 'react-icons/io5';
 function TourCards({ ToursData }) {
- 
+
 
     return (
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
                     ToursData?.map((item, index) => {
-                   
-                        
+
+
                         return (
                             <Link
                                 key={index}
@@ -26,7 +26,8 @@ function TourCards({ ToursData }) {
                                 >
                                     <CardHeader className="p-0  flex-col items-start">
                                         <Image
-                                            src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
+                                            src={`https://tourbuckettest.s3.amazonaws.com/${item?.tourId?.cardImage}`}
+                                            // src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
                                             width={700}
                                             height={200}
                                             loading='lazy'
