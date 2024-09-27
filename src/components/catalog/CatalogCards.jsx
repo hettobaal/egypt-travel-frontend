@@ -13,7 +13,7 @@ function CatalogCards({ data }) {
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
-                    data?.tourId.map((item, index) => {
+                    data?.data?.tourId?.map((item, index) => {
                         return (
                             <Link
                                 key={index}

@@ -14,7 +14,7 @@ function CatalogTour({ data }) {
                 </HeadingOne>
             </span>
             {
-                data?.tourId?.length ?
+                data?.data?.tourId?.length ?
                     <CatalogCards data={data} />
                     :
                     <HeadingThree className='text-center'>No Tour Available</HeadingThree>
