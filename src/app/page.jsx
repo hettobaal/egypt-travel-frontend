@@ -53,7 +53,7 @@ async function page() {
       {data?.data?.[2] && <HomeCategoryThree data={thirdCategory} />}
       {data?.data?.[3] && <HomeCategoryFour data={fourCategory} />}
       {data?.data?.[4] && <HomeCategoryFive data={fiveCategory} />}
-      {DiscountedTours?.data[0]?.tourId?.length >= 1 &&  <DiscountedTour DiscountedTours={DiscountedTours?.data[0]?.tourId?.length >= 1 ? DiscountedTours?.data[0]?.tourId : []} />}
+      {/* {DiscountedTours?.data[0]?.tourId?.length >= 1 &&  <DiscountedTour DiscountedTours={DiscountedTours?.data[0]?.tourId?.length >= 1 ? DiscountedTours?.data[0]?.tourId : []} />} */}
       {/* <HomeSellingTour SellingTours={SellingTours?.data || []} /> */}
       <WhyChooseUs />
       <Reviews />
