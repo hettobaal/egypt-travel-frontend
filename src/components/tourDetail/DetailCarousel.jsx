@@ -11,7 +11,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { DialogClose } from '../ui/dialog';
 import './style.css'
 
-function DetailCarousel({images, selectedImage, setopenModal , setSelectedImage}) {
+function DetailCarousel({images, selectedImage,  setSelectedImage}) {
     const carouselRef = useRef(null);
     const selectedIndex = images.indexOf(selectedImage);
 

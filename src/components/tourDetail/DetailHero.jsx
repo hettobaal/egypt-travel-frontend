@@ -9,11 +9,9 @@ import DetailMobileCarousel from './DetailMobileCarousel'
 function DetailHero({ data }) {
 
     const [selectedImage, setSelectedImage] = useState(null);
-    const [openModal, setopenModal] = useState(false);
-
+    
     const handleImageClick = (imageUrl) => {
       setSelectedImage(imageUrl);
-      console.log("imageUrl ", imageUrl);
       
     };
 
@@ -131,7 +129,7 @@ function DetailHero({ data }) {
                                 className='w-full h-full relative'
                                 onClick={() => handleImageClick(imageUrls[3])}
                             />
-                            <DetailModal   openModal={openModal} setopenModal={setopenModal}  images={imageUrls} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+                            <DetailModal   images={imageUrls} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
                         </div>
 
                     </div>

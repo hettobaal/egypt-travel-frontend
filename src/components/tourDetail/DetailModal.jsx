@@ -12,9 +12,7 @@ import Para from '../reuseable/Para';
 import Image from 'next/image';
 import DetailCarousel from './DetailCarousel';
 
-function DetailModal({images, selectedImage, setSelectedImage, openModal, setopenModal}) {
-    console.log("selectedImage ", selectedImage);
-    console.log("openModal ", openModal);
+function DetailModal({images, selectedImage, setSelectedImage}) {
 
     return (
         <Dialog open={!!selectedImage}>
@@ -29,7 +27,7 @@ function DetailModal({images, selectedImage, setSelectedImage, openModal, setope
                 </div>
             </DialogTrigger>
             <DialogContent className=' max-w-full p-0 bg-transparent  flex justify-center items-center border-none '>
-                <DetailCarousel images={images} setopenModal={setopenModal} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
+                <DetailCarousel images={images} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
             </DialogContent>
         </Dialog>
     )
