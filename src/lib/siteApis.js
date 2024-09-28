@@ -507,24 +507,7 @@ export const getDiscountTours = async () => {
         });
 };
 
-export const DeleteDiscountTour = async (id) => {
 
-    const url = SERVER_URL + `admin/discountedtour/delete-discountedtour/${id}`;
-
-    return fetch(url, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-        .then(response => response?.json())
-        .then(data => {
-            return data;
-        })
-        .catch(error => {
-            return error;
-        });
-}
 
 
 // Popular tour
@@ -534,7 +517,7 @@ export const addPopularTour = async (data) => {
     const Url = SERVER_URL + 'admin/populartour/add-populartour';
 
     const json = {
-        tourId: data?.tourId
+        popularTourId: data?.tourId
     }
 
     return fetch(Url, {
@@ -599,7 +582,7 @@ export const addSellingTour = async (data) => {
     const Url = SERVER_URL + 'admin/besttour/add-besttour';
 
     const json = {
-        tourId: data?.tourId
+        bestTourId: data?.tourId
     }
 
     return fetch(Url, {

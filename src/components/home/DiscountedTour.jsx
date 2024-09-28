@@ -5,12 +5,10 @@ import HeadingOne from '../reuseable/HeadingOne';
 import HeadingThree from '../reuseable/HeadingThree';
 import Link from 'next/link';
 import DiscountTourCard from '../discountedTour/DiscountTourCard';
-import CatalogCardCarousel from '../catalog/CatalogCardCarousel';
 
 function DiscountedTour({ DiscountedTours }) {
 
     const initialTours = DiscountedTours?.slice(0, 4);
-    // console.log("DiscountedTours", DiscountedTours);
 
 
     return (
@@ -29,20 +27,23 @@ function DiscountedTour({ DiscountedTours }) {
                 DiscountedTours?.length ?
                     <>
                         <DiscountTourCard ToursData={initialTours} />
-                        <CatalogCardCarousel data={DiscountedTours} />
                     </>
                     :
                     <HeadingOne className='text-center'>No Tour Available</HeadingOne>
             }
 
-            <Link
-                className='mx-auto'
-                href="/discounted-tours"
-            >
-                <Button className='w-max  rounded-full bg-navy hover:bg-navy px-10 h-11'>
-                    SEE MORE
-                </Button>
-            </Link>
+            {
+                DiscountedTours?.length > 4 &&
+
+                <Link
+                    className='mx-auto'
+                    href="/discounted-tours"
+                >
+                    <Button className='w-max  rounded-full bg-navy hover:bg-navy px-10 h-11'>
+                        SEE MORE
+                    </Button>
+                </Link>
+            }
         </MaxWidthWrapper >
     )
 }

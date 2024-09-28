@@ -4,9 +4,8 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Scroll
 import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
-import { DeletePopularTour } from "@/lib/siteApis";
+import { DeleteSellingTour } from "@/lib/siteApis";
 import toast from "react-hot-toast";
-
 
 const columns = [
     { name: "CARD IMAGE", uid: "cardImage" },
@@ -18,24 +17,21 @@ const columns = [
     { name: "ACTIONS", uid: "actions" },
 ];
 
-
 function ViewPopularTour({ TourData }) {
-
-    const [data, setData] = React?.useState(TourData);
-    console.log("tourData", TourData);
+    const [data, setData] = React?.useState(TourData || []);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
     // Search bar
     const hasSearchFilter = Boolean(filterValue);
     const filteredItems = React?.useMemo(() => {
-        let filteredUsers = [...data];
+        let filteredTours = [...data];
         if (hasSearchFilter) {
-            filteredUsers = filteredUsers?.filter((data) =>
-                data?.tourId?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+            filteredTours = filteredTours?.filter((data) =>
+                data?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
-        return filteredUsers;
+        return filteredTours;
     }, [data, filterValue, hasSearchFilter]);
 
     const onSearchChange = React.useCallback((value) => {
@@ -48,9 +44,9 @@ function ViewPopularTour({ TourData }) {
     }, [setFilterValue, setPage]);
 
     const onClear = React.useCallback(() => {
-        setFilterValue("")
-        setPage(1)
-    }, [setFilterValue, setPage])
+        setFilterValue("");
+        setPage(1);
+    }, [setFilterValue, setPage]);
 
     const topContent = React.useMemo(() => {
         return (
@@ -63,7 +59,7 @@ function ViewPopularTour({ TourData }) {
                 }}
                 className="w-full sm:max-w-[44%] mb-4 mt-4"
                 placeholder="Search by name..."
-                startContent={< SearchIcon size={20} className="dark:bg-darkModeSecondary" />}
+                startContent={<SearchIcon size={20} className="dark:bg-darkModeSecondary" />}
                 value={filterValue}
                 onClear={() => onClear()}
                 onValueChange={onSearchChange}
@@ -75,8 +71,7 @@ function ViewPopularTour({ TourData }) {
         onClear,
     ]);
 
-
-    // pagination
+    // Pagination
     const rowsPerPage = 4;
     const pages = Math?.ceil(filteredItems?.length / rowsPerPage);
     const items = React.useMemo(() => {
@@ -86,15 +81,14 @@ function ViewPopularTour({ TourData }) {
         return filteredItems?.slice(start, end);
     }, [page, filteredItems]);
 
-
     const renderCell = React.useCallback((TourData, columnKey) => {
-        const cellValue = TourData[columnKey];// Check what columnKey is being passed
-        // console.log("columnKeyData", TourData);
+        const cellValue = TourData[columnKey];
+
         switch (columnKey) {
             case "cardImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={TourData?.tourId?.cardImage} />
+                        <ImageModal id={TourData?.cardImage} />
                     </div>
                 );
             case "actions":
@@ -115,7 +109,7 @@ function ViewPopularTour({ TourData }) {
     // Actions
     const Delete = React.useCallback(
         async (id) => {
-            const res = await DeletePopularTour(id);
+            const res = await DeleteSellingTour(id);
             if (res?.status === "Success") {
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));
@@ -125,7 +119,6 @@ function ViewPopularTour({ TourData }) {
         },
         [setData]
     );
-
 
     return (
         <section className="mt-10 pb-4 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg ">
@@ -166,12 +159,12 @@ function ViewPopularTour({ TourData }) {
                     </TableHeader>
                     <TableBody items={items}>
                         {items?.map((row) =>
-                            <TableRow key={row?.tourId?._id}>
+                            <TableRow key={row?._id}>
                                 {columns?.map((column) => (
                                     <TableCell
                                         key={column?.uid}
                                         className="border-b-1 border-gray dark:border-white pb-3 pt-5 text-base">
-                                        {renderCell(row?.tourId, column?.uid)}
+                                        {renderCell(row, column?.uid)}
                                     </TableCell>
                                 ))}
                             </TableRow>

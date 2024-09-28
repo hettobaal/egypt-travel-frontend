@@ -6,7 +6,9 @@ import ViewSellingTour from '@/components/AdminPanel/bestsellingTour/ViewSelling
 async function page() {
 
     const data = await getSellingTours()
-    const tourData = data?.data || [];
+    const tourData = data?.data;
+    // console.log("SellingtourData", tourData[0]?.tourId);
+
 
 
     return (
@@ -14,7 +16,7 @@ async function page() {
             <Heading>
                 View Selling Tours
             </Heading>
-            {/* <ViewSellingTour TourData={tourData.length > 0 ? tourData : []} /> */}
+            <ViewSellingTour TourData={tourData?.length > 0 ? tourData[0]?.tourId : []} />
         </>
     )
 }

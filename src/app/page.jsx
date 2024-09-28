@@ -24,37 +24,37 @@ async function page() {
 
   const data = await getCategories()
 
-  const firstCategory = data?.data?.[0] ;
-  const secondCategory = data?.data?.[1] ;
-  const thirdCategory = data?.data?.[2] ;
-  const fourCategory = data?.data?.[3] ;
-  const fiveCategory = data?.data?.[4] ;
+  const firstCategory = data?.data?.[0];
+  const secondCategory = data?.data?.[1];
+  const thirdCategory = data?.data?.[2];
+  const fourCategory = data?.data?.[3];
+  const fiveCategory = data?.data?.[4];
 
   // popular tours
-  // const popularToursData = await getPopularTours()
-  // console.log("popularToursData", popularToursData);
+  const popularToursData = await getPopularTours()
+  // console.log("popularToursData", popularToursData?.data[0]?.tourId);
 
   // DiscountedTours
   const DiscountedTours = await getDiscountTours()
-  // console.log(firstCategory);
-  // console.log(secondCategory);
-  // console.log(thirdCategory);
-  // console.log(fourCategory);
-  // console.log(fiveCategory);
-  
+  // console.log("DiscountedTours", DiscountedTours?.data[0]?.tourId);
+
+  // Selling Tours
+  const SellingTours = await getSellingTours()
+  // console.log("SellingTours", SellingTours?.data[0]?.tourId);
+
   return (
     <>
       <WebHeader />
       <Hero />
       <Search />
-      {/* <PopularTour popularToursData={popularToursData?.data || []} /> */}
+      <PopularTour popularToursData={popularToursData?.data[0]?.tourId || []} />
       {data?.data?.[0] && <HomeCategoryOne data={firstCategory} />}
       {data?.data?.[1] && <HomeCategoryTwo data={secondCategory} />}
       {data?.data?.[2] && <HomeCategoryThree data={thirdCategory} />}
       {data?.data?.[3] && <HomeCategoryFour data={fourCategory} />}
       {data?.data?.[4] && <HomeCategoryFive data={fiveCategory} />}
-      {/* {DiscountedTours?.data[0]?.tourId?.length >= 1 &&  <DiscountedTour DiscountedTours={DiscountedTours?.data[0]?.tourId?.length >= 1 ? DiscountedTours?.data[0]?.tourId : []} />} */}
-      {/* <HomeSellingTour SellingTours={SellingTours?.data || []} /> */}
+      <DiscountedTour DiscountedTours={DiscountedTours?.data[0]?.tourId || []} />
+      <HomeSellingTour SellingTours={SellingTours?.data[0]?.tourId || []} />
       <WhyChooseUs />
       <Reviews />
       <Journey />

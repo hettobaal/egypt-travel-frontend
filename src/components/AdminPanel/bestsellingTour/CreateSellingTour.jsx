@@ -36,6 +36,8 @@ function CreateSellingTour({ data }) {
     })
 
     const onSubmit = async (data) => {
+      
+        
         setLoader(true)
         const res = await addSellingTour(data)
         setLoader(false)
@@ -88,9 +90,6 @@ function CreateSellingTour({ data }) {
                                                         return (
 
                                                             <SelectItem
-                                                                className=' '
-                                                                // key={"5185482121820"
-                                                                // }
                                                                 key={item?._id}
                                                             >
                                                                 {item?.title}

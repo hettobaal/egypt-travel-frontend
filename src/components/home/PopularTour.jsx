@@ -10,6 +10,8 @@ import TourCardsCarousel from '../reuseable/TourCardsCarousel';
 function PopularTour({ popularToursData }) {
 
     const [showAll, setShowAll] = useState(false);
+    // console.log("popularToursData",popularToursData);
+    
 
     const toursToDisplay = showAll ? popularToursData : popularToursData?.slice(0, 4);
 

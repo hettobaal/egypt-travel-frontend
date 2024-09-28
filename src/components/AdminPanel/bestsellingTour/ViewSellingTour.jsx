@@ -28,7 +28,7 @@ function ViewSellingTour({ TourData }) {
         let filteredTours = [...data];
         if (hasSearchFilter) {
             filteredTours = filteredTours?.filter((data) =>
-                data?.tourId?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+                data?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
         return filteredTours;
@@ -82,13 +82,13 @@ function ViewSellingTour({ TourData }) {
     }, [page, filteredItems]);
 
     const renderCell = React.useCallback((TourData, columnKey) => {
-        const cellValue = TourData?.tourId[columnKey];
+        const cellValue = TourData[columnKey];
 
         switch (columnKey) {
             case "cardImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={TourData?.tourId?.cardImage} />
+                        <ImageModal id={TourData?.cardImage} />
                     </div>
                 );
             case "actions":
