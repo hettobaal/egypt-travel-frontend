@@ -8,8 +8,8 @@ function DiscountCards({ data }) {
     return (
         <MaxWidthWrapper className='sm:py-16 py-8'>
             {
-                data?.length ?
-                    <DiscountTourCard ToursData={data} />
+                data?.tourId?.length ?
+                    <DiscountTourCard ToursData={data?.tourId} />
                     :
                     <HeadingThree className='text-center'>
                         No Tours Found
