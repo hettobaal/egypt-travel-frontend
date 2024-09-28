@@ -31,7 +31,7 @@ async function page() {
   const fiveCategory = data?.data?.[4] || [];
 
   // popular tours
-  const popularToursData = await getPopularTours()
+  // const popularToursData = await getPopularTours()
   // console.log("popularToursData", popularToursData);
 
   // DiscountedTours
@@ -40,7 +40,7 @@ async function page() {
 
 
   // SellingTours
-  const SellingTours = await getSellingTours()
+  // const SellingTours = await getSellingTours()
   // console.log("SellingTours", SellingTours);
   return (
     <>
