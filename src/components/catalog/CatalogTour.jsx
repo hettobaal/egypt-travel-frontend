@@ -6,7 +6,6 @@ import HeadingThree from '../reuseable/HeadingThree';
 import CatalogCards from './CatalogCards';
 function CatalogTour({ data }) {
 
-    console.log("data?.data?.tourId?.length ", data?.tourId);
 
     return (
         <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:py-14 py-8 px-2' >

@@ -1,17 +1,16 @@
 import React from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 import { Button } from '../ui/button';
-import TourCards from '../reuseable/TourCards';
 import HeadingOne from '../reuseable/HeadingOne';
 import HeadingThree from '../reuseable/HeadingThree';
 import Link from 'next/link';
-import TourCardsCarousel from '../reuseable/TourCardsCarousel';
+import DiscountTourCard from '../discountedTour/DiscountTourCard';
+import CatalogCardCarousel from '../catalog/CatalogCardCarousel';
 
 function DiscountedTour({ DiscountedTours }) {
-    
+
     const initialTours = DiscountedTours?.slice(0, 4);
-    // console.log("initialTours ", initialTours);
-    
+
     return (
         <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:pt-20 pt-12  sm:pb-5 pb-4 px-2' >
             <span className='text-center sm:px-0 px-2'>
@@ -27,8 +26,8 @@ function DiscountedTour({ DiscountedTours }) {
             {
                 DiscountedTours?.length ?
                     <>
-                        <TourCards ToursData={initialTours} />
-                        <TourCardsCarousel data={DiscountedTours} />
+                        <DiscountTourCard ToursData={initialTours} />
+                        <CatalogCardCarousel data={DiscountedTours} />
                     </>
                     :
                     <HeadingOne className='text-center'>No Tour Available</HeadingOne>

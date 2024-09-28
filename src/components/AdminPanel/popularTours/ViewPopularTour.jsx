@@ -4,7 +4,7 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Scroll
 import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
-import {  DeletePopularTour } from "@/lib/siteApis";
+import { DeletePopularTour } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 
 
@@ -21,8 +21,8 @@ const columns = [
 
 function ViewPopularTour({ TourData }) {
 
-    const [data, setData] = React?.useState(TourData || []);
-
+    const [data, setData] = React?.useState(TourData);
+    console.log("tourData", TourData);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
@@ -88,8 +88,8 @@ function ViewPopularTour({ TourData }) {
 
 
     const renderCell = React.useCallback((TourData, columnKey) => {
-        const cellValue = TourData?.tourId[columnKey];
-
+        const cellValue = TourData[columnKey];// Check what columnKey is being passed
+        // console.log("columnKeyData", TourData);
         switch (columnKey) {
             case "cardImage":
                 return (
@@ -166,12 +166,12 @@ function ViewPopularTour({ TourData }) {
                     </TableHeader>
                     <TableBody items={items}>
                         {items?.map((row) =>
-                            <TableRow key={row?._id}>
+                            <TableRow key={row?.tourId?._id}>
                                 {columns?.map((column) => (
                                     <TableCell
                                         key={column?.uid}
                                         className="border-b-1 border-gray dark:border-white pb-3 pt-5 text-base">
-                                        {renderCell(row, column?.uid)}
+                                        {renderCell(row?.tourId, column?.uid)}
                                     </TableCell>
                                 ))}
                             </TableRow>

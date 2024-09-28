@@ -6,16 +6,16 @@ import ViewPopularTour from '@/components/AdminPanel/popularTours/ViewPopularTou
 async function page() {
 
     const data = await getPopularTours()
-    const tourData = data?.data
-    console.log("tourData",tourData);
-    
+    const tourData = data?.data || [];
+   
+
 
     return (
         <>
             <Heading>
                 View Popular Tours
             </Heading>
-            <ViewPopularTour TourData={tourData || []} />
+            {/* <ViewPopularTour TourData={tourData.length > 0 ? tourData : []} /> */}
         </>
     )
 }

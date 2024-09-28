@@ -10,8 +10,6 @@ import { IoStar } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 function CatalogCardCarousel({ data }) {
 
-    console.log("CatalogCardCarousel ", data);
-
     const swiperRef = useRef(null);
 
     const handlePrev = () => {
