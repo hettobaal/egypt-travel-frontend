@@ -6,7 +6,7 @@ import ViewDiscountedTours from '@/components/AdminPanel/discoutTours/ViewDiscou
 async function page() {
 
     const data = await getDiscountTours()
-    const tourData = data?.data
+    const tourData = data?.data || [];
 
 
     return (
@@ -14,7 +14,7 @@ async function page() {
             <Heading>
                 View Discount Tours
             </Heading>
-            <ViewDiscountedTours TourData={tourData[0]?.tourId || []} />
+            <ViewDiscountedTours TourData={tourData.length > 0 ? tourData[0]?.tourId : []} />
         </>
     )
 }

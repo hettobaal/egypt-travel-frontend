@@ -15,7 +15,7 @@ function MobileImageModal({ id }) {
             <DialogTrigger>
                 <Image
                     className="rounded-md"
-                    src={`https://tourbuckettest.s3.amazonaws.com/${id}`}
+                    src={`https://tourbuckettest.s3.amazonaws.com/${id}?v=${Date.now()}`}
                     width={100}
                     height={100}
                     loading="lazy"
@@ -26,7 +26,7 @@ function MobileImageModal({ id }) {
                 <div className='relative md:w-[70%] w-[90%] h-[60%]  mx-auto flex justify-center items-center '>
                     <Image
                         className="rounded-md max-h-[80vh]"
-                        src={`https://tourbuckettest.s3.amazonaws.com/${id}`}
+                        src={`https://tourbuckettest.s3.amazonaws.com/${id}?v=${Date.now()}`}
                         width={500}
                         height={300}
                         loading="lazy"

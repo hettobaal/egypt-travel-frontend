@@ -54,8 +54,7 @@ function CatalogCardCarousel({ data }) {
                                     >
                                         <CardHeader className="p-0  flex-col items-start">
                                             <Image
-                                                // src={`https://drive.google.com/thumbnail?id=${item?.cardImage}&sz=w200&v=${Date?.now()}`}
-                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.subCategoryImage}`}
+                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.subCategoryImage}?v=${Date.now()}`}
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'
