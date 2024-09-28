@@ -12,17 +12,17 @@ import Para from '../reuseable/Para';
 import Image from 'next/image';
 import DetailCarousel from './DetailCarousel';
 
-function DetailModal({images, selectedImage, setSelectedImage}) {
+function DetailModal({ images, selectedImage, setSelectedImage }) {
 
     return (
         <Dialog open={!!selectedImage}>
-            <DialogTrigger  onClick={()=>{setSelectedImage(true)}}>
-                <div className='bottom-0 bg-[#90979e]/80 rounded-full py-2.5 px-6 border-1 border-white absolute  z-30 flex items-center gap-x-1'>
+            <DialogTrigger onClick={() => { setSelectedImage(true) }}>
+                <div className='bottom-2  right-4 w-max bg-[#90979e]/80 rounded-full py-2.5 px-6  absolute  mx-auto z-30 flex items-center gap-x-1'>
                     <span>
                         <FaRegImage color='#FFFFFF' size={18} />
                     </span>
                     <Para className='text-white'>
-                        +20
+                        + {images?.length}
                     </Para>
                 </div>
             </DialogTrigger>

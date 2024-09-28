@@ -36,7 +36,7 @@ async function page() {
 
   // DiscountedTours
   const DiscountedTours = await getDiscountTours()
-  // console.log("DiscountedTours", DiscountedTours);
+  // console.log("DiscountedTours", DiscountedTours?.data[0]?.tourId?.length);
 
 
   // SellingTours
@@ -53,7 +53,7 @@ async function page() {
       <HomeCategoryThree data={thirdCategory} />
       <HomeCategoryFour data={fourCategory} />
       <HomeCategoryFive data={fiveCategory} />
-      <DiscountedTour DiscountedTours={DiscountedTours?.data[0]?.tourId || []} />
+      <DiscountedTour DiscountedTours={DiscountedTours?.data[0]?.tourId?.length  == 1 ? DiscountedTours?.data[0]?.tourId : []} />
       {/* <HomeSellingTour SellingTours={SellingTours?.data || []} /> */}
       <WhyChooseUs />
       <Reviews />

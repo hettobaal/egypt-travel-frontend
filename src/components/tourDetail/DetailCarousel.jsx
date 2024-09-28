@@ -10,7 +10,7 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { DialogClose } from '../ui/dialog';
 import './style.css'
 
-function DetailCarousel({images, selectedImage,  setSelectedImage}) {
+function DetailCarousel({ images, selectedImage, setSelectedImage }) {
     const carouselRef = useRef(null);
     const selectedIndex = images.indexOf(selectedImage);
 
@@ -76,9 +76,9 @@ function DetailCarousel({images, selectedImage,  setSelectedImage}) {
                 <ChevronRight size={45} strokeWidth={1.25} />
             </span>
             <DialogClose asChild
-            onClick={()=>{setSelectedImage(null)}}
+                onClick={() => { setSelectedImage(null) }}
             >
-                <span className='cursor-pointer absolute  text-white -top-4 right-16  flex justify-center items-center border-white border-1 rounded-full py-2 px-2'>
+                <span className='cursor-pointer absolute  text-white -top-4 right-16  flex justify-center items-center rounded-full py-2 px-2'>
                     <X size={25} strokeWidth={1.25} />
                 </span>
             </DialogClose>
