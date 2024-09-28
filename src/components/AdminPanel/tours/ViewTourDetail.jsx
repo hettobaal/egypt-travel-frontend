@@ -202,7 +202,7 @@ function ViewTourDetail({ tourDetail }) {
                                 >
                                     <Image
                                         className="rounded-md"
-                                        src={`https://tourbuckettest.s3.amazonaws.com/${item}`}
+                                        src={`https://tourbuckettest.s3.amazonaws.com/${item}?v=${Date.now()}`}
                                         width={400}
                                         height={200}
                                         loading="lazy"

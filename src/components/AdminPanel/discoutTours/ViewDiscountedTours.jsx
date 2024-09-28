@@ -15,7 +15,6 @@ const columns = [
     { name: "ADULT PRICE", uid: "adultPriceAfterDiscount" },
     { name: "CHILD PRICE", uid: "childPriceAfterDiscount" },
     { name: "STRIKE PRICE", uid: "strikePrice" },
-    { name: "ACTIONS", uid: "actions" },
 ];
 
 
@@ -96,34 +95,11 @@ function ViewDiscountedTours({ TourData }) {
                         <ImageModal id={TourData?.cardImage} />
                     </div>
                 );
-            case "actions":
-                return (
-                    <div className="relative flex items-center gap-2">
-                        <Tooltip color="danger" content="Delete">
-                            <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                <DeleteIcon onClick={() => Delete(TourData?._id)} />
-                            </span>
-                        </Tooltip>
-                    </div>
-                );
             default:
                 return cellValue;
         }
     }, []);
 
-    // Actions
-    const Delete = React.useCallback(
-        async (id) => {
-            const res = await DeleteDiscountTour(id);
-            if (res?.status === "Success") {
-                toast?.success(res?.message);
-                setData((prev) => prev?.filter((data) => data?._id !== id));
-            } else {
-                toast?.error(res?.message);
-            }
-        },
-        [setData]
-    );
 
 
     return (

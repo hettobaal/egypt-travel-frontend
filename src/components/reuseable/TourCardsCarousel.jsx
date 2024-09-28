@@ -53,8 +53,7 @@ function TourCardsCarousel({ data }) {
                                     >
                                         <CardHeader className="p-0  flex-col items-start">
                                             <Image
-                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.tourId?.cardImage}`}
-                                                // src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
+                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.tourId?.cardImage}?v=${Date.now()}`}
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'

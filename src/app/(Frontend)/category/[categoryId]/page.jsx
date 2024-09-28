@@ -31,11 +31,12 @@ async function page({ params }) {
 
 
     // const heroImageDesktop = `https://drive.google.com/thumbnail?id=${currentData?.categoryImage}&sz=w1000`
-    const heroImageDesktop = `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryImage}`
+    const heroImageDesktop = `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryImage}?v=${Date.now()}`
+
 
     // const heroImageMobile = `https://drive.google.com/thumbnail?id=${currentData?.categoryMobImage}&sz=w500`
 
-    const heroImageMobile = `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryMobImage}`
+    const heroImageMobile = `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryMobImage}?v=${Date.now()}`
 
     const backgroundImageStyle = `url(${heroImageDesktop})`
         ;
