@@ -6,7 +6,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
-// import { images } from '@/asset/carouselImages';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { DialogClose } from '../ui/dialog';
 import './style.css'
