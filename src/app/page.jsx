@@ -32,15 +32,12 @@ async function page() {
 
   // popular tours
   const popularToursData = await getPopularTours()
-  // console.log("popularToursData", popularToursData?.data[0]?.tourId);
-
+  
   // DiscountedTours
   const DiscountedTours = await getDiscountTours()
-  // console.log("DiscountedTours", DiscountedTours?.data[0]?.tourId);
 
   // Selling Tours
   const SellingTours = await getSellingTours()
-  // console.log("SellingTours", SellingTours?.data[0]?.tourId);
 
   return (
     <>
