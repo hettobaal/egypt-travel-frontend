@@ -14,8 +14,8 @@ const columns = [
     { name: "CARD IMAGE", uid: "cardImage" },
     { name: "TITLE", uid: "title" },
     { name: "DURATION", uid: "duration" },
-    { name: "ADULT PRICE", uid: "priceAdult" },
-    { name: "CHILD PRICE", uid: "priceChild" },
+    { name: "ADULT PRICE", uid: "adultPriceAfterDiscount" },
+    { name: "CHILD PRICE", uid: "childPriceAfterDiscount" },
     { name: "STRIKE PRICE", uid: "strikePrice" },
     { name: "ACTIONS", uid: "actions" },
 ];

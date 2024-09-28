@@ -7,6 +7,8 @@ async function page() {
 
     const data = await getPopularTours()
     const tourData = data?.data
+    console.log("tourData",tourData);
+    
 
     return (
         <>

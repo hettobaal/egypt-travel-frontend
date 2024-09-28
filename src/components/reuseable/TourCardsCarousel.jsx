@@ -10,7 +10,6 @@ import { IoStar } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 function TourCardsCarousel({ data }) {
 
-    console.log("tourcardscarousel ", data);
 
     const swiperRef = useRef(null);
 

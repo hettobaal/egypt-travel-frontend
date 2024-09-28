@@ -11,9 +11,9 @@ import toast from "react-hot-toast";
 const columns = [
     { name: "CARD IMAGE", uid: "cardImage" },
     { name: "TITLE", uid: "title" },
-    { name: "DURATION", uid: "duration" },
-    { name: "ADULT PRICE", uid: "priceAdult" },
-    { name: "CHILD PRICE", uid: "priceChild" },
+    { name: "DISCOUNT", uid: "discountAmount" },
+    { name: "ADULT PRICE", uid: "adultPriceAfterDiscount" },
+    { name: "CHILD PRICE", uid: "childPriceAfterDiscount" },
     { name: "STRIKE PRICE", uid: "strikePrice" },
     { name: "ACTIONS", uid: "actions" },
 ];
@@ -21,8 +21,7 @@ const columns = [
 
 function ViewDiscountedTours({ TourData }) {
 
-    const [data, setData] = React?.useState(TourData || []);
-
+    const [data, setData] = React?.useState(TourData);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
@@ -32,7 +31,7 @@ function ViewDiscountedTours({ TourData }) {
         let filteredUsers = [...data];
         if (hasSearchFilter) {
             filteredUsers = filteredUsers?.filter((data) =>
-                data?.tourId?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+                data?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
         return filteredUsers;
@@ -88,13 +87,13 @@ function ViewDiscountedTours({ TourData }) {
 
 
     const renderCell = React.useCallback((TourData, columnKey) => {
-        const cellValue = TourData?.tourId[columnKey];
+        const cellValue = TourData[columnKey];
 
         switch (columnKey) {
             case "cardImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={TourData?.tourId?.cardImage} />
+                        <ImageModal id={TourData?.cardImage} />
                     </div>
                 );
             case "actions":

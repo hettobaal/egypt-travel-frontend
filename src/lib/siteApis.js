@@ -277,6 +277,7 @@ export const addTour = async (data) => {
     formData?.append('strikePrice', data?.strikePrice);
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
+    formData?.append('discountAmount', data?.discountAmount);
     formData?.append('duration', data?.Duration);
     data.tourImages.forEach((image, index) => {
         formData.append(`tourImages`, image);
@@ -354,6 +355,7 @@ export const updateTourById = async (data, id) => {
     formData?.append('strikePrice', data?.strikePrice);
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
+    formData?.append('discountAmount', data?.discountAmount);
     formData?.append('duration', data?.duration);
 
     return fetch(Url, {

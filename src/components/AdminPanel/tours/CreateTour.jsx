@@ -27,6 +27,7 @@ const formSchema = z.object({
     strikePrice: z.coerce.number().gte(1, { message: 'Price is required' }),
     priceAdult: z.coerce.number().gte(1, { message: 'Price is required' }),
     priceChild: z.coerce.number().gte(1, { message: 'Price is required' }),
+    discountAmount: z.coerce.number().optional(),
     Duration: z.coerce.number().gte(1, { message: 'Duration is required' }),
     cardImage: z
         .any()
@@ -64,6 +65,7 @@ function CreateTour({ data }) {
             strikePrice: "",
             priceAdult: "",
             priceChild: "",
+            discountAmount: "",
             Duration: "",
             cardImage: "",
             tourImages: [],
@@ -275,6 +277,24 @@ function CreateTour({ data }) {
                                     render={({ field }) => (
                                         <FormItem>
                                             <FormLabel className="text-base dark:text-white  font-semibold">Child Price</FormLabel>
+                                            <FormControl>
+                                                <Input
+                                                    {...field}
+                                                    className='dark:bg-darkModeSecondary  outline-none '
+                                                    type="number"
+                                                />
+                                            </FormControl>
+                                            <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                        </FormItem>
+                                    )}
+                                />
+                                <FormField
+                                    control={form.control}
+                                    name="discountAmount"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel className="text-base dark:text-white  font-semibold">Discount Amount</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}

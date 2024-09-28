@@ -57,10 +57,10 @@ export const Menu = [
         Icon: MdDiscount,
         title: 'Discount Tours',
         subMenu: [
-            {
-                subTitle: 'Add Discount Tour',
-                url: '/create-discount-tour'
-            },
+            // {
+            //     subTitle: 'Add Discount Tour',
+            //     url: '/create-discount-tour'
+            // },
             {
                 subTitle: 'View Discount Tours',
                 url: '/view-discount-tours'

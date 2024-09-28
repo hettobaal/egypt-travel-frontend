@@ -18,10 +18,9 @@ function ViewTourDetail({ tourDetail }) {
                 <div className='flex justify-center items-center '>
                     <Image
                         className='rounded-lg'
-                        // src={`https://drive.google.com/thumbnail?id=${data?.cardImage}&sz=w1000&v=${Date?.now()}`}
-                        src={`https://tourbuckettest.s3.amazonaws.com/${data?.cardImage}`}
-                        width={500}
-                        height={200}
+                        src={`https://tourbuckettest.s3.amazonaws.com/${data?.cardImage}?v=${Date.now()}`}
+                        width={400}
+                        height={180}
                         loading='lazy'
                         alt={data?.cardImage}
                     />
@@ -91,6 +90,44 @@ function ViewTourDetail({ tourDetail }) {
                             {data?.priceChild}
                         </h6>
                     </div>
+
+                    {
+                        data?.childPriceAfterDiscount > 0 &&
+                        (
+                            < div >
+                                <Heading>
+                                    Discounted Adult Price
+                                </Heading>
+                                <h6 className='mt-1'>
+                                    {data?.adultPriceAfterDiscount}
+                                </h6>
+                            </div>
+                        )
+                    }
+
+                    {
+                        data?.childPriceAfterDiscount > 0 &&
+                        (
+                            <div >
+                                <Heading>
+                                    Discounted Child Price
+                                </Heading>
+                                <h6 className='mt-1'>
+                                    {data?.childPriceAfterDiscount}
+                                </h6>
+                            </div>
+                        )
+                    }
+
+                    <div >
+                        <Heading>
+                            Discount Amount
+                        </Heading>
+                        <h6 className='mt-1'>
+                            {data?.discountAmount}
+                        </h6>
+                    </div>
+
                     <div >
                         <Heading>
                             Duration
@@ -165,10 +202,9 @@ function ViewTourDetail({ tourDetail }) {
                                 >
                                     <Image
                                         className="rounded-md"
-                                        // src={`https://drive.google.com/thumbnail?id=${item}&sz=w1000&v=${Date?.now()}`}
                                         src={`https://tourbuckettest.s3.amazonaws.com/${item}`}
-                                        width={500}
-                                        height={300}
+                                        width={400}
+                                        height={200}
                                         loading="lazy"
                                         alt="category"
                                     />
@@ -180,7 +216,7 @@ function ViewTourDetail({ tourDetail }) {
                 </div>
             </div>
 
-        </section>
+        </section >
     )
 }
 

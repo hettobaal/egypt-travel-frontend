@@ -8,12 +8,13 @@ async function page() {
     const data = await getDiscountTours()
     const tourData = data?.data
 
+
     return (
         <>
             <Heading>
                 View Discount Tours
             </Heading>
-            {/* <ViewDiscountedTours TourData={tourData || []} /> */}
+            <ViewDiscountedTours TourData={tourData[0]?.tourId || []} />
         </>
     )
 }
