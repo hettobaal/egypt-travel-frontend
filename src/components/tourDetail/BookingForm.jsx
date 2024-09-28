@@ -100,7 +100,7 @@ function BookingForm({ data }) {
 
 
     function onSubmit(values) {
-        console.log('data', values)
+        // console.log('data', values)
         setIsBookingDetailVisible(true);
     }
 

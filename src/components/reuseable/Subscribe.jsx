@@ -29,7 +29,7 @@ function Subscribe() {
 
     function onSubmit(values) {
 
-        console.log("hello world", values)
+        // console.log("hello world", values)
     }
 
     return (

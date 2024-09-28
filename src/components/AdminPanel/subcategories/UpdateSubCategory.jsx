@@ -46,7 +46,7 @@ function UpdateSubCategory({ data, setData, id }) {
     const onSubmit = async (subCategoryData) => {
         setLoader(true)
         const res = await updateSubCategoryById(subCategoryData, id)
-        console.log("res", res);
+        // console.log("res", res);
 
         setLoader(false)
         if (res?.status == "Success") {

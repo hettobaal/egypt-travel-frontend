@@ -10,7 +10,7 @@ import CatalogCardCarousel from '../catalog/CatalogCardCarousel';
 function DiscountedTour({ DiscountedTours }) {
 
     const initialTours = DiscountedTours?.slice(0, 4);
-    console.log("DiscountedTours", DiscountedTours);
+    // console.log("DiscountedTours", DiscountedTours);
 
 
     return (

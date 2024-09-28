@@ -18,7 +18,7 @@ const columns = [
 
 
 function ViewSubCategories({ SubCategoryData }) {
-    console.log("SubCategoryData", SubCategoryData[0]?.subCategoryImage);
+    // console.log("SubCategoryData", SubCategoryData[0]?.subCategoryImage);
 
 
     const [data, setData] = React?.useState(SubCategoryData || []);

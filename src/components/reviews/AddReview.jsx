@@ -48,7 +48,7 @@ function AddReview() {
 
     function onSubmit(values) {
         values.rating = rating;
-        console.log("values", values)
+        // console.log("values", values)
     }
 
     return (

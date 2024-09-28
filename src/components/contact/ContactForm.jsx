@@ -39,7 +39,7 @@ function ContactForm() {
     })
 
     function onSubmit(values) {
-        console.log(values)
+        // console.log(values)
     }
 
     return (
