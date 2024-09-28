@@ -22,9 +22,6 @@ function TourCardsCarousel({ data }) {
     };
 
     return (
-        // <div>
-        //     hello world
-        // </div>
         <section className='md:hidden flex items-center justify-center gap-x-2 '>
             <button
                 onClick={handlePrev}
@@ -53,7 +50,7 @@ function TourCardsCarousel({ data }) {
                                     >
                                         <CardHeader className="p-0  flex-col items-start">
                                             <Image
-                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.tourId?.cardImage}?v=${Date.now()}`}
+                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.tourId?.cardImage}`}
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'

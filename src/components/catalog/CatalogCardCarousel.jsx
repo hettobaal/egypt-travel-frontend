@@ -21,9 +21,6 @@ function CatalogCardCarousel({ data }) {
     };
 
     return (
-        // <div>
-        //     hello world
-        // </div>
         <section className='md:hidden flex items-center justify-center gap-x-2 '>
             <button
                 onClick={handlePrev}
@@ -52,7 +49,7 @@ function CatalogCardCarousel({ data }) {
                                     >
                                         <CardHeader className="p-0  flex-col items-start">
                                             <Image
-                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.subCategoryImage}?v=${Date.now()}`}
+                                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.subCategoryImage}`}
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'

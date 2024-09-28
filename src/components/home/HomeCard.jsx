@@ -14,7 +14,7 @@ function HomeCard({ subCategory }) {
                             className='overflow-hidden  relative group lg:rounded-[10px] rounded-[8px] xl:w-[23.8%] lg:w-[31%] w-[48%]'
                         >
                             <Image
-                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.subCategoryImage}?v=${Date.now()}`}
+                                src={`https://tourbuckettest.s3.amazonaws.com/${item?.subCategoryImage}`}
                                 width={1000}
                                 height={200}
                                 loading='lazy'

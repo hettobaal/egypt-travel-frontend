@@ -27,7 +27,6 @@ function TourCards({ ToursData }) {
                                     <CardHeader className="p-0  flex-col items-start">
                                         <Image
                                             src={`https://tourbuckettest.s3.amazonaws.com/${item?.tourId?.cardImage}`}
-                                            // src={`https://drive.google.com/thumbnail?id=${item?.tourId?.cardImage}&sz=w1000&v=${Date?.now()}`}
                                             width={700}
                                             height={200}
                                             loading='lazy'
