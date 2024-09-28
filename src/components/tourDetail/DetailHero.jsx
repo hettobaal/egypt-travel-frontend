@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper'
 import HeadingOne from '../reuseable/HeadingOne'
 import Image from 'next/image'
@@ -7,6 +8,14 @@ import DetailMobileCarousel from './DetailMobileCarousel'
 
 function DetailHero({ data }) {
 
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [openModal, setopenModal] = useState(false);
+
+    const handleImageClick = (imageUrl) => {
+      setSelectedImage(imageUrl);
+      console.log("imageUrl ", imageUrl);
+      
+    };
 
     const imageUrls = [
         "https://picsum.photos/seed/image1/600/400",
@@ -86,8 +95,10 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
+
                                 className='w-full h-full'
-                            />
+
+                                onClick={() => handleImageClick(imageUrls[0])}/>
                         </div>
                         <div className='col-span-1 row-span-2 border  border-blue'>
                             <Image
@@ -96,6 +107,8 @@ function DetailHero({ data }) {
                                 height={100}
                                 alt='abc'
                                 className='w-full h-full'
+                                onClick={() => handleImageClick(imageUrls[1])}
+
                             />
                         </div>
                         <div className='col-span-1 row-span-1  border  border-black'>
@@ -105,6 +118,8 @@ function DetailHero({ data }) {
                                 height={100}
                                 alt='abc'
                                 className='w-full h-full'
+                                onClick={() => handleImageClick(imageUrls[2])}
+
                             />
                         </div>
                         <div className='col-start-4 row-start-2 border relative  border-green-600'>
@@ -114,8 +129,9 @@ function DetailHero({ data }) {
                                 height={100}
                                 alt='abc'
                                 className='w-full h-full relative'
+                                onClick={() => handleImageClick(imageUrls[3])}
                             />
-                            <DetailModal images={imageUrls} />
+                            <DetailModal   openModal={openModal} setopenModal={setopenModal}  images={imageUrls} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
                         </div>
 
                     </div>
