@@ -6,13 +6,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
-// import { images } from '@/asset/carouselImages';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { DialogClose } from '../ui/dialog';
 import './style.css'
 
-function DetailCarousel({images}) {
+function DetailCarousel({images, selectedImage,  setSelectedImage}) {
     const carouselRef = useRef(null);
+    const selectedIndex = images.indexOf(selectedImage);
+
 
     const handleNext = () => {
         carouselRef?.current?.swiper?.slideNext();
@@ -30,6 +31,8 @@ function DetailCarousel({images}) {
             <div className='w-[60%] max-h-[60%] mx-auto flex justify-center items-center '>
                 <Swiper
                     ref={carouselRef}
+                    initialSlide={selectedIndex}
+
                     pagination={{
                         type: 'fraction',
                     }}
@@ -72,7 +75,9 @@ function DetailCarousel({images}) {
             >
                 <ChevronRight size={45} strokeWidth={1.25} />
             </span>
-            <DialogClose asChild>
+            <DialogClose asChild
+            onClick={()=>{setSelectedImage(null)}}
+            >
                 <span className='cursor-pointer absolute  text-white -top-4 right-16  flex justify-center items-center border-white border-1 rounded-full py-2 px-2'>
                     <X size={25} strokeWidth={1.25} />
                 </span>
