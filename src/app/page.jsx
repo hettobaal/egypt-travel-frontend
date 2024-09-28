@@ -42,12 +42,6 @@ async function page() {
   // console.log(fourCategory);
   // console.log(fiveCategory);
   
-  // console.log("DiscountedTours", DiscountedTours?.data[0]?.tourId);
-
-
-  // SellingTours
-  // const SellingTours = await getSellingTours()
-  // console.log("SellingTours", SellingTours);
   return (
     <>
       <WebHeader />
