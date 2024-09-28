@@ -15,7 +15,7 @@ async function page() {
         <>
             <DiscountHero />
             <Search />
-            <DiscountCards data={tourData.length > 0 ? data?.data[0] : []} />
+            <DiscountCards data={data?.data?.length > 0 ? data?.data[0] : []} />
             <Reviews />
             <Journey />
             <InstagramFeed />
