@@ -24,34 +24,35 @@ async function page() {
 
   const data = await getCategories()
 
-  const firstCategory = data?.data?.[0];
-  const secondCategory = data?.data?.[1];
-  const thirdCategory = data?.data?.[2];
-  const fourCategory = data?.data?.[3];
-  const fiveCategory = data?.data?.[4];
 
-  // popular tours
+  const firstCategory = data[0] || null;
+  const secondCategory = data[1] || null;
+  const thirdCategory = data[2] || null;
+  const fourCategory = data[3] || null;
+  const fiveCategory = data[4] || null;
+
   const popularToursData = await getPopularTours()
-  
-  // DiscountedTours
   const DiscountedTours = await getDiscountTours()
-
-  // Selling Tours
   const SellingTours = await getSellingTours()
+  const popularTours = popularToursData?.data?.[0]?.tourId || [];
+  const discountedTours = DiscountedTours?.data?.[0]?.tourId || [];
+  const sellingTours = SellingTours?.data?.[0]?.tourId || [];
+
+
 
   return (
     <>
       <WebHeader />
       <Hero />
       <Search />
-      <PopularTour popularToursData={popularToursData?.data[0]?.tourId || []} />
-      {data?.data?.[0] && <HomeCategoryOne data={firstCategory} />}
-      {data?.data?.[1] && <HomeCategoryTwo data={secondCategory} />}
-      {data?.data?.[2] && <HomeCategoryThree data={thirdCategory} />}
-      {data?.data?.[3] && <HomeCategoryFour data={fourCategory} />}
-      {data?.data?.[4] && <HomeCategoryFive data={fiveCategory} />}
-      <DiscountedTour DiscountedTours={DiscountedTours?.data[0]?.tourId || []} />
-      <HomeSellingTour SellingTours={SellingTours?.data[0]?.tourId || []} />
+      <PopularTour popularToursData={popularTours} />
+      {firstCategory && <HomeCategoryOne data={firstCategory} />}
+      {secondCategory && <HomeCategoryTwo data={secondCategory} />}
+      {thirdCategory && <HomeCategoryThree data={thirdCategory} />}
+      {fourCategory && <HomeCategoryFour data={fourCategory} />}
+      {fiveCategory && <HomeCategoryFive data={fiveCategory} />}
+      <DiscountedTour DiscountedTours={discountedTours} />
+      <HomeSellingTour SellingTours={sellingTours} />
       <WhyChooseUs />
       <Reviews />
       <Journey />
