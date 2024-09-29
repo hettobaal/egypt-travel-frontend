@@ -9,7 +9,6 @@ import { MdPayment } from 'react-icons/md'
 import { Button } from '../ui/button'
 
 function BookingDetail({ data, formData }) {
-    // console.log("booking data", data);
 
     // Sample pricing for Adult, Child, and SmallChild
     const adultPrice = data?.adultPriceAfterDiscount > 0 ? data?.adultPriceAfterDiscount : data?.priceAdult;
