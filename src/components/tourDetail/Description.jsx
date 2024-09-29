@@ -5,7 +5,9 @@ import MoreDescription from './MoreDescription';
 import { IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline } from 'react-icons/io';
 
 function Description({ data }) {
-  
+    console.log("data", data);
+
+
     return (
         <MaxWidthWrapper className='flex flex-col sm:mt-16 mt-10'>
             {/* first */}
@@ -63,7 +65,10 @@ function Description({ data }) {
                                             className='flex items-center gap-x-2'
                                         >
                                             <span>
-                                                <IoIosCheckmarkCircleOutline size={20} className='text-amber' />
+                                                {
+                                                    item?.type === 'included' ? <IoIosCheckmarkCircleOutline size={20} className='text-amber' /> : <IoIosCloseCircleOutline size={20} />
+                                                }
+
                                             </span>
                                             <li className='text-base font-normal text-ocean'>
                                                 {item?.point}
