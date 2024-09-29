@@ -23,13 +23,11 @@ function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
     }, []);
 
 
-    const styles = {
-        backgroundImage: `url(${width < 640 ? MobImageUrl : ImageUrl})`,
-    };
-
     return (
         <div
-            style={{ styles }}
+            style={{
+                backgroundImage: `url(${width < 640 ? MobImageUrl : ImageUrl})`
+            }}
             className="sm:h-[90vh] h-[80vh] bg-cover bg-center bg-no-repeat relative text-white flex flex-col justify-end items-center"
         >
             <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 justify-center items-center max-w-screen-lg mx-auto h-full   lg:px-0 md:px-8 mt-8'

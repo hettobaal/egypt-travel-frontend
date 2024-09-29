@@ -37,8 +37,8 @@ function CategoryCarousel({ id, data }) {
                 spaceBetween={20}
                 loop={false}
                 breakpoints={{
-                    320: {
-                        slidesPerView: 1,
+                    0: {
+                        slidesPerView: 2,
                         spaceBetween: 10,
                     },
                     480: {
@@ -72,7 +72,6 @@ function CategoryCarousel({ id, data }) {
                         </Link>
                     </SwiperSlide>
                 ))}
-                {/* Add additional SwiperSlides here if needed */}
             </Swiper>
         </main>
     );

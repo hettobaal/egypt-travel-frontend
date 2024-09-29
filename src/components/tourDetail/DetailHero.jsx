@@ -25,7 +25,7 @@ function DetailHero({ data }) {
         "https://picsum.photos/seed/image7/600/400",
         "https://picsum.photos/seed/image8/600/400",
         "https://picsum.photos/seed/image9/600/400",
-        "https://picsum.photos/seed/image10/600/400"
+        "https://picsum.photos/seed/image10/600/400",
     ];
 
 

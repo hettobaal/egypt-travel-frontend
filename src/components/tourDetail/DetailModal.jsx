@@ -2,20 +2,16 @@ import React from 'react'
 import {
     Dialog,
     DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { FaRegImage } from 'react-icons/fa';
 import Para from '../reuseable/Para';
-import Image from 'next/image';
 import DetailCarousel from './DetailCarousel';
 
 function DetailModal({ images, selectedImage, setSelectedImage }) {
 
     return (
-        <Dialog open={!!selectedImage} className='border-none'>
+        <Dialog open={!!selectedImage} >
             <DialogTrigger onClick={() => { setSelectedImage(true) }}>
                 <div className='bottom-2  right-4 w-max bg-[#90979e]/80 rounded-full py-2.5 px-6  absolute  mx-auto z-30 flex items-center gap-x-1'>
                     <span>
@@ -26,7 +22,7 @@ function DetailModal({ images, selectedImage, setSelectedImage }) {
                     </Para>
                 </div>
             </DialogTrigger>
-            <DialogContent className=' max-w-full p-0 bg-transparent  flex justify-center items-center   border-none'>
+            <DialogContent className=' max-w-full p-0 bg-transparent border-0 flex justify-center items-center  outline-none  '>
                 <DetailCarousel images={images} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
             </DialogContent>
         </Dialog>
