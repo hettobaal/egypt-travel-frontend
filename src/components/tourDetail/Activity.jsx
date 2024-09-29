@@ -48,7 +48,7 @@ function Activity({ data }) {
                         <TbClockCancel size={25} className='mt-1' />
                         <div>
                             <HeadingThree >
-                                Duration 3 - 7 hours
+                                Duration {data?.duration} hours
                             </HeadingThree>
                             <Para>
                                 Check availability to see starting times.

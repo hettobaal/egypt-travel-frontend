@@ -1,26 +1,36 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import CategoryCarousel from './CategoryCarousel';
+function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
 
-async function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
-    // console.log("data", data);
-// console.log("imaeg url  ",ImageUrl);
-// console.log("mmob url  ",MobImageUrl);
+    const [width, setWidth] = useState(null);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
+
+    const styles = {
+        backgroundImage: `url(${width < 640 ? MobImageUrl : ImageUrl})`,
+    };
 
     return (
         <div
-            style={{
-                backgroundImage: `${ImageUrl}`,
-                '@media (maxWidth: 640px)': {
-                    backgroundImage: `${MobImageUrl}`
-                }
-            }}
+            style={{ styles }}
             className="sm:h-[90vh] h-[80vh] bg-cover bg-center bg-no-repeat relative text-white flex flex-col justify-end items-center"
-
-
         >
             <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 justify-center items-center max-w-screen-lg mx-auto h-full   lg:px-0 md:px-8 mt-8'
             >
@@ -38,7 +48,7 @@ async function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
 
             </MaxWidthWrapper>
             <MaxWidthWrapper className='' >
-                <div className='xl:flex hidden justify-between '>
+                <div className='w-full xl:flex hidden justify-between '>
                     {
                         data?.map((item, index) => {
                             return (

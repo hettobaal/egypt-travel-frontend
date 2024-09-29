@@ -40,7 +40,7 @@ function HomeSellingTour({ SellingTours }) {
                         <TourCardsCarousel data={SellingTours} />
                     </>
                     :
-                    <HeadingOne className='text-center'>No Tour Available</HeadingOne>
+                    <HeadingThree className='text-center'>No Tour Available</HeadingThree>
             }
 
             {

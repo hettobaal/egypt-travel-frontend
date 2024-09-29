@@ -29,7 +29,7 @@ function DiscountedTour({ DiscountedTours }) {
                         <DiscountTourCard ToursData={initialTours} />
                     </>
                     :
-                    <HeadingOne className='text-center'>No Tour Available</HeadingOne>
+                    <HeadingThree className='text-center'>No Tour Available</HeadingThree>
             }
 
             {

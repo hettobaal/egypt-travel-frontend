@@ -10,7 +10,7 @@ import UpdateImage from './UpdateImage';
 function ViewTourDetail({ tourDetail }) {
 
     const [data, setData] = useState(tourDetail)
-
+    const strikePrice = data?.discountAmount > 0 && data?.priceAdult
     return (
         <section className="mt-10 pb-8 pt-8 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg flex flex-col gap-y-8 ">
             {/* First Item */}
@@ -66,14 +66,16 @@ function ViewTourDetail({ tourDetail }) {
                             {data?.fullDescription}
                         </h6>
                     </div>
-                    <div >
-                        <Heading>
-                            Strike Price
-                        </Heading>
-                        <h6 className='mt-1'>
-                            {data?.strikePrice}
-                        </h6>
-                    </div>
+                    {
+                        data?.discountAmount > 0 && < div >
+                            <Heading>
+                                Strike Price
+                            </Heading>
+                            <h6 className='mt-1'>
+                                {strikePrice}
+                            </h6>
+                        </div>
+                    }
                     <div >
                         <Heading>
                             Adult Price

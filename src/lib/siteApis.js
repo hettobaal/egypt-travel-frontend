@@ -274,15 +274,13 @@ export const addTour = async (data) => {
     formData?.append('title', data?.title);
     formData?.append('tag', data?.tag);
     formData?.append('description', data?.description);
-    formData?.append('strikePrice', data?.strikePrice);
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
     formData?.append('discountAmount', data?.discountAmount);
     formData?.append('duration', data?.Duration);
-    data.tourImages.forEach((image, index) => {
+    data?.tourImages?.forEach((image) => {
         formData.append(`tourImages`, image);
     });
-
     formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
     formData?.append('fullDescription', data?.fullDescription);
     formData?.append('includes', JSON?.stringify(data?.includes));
@@ -352,7 +350,6 @@ export const updateTourById = async (data, id) => {
     formData?.append('heading', data?.heading);
     formData?.append('description', data?.description);
     formData?.append('fullDescription', data?.fullDescription);
-    formData?.append('strikePrice', data?.strikePrice);
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
     formData?.append('discountAmount', data?.discountAmount);

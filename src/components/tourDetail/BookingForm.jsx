@@ -55,10 +55,11 @@ const formSchema = z.object({
 
 function BookingForm({ data }) {
 
+    const [formData, setFormData] = useState({});
     const [isBookingDetailVisible, setIsBookingDetailVisible] = useState(false);
     const [adults, setAdults] = useState(1);
     const [children, setChildren] = useState(0);
-    const [SmallChild, setSmallChild] = useState(0);
+    // const [SmallChild, setSmallChild] = useState(0);
     const [selectedDate, setSelectedDate] = useState();
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState("");
@@ -72,8 +73,8 @@ function BookingForm({ data }) {
     const decrementChildren = () => setChildren(children > 0 ? children - 1 : 0);
 
 
-    const incrementSmallChild = () => setSmallChild(SmallChild + 1);
-    const decrementSmallChild = () => setSmallChild(SmallChild > 0 ? SmallChild - 1 : 1);
+    // const incrementSmallChild = () => setSmallChild(SmallChild + 1);
+    // const decrementSmallChild = () => setSmallChild(SmallChild > 0 ? SmallChild - 1 : 1);
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -88,9 +89,9 @@ function BookingForm({ data }) {
     })
 
     useEffect(() => {
-        const personString = `Adult x ${adults}, Child x ${children}, SmallChild x ${SmallChild}`;
+        const personString = `Adult x ${adults}, Child x ${children}`;
         form.setValue("person", personString);
-    }, [adults, children, SmallChild, form]);
+    }, [adults, children, form]);
 
     const handleLanguageSelect = (language) => {
         setSelectedLanguage(language);
@@ -100,6 +101,7 @@ function BookingForm({ data }) {
 
 
     function onSubmit(values) {
+        setFormData(values)
         // console.log('data', values)
         setIsBookingDetailVisible(true);
     }
@@ -135,7 +137,7 @@ function BookingForm({ data }) {
                                                                     {...field}
                                                                     className="w-full   h-12  border-none  pl-10 pr-12 placeholder:text-ocean placeholder:text-base cursor-pointer"
                                                                     type="text"
-                                                                    placeholder={`Adult ${adults} x ${adults > 1 ? '' : ''} Child x ${children} ${children > 1 ? '' : ''} SmallChild x ${SmallChild} ${SmallChild > 1 ? '' : ''}`
+                                                                    placeholder={`Adult ${adults} x ${adults > 1 ? '' : ''} Child x ${children} ${children > 1 ? '' : ''}`
                                                                     }
 
                                                                 />
@@ -184,28 +186,6 @@ function BookingForm({ data }) {
                                                                         {children}
                                                                     </span>
                                                                     <RxPlusCircled size={20} onClick={incrementChildren} className="cursor-pointer text-blue" />
-                                                                </div>
-                                                            </div>
-                                                        </DropdownItem>
-                                                        <DropdownItem
-
-                                                            textValue="SmallChild Count"
-                                                            className="data-[hover=true]:bg-white ata-[focus-visible=true]:outline-offset-0">
-
-                                                            <div className='flex flex-row justify-between items-center gap-x-16'>
-                                                                <div>
-                                                                    <h5 className='text-base font-semibold'>A small child
-                                                                    </h5>
-                                                                    <Para className='text-sm'>
-                                                                        (up to 3 years)
-                                                                    </Para>
-                                                                </div>
-                                                                <div className="flex items-center space-x-2">
-                                                                    <RxMinusCircled size={20} onClick={decrementSmallChild} className="cursor-pointer text-blue" />
-                                                                    <span>
-                                                                        {SmallChild}
-                                                                    </span>
-                                                                    <RxPlusCircled size={20} onClick={incrementSmallChild} className="cursor-pointer text-blue" />
                                                                 </div>
                                                             </div>
                                                         </DropdownItem>
@@ -392,7 +372,7 @@ function BookingForm({ data }) {
                     </Form>
                 </div>
             </MaxWidthWrapper >
-            {isBookingDetailVisible && <BookingDetail data={data} />
+            {isBookingDetailVisible && <BookingDetail data={data} formData={formData} />
             }
         </>
     )

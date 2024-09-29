@@ -7,6 +7,7 @@ import Link from 'next/link';
 import HomeCard from './HomeCard';
 
 function HomeCategoryOne({ data }) {
+// console.log("Beliebtesten",data);
 
 
     return (

@@ -1,4 +1,4 @@
-export const dynamicParams = true 
+export const dynamicParams = true
 import React from 'react'
 import dynamic from 'next/dynamic';
 import { getSingleTour, getTours } from '@/lib/siteApis';
@@ -24,7 +24,6 @@ async function page({ params }) {
     const slug = params?.tourSlug;
     const decodedSlug = decodeURIComponent(slug);
     const tour = await getSingleTour(decodedSlug)
-
 
 
 

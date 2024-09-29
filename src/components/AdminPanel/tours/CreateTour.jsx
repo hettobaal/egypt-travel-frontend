@@ -24,7 +24,6 @@ const formSchema = z.object({
     title: z.string().min(1, { message: "Title is required" }),
     tag: z.string().min(1, { message: "Tag is required" }),
     description: z.string().min(1, { message: "Tag is required" }),
-    strikePrice: z.coerce.number().gte(1, { message: 'Price is required' }),
     priceAdult: z.coerce.number().gte(1, { message: 'Price is required' }),
     priceChild: z.coerce.number().gte(1, { message: 'Price is required' }),
     discountAmount: z.coerce.number().optional(),
@@ -40,8 +39,8 @@ const formSchema = z.object({
     })),
     fullDescription: z.string().min(1, { message: "Description is required" }),
     includes: z.array(z.object({
-        point: z.string().min(1, { message: "Include point is required" }),
-        option: z.enum(["tick", "cross"], { errorMap: () => ({ message: "Select either tick or cross" }) }),
+        point: z.string().min(1, { message: "Included point is required" }),
+        type: z.enum(["included", "excluded"], { errorMap: () => ({ message: "Select either included or excluded" }) }),
     })),
     ImportantInformationHeading: z.string().min(1, { message: "Description is required" }),
     ImportantInformationPoint: z.array(z.object({
@@ -62,7 +61,6 @@ function CreateTour({ data }) {
             title: "",
             tag: "",
             description: "",
-            strikePrice: "",
             priceAdult: "",
             priceChild: "",
             discountAmount: "",
@@ -71,7 +69,7 @@ function CreateTour({ data }) {
             tourImages: [],
             HighlightPoint: [{ point: " " }],
             fullDescription: "",
-            includes: [{ point: " ", option: "tick" }],
+            includes: [{ point: " ", type: "included" }],
             ImportantInformationHeading: "",
             ImportantInformationPoint: [{ point: " " }],
         },
@@ -111,7 +109,6 @@ function CreateTour({ data }) {
 
 
     const onSubmit = async (data) => {
-        // console.log(data);
         setLoader(true)
         const res = await addTour(data)
         setLoader(false)
@@ -232,24 +229,6 @@ function CreateTour({ data }) {
                                                 />
                                             </FormControl>
                                             <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
-                                        </FormItem>
-                                    )}
-                                />
-                                <FormField
-                                    control={form.control}
-                                    name="strikePrice"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-base dark:text-white  font-semibold">Strike Price</FormLabel>
-                                            <FormControl>
-                                                <Input
-                                                    {...field}
-                                                    className='dark:bg-darkModeSecondary  outline-none '
-                                                    type="number"
-                                                />
-                                            </FormControl>
-                                            <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
-
                                         </FormItem>
                                     )}
                                 />
@@ -489,7 +468,7 @@ function CreateTour({ data }) {
                                                             </FormControl>
                                                             <FormField
                                                                 control={form.control}
-                                                                name={`includes.${index}.option`}
+                                                                name={`includes.${index}.type`}
                                                                 render={({ field }) => (
                                                                     <FormItem>
                                                                         <div className="flex items-center space-x-4">
@@ -497,17 +476,17 @@ function CreateTour({ data }) {
                                                                                 <input
                                                                                     {...field}
                                                                                     type="radio"
-                                                                                    value="tick"
-                                                                                    checked={field.value === "tick"}
+                                                                                    value="included"
+                                                                                    checked={field.value === "included"}
                                                                                 />
-                                                                                <span>✔️ Include</span>
+                                                                                <span>✔️ Included</span>
                                                                             </label>
                                                                             <label className="flex items-center space-x-2">
                                                                                 <input
                                                                                     {...field}
                                                                                     type="radio"
-                                                                                    value="cross"
-                                                                                    checked={field.value === "cross"}
+                                                                                    value="excluded"
+                                                                                    checked={field.value === "excluded"}
                                                                                 />
                                                                                 <span>❌ Exclude</span>
                                                                             </label>
@@ -536,7 +515,7 @@ function CreateTour({ data }) {
                                     <Button
                                         type="button"
                                         variant="outline"
-                                        onClick={() => appendInclude({ point: "", option: "tick" })}
+                                        onClick={() => appendInclude({ point: "", type: "included" })}
                                         className="flex items-center space-x-2 mt-4 text-white bg-blue hover:bg-darkBlue"
                                     >
                                         <Plus className="h-4 w-4" />
@@ -614,7 +593,6 @@ function CreateTour({ data }) {
                                     </Button>
                                 </div>
                             </div>
-
                             <div >
                                 <Button
                                     type="submit"

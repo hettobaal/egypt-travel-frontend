@@ -8,12 +8,38 @@ import { Calendar } from 'lucide-react'
 import { MdPayment } from 'react-icons/md'
 import { Button } from '../ui/button'
 
-function BookingDetail({ data }) {
+function BookingDetail({ data, formData }) {
     // console.log("booking data", data);
+
+    // Sample pricing for Adult, Child, and SmallChild
+    const adultPrice = data?.adultPriceAfterDiscount > 0 ? data?.adultPriceAfterDiscount : data?.priceAdult;
+    const childPrice = data?.childPriceAfterDiscount > 0 ? data?.childPriceAfterDiscount : data?.priceChild;
+
+    // Extracting the numbers from formData.person
+    const personData = formData?.person;
+    const adultCount = parseInt(personData?.match(/Adult\s*x\s*(\d+)/)?.[1]) || 0;
+    const childCount = parseInt(personData?.match(/Child\s*x\s*(\d+)/)?.[1]) || 0;
+
+    // Calculating total price
+    const totalAdultPrice = adultCount * adultPrice;
+    const totalChildPrice = childCount * childPrice;
+
+    // Final total price
+    const totalPrice = totalAdultPrice + totalChildPrice
+
+    // discountPercentage
+    const discountPercentage = data?.priceAdult > 0
+        ? ((data?.discountAmount / data?.priceAdult) * 100).toFixed(0)
+        : null;
+
+
+    const OldAdult = adultCount * data?.priceAdult
+    const OldChildPrice = childCount > 0 ? childCount * data?.priceChild : 0
+    const strickPrice = OldAdult + OldChildPrice
 
     return (
         <MaxWidthWrapper className='sm:mt-8 mt-8  lg:px-10 md:px-8 sm:px-6 px-2'>
-            <div className='lg:w-[60%] w-full flex flex-col gap-y-4 border-navy rounded-[18px] border-2  pt-4'>
+            <div className='lg:w-[65%] w-full flex flex-col gap-y-4 border-navy rounded-[18px] border-2  pt-4'>
                 <div className='md:px-6 px-3'>
                     <HeadingThree className='text-[#131313] sm:text-[22px] font-semibold'>
                         {data?.title}
@@ -33,88 +59,80 @@ function BookingDetail({ data }) {
                         <span className='flex gap-x-2'>
                             <IoPersonOutline size={25} />
                             <Para className='font-semibold text-ocean'>
-                                Guide : English
+                                Guide: {formData?.language}
                             </Para>
                         </span>
                     </div>
-                    <div className='border-t-2 border-b-2 border-[#e0e0e0] mt-6 py-2'>
-                        <Para className='font-semibold text-ocean' >
+                    {/* <div className='border-t-2 border-b-2 border-[#e0e0e0] mt-6 py-2'>
+                        <Para className='font-semibold text-ocean'>
                             Starting Time
                         </Para>
                         <Para className='font-semibold text-ocean'>
                             8.30 AM
                         </Para>
-
-                    </div>
-                    <div className='flex md:flex-row flex-col gap-y-6 justify-between md:items-center items-start mt-6'>
-                        <div className='flex md:flex-row flex-col  gap-x-6  items-start'>
+                    </div> */}
+                    <div className='border-t-2 border-b-2 border-[#e0e0e0] pt-6 flex lg:flex-row flex-col gap-y-6 justify-between lg:items-center items-start mt-6'>
+                        <div className='flex lg:flex-row flex-col  gap-x-6  items-start'>
                             <div className='lg:w-[60%] w-full  flex-col gap-y-6'>
                                 <span className='flex gap-x-2'>
                                     <Calendar size={28} strokeWidth={1.25} />
                                     <Para className='text-ocean font-semibold'>
-                                        Cancel before 8:30 AM on May 13 for a full refund
+                                        Cancel before 24 hours for a full refund
                                     </Para>
                                 </span>
-                                <span className='md:flex hidden gap-x-2 mt-2'>
+                                <span className='lg:flex hidden gap-x-2 mt-2'>
                                     <MdPayment size={28} />
                                     <Para className='text-ocean font-semibold'>
-                                        You can {` `}
-                                        <span className='text-amber underline-offset-1'>reserve now & pay letter</span>
-                                        {` `}
+                                        You can{' '}
+                                        <span className='text-amber underline-offset-1'>
+                                            reserve now & pay later
+                                        </span>{' '}
                                         with this activity option
                                     </Para>
                                 </span>
                             </div>
-                            <div className=' flex  justify-between items-center md:mt-0 mt-4'>
+                            <div className='flex justify-between items-center lg:mt-0 mt-4'>
                                 <span className='flex flex-col gap-y-2'>
                                     <Para className='text-ocean font-semibold whitespace-nowrap'>
                                         Price breakdown
                                     </Para>
-                                    <Para >
-                                        Adult 2 x $24.70
+                                    <Para>
+                                        Adult {adultCount} x ${adultPrice}  = ${totalAdultPrice}
                                     </Para>
+                                    {
+                                        childCount > 0 &&
+                                        < Para >
+                                            Child {childCount} x ${childPrice} = ${totalChildPrice}
+                                        </Para>
+                                    }
                                 </span>
-                                <div className='flex md:hidden'>
-                                    <Para >
-                                        $30.19
-                                    </Para>
-                                </div>
                             </div>
                         </div>
-                        <div className='md:flex hidden'>
-                            <Para >
-                                $30.19
-                            </Para>
-                        </div>
-                        <span className='flex md:hidden gap-x-2'>
+                        <span className='flex lg:hidden gap-x-2'>
                             <MdPayment size={28} />
                             <Para className='text-ocean font-semibold'>
-                                You can {` `}
-                                <span className='text-amber underline-offset-1'>reserve now & pay letter</span>
-                                {` `}
+                                You can{' '}
+                                <span className='text-amber underline-offset-1'>
+                                    reserve now & pay later
+                                </span>{' '}
                                 with this activity option
                             </Para>
                         </span>
                     </div>
                 </div>
-                <div className=' bg-[#e6ebef]  flex justify-between  items-center gap-x-2  py-4 md:px-6 px-3 rounded-b-[18px]  '>
+                <div className='bg-[#e6ebef] flex justify-between items-center gap-x-2 py-4 lg:px-6 px-3 rounded-b-[18px]'>
                     <span>
-                        <Para>
-                            Total price
-                        </Para>
-                        <h6 className='text-amber font-semibold md:text-2xl text-lg'>
-                            $50.40
+                        <Para>Total price</Para>
+                        <h6 className='text-amber font-semibold lg:text-2xl text-lg'>
+                            ${totalPrice}
                         </h6>
-                        <Para>
-                            $ 52 {` `}
-                            <span className='text-amber'>
-                                -5%
-                            </span>
-                        </Para>
-                        <Para>
-                            All taxes & fee included
-                        </Para>
-
+                        {
+                            data?.discountAmount > 0 && (<Para>
+                                $ {strickPrice}{' '}
+                                <span className='text-amber'>-{discountPercentage}%</span>
+                            </Para>)
+                        }
+                        <Para>All taxes & fees included</Para>
                     </span>
                     <span>
                         <Button className='mt-4 px-10 rounded-full bg-navy hover:bg-navy h-11'>
@@ -123,7 +141,7 @@ function BookingDetail({ data }) {
                     </span>
                 </div>
             </div>
-        </MaxWidthWrapper>
+        </MaxWidthWrapper >
     )
 }
 

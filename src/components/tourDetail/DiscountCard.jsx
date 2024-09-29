@@ -4,6 +4,7 @@ import Para from '../reuseable/Para';
 import { Button } from '../ui/button';
 
 function DiscountCard({ data }) {
+    const { priceAdult, discountAmount } = data;
 
     const handleScroll = () => {
         const bookingFormElement = document?.getElementById('booking-form');
@@ -12,22 +13,40 @@ function DiscountCard({ data }) {
         }
     };
 
+    const tourPrice = data?.adultPriceAfterDiscount > 0 ? data?.adultPriceAfterDiscount : data?.priceAdult;
+
+    const discountPercentage = priceAdult > 0
+        ? ((discountAmount / priceAdult) * 100).toFixed(0)
+        : null;
+
+    const strikePrice = discountAmount > 0 && data?.priceAdult
+
+
     return (
         <div className='lg:w-[40%] w-full'>
             <div className='w-full flex flex-col gap-y-2  border-[#fbdbb3] border-2 '>
                 <div className='bg-[#fbdbb3] py-2 px-3'>
-                    <h4 className='text-end text-amber font-semibold text-lg'>
-                        Save upto 25%
-                    </h4>
+                    {
+
+                        data?.discountAmount > 0 && (
+                            <h4 className='text-end text-amber font-semibold text-lg'>
+                                Save upto {discountPercentage}%
+                            </h4>
+                        )
+                    }
+
                 </div>
                 <div className='py-2 px-4 flex flex-col gap-y-2'>
                     <span className='flex justify-between gap-x-2 items-center'>
                         <span>
-                            <Para className='text-slate font-semibold'>
-                                From $26
-                            </Para>
+                            {
+                                discountAmount > 0 && <Para className='text-slate font-semibold'>
+                                    From ${strikePrice}
+                                </Para>
+                            }
+
                             <h4 className=' text-amber font-bold text-[22px]'>
-                                $ {data?.priceAdult}
+                                $ {tourPrice}
                             </h4>
                             <Para className='text-slate font-semibold'>
                                 per Person

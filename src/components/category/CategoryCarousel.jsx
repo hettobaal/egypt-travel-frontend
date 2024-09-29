@@ -25,24 +25,28 @@ function CategoryCarousel({ id, data }) {
         }
     }, [swiperInstance]);
 
-    const handleSlideChange = (swiper) => { 
+    const handleSlideChange = (swiper) => {
         setActiveIndex(swiper.activeIndex);
     };
 
     return (
-        <main className='xl:hidden flex justify-end items-end -mb-2'>
+        <main className='w-full xl:hidden flex justify-end items-end -mb-2'>
             <Swiper
                 onSwiper={setSwiperInstance}
                 onSlideChange={handleSlideChange}
                 spaceBetween={20}
                 loop={false}
                 breakpoints={{
-                    0: {
-                        slidesPerView: 2,
-                        spaceBetween: 20,
+                    320: {
+                        slidesPerView: 1,
+                        spaceBetween: 10,
                     },
-                    768: {
-                        slidesPerView: 3,
+                    480: {
+                        slidesPerView: 2,
+                        spaceBetween: 15,
+                    },
+                    640: {
+                        slidesPerView: 2,
                         spaceBetween: 20,
                     },
                 }}

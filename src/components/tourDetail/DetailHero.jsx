@@ -42,10 +42,11 @@ function DetailHero({ data }) {
                 </div>
                 <div>
 
-                    <div className='grid grid-cols-4 grid-rows-2 gap-4 md:mt-4'>
+                    <div className='md:grid hidden grid-cols-4 grid-rows-2 gap-4 md:mt-4'>
                         <div className='col-span-2 row-span-2  cursor-pointer'>
                             <Image
                                 src={imageUrls[0]}
+                                // src={`https://tourbuckettest.s3.amazonaws.com/${data?.tourImages[0]}`}
                                 width={100}
                                 height={100}
                                 alt='abc'

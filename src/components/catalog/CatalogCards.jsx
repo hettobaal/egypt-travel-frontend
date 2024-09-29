@@ -15,6 +15,8 @@ function CatalogCards({ data }) {
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
                     data?.tourId?.map((item, index) => {
+                        const strikePrice = item?.discountAmount > 0 && item?.priceAdult
+                        const price = item?.discountAmount > 0 ? item?.adultPriceAfterDiscount : item?.priceAdult
                         return (
                             <Link
                                 key={index}
@@ -47,16 +49,16 @@ function CatalogCards({ data }) {
                                         </div>
                                         <div className='mt-2'>
                                             {
-                                                item?.strikePrice && <h4 className="w-max text-base font-semibold text-black relative">
+                                                item?.discountAmount > 0 && <h4 className="w-max text-base font-semibold text-black relative">
                                                     <span className="line-through text-black">
-                                                        From ${item?.strikePrice}
+                                                        From ${strikePrice}
                                                     </span>
                                                     <span
                                                         className="absolute  inset-0 h-px bg-amber top-[50%]"
                                                     ></span>
                                                 </h4>
                                             }
-                                            <h5 className='text-amber font-bold sm:text-xl text-lg'>Away {item?.priceAdult} {` `} <span className='text-[#363636] font-normal text-base '> per person</span></h5>
+                                            <h5 className='text-amber font-bold sm:text-xl text-lg'>Away {price} {` `} <span className='text-[#363636] font-normal text-base '> per person</span></h5>
                                             <div className='mt-1 flex gap-x-2 items-center'>
                                                 {
                                                     Array.from({ length: 5 }, (_, index) => (

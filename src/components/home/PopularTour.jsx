@@ -42,7 +42,7 @@ function PopularTour({ popularToursData }) {
                         <TourCardsCarousel data={popularToursData} />
                     </>
                     :
-                    <HeadingOne className='text-center'>No Tour Available</HeadingOne>
+                    <HeadingThree className='text-center'>No Tour Available</HeadingThree>
             }
             {
                 popularToursData?.length > 4 && (
