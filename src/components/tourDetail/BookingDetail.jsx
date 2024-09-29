@@ -9,7 +9,6 @@ import { MdPayment } from 'react-icons/md'
 import { Button } from '../ui/button'
 
 function BookingDetail({ data, formData }) {
-    // console.log("booking data", data);
 
     // Sample pricing for Adult, Child, and SmallChild
     const adultPrice = data?.adultPriceAfterDiscount > 0 ? data?.adultPriceAfterDiscount : data?.priceAdult;
@@ -31,6 +30,7 @@ function BookingDetail({ data, formData }) {
     const discountPercentage = data?.priceAdult > 0
         ? ((data?.discountAmount / data?.priceAdult) * 100).toFixed(0)
         : null;
+        // const discountPercentageTotal = ((strickPrice - totalPrice) / strickPrice) * 100;
 
 
     const OldAdult = adultCount * data?.priceAdult
@@ -129,7 +129,7 @@ function BookingDetail({ data, formData }) {
                         {
                             data?.discountAmount > 0 && (<Para>
                                 $ {strickPrice}{' '}
-                                <span className='text-amber'>-{discountPercentage}%</span>
+                                <span className='text-amber'> {Math.round(((strickPrice - totalPrice) / strickPrice) * 100)}%</span>
                             </Para>)
                         }
                         <Para>All taxes & fees included</Para>
