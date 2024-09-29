@@ -129,7 +129,7 @@ function BookingDetail({ data, formData }) {
                         {
                             data?.discountAmount > 0 && (<Para>
                                 $ {strickPrice}{' '}
-                                <span className='text-amber'> {Math.round(((strickPrice - totalPrice) / strickPrice) * 100)}%</span>
+                                <span className='text-amber'> {Math?.round(((strickPrice - totalPrice) / strickPrice) * 100)}%</span>
                             </Para>)
                         }
                         <Para>All taxes & fees included</Para>
