@@ -12,21 +12,13 @@ function DetailHero({ data }) {
 
     const handleImageClick = (imageUrl) => {
         setSelectedImage(imageUrl);
-
     };
 
-    const imageUrls = [
-        "https://picsum.photos/seed/image1/600/400",
-        "https://picsum.photos/seed/image2/600/400",
-        "https://picsum.photos/seed/image3/600/400",
-        "https://picsum.photos/seed/image4/600/400",
-        "https://picsum.photos/seed/image5/600/400",
-        "https://picsum.photos/seed/image6/600/400",
-        "https://picsum.photos/seed/image7/600/400",
-        "https://picsum.photos/seed/image8/600/400",
-        "https://picsum.photos/seed/image9/600/400",
-        "https://picsum.photos/seed/image10/600/400",
-    ];
+    const imageUrls = data?.tourImages?.map((item) => {
+        return (
+            `https://tourbuckettest.s3.amazonaws.com/${item}`
+        )
+    })
 
 
     return (
@@ -46,7 +38,6 @@ function DetailHero({ data }) {
                         <div className='col-span-2 row-span-2  cursor-pointer'>
                             <Image
                                 src={imageUrls[0]}
-                                // src={`https://tourbuckettest.s3.amazonaws.com/${data?.tourImages[0]}`}
                                 width={100}
                                 height={100}
                                 alt='abc'

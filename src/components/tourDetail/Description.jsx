@@ -5,7 +5,6 @@ import MoreDescription from './MoreDescription';
 import { IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline } from 'react-icons/io';
 
 function Description({ data }) {
-    console.log("data", data);
 
 
     return (

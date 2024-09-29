@@ -12,7 +12,7 @@ import './style.css'
 
 function DetailCarousel({ images, selectedImage, setSelectedImage }) {
     const carouselRef = useRef(null);
-    const selectedIndex = images.indexOf(selectedImage);
+    const selectedIndex = images?.indexOf(selectedImage);
 
 
     const handleNext = () => {
@@ -27,12 +27,11 @@ function DetailCarousel({ images, selectedImage, setSelectedImage }) {
 
 
     return (
-        <div className='relative w-full mx-auto flex justify-center items-center'>
-            <div className='w-[60%] max-h-[60%] mx-auto flex justify-center items-center '>
+        <div className='relative w-full mx-auto flex justify-center items-center max-h-[60vh] h-[60vh]'>
+            <div className='w-[80%] max-h-[60vh] h-[60vh] mx-auto flex justify-center items-center '>
                 <Swiper
                     ref={carouselRef}
                     initialSlide={selectedIndex}
-
                     pagination={{
                         type: 'fraction',
                     }}
@@ -45,22 +44,22 @@ function DetailCarousel({ images, selectedImage, setSelectedImage }) {
                     {
                         images?.map((item, index) => {
                             return (
-                                <SwiperSlide
-
-                                    key={index}>
-                                    <Image
-                                        className='mx-auto'
-                                        src={item}
-                                        width={800}
-                                        height={500}
-                                        loading='lazy'
-                                        alt={`detail ${index}`}
-                                    />
+                                <SwiperSlide key={index}>
+                                    <div className='h-full flex items-center justify-center max-h-[80vh]'>
+                                        <Image
+                                            className='mx-auto '
+                                            src={item}
+                                            // src='https://fastly.picsum.photos/id/385/600/400.jpg?hmac=FzH4BJIpsE8XYDW8tWE6kHgIMm0LKCtG8UqNAjHkaJY'
+                                            width={800}
+                                            height={300}
+                                            loading='lazy'
+                                            alt={`detail ${index}`}
+                                        />
+                                    </div>
                                 </SwiperSlide>
-                            )
+                            );
                         })
                     }
-
                 </Swiper>
             </div>
             <span
@@ -76,9 +75,9 @@ function DetailCarousel({ images, selectedImage, setSelectedImage }) {
                 <ChevronRight size={45} strokeWidth={1.25} />
             </span>
             <DialogClose asChild
-                onClick={() => { setSelectedImage(null) }}
+                onClick={() => { setSelectedImage(null); }}
             >
-                <span className='cursor-pointer absolute  text-white -top-4 right-16  flex justify-center items-center rounded-full py-2 px-2'>
+                <span className='cursor-pointer absolute text-white -top-4 right-16 flex justify-center items-center rounded-full py-2 px-2'>
                     <X size={25} strokeWidth={1.25} />
                 </span>
             </DialogClose>

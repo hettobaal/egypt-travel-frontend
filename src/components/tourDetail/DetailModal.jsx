@@ -10,6 +10,7 @@ import DetailCarousel from './DetailCarousel';
 
 function DetailModal({ images, selectedImage, setSelectedImage }) {
 
+
     return (
         <Dialog open={!!selectedImage} >
             <DialogTrigger onClick={() => { setSelectedImage(true) }}>
@@ -22,7 +23,7 @@ function DetailModal({ images, selectedImage, setSelectedImage }) {
                     </Para>
                 </div>
             </DialogTrigger>
-            <DialogContent className=' max-w-full p-0 bg-transparent border-0 flex justify-center items-center  outline-none  '>
+            <DialogContent className=' max-w-full p-0 bg-transparent border-0 flex justify-center items-center  outline-none  bl'>
                 <DetailCarousel images={images} selectedImage={selectedImage} setSelectedImage={setSelectedImage} />
             </DialogContent>
         </Dialog>

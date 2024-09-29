@@ -26,13 +26,6 @@ function BookingDetail({ data, formData }) {
     // Final total price
     const totalPrice = totalAdultPrice + totalChildPrice
 
-    // discountPercentage
-    const discountPercentage = data?.priceAdult > 0
-        ? ((data?.discountAmount / data?.priceAdult) * 100).toFixed(0)
-        : null;
-        // const discountPercentageTotal = ((strickPrice - totalPrice) / strickPrice) * 100;
-
-
     const OldAdult = adultCount * data?.priceAdult
     const OldChildPrice = childCount > 0 ? childCount * data?.priceChild : 0
     const strickPrice = OldAdult + OldChildPrice
