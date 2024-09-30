@@ -4,11 +4,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { DialogClose } from '../ui/dialog';
 import './style.css'
+import { Pagination, Navigation } from 'swiper/modules';
 
 function DetailCarousel({ images, selectedImage, setSelectedImage }) {
     const carouselRef = useRef(null);
@@ -39,7 +39,7 @@ function DetailCarousel({ images, selectedImage, setSelectedImage }) {
                     spaceBetween={20}
                     loop
                     modules={[Pagination, Navigation]}
-                    className="mySwiper custom-pagination"
+                    className="mySwiper"
                 >
                     {
                         images?.map((item, index) => {
@@ -47,7 +47,7 @@ function DetailCarousel({ images, selectedImage, setSelectedImage }) {
                                 <SwiperSlide key={index}>
                                     <div className='h-full flex items-center justify-center max-h-[80vh]'>
                                         <Image
-                                            className='mx-auto '
+                                            className='mx-auto'
                                             src={item}
                                             // src='https://fastly.picsum.photos/id/385/600/400.jpg?hmac=FzH4BJIpsE8XYDW8tWE6kHgIMm0LKCtG8UqNAjHkaJY'
                                             width={800}

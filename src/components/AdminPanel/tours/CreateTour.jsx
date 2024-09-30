@@ -139,14 +139,13 @@ function CreateTour({ data }) {
                                         <FormItem
 
                                         >
-                                            <FormLabel>Select Category Name</FormLabel>
+                                            <FormLabel>Select SubCategory Name</FormLabel>
                                             <FormControl
                                             >
-
                                                 <Select
                                                     {...field}
-                                                    aria-label='Select Category'
-                                                    placeholder="Select Category"
+                                                    aria-label='Select SubCategory'
+                                                    placeholder="Select SubCategory"
                                                     selectedKeys={value}
                                                     className="   border border-gray-400 outline-none rounded-lg focus-visible:ring-0 focus:ring-0 dark:bg-darkModeSecondary  "
                                                     onSelectionChange={setValue}

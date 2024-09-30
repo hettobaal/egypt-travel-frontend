@@ -84,7 +84,7 @@ function DetailHero({ data }) {
 
             </MaxWidthWrapper>
             <div className='md:hidden  '>
-                <DetailMobileCarousel />
+                <DetailMobileCarousel imageUrls={imageUrls} />
             </div>
             <MaxWidthWrapper>
                 <div className='md:hidden flex  flex-col sm:gap-y-2.5 gap-y-1 mt-4'>

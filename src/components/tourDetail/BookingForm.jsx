@@ -268,7 +268,7 @@ function BookingForm({ data }) {
                                                                     {...field}
                                                                     className="w-full h-12 border-none focus:outline-none pl-10 pr-12 placeholder:text-ocean placeholder:text-base cursor-pointer"
                                                                     type="text"
-                                                                    placeholder="Select Date"
+                                                                    placeholder="Select Language"
                                                                     value={selectedLanguage || ""}
                                                                     readOnly
                                                                 />
@@ -366,7 +366,7 @@ function BookingForm({ data }) {
                                 />
                             </div>
                             <Button type="submit" className='mt-4 px-10 rounded-full bg-amber hover:bg-amber h-11'>
-                                BOOK NOW
+                                Calculate
                             </Button>
                         </form>
                     </Form>

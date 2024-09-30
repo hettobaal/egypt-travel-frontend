@@ -78,7 +78,6 @@ function TourCards({ ToursData }) {
                     })
                 }
             </section>
-            {/* <TourCardsCarousel data={ToursData} /> */}
         </>
     )
 }

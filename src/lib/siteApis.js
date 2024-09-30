@@ -460,6 +460,25 @@ export const DeleteTour = async (id) => {
 }
 
 
+export const getRelatedTours = async (id) => {
+
+    const Url = SERVER_URL + `/api/public/get-related-tours?tag=${id}`;
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
 // discount tour
 export const addDiscountTour = async (data) => {
 
