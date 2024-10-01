@@ -23,7 +23,7 @@ async function page({ params }) {
     const decodedId = decodeURIComponent(id);
     const CategoryData = await getCategories()
     const SingleCategoryData = await getSingleCategory(decodedId)
-
+    // console.log("data", SingleCategoryData);
     const currentData = CategoryData?.data?.find(item => {
         return item?.slug?.toLowerCase() === decodedId?.toLowerCase();
     });
@@ -35,9 +35,6 @@ async function page({ params }) {
 
     const heroImageMobile = `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryMobImage}?v=${Date.now()}`
 
-    // const backgroundImageStyle = heroImageDesktop;
-
-    // const backgroundMobImageStyle = heroImageMobile 
 
     return (
         <>

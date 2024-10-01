@@ -11,14 +11,14 @@ function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
 
     useEffect(() => {
         const handleResize = () => {
-            setWidth(window.innerWidth);
+            setWidth(window?.innerWidth);
         };
 
-        window.addEventListener('resize', handleResize);
+        window?.addEventListener('resize', handleResize);
         handleResize();
 
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window?.removeEventListener('resize', handleResize);
         };
     }, []);
 
@@ -32,12 +32,12 @@ function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
         >
             <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 justify-center items-center max-w-screen-lg mx-auto h-full   lg:px-0 md:px-8 mt-8'
             >
-                <h3 className='sm:text-xl text-base font-medium '>
+                <h1 className='md:text-[34px] text-2xl font-medium text-center '>
                     {data?.bannerText}
-                </h3>
-                <h1 className='md:text-[65px] text-2xl leading-tight font-semibold text-center'>
-                    {data?.bannerSlogan}
                 </h1>
+                <p className='md:text-[26px] text-[17px] leading-snug font-normal text-center'>
+                    {data?.bannerSlogan}
+                </p>
                 <Link href='/' className='sm:mt-2 mt-1'>
                     <Button className='bg-amber rounded-full px-8 h-12 hover:bg-amber text-base'>
                         BOOK A TRIP

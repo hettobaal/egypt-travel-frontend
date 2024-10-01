@@ -8,11 +8,16 @@ import { DeleteSubCategory } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 import UpdateSubCategory from "./UpdateSubCategory";
 import Image from "next/image";
+import MobileImageModal from "@/components/reuseable/MobileImageModal";
 
 
 const columns = [
-    { name: "Image", uid: "subCategoryImage" },
-    { name: "SubCategory Name", uid: "subCategoryName" },
+    { name: "BANNER MOBILE IMAGE", uid: "subCategoryMobHeroImage" },
+    { name: "BANNER  IMAGE", uid: "subCategoryHeroImage" },
+    { name: "CARD IMAGE", uid: "subCategoryImage" },
+    { name: "SUBCATEGORY NAME", uid: "subCategoryName" },
+    { name: "BANNER TITLE", uid: "subCategoryTitle" },
+    { name: "BANNER TEXT", uid: "subCategoryText" },
     { name: "Actions", uid: "actions" },
 ];
 
@@ -92,6 +97,18 @@ function ViewSubCategories({ SubCategoryData }) {
         const cellValue = categoryData[columnKey];
 
         switch (columnKey) {
+            case "subCategoryMobHeroImage":
+                return (
+                    <div className="cursor-pointer">
+                        <MobileImageModal id={categoryData?.subCategoryImage} />
+                    </div>
+                );
+            case "subCategoryHeroImage":
+                return (
+                    <div className="cursor-pointer">
+                        <ImageModal id={categoryData?.subCategoryImage} />
+                    </div>
+                );
             case "subCategoryImage":
                 return (
                     <div className="cursor-pointer">

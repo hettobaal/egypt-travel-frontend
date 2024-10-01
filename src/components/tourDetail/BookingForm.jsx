@@ -59,7 +59,7 @@ function BookingForm({ data }) {
     const [isBookingDetailVisible, setIsBookingDetailVisible] = useState(false);
     const [adults, setAdults] = useState(1);
     const [children, setChildren] = useState(0);
-    // const [SmallChild, setSmallChild] = useState(0);
+    const [infant, setInfant] = useState(0);
     const [selectedDate, setSelectedDate] = useState();
     const [isPopoverOpen, setIsPopoverOpen] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState("");
@@ -73,8 +73,8 @@ function BookingForm({ data }) {
     const decrementChildren = () => setChildren(children > 0 ? children - 1 : 0);
 
 
-    // const incrementSmallChild = () => setSmallChild(SmallChild + 1);
-    // const decrementSmallChild = () => setSmallChild(SmallChild > 0 ? SmallChild - 1 : 1);
+    const incrementInfant = () => setInfant(infant + 1);
+    const decrementInfant = () => setInfant(infant > 0 ? infant - 1 : 0);
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -89,9 +89,9 @@ function BookingForm({ data }) {
     })
 
     useEffect(() => {
-        const personString = `Adult x ${adults}, Child x ${children}`;
+        const personString = `Adult x ${adults}, Child x ${children}  infant x ${infant}`;
         form.setValue("person", personString);
-    }, [adults, children, form]);
+    }, [adults, children, infant, form]);
 
     const handleLanguageSelect = (language) => {
         setSelectedLanguage(language);
@@ -137,7 +137,7 @@ function BookingForm({ data }) {
                                                                     {...field}
                                                                     className="w-full   h-12  border-none  pl-10 pr-12 placeholder:text-ocean placeholder:text-base cursor-pointer"
                                                                     type="text"
-                                                                    placeholder={`Adult ${adults} x ${adults > 1 ? '' : ''} Child x ${children} ${children > 1 ? '' : ''}`
+                                                                    placeholder={`Adult ${adults} x ${adults > 1 ? '' : ''}   Child x ${children} ${children > 1 ? '' : ''}  Infant x ${infant} ${infant > 1 ? '' : ''}`
                                                                     }
 
                                                                 />
@@ -189,6 +189,28 @@ function BookingForm({ data }) {
                                                                 </div>
                                                             </div>
                                                         </DropdownItem>
+                                                        <DropdownItem
+                                                            textValue="infant Count"
+                                                            className="data-[hover=true]:bg-white ata-[focus-visible=true]:outline-offset-0">
+                                                            <div className='flex flex-row justify-between items-center gap-x-16'>
+                                                                <div>
+                                                                    <h5 className='text-base font-semibold'>infant
+                                                                    </h5>
+                                                                    <Para className='text-sm'>
+                                                                        (Above 1 Year )
+                                                                    </Para>
+                                                                </div>
+                                                                <div className="flex items-center space-x-2">
+                                                                    <RxMinusCircled size={20} onClick={decrementInfant} className="cursor-pointer text-blue" />
+                                                                    <span>
+                                                                        {infant}
+                                                                    </span>
+                                                                    <RxPlusCircled size={20} onClick=
+                                                                        {incrementInfant} className="cursor-pointer text-blue" />
+                                                                </div>
+                                                            </div>
+                                                        </DropdownItem>
+
                                                     </DropdownMenu>
                                                 </Dropdown>
 

@@ -17,18 +17,22 @@ import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { EditIcon } from '@/components/reuseable/EditIcon'
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react'
-import { updateCategoryById, updateSubCategoryById } from '@/lib/siteApis'
+import { updateSubCategoryById } from '@/lib/siteApis'
 
 
 const formSchema = z.object({
-    subCategoryName: z.string().min(1, { message: "Category Name is required " }),
+    subCategoryName: z.string().optional(),
     subCategoryImage: z
-        .any()
+        .any(),
+    subCategoryHeroImage: z
+        .any(),
+    subCategoryMobHeroImage: z
+        .any(),
+    subCategoryTitle: z.string().optional(),
+    subCategoryText: z.string().optional(),
 })
 
 function UpdateSubCategory({ data, setData, id }) {
-
-
 
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [loader, setLoader] = useState(false);
@@ -39,6 +43,10 @@ function UpdateSubCategory({ data, setData, id }) {
         defaultValues: {
             subCategoryName: data?.subCategoryName,
             subCategoryImage: null,
+            subCategoryHeroImage: null,
+            subCategoryMobHeroImage: null,
+            subCategoryTitle: data?.subCategoryTitle,
+            subCategoryText: data?.subCategoryText,
         },
     })
 
@@ -46,20 +54,26 @@ function UpdateSubCategory({ data, setData, id }) {
     const onSubmit = async (subCategoryData) => {
         setLoader(true)
         const res = await updateSubCategoryById(subCategoryData, id)
-        // console.log("res", res);
+        console.log("res", res);
 
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
             toast?.success(res?.message)
             const newImageId = res?.data?.subCategoryImage;
+            const newImage2 = res?.data?.subCategoryHeroImage;
+            const newImage3 = res?.data?.subCategoryMobHeroImage;
             setData((prevData) =>
                 prevData?.map((item) =>
                     item?._id === id
                         ? {
                             ...item,
                             subCategoryName: subCategoryData?.subCategoryName,
-                            subCategoryImage: newImageId
+                            subCategoryImage: newImageId,
+                            subCategoryHeroImage: newImage2,
+                            subCategoryMobHeroImage: newImage3,
+                            subCategoryTitle: subCategoryData?.subCategoryTitle,
+                            subCategoryText: subCategoryData?.subCategoryText,
                         }
                         : item
                 )
@@ -73,6 +87,8 @@ function UpdateSubCategory({ data, setData, id }) {
     };
 
     const fileRef = form.register("categoryImage");
+    const fileRef2 = form.register("subCategoryHeroImage");
+    const fileRef3 = form.register("subCategoryMobHeroImage");
 
 
     return (
@@ -116,7 +132,7 @@ function UpdateSubCategory({ data, setData, id }) {
                                             name="subCategoryImage"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">SubCategory Image</FormLabel>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Card Image</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             className='dark:bg-darkModeSecondary  outline-none '
@@ -130,6 +146,82 @@ function UpdateSubCategory({ data, setData, id }) {
                                                 </FormItem>
                                             )}
                                         />
+                                        <FormField
+                                            control={form.control}
+                                            name="subCategoryHeroImage"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Banner Image</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            {...fileRef2}
+                                                            onChange={(event) => {
+                                                                field.onChange(event.target?.files?.[0] ?? undefined);
+                                                            }}
+                                                            type="file"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="subCategoryMobHeroImage"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Banner Mobile Image</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            {...fileRef3}
+                                                            onChange={(event) => {
+                                                                field.onChange(event.target?.files?.[0] ?? undefined);
+                                                            }}
+                                                            type="file"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="subCategoryTitle"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Banner  Title</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="text"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+
+                                        <FormField
+                                            control={form.control}
+                                            name="subCategoryText"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Banner Text </FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="text"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+
                                     </div>
                                     <div className="mt-[1.5rem]">
                                         <Button

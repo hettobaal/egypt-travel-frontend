@@ -31,6 +31,7 @@ const formSchema = z.object({
     adultPriceAfterDiscount: z.coerce.number().optional(),
     childPriceAfterDiscount: z.coerce.number().optional(),
     priceChild: z.coerce.number().optional(),
+    priceInfant: z.coerce.number().optional(),
     discountAmount: z.coerce.number().optional(),
     duration: z.coerce.number().optional(),
 })
@@ -51,6 +52,7 @@ function UpdateTourItem({ TourData, id, setData }) {
             fullDescription: TourData?.fullDescription,
             priceAdult: TourData?.priceAdult,
             priceChild: TourData?.priceChild,
+            priceInfant: TourData?.priceInfant,
             adultPriceAfterDiscount: TourData?.adultPriceAfterDiscount,
             childPriceAfterDiscount: TourData?.childPriceAfterDiscount,
             discountAmount: TourData?.discountAmount,
@@ -233,6 +235,24 @@ function UpdateTourItem({ TourData, id, setData }) {
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-base dark:text-white  font-semibold">Child Price</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="number"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="priceInfant"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Infant Price</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             {...field}

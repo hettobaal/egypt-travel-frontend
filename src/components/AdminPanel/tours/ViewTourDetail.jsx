@@ -84,12 +84,22 @@ function ViewTourDetail({ tourDetail }) {
                             {data?.priceAdult}
                         </h6>
                     </div>
+
                     <div >
                         <Heading>
                             Child Price
                         </Heading>
                         <h6 className='mt-1'>
                             {data?.priceChild}
+                        </h6>
+                    </div>
+
+                    <div >
+                        <Heading>
+                            Infant Price
+                        </Heading>
+                        <h6 className='mt-1'>
+                            {data?.priceInfant}
                         </h6>
                     </div>
 

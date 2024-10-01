@@ -120,6 +120,10 @@ export const createSubCategory = async (data) => {
     formData?.append('categoryId', data?.categoryId);
     formData?.append('subCategoryName', data?.subCategoryName);
     formData?.append('subCategoryImage', data?.subCategoryImage[0]);
+    formData?.append('subCategoryHeroImage', data?.subCategoryHeroImage[0]);
+    formData?.append('subCategoryMobHeroImage', data?.subCategoryMobHeroImage[0]);
+    formData?.append('subCategoryTitle', data?.subCategoryTitle);
+    formData?.append('subCategoryText', data?.subCategoryText);
 
     return fetch(Url, {
         method: 'POST',
@@ -200,7 +204,15 @@ export const updateSubCategoryById = async (data, id) => {
     if (data?.subCategoryImage) {
         formData.append('subCategoryImage', data?.subCategoryImage);
     }
+    if (data?.subCategoryHeroImage) {
+        formData.append('subCategoryHeroImage', data?.subCategoryHeroImage);
+    }
+    if (data?.subCategoryMobHeroImage) {
+        formData.append('subCategoryHeroImage', data?.subCategoryHeroImage);
+    }
     formData?.append('subCategoryName', data?.subCategoryName);
+    formData?.append('subCategoryTitle', data?.subCategoryTitle);
+    formData?.append('subCategoryText', data?.subCategoryText);
 
 
     return fetch(Url, {
@@ -276,6 +288,7 @@ export const addTour = async (data) => {
     formData?.append('description', data?.description);
     formData?.append('priceAdult', data?.priceAdult);
     formData?.append('priceChild', data?.priceChild);
+    formData?.append('priceInfant', data?.priceInfant);
     formData?.append('discountAmount', data?.discountAmount);
     formData?.append('duration', data?.Duration);
     data?.tourImages?.forEach((image) => {

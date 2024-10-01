@@ -24,6 +24,14 @@ const formSchema = z.object({
     subCategoryImage: z
         .any()
         .refine((file) => file?.length == 1, 'File is required.'),
+    subCategoryHeroImage: z
+        .any()
+        .refine((file) => file?.length == 1, 'File is required.'),
+    subCategoryMobHeroImage: z
+        .any()
+        .refine((file) => file?.length == 1, 'File is required.'),
+    subCategoryTitle: z.string().min(1, { message: "SubCategory Title is required " }),
+    subCategoryText: z.string().min(1, { message: "SubCategory Text is required " }),
 })
 
 
@@ -39,6 +47,10 @@ function CreateSubCategory({ data }) {
             categoryId: "",
             subCategoryName: "",
             subCategoryImage: null,
+            subCategoryHeroImage: null,
+            subCategoryMobHeroImage: null,
+            subCategoryTitle: "",
+            subCategoryText: "",
         },
     })
 
@@ -46,6 +58,8 @@ function CreateSubCategory({ data }) {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await createSubCategory(data)
+        console.log("res", res);
+
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -59,6 +73,8 @@ function CreateSubCategory({ data }) {
 
 
     const fileRef = form.register("subCategoryImage");
+    const fileRef2 = form.register("subCategoryHeroImage");
+    const fileRef3 = form.register("subCategoryMobHeroImage");
 
     return (
         <section className="mt-10 bg-white dark:bg-darkMode px-4 py-6  rounded-md shadow-lg ">
@@ -107,7 +123,7 @@ function CreateSubCategory({ data }) {
                                                 }
                                             </Select>
                                         </FormControl>
-                                         <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
 
                                     </FormItem>
                                 )}
@@ -125,7 +141,7 @@ function CreateSubCategory({ data }) {
                                                 type="text"
                                             />
                                         </FormControl>
-                                         <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
 
                                     </FormItem>
                                 )}
@@ -135,7 +151,7 @@ function CreateSubCategory({ data }) {
                                 name="subCategoryImage"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-base dark:text-white  font-semibold">Category Image</FormLabel>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Card Image</FormLabel>
                                         <FormControl>
                                             <Input
                                                 className='dark:bg-darkModeSecondary  outline-none '
@@ -145,11 +161,92 @@ function CreateSubCategory({ data }) {
                                                 type="file"
                                             />
                                         </FormControl>
-                                         <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
 
                                     </FormItem>
                                 )}
                             />
+
+                            <FormField
+                                control={form.control}
+                                name="subCategoryHeroImage"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Banner Image</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                {...fileRef2}
+                                                onChange={(event) => {
+                                                    field?.onChange(event?.target?.files?.[0] ?? undefined);
+                                                }}
+                                                type="file"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="subCategoryMobHeroImage"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Banner Mobile Image</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                {...fileRef3}
+                                                onChange={(event) => {
+                                                    field?.onChange(event?.target?.files?.[0] ?? undefined);
+                                                }}
+                                                type="file"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="subCategoryTitle"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Banner Title</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                type="text"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                    </FormItem>
+                                )}
+                            />
+
+                            <FormField
+                                control={form.control}
+                                name="subCategoryText"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Banner Text</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                type="text"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                    </FormItem>
+                                )}
+                            />
+
                         </div>
                         <div className="mt-[1.5rem]">
                             <Button

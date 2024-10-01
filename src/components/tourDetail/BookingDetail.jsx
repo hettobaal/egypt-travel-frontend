@@ -14,21 +14,25 @@ function BookingDetail({ data, formData }) {
     const adultPrice = data?.adultPriceAfterDiscount > 0 ? data?.adultPriceAfterDiscount : data?.priceAdult;
     const childPrice = data?.childPriceAfterDiscount > 0 ? data?.childPriceAfterDiscount : data?.priceChild;
 
+    const InfantPrice = data?.priceInfant
+
     // Extracting the numbers from formData.person
     const personData = formData?.person;
     const adultCount = parseInt(personData?.match(/Adult\s*x\s*(\d+)/)?.[1]) || 0;
     const childCount = parseInt(personData?.match(/Child\s*x\s*(\d+)/)?.[1]) || 0;
+    const InfantCount = parseInt(personData?.match(/infant\s*x\s*(\d+)/)?.[1]) || 0;
 
     // Calculating total price
     const totalAdultPrice = adultCount * adultPrice;
     const totalChildPrice = childCount * childPrice;
+    const totalInfantPrice = InfantCount * InfantPrice;
 
     // Final total price
-    const totalPrice = totalAdultPrice + totalChildPrice
+    const totalPrice = totalAdultPrice + totalChildPrice + totalInfantPrice
 
     const OldAdult = adultCount * data?.priceAdult
     const OldChildPrice = childCount > 0 ? childCount * data?.priceChild : 0
-    const strickPrice = OldAdult + OldChildPrice
+    const strickPrice = OldAdult + OldChildPrice + totalInfantPrice
 
     return (
         <MaxWidthWrapper className='sm:mt-8 mt-8  lg:px-10 md:px-8 sm:px-6 px-2'>
@@ -96,6 +100,12 @@ function BookingDetail({ data, formData }) {
                                         childCount > 0 &&
                                         < Para >
                                             Child {childCount} x ${childPrice} = ${totalChildPrice}
+                                        </Para>
+                                    }
+                                    {
+                                        InfantCount > 0 &&
+                                        < Para >
+                                            Infant {InfantCount} x ${InfantPrice} = ${totalInfantPrice}
                                         </Para>
                                     }
                                 </span>

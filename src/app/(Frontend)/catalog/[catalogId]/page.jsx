@@ -1,8 +1,3 @@
-// export const revalidate = 600;
-// req
-// req2
-// req3
-// req
 export const dynamicParams = true
 import React from 'react'
 import dynamic from 'next/dynamic';
@@ -32,9 +27,20 @@ async function page({ params }) {
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
 
+    const ImageData = data?.data
+
+    const heroImageDesktop = `https://tourbuckettest.s3.amazonaws.com/${ImageData?.subCategoryHeroImage}?v=${Date.now()}`
+
+
+    const heroImageMobile = `https://tourbuckettest.s3.amazonaws.com/${ImageData?.subCategoryMobHeroImage}?v=${Date.now()}`
+
+
     return (
         <>
-            <CatalogHero />
+            <CatalogHero 
+             ImageUrl={heroImageDesktop}
+             MobImageUrl={heroImageMobile}
+            />
             <CatalogTour data={data?.data} />
             <Reviews />
             <Journey />

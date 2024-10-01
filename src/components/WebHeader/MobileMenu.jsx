@@ -12,7 +12,7 @@ import Link from 'next/link';
 import { Input } from '../ui/input';
 import { ChevronDown } from 'lucide-react';
 
-function MobileMenu({ scrolled, isTourDetailPage, writeReview }) {
+function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const handleLinkClick = () => {
@@ -104,41 +104,20 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview }) {
                             {
                                 isDropdownOpen && (
                                     <div className='w-full flex flex-col  gap-y-2'>
-                                        <Link
-                                            onClick={handleLinkClick}
-                                            href='/category/Action&Abenteuer'
-                                            className='w-full border-b-1 border-[#00000038] pb-3 ps-4 text-base font-medium tracking-wider text-slate'
-                                        >
-                                            Action & Abenteuer
-                                        </Link>
-                                        <Link
-                                            onClick={handleLinkClick}
-                                            href='/category/Rund-ums-Meer'
-                                            className='w-full border-b-1 border-[#00000038] pb-3 ps-4 text-base font-medium tracking-wider text-slate'
-                                        >
-                                            Rund ums Meer
-                                        </Link>
-                                        <Link
-                                            onClick={handleLinkClick}
-                                            href='/category/Lands-Leute'
-                                            className='w-full border-b-1 border-[#00000038] pb-3 ps-4 text-base font-medium tracking-wider text-slate'
-                                        >
-                                            Lands & Leute
-                                        </Link>
-                                        <Link
-                                            onClick={handleLinkClick}
-                                            href='/category/Familienausflüge'
-                                            className='w-full border-b-1 border-[#00000038] pb-3 ps-4 text-base font-medium tracking-wider text-slate'
-                                        >
-                                            Familienausflüge
-                                        </Link>
-                                        <Link
-                                            onClick={handleLinkClick}
-                                            href='/category/Kultur'
-                                            className='w-full border-b-1 border-[#00000038] pb-3 ps-4 text-base font-medium tracking-wider text-slate'
-                                        >
-                                            Kultur
-                                        </Link>
+                                        {
+                                            categoryData?.map((item, index) => {
+                                                return (
+                                                    <Link
+                                                        key={index}
+                                                        onClick={handleLinkClick}
+                                                        href={`/category/${item?.slug}`}
+                                                        className='w-full border-b-1 border-[#00000038] pb-3 ps-4 text-base font-medium tracking-wider text-slate'
+                                                    >
+                                                        {item?.categoryName}
+                                                    </Link>
+                                                )
+                                            })
+                                        }
                                     </div>
                                 )
                             }

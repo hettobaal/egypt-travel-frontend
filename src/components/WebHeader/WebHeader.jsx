@@ -155,7 +155,7 @@ function WebHeader() {
                     </Button>
                 </Link>
                 <span className='lg:hidden'>
-                    <MobileMenu scrolled={scrolled} isTourDetailPage={isTourDetailPage} writeReview={writeReview} />
+                    <MobileMenu scrolled={scrolled} isTourDetailPage={isTourDetailPage} writeReview={writeReview} categoryData={categoryData} />
                 </span>
             </MaxWidthWrapper>
         </header >
