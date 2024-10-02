@@ -23,10 +23,10 @@ async function page({ params }) {
     const decodedId = decodeURIComponent(id);
     const CategoryData = await getCategories()
     const SingleCategoryData = await getSingleCategory(decodedId)
-    // console.log("data", SingleCategoryData);
-    const currentData = CategoryData?.data?.find(item => {
-        return item?.slug?.toLowerCase() === decodedId?.toLowerCase();
-    });
+
+    const currentData = Array?.isArray(CategoryData?.data)
+        ? CategoryData?.data?.find(item => item?.slug?.toLowerCase() === decodedId?.toLowerCase())
+        : null;
 
 
 
