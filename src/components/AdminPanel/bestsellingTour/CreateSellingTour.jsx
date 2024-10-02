@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -24,6 +24,16 @@ const formSchema = z.object({
 
 function CreateSellingTour({ data }) {
 
+    const sortedData = useMemo(() => {
+        return [...data]?.sort((a, b) => {
+            if (a?._id > b?._id) return -1;
+            if (a?._id < b?._id) return 1;
+            return 0;
+        });
+    }, [data]);
+
+    const [subCategoryData, setSubCategoryData] = useState(sortedData || [])
+
     const [value, setValue] = React.useState(new Set([]));
     const [loader, setLoader] = useState(false);
 
@@ -36,8 +46,8 @@ function CreateSellingTour({ data }) {
     })
 
     const onSubmit = async (data) => {
-      
-        
+
+
         setLoader(true)
         const res = await addSellingTour(data)
         setLoader(false)
@@ -86,7 +96,7 @@ function CreateSellingTour({ data }) {
                                             >
 
                                                 {
-                                                    data?.map((item) => {
+                                                    subCategoryData?.map((item) => {
                                                         return (
 
                                                             <SelectItem

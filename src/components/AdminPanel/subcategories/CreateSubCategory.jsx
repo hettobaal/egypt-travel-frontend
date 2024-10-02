@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -36,6 +36,16 @@ const formSchema = z.object({
 
 
 function CreateSubCategory({ data }) {
+    const DataArray = data?.data
+    const sortedData = useMemo(() => {
+        return [...DataArray]?.sort((a, b) => {
+            if (a?._id > b?._id) return -1;
+            if (a?._id < b?._id) return 1;
+            return 0;
+        });
+    }, [DataArray]);
+
+    const [categoryData, setCategoryData] = useState(sortedData || [])
 
     const [value, setValue] = React.useState(new Set([]));
     const [loader, setLoader] = useState(false);
@@ -58,8 +68,6 @@ function CreateSubCategory({ data }) {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await createSubCategory(data)
-        console.log("res", res);
-
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -109,7 +117,7 @@ function CreateSubCategory({ data }) {
                                             >
 
                                                 {
-                                                    data?.data?.map((item) => {
+                                                    categoryData?.map((item) => {
                                                         return (
 
                                                             <SelectItem

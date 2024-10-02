@@ -1,14 +1,13 @@
 "use client"
-import React, { useEffect } from "react";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Tooltip, Pagination, Input } from "@nextui-org/react";
-import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
+import React, { useMemo } from "react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input } from "@nextui-org/react";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
 import { DeleteSubCategory } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 import UpdateSubCategory from "./UpdateSubCategory";
-import Image from "next/image";
 import MobileImageModal from "@/components/reuseable/MobileImageModal";
+import { Button } from "@/components/ui/button";
 
 
 const columns = [
@@ -23,10 +22,16 @@ const columns = [
 
 
 function ViewSubCategories({ SubCategoryData }) {
-    // console.log("SubCategoryData", SubCategoryData[0]?.subCategoryImage);
+    const sortedData = useMemo(() => {
+        return [...SubCategoryData]?.sort((a, b) => {
+            if (a?._id > b?._id) return -1;
+            if (a?._id < b?._id) return 1;
+            return 0;
+        });
+    }, [SubCategoryData]);
 
 
-    const [data, setData] = React?.useState(SubCategoryData || []);
+    const [data, setData] = React?.useState(sortedData || []);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
@@ -117,17 +122,18 @@ function ViewSubCategories({ SubCategoryData }) {
                 );
             case "actions":
                 return (
-                    <div className="relative flex items-center gap-2">
-                        <Tooltip content="Edit">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <UpdateSubCategory data={categoryData} setData={setData} id={categoryData?._id} />
-                            </span>
-                        </Tooltip>
-                        <Tooltip color="danger" content="Delete">
-                            <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                <DeleteIcon onClick={() => Delete(categoryData?._id)} />
-                            </span>
-                        </Tooltip>
+                    <div className="relative flex flex-col items-start gap-2">
+                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                            <UpdateSubCategory data={categoryData} setData={setData} id={categoryData?._id} />
+                        </span>
+                        <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                            <Button
+                                className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                onClick={() => Delete(categoryData?._id)}
+                            >
+                                Delete
+                            </Button>
+                        </span>
                     </div>
                 );
             default:

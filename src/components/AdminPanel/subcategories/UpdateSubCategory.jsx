@@ -15,7 +15,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
-import { EditIcon } from '@/components/reuseable/EditIcon'
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react'
 import { updateSubCategoryById } from '@/lib/siteApis'
 
@@ -54,8 +53,6 @@ function UpdateSubCategory({ data, setData, id }) {
     const onSubmit = async (subCategoryData) => {
         setLoader(true)
         const res = await updateSubCategoryById(subCategoryData, id)
-        console.log("res", res);
-
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -93,11 +90,12 @@ function UpdateSubCategory({ data, setData, id }) {
 
     return (
         <>
-
-            <EditIcon
-                aria-label="Edit User"
+            <Button
+                className="w-32  text-white bg-blue hover:bg-darkBlue"
                 onClick={onOpen}
-            />
+            >
+                Edit
+            </Button>
             <Modal
                 size="xl"
                 className="dark:bg-darkMode pb-3"

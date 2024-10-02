@@ -1,11 +1,11 @@
 "use client"
-import React from "react";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Tooltip, Pagination, Input } from "@nextui-org/react";
-import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
+import React, { useMemo } from "react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input } from "@nextui-org/react";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
 import { DeleteSellingTour } from "@/lib/siteApis";
 import toast from "react-hot-toast";
+import { Button } from "@/components/ui/button";
 
 const columns = [
     { name: "CARD IMAGE", uid: "cardImage" },
@@ -18,7 +18,16 @@ const columns = [
 ];
 
 function ViewPopularTour({ TourData }) {
-    const [data, setData] = React?.useState(TourData || []);
+
+    const sortedData = useMemo(() => {
+        return [...TourData]?.sort((a, b) => {
+            if (a?._id > b?._id) return -1;
+            if (a?._id < b?._id) return 1;
+            return 0;
+        });
+    }, [TourData]);
+
+    const [data, setData] = React?.useState(sortedData || []);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
@@ -93,12 +102,15 @@ function ViewPopularTour({ TourData }) {
                 );
             case "actions":
                 return (
-                    <div className="relative flex items-center gap-2">
-                        <Tooltip color="danger" content="Delete">
-                            <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                <DeleteIcon onClick={() => Delete(TourData?._id)} />
-                            </span>
-                        </Tooltip>
+                    <div className="relative flex items-start gap-2">
+                        <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                            <Button
+                                className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                onClick={() => Delete(TourData?._id)}
+                            >
+                                Delete
+                            </Button>
+                        </span>
                     </div>
                 );
             default:

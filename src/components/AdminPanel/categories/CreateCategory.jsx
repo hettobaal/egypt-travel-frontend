@@ -50,6 +50,7 @@ function CreateCategory() {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await createCategory(data)
+
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)

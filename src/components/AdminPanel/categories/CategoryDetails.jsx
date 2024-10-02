@@ -1,26 +1,37 @@
 "use client"
-import React from "react";
+import React, { useMemo } from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Tooltip, Pagination, Input } from "@nextui-org/react";
-import { EyeIcon } from "@/components/reuseable/EyeIcon";
-import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
-import { DeleteCategory, DeleteSubCategory } from "@/lib/siteApis";
+import { DeleteSubCategory } from "@/lib/siteApis";
 import toast from "react-hot-toast";
-import UpdateCategory from "./UpdateCategory";
 import UpdateSubCategory from "../subcategories/UpdateSubCategory";
+import { Button } from "@/components/ui/button";
+import MobileImageModal from "@/components/reuseable/MobileImageModal";
 
 
 const columns = [
-    { name: "SUB CATEGORY IMAGE", uid: "subCategoryImage" },
-    { name: "SUB CATEGORY NAME", uid: "subCategoryName" },
-    { name: "ACTIONS", uid: "actions" },
+    { name: "BANNER MOBILE IMAGE", uid: "subCategoryMobHeroImage" },
+    { name: "BANNER  IMAGE", uid: "subCategoryHeroImage" },
+    { name: "CARD IMAGE", uid: "subCategoryImage" },
+    { name: "SUBCATEGORY NAME", uid: "subCategoryName" },
+    { name: "BANNER TITLE", uid: "subCategoryTitle" },
+    { name: "BANNER TEXT", uid: "subCategoryText" },
+    { name: "Actions", uid: "actions" },
 ];
 
 
 function CategoryDetails({ CategoryData }) {
-   
-    const [data, setData] = React?.useState(CategoryData || []);
+
+    const sortedData = useMemo(() => {
+        return [...CategoryData]?.sort((a, b) => {
+            if (a?._id > b?._id) return -1;
+            if (a?._id < b?._id) return 1;
+            return 0;
+        });
+    }, [CategoryData]);
+
+    const [data, setData] = React?.useState(sortedData || []);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
@@ -89,6 +100,18 @@ function CategoryDetails({ CategoryData }) {
         const cellValue = categoryData[columnKey];
 
         switch (columnKey) {
+            case "subCategoryMobHeroImage":
+                return (
+                    <div className="cursor-pointer">
+                        <MobileImageModal id={categoryData?.subCategoryImage} />
+                    </div>
+                );
+            case "subCategoryHeroImage":
+                return (
+                    <div className="cursor-pointer">
+                        <ImageModal id={categoryData?.subCategoryImage} />
+                    </div>
+                );
             case "subCategoryImage":
                 return (
                     <div className="cursor-pointer">
@@ -97,17 +120,18 @@ function CategoryDetails({ CategoryData }) {
                 );
             case "actions":
                 return (
-                    <div className="relative flex items-center gap-2">
-                        <Tooltip content="Edit ">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <UpdateSubCategory data={categoryData} setData={setData} id={categoryData?._id} />
-                            </span>
-                        </Tooltip>
-                        <Tooltip color="danger" content="Delete">
-                            <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                <DeleteIcon onClick={() => Delete(categoryData?._id)} />
-                            </span>
-                        </Tooltip>
+                    <div className="relative flex flex-col items-start gap-2">
+                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                            <UpdateSubCategory data={categoryData} setData={setData} id={categoryData?._id} />
+                        </span>
+                        <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                            <Button
+                                className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                onClick={() => Delete(categoryData?._id)}
+                            >
+                                Delete
+                            </Button>
+                        </span>
                     </div>
                 );
             default:

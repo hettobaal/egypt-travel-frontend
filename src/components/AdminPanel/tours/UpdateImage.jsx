@@ -70,7 +70,7 @@ function UpdateImage({ TourData, id, setData }) {
                 className="w-32  text-white bg-blue hover:bg-darkBlue"
                 onClick={onOpen}
             >
-                Update
+                Edit
             </Button>
             <Modal
                 size="xl"

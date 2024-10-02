@@ -86,11 +86,12 @@ function UpdateCategory({ data, setData, id }) {
     const fileRef2 = form.register("categoryMobImage");
     return (
         <>
-
-            <EditIcon
-                aria-label="Edit User"
+            <Button
+                className="w-32  text-white bg-blue hover:bg-darkBlue"
                 onClick={onOpen}
-            />
+            >
+                Edit
+            </Button>
             <Modal
                 size="xl"
                 className="dark:bg-darkMode pb-3"

@@ -1,11 +1,8 @@
 "use client"
-import React from "react";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Tooltip, Pagination, Input } from "@nextui-org/react";
-import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
+import React, { useMemo } from "react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input } from "@nextui-org/react";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
-import { DeleteDiscountTour } from "@/lib/siteApis";
-import toast from "react-hot-toast";
 
 
 const columns = [
@@ -14,13 +11,21 @@ const columns = [
     { name: "DISCOUNT", uid: "discountAmount" },
     { name: "ADULT PRICE", uid: "adultPriceAfterDiscount" },
     { name: "CHILD PRICE", uid: "childPriceAfterDiscount" },
-    { name: "STRIKE PRICE", uid: "strikePrice" },
 ];
 
 
 function ViewDiscountedTours({ TourData }) {
 
-    const [data, setData] = React?.useState(TourData);
+    const sortedData = useMemo(() => {
+        return [...TourData]?.sort((a, b) => {
+            if (a?._id > b?._id) return -1;
+            if (a?._id < b?._id) return 1;
+            return 0;
+        });
+    }, [TourData]);
+
+
+    const [data, setData] = React?.useState(sortedData || []);
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
 
