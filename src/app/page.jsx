@@ -24,11 +24,11 @@ async function page() {
 
   const data = await getCategories()
 
-  const firstCategory = data?.data[0] || null;
-  const secondCategory = data?.data[1] || null;
-  const thirdCategory = data?.data[2] || null;
-  const fourCategory = data?.data[3] || null;
-  const fiveCategory = data?.data[4] || null;
+  const firstCategory = data?.data[0] || [];
+  const secondCategory = data?.data[1] || [];
+  const thirdCategory = data?.data[2] || [];
+  const fourCategory = data?.data[3] || [];
+  const fiveCategory = data?.data[4] || [];
 
   const popularToursData = await getPopularTours()
   const DiscountedTours = await getDiscountTours()
