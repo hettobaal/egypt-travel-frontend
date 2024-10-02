@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 
     const posts = Array?.isArray(data?.data) ? data?.data : []
     const array = posts?.map((post) => ({
-        catalogId: post?.slug,
+        catalogId: post?.slug || '',
     }));
     return array;
 
@@ -28,12 +28,13 @@ async function page({ params }) {
     const data = await getSingleSubCategory(decodedId)
 
     const ImageData = data?.data
+    const heroImageDesktop = ImageData?.subCategoryHeroImage
+        ? `https://tourbuckettest.s3.amazonaws.com/${ImageData.subCategoryHeroImage}?v=${Date.now()}`
+        : '';
 
-    const heroImageDesktop = `https://tourbuckettest.s3.amazonaws.com/${ImageData?.subCategoryHeroImage}?v=${Date.now()}`
-
-
-    const heroImageMobile = `https://tourbuckettest.s3.amazonaws.com/${ImageData?.subCategoryMobHeroImage}?v=${Date.now()}`
-
+    const heroImageMobile = ImageData?.subCategoryMobHeroImage
+        ? `https://tourbuckettest.s3.amazonaws.com/${ImageData.subCategoryMobHeroImage}?v=${Date.now()}`
+        : '';
 
     return (
         <>

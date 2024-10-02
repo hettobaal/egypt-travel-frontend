@@ -12,7 +12,7 @@ export async function generateStaticParams() {
     const data = await getCategories()
     const posts = Array?.isArray(data?.data) ? data?.data : []
     const array = posts?.map((post) => ({
-        categoryId: post?.slug,
+        categoryId: post?.slug || '',
     }));
     return array;
 }
@@ -30,11 +30,15 @@ async function page({ params }) {
         : null;
 
 
+    const heroImageDesktop = currentData?.categoryImage
+        ? `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryImage}?v=${Date.now()}`
+        : '';
 
-    const heroImageDesktop = `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryImage}?v=${Date.now()}`
+    const heroImageMobile = currentData?.categoryMobImage
+        ? `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryMobImage}?v=${Date.now()}`
+        : '';
 
 
-    const heroImageMobile = `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryMobImage}?v=${Date.now()}`
 
 
     return (
