@@ -62,7 +62,6 @@ function CreateTour({ data }) {
         }
         return [];
     }, [data]);
-
     const [subCategoryData, setSubCategoryData] = useState(sortedData || [])
 
     const [value, setValue] = React.useState(new Set([]));

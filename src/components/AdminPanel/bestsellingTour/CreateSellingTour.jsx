@@ -24,12 +24,16 @@ const formSchema = z.object({
 
 function CreateSellingTour({ data }) {
 
+
     const sortedData = useMemo(() => {
-        return [...data]?.sort((a, b) => {
-            if (a?._id > b?._id) return -1;
-            if (a?._id < b?._id) return 1;
-            return 0;
-        });
+        if (Array.isArray(data)) {
+            return [...data]?.sort((a, b) => {
+                if (a?._id > b?._id) return -1;
+                if (a?._id < b?._id) return 1;
+                return 0;
+            });
+        }
+        return [];
     }, [data]);
 
     const [subCategoryData, setSubCategoryData] = useState(sortedData || [])

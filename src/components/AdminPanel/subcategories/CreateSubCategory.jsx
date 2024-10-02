@@ -37,12 +37,16 @@ const formSchema = z.object({
 
 function CreateSubCategory({ data }) {
     const DataArray = data?.data
+    
     const sortedData = useMemo(() => {
-        return [...DataArray]?.sort((a, b) => {
-            if (a?._id > b?._id) return -1;
-            if (a?._id < b?._id) return 1;
-            return 0;
-        });
+        if (Array.isArray(DataArray)) {
+            return [...DataArray]?.sort((a, b) => {
+                if (a?._id > b?._id) return -1;
+                if (a?._id < b?._id) return 1;
+                return 0;
+            });
+        }
+        return [];
     }, [DataArray]);
 
     const [categoryData, setCategoryData] = useState(sortedData || [])
