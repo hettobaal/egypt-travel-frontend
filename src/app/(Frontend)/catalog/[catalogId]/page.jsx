@@ -12,7 +12,7 @@ export async function generateStaticParams() {
     const data = await getSubCategories()
 
 
-    const posts = data?.data;
+    const posts = Array?.isArray(data?.data) ? data?.data : []
     const array = posts?.map((post) => ({
         catalogId: post?.slug,
     }));
@@ -37,9 +37,9 @@ async function page({ params }) {
 
     return (
         <>
-            <CatalogHero 
-             ImageUrl={heroImageDesktop}
-             MobImageUrl={heroImageMobile}
+            <CatalogHero
+                ImageUrl={heroImageDesktop}
+                MobImageUrl={heroImageMobile}
             />
             <CatalogTour data={data?.data} />
             <Reviews />
