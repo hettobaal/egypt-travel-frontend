@@ -11,8 +11,9 @@ const Reviews = dynamic(() => import('@/components/reuseable/Reviews'));
 
 
 export async function generateStaticParams() {
-    const allTours = await getTours()
-    const array = allTours?.data?.map((tour) => ({
+    const data = await getTours()
+    const posts = Array?.isArray(data?.data) ? data?.data : []
+    const array = posts?.map((tour) => ({
         tourSlug: tour?.slug,
     }));
     return array;
@@ -25,7 +26,7 @@ async function page({ params }) {
     const decodedSlug = decodeURIComponent(slug);
     const tour = await getSingleTour(decodedSlug)
     const similarTour = await getRelatedTours(tour?.data?.tag)
-    
+
 
 
     return (
@@ -36,7 +37,7 @@ async function page({ params }) {
                 <BookingForm data={tour?.data} />
             </div>
             <Description data={tour?.data} />
-            <RelatedTours data={similarTour?.data}/>
+            <RelatedTours data={similarTour?.data} />
             <Reviews />
         </>
     )
