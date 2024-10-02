@@ -12,9 +12,9 @@ const Reviews = dynamic(() => import('@/components/reuseable/Reviews'));
 
 export async function generateStaticParams() {
     const data = await getTours()
-    const posts = Array?.isArray(data?.data) ? data?.data : []
+    const posts = data?.data
     const array = posts?.map((tour) => ({
-        tourSlug: tour?.slug || '',
+        tourSlug: tour?.slug ,
     }));
     return array;
 }
