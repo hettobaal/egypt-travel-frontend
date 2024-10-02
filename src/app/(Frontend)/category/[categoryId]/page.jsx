@@ -9,8 +9,9 @@ const Journey = dynamic(() => import('@/components/reuseable/Journey'));
 
 
 export async function generateStaticParams() {
-    const posts = await getCategories()
-    const array = posts?.data?.map((post) => ({
+    const data = await getCategories()
+    const posts = Array?.isArray(data?.data) ? data?.data : []
+    const array = posts?.map((post) => ({
         categoryId: post?.slug,
     }));
     return array;
