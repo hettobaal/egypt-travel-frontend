@@ -6,7 +6,6 @@ import { IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline } from 'react-icon
 
 function Description({ data }) {
 
-
     return (
         <MaxWidthWrapper className='flex flex-col sm:mt-16 mt-10'>
             {/* first */}
@@ -25,7 +24,7 @@ function Description({ data }) {
                                         <li
                                             key={index}
                                             className='text-base font-normal text-ocean'>
-                                            {item?.point}
+                                            {item?.points}
                                         </li>
                                     )
                                 })
@@ -89,19 +88,21 @@ function Description({ data }) {
                         </HeadingThree>
                     </span>
                     <span className='max-w-screen-sm'>
-                        <HeadingThree>
-                            {data?.heading}
-                        </HeadingThree>
-                        <ul className='mt-2 list-disc flex flex-col gap-y-2 lg:pl-0   md:pl-8 sm:pl-6 pl-4'>
+                        <ul className='mt-2 list-disc flex flex-col gap-y-1 lg:pl-0   md:pl-8 sm:pl-6 pl-4'>
 
                             {
                                 data?.importantInformation?.map((item, index) => {
                                     return (
-                                        <li
-                                            key={index}
-                                            className='text-base font-normal text-ocean'>
-                                            {item?.point}
-                                        </li>
+                                        <>
+                                            <HeadingThree>
+                                                {item?.heading}
+                                            </HeadingThree>
+                                            <li
+                                                key={index}
+                                                className='text-base font-normal text-ocean'>
+                                                {item?.points}
+                                            </li>
+                                        </>
                                     )
                                 })
                             }

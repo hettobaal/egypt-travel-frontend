@@ -31,11 +31,11 @@ async function page({ params }) {
 
 
     const heroImageDesktop = currentData?.categoryImage
-        ? `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryImage}?v=${Date.now()}`
+        ? `https://dccvcdil526gz.cloudfront.net/${currentData?.categoryImage}?v=${Date.now()}`
         : '';
 
     const heroImageMobile = currentData?.categoryMobImage
-        ? `https://tourbuckettest.s3.amazonaws.com/${currentData?.categoryMobImage}?v=${Date.now()}`
+        ? `https://dccvcdil526gz.cloudfront.net/${currentData?.categoryMobImage}?v=${Date.now()}`
         : '';
 
 

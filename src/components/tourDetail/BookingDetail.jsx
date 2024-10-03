@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper'
 import HeadingThree from '../reuseable/HeadingThree'
 import Para from '../reuseable/Para'
 import { TbClockCancel } from 'react-icons/tb'
 import { IoPersonOutline } from 'react-icons/io5'
-import { Calendar } from 'lucide-react'
+import { Calendar, Loader2 } from 'lucide-react'
 import { MdPayment } from 'react-icons/md'
 import { Button } from '../ui/button'
+import { booking } from '@/lib/siteApis'
+import toast from 'react-hot-toast'
+import { format, parse } from 'date-fns';
+import ThankYouModal from './ThankYouModal'
 
 function BookingDetail({ data, formData }) {
+
 
     // Sample pricing for Adult, Child, and SmallChild
     const adultPrice = data?.adultPriceAfterDiscount > 0 ? data?.adultPriceAfterDiscount : data?.priceAdult;
@@ -33,6 +38,49 @@ function BookingDetail({ data, formData }) {
     const OldAdult = adultCount * data?.priceAdult
     const OldChildPrice = childCount > 0 ? childCount * data?.priceChild : 0
     const strickPrice = OldAdult + OldChildPrice + totalInfantPrice
+
+
+
+    // booking Data
+    const dateString = formData?.date;
+    let formattedDate;
+
+    const cleanDateString = dateString?.replace(/(\d+)(st|nd|rd|th)/, '$1');
+    const parsedDate = parse(cleanDateString, 'MMMM d, yyyy', new Date());
+    formattedDate = format(parsedDate, 'yyyy-MM-dd');
+
+
+    const bookingData = {
+        tourId: data?._id,
+        name: formData?.name,
+        email: formData?.email,
+        phoneNumber: formData?.phone,
+        language: formData?.language,
+        participants: {
+            adults: adultCount,
+            children: childCount,
+            infant: InfantCount,
+        },
+        date: formattedDate,
+    }
+    const [loader, setLoader] = useState(false);
+    const [isThankYouOpen, setIsThankYouOpen] = useState(false);
+
+    const onSubmit = async (data) => {
+
+        setLoader(true)
+        const res = await booking(data)
+        setLoader(false)
+        if (res?.status == "Success") {
+            setIsThankYouOpen(true)
+            setLoader(false)
+        } else {
+            setLoader(false)
+            toast?.error(res?.message)
+        }
+
+    };
+
 
     return (
         <MaxWidthWrapper className='sm:mt-8 mt-8  lg:px-10 md:px-8 sm:px-6 px-2'>
@@ -138,10 +186,18 @@ function BookingDetail({ data, formData }) {
                         <Para>All taxes & fees included</Para>
                     </span>
                     <span>
-                        <Button className='mt-4 px-10 rounded-full bg-navy hover:bg-navy h-11'>
-                            BOOK NOW
+                        <Button
+                            onClick={() => onSubmit(bookingData)}
+                            className='mt-4 px-10 rounded-full bg-navy hover:bg-navy h-11'>
+                            {loader ? (
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                            ) : '  BOOK NOW'}
                         </Button>
                     </span>
+                    {isThankYouOpen && <ThankYouModal
+                        isOpen={isThankYouOpen}
+                        onClose={() => setIsThankYouOpen(false)}
+                    />}
                 </div>
             </div>
         </MaxWidthWrapper >

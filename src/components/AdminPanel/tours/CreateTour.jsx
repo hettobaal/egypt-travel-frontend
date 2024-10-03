@@ -36,18 +36,18 @@ const formSchema = z.object({
         z.any().refine((file) => file instanceof File, 'File is required.')
     ),
     HighlightPoint: z.array(z.object({
-        point: z.string().min(1, { message: "required" }),
+        points: z.string().min(1, { message: "required" }),
     })),
     fullDescription: z.string().min(1, { message: "Description is required" }),
     includes: z.array(z.object({
         point: z.string().min(1, { message: "Included point is required" }),
         type: z.enum(["included", "excluded"], { errorMap: () => ({ message: "Select either included or excluded" }) }),
     })),
-    ImportantInformationHeading: z.string().min(1, { message: "Description is required" }),
-    ImportantInformationPoint: z.array(z.object({
-        point: z.string().min(1, { message: "required" }),
-    })),
-
+    // ImportantInformationHeading: z.string().min(1, { message: "Description is required" }),
+    ImportantInformation: z.array(z.object({
+        heading: z.string().min(1, { message: "Heading is required" }),
+        points: z.array(z.string().min(1, { message: "Point is required" }))
+    })).min(1, { message: "At least one section is required" })
 })
 
 function CreateTour({ data }) {
@@ -81,11 +81,16 @@ function CreateTour({ data }) {
             Duration: "",
             cardImage: "",
             tourImages: [],
-            HighlightPoint: [{ point: " " }],
+            HighlightPoint: [{ points: " " }],
             fullDescription: "",
             includes: [{ point: " ", type: "included" }],
-            ImportantInformationHeading: "",
-            ImportantInformationPoint: [{ point: " " }],
+            // ImportantInformationHeading: "",
+            ImportantInformation: [
+                {
+                    heading: "",
+                    points: [" "]
+                }
+            ],
         },
     })
 
@@ -106,13 +111,9 @@ function CreateTour({ data }) {
     });
 
     // Important Information
-    const {
-        fields: ImportantInformationPoint,
-        append: appendInfoPoint,
-        remove: removeInfoPoint,
-    } = useFieldArray({
+    const { fields: importantInfoFields, append: appendImportantInfo, remove: removeImportantInfo } = useFieldArray({
         control: form.control,
-        name: "ImportantInformationPoint",
+        name: "ImportantInformation",
     });
 
     // Images
@@ -123,8 +124,7 @@ function CreateTour({ data }) {
 
 
     const onSubmit = async (data) => {
-        // console.log("data",data);
-
+      
         setLoader(true)
         const res = await addTour(data)
         setLoader(false)
@@ -415,7 +415,7 @@ function CreateTour({ data }) {
                                             <FormField
                                                 key={field.id}
                                                 control={form.control}
-                                                name={`HighlightPoint.${index}.point`}
+                                                name={`HighlightPoint.${index}.points`}
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-base dark:text-white font-semibold">
@@ -559,70 +559,75 @@ function CreateTour({ data }) {
                                     <Heading>
                                         Important Information
                                     </Heading>
-                                    <div className='mt-4'>
-                                        <FormField
-                                            control={form.control}
-                                            name="ImportantInformationHeading"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">Heading</FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            className='dark:bg-darkModeSecondary  outline-none '
-                                                            type="text"
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
-
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <div className='mt-4 gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
-                                        {ImportantInformationPoint?.map((field, index) => (
+                                    {importantInfoFields.map((section, sectionIndex) => (
+                                        <div key={section.id} className='mt-4' >
                                             <FormField
-                                                key={field.id}
                                                 control={form.control}
-                                                name={`ImportantInformationPoint.${index}.point`}
+                                                name={`ImportantInformation.${sectionIndex}.heading`}
                                                 render={({ field }) => (
                                                     <FormItem>
                                                         <FormLabel className="text-base dark:text-white font-semibold">
-                                                            Point {index + 1}
-                                                        </FormLabel>
-                                                        <div className="flex space-x-2 items-center">
-                                                            <FormControl>
-                                                                <Input
-                                                                    {...field}
-                                                                    className="dark:bg-darkModeSecondary outline-none"
-                                                                    type="text"
-                                                                />
-                                                            </FormControl>
-                                                            {ImportantInformationPoint?.length > 1 && (
-                                                                <Button
-                                                                    type="button"
-                                                                    variant="outline"
-                                                                    className='text-white bg-red-500 hover:bg-darkBlue'
-                                                                    onClick={() => removeInfoPoint(index)}
-                                                                >
-                                                                    <Trash className="h-4 w-4 text-white" />
-                                                                </Button>
-                                                            )}
-                                                        </div>
+                                                            Heading</FormLabel>
+                                                        <FormControl>
+                                                            <Input
+                                                                {...field}
+                                                                className="dark:bg-darkModeSecondary outline-none"
+                                                            />
+                                                        </FormControl>
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
                                             />
-                                        ))}
-                                    </div>
+                                            <div className='mt-4 gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
+                                                {section.points.map((point, pointIndex) => (
+                                                    <FormField
+                                                        key={pointIndex}
+                                                        control={form.control}
+                                                        name={`ImportantInformation.${sectionIndex}.points.${pointIndex}`}
+                                                        render={({ field }) => (
+                                                            <FormItem>
+                                                                <FormLabel className="text-base dark:text-white font-semibold">Point</FormLabel>
+                                                                <FormControl>
+                                                                    <Input
+                                                                        className="dark:bg-darkModeSecondary outline-none"
+                                                                        {...field} />
+                                                                </FormControl>
+                                                                <FormMessage />
+                                                            </FormItem>
+                                                        )}
+                                                    />
+                                                ))}
+                                            </div>
+                                            {/* <Button
+                                                type="button"
+                                                variant="outline"
+                                                onClick={() => {
+                                                    const currentPoints = form.getValues(`ImportantInformation.${sectionIndex}.points`);
+                                                    form.setValue(`ImportantInformation.${sectionIndex}.points`, [...currentPoints, ""]);
+                                                }}
+                                                className="mt-2"
+                                            >
+                                                <Plus className="h-4 w-4 mr-2" /> Add Point
+                                            </Button> */}
+                                            {importantInfoFields.length > 1 && (
+                                                <Button
+                                                    className='text-white bg-red-500 hover:bg-darkBlue mt-2 ml-2'
+                                                    type="button"
+                                                    variant="outline"
+                                                    onClick={() => removeImportantInfo(sectionIndex)}
+                                                >
+                                                    Remove
+                                                </Button>
+                                            )}
+                                        </div>
+                                    ))}
                                     <Button
                                         type="button"
                                         variant="outline"
-                                        onClick={() => appendInfoPoint("")}
                                         className="flex items-center space-x-2 mt-4 text-white bg-blue hover:bg-darkBlue"
+                                        onClick={() => appendImportantInfo({ heading: "", points: [""] })}
                                     >
-                                        <Plus className="h-4 w-4" />
-                                        <span>Add Info Points</span>
+                                        <Plus className="h-4 w-4 mr-2" /> Add More
                                     </Button>
                                 </div>
                             </div>

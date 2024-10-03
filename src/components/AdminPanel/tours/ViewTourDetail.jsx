@@ -6,8 +6,11 @@ import Heading from '@/components/reuseable/Heading';
 import UpdateHighlight from './UpdateHighlight';
 import UpdateInclude from './UpdateInclude';
 import UpdateImage from './UpdateImage';
+import UpdateInfo from './UpdateInfo';
 
 function ViewTourDetail({ tourDetail }) {
+
+    console.log("tourDetail", tourDetail);
 
     const [data, setData] = useState(tourDetail)
     const strikePrice = data?.discountAmount > 0 && data?.priceAdult
@@ -18,7 +21,7 @@ function ViewTourDetail({ tourDetail }) {
                 <div className='flex justify-center items-center '>
                     <Image
                         className='rounded-lg'
-                        src={`https://tourbuckettest.s3.amazonaws.com/${data?.cardImage}?v=${Date.now()}`}
+                        src={`https://dccvcdil526gz.cloudfront.net/${data?.cardImage}?v=${Date.now()}`}
                         width={400}
                         height={180}
                         loading='lazy'
@@ -40,14 +43,6 @@ function ViewTourDetail({ tourDetail }) {
                         </Heading>
                         <h6 className='mt-1'>
                             {data?.tag}
-                        </h6>
-                    </div>
-                    <div >
-                        <Heading>
-                            Include Heading
-                        </Heading>
-                        <h6 className='mt-1'>
-                            {data?.heading}
                         </h6>
                     </div>
                     <div >
@@ -166,7 +161,7 @@ function ViewTourDetail({ tourDetail }) {
                                     key={index}
                                     className='flex flex-col gap-y-2 '>
                                     <p>
-                                        {item?.point}
+                                        {item?.points}
                                     </p>
                                     <UpdateHighlight TourData={item} id={data?._id} setData={setData} />
                                 </li>
@@ -198,6 +193,34 @@ function ViewTourDetail({ tourDetail }) {
                     }
                 </ul>
             </div>
+
+            <div className='border-2 dark:border-white border-gray px-4 py-6 rounded-xl'>
+                <Heading>
+                    Important Information
+                </Heading>
+                <ul className='flex flex-col gap-y-6 mt-2'>
+                    {
+                        data?.importantInformation
+                            ?.map((item, index) => {
+                                return (
+                                    <li
+                                        key={index}
+                                        className='flex flex-col gap-y-2 '>
+                                        <Heading>
+                                            {item?.heading}
+                                        </Heading>
+                                        <p>
+                                            {item?.points}
+                                        </p>
+                                        <UpdateInfo TourData={item} id={data?._id} setData={setData} />
+                                    </li>
+                                )
+                            })
+                    }
+                </ul>
+            </div>
+
+
             {/* Images */}
 
             <div className='border-2 dark:border-white border-gray px-4 py-6 rounded-xl'>
@@ -214,7 +237,7 @@ function ViewTourDetail({ tourDetail }) {
                                 >
                                     <Image
                                         className="rounded-md"
-                                        src={`https://tourbuckettest.s3.amazonaws.com/${item}?v=${Date.now()}`}
+                                        src={`https://dccvcdil526gz.cloudfront.net/${item}?v=${Date.now()}`}
                                         width={400}
                                         height={200}
                                         loading="lazy"

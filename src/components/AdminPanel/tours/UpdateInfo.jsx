@@ -16,38 +16,46 @@ import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react'
-import { updateTourPoint } from '@/lib/siteApis'
+import { updateInfo } from '@/lib/siteApis'
 
 
 const formSchema = z.object({
-    highlightPoint: z.string().optional(),
+    infoHeading: z.string().optional(),
+    infoPoint: z.string().optional(),
 })
 
-function UpdateHighlight({ TourData, id, setData }) {
-    const pointData = TourData?.points
+function UpdateInfo({ TourData, id, setData }) {
+    const pointData = TourData?.points[0]
+
     const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
     const [loader, setLoader] = useState(false);
 
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            highlightPoint: pointData,
+            infoHeading: TourData?.heading,
+            infoPoint: pointData,
         },
     })
 
     const onSubmit = async (data) => {
         setLoader(true)
-        const res = await updateTourPoint(data, id, TourData?._id)
+        const res = await updateInfo(data, id, TourData?._id)
+
         setLoader(false)
         if (res?.status == "Success") {
             toast?.success(res?.message)
             setData((prevData) => {
                 return {
                     ...prevData,
-                    highlights: prevData?.highlights?.map((highlight) =>
-                        highlight?._id === TourData?._id
-                            ? { ...highlight, point: data?.highlightPoint }
-                            : highlight
+                    includes: prevData?.includes?.map((include) =>
+                        include?._id === TourData?._id
+                            ? {
+                                ...include,
+                                infoHeading: data?.infoHeading,
+                                infoPoint: data?.infoPoint,
+                            }
+                            : include
                     ),
                 };
             });
@@ -80,13 +88,30 @@ function UpdateHighlight({ TourData, id, setData }) {
                         <ModalBody>
                             <Form {...form}>
                                 <form onSubmit={form?.handleSubmit(onSubmit)} className="space-y-8">
-                                    <div className='gap-6 grid  grid-cols-1  w-full'>
+                                    <div className='gap-6 grid  sm:grid-cols-2 grid-cols-1  w-full'>
                                         <FormField
                                             control={form.control}
-                                            name="highlightPoint"
+                                            name="infoHeading"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">Highlight Point</FormLabel>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Heading</FormLabel>
+                                                    <FormControl>
+                                                        <Input
+                                                            {...field}
+                                                            className='dark:bg-darkModeSecondary  outline-none '
+                                                            type="text"
+                                                        />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                        <FormField
+                                            control={form.control}
+                                            name="infoPoint"
+                                            render={({ field }) => (
+                                                <FormItem>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Point</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             {...field}
@@ -117,4 +142,4 @@ function UpdateHighlight({ TourData, id, setData }) {
     )
 }
 
-export default UpdateHighlight;
+export default UpdateInfo;

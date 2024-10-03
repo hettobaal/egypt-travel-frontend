@@ -297,8 +297,8 @@ export const addTour = async (data) => {
     formData?.append('highlights', JSON?.stringify(data?.HighlightPoint));
     formData?.append('fullDescription', data?.fullDescription);
     formData?.append('includes', JSON?.stringify(data?.includes));
-    formData?.append('heading', data?.ImportantInformationHeading);
-    formData?.append('importantInformation', JSON?.stringify(data?.ImportantInformationPoint));
+    // formData?.append('heading', data?.ImportantInformationHeading);
+    formData?.append('importantInformation', JSON?.stringify(data?.ImportantInformation));
 
     return fetch(Url, {
         method: 'POST',
@@ -360,7 +360,6 @@ export const updateTourById = async (data, id) => {
     }
     formData?.append('title', data?.title);
     formData?.append('tag', data?.tag);
-    formData?.append('heading', data?.heading);
     formData?.append('description', data?.description);
     formData?.append('fullDescription', data?.fullDescription);
     formData?.append('priceAdult', data?.priceAdult);
@@ -429,6 +428,33 @@ export const updateTourIncludePoint = async (data, id, pointId) => {
             return error
         });
 };
+
+
+
+export const updateInfo = async (data, id, pointId) => {
+
+    const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
+    const formData = new FormData();
+    formData?.append('heading', data?.infoHeading);
+    formData?.append('points', data?.infoPoint);
+    formData?.append('importantInfoId', pointId);
+
+    return fetch(Url, {
+        method: 'PUT',
+        body: formData,
+        mode: 'cors',
+        cache: "no-store"
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
 
 export const updateTourImage = async (data, id, TourData) => {
 
@@ -667,3 +693,57 @@ export const DeleteSellingTour = async (id) => {
             return error;
         });
 }
+
+
+// Booking Apis
+export const booking = async (data) => {
+
+    const Url = SERVER_URL + 'api/public/add-booking';
+
+
+    const jsonData = {
+        tourId: data?.tourId,
+        name: data?.name,
+        email: data?.email,
+        phoneNumber: data?.phoneNumber,
+        language: data?.language,
+        participants: data?.participants,
+        date: data?.date
+    };
+
+    return fetch(Url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(jsonData),
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
+export const getBookingTours = async () => {
+
+    const Url = SERVER_URL + 'admin/booking/get-bookings';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};

@@ -16,7 +16,7 @@ function ImageModal({ id }) {
             <DialogTrigger>
 
                 <Image
-                    src={`https://tourbuckettest.s3.amazonaws.com/${id}?v=${Date.now()}`}
+                    src={`https://dccvcdil526gz.cloudfront.net/${id}?v=${Date.now()}`}
                     width={200}
                     height={150}
                     loading="lazy"
@@ -28,7 +28,7 @@ function ImageModal({ id }) {
                 <div className='relative md:w-[70%] w-[90%] h-[60%]  mx-auto flex justify-center items-center '>
                     <Image
                         className="rounded-md max-h-[80vh]"
-                        src={`https://tourbuckettest.s3.amazonaws.com/${id}?v=${Date.now()}`}
+                        src={`https://dccvcdil526gz.cloudfront.net/${id}?v=${Date.now()}`}
                         width={1000}
                         height={800}
                         loading="lazy"

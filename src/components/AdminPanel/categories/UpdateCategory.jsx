@@ -15,7 +15,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
-import { EditIcon } from '@/components/reuseable/EditIcon'
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react'
 import { updateCategoryById } from '@/lib/siteApis'
 

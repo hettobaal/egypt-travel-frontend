@@ -13,9 +13,12 @@ export async function generateStaticParams() {
 
 
     const posts = Array?.isArray(data?.data) ? data?.data : []
+    // console.log("posts", posts);
+
     const array = posts?.map((post) => ({
         catalogId: post?.slug || '',
     }));
+    // console.log("array", array);
     return array;
 
 }
@@ -29,11 +32,11 @@ async function page({ params }) {
 
     const ImageData = data?.data
     const heroImageDesktop = ImageData?.subCategoryHeroImage
-        ? `https://tourbuckettest.s3.amazonaws.com/${ImageData.subCategoryHeroImage}?v=${Date.now()}`
+        ? `https://dccvcdil526gz.cloudfront.net/${ImageData.subCategoryHeroImage}?v=${Date.now()}`
         : '';
 
     const heroImageMobile = ImageData?.subCategoryMobHeroImage
-        ? `https://tourbuckettest.s3.amazonaws.com/${ImageData.subCategoryMobHeroImage}?v=${Date.now()}`
+        ? `https://dccvcdil526gz.cloudfront.net/${ImageData.subCategoryMobHeroImage}?v=${Date.now()}`
         : '';
 
     return (

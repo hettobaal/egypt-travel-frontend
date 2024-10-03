@@ -29,7 +29,6 @@ function DetailMobileCarousel({ imageUrls }) {
                         imageUrls?.map((item, index) => {
                             return (
                                 <SwiperSlide
-
                                     key={index}>
                                     <div className='h-full flex items-center justify-center sm:max-h-[55vh] max-h-[45vh]'>
                                         <Image

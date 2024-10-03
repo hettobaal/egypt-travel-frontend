@@ -28,7 +28,7 @@ function TourCards({ ToursData }) {
                                 >
                                     <CardHeader className="p-0  flex-col items-start">
                                         <Image
-                                            src={`https://tourbuckettest.s3.amazonaws.com/${item?.cardImage}`}
+                                            src={`https://dccvcdil526gz.cloudfront.net/${item?.cardImage}`}
                                             width={700}
                                             height={200}
                                             loading='lazy'

@@ -16,7 +16,7 @@ function DetailHero({ data }) {
 
     const imageUrls = data?.tourImages?.map((item) => {
         return (
-            `https://tourbuckettest.s3.amazonaws.com/${item}`
+            `https://dccvcdil526gz.cloudfront.net/${item}`
         )
     })
 
@@ -52,7 +52,7 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
-                                className='w-full h-full'
+                                className='w-full h-full object-cover'
                                 onClick={() => handleImageClick(imageUrls[1])}
 
                             />

@@ -47,7 +47,6 @@ function UpdateTourItem({ TourData, id, setData }) {
             cardImage: '',
             title: TourData?.title,
             tag: TourData?.tag,
-            heading: TourData?.heading,
             description: TourData?.description,
             fullDescription: TourData?.fullDescription,
             priceAdult: TourData?.priceAdult,
@@ -77,7 +76,6 @@ function UpdateTourItem({ TourData, id, setData }) {
                         ...prevData,
                         title: data?.title,
                         tag: data?.tag,
-                        heading: data?.heading,
                         cardImage: newImageId,
                         description: data?.description,
                         fullDescription: data?.fullDescription,
@@ -147,24 +145,6 @@ function UpdateTourItem({ TourData, id, setData }) {
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-base dark:text-white  font-semibold">Tag</FormLabel>
-                                                    <FormControl>
-                                                        <Input
-                                                            {...field}
-                                                            className='dark:bg-darkModeSecondary  outline-none '
-                                                            type="text"
-                                                        />
-                                                    </FormControl>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-
-                                        <FormField
-                                            control={form.control}
-                                            name="heading"
-                                            render={({ field }) => (
-                                                <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">Include Heading </FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             {...field}
