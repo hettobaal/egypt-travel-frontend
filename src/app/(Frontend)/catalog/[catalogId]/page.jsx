@@ -8,15 +8,13 @@ const CatalogHero = dynamic(() => import('@/components/catalog/CatalogHero'));
 const CatalogTour = dynamic(() => import('@/components/catalog/CatalogTour'));
 
 export async function generateStaticParams() {
-
+// req acess
     const data = await getSubCategories()
 
 
-    const posts = Array?.isArray(data?.data) ? data?.data : []
-    // console.log("posts", posts);
-
+    const posts = data?.data
     const array = posts?.map((post) => ({
-        catalogId: post?.slug || '',
+        catalogId: post?.slug ,
     }));
     // console.log("array", array);
     return array;
