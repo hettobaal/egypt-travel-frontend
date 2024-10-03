@@ -4,7 +4,7 @@ import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 
-function CatalogHero({ ImageUrl, MobImageUrl }) {
+function CatalogHero({ ImageUrl, MobImageUrl, data }) {
 
     const [width, setWidth] = useState(null);
 
@@ -30,10 +30,10 @@ function CatalogHero({ ImageUrl, MobImageUrl }) {
             <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 justify-center items-center max-w-screen-lg mx-auto h-full   lg:px-0 md:px-8 mt-8'
             >
                 <h1 className='md:text-[34px] text-2xl font-medium text-center z-30 '>
-                    Schauen Sie sich unsere Blogs An
+                    {data?.subCategoryTitle}
                 </h1>
                 <p className='md:text-[26px] text-[17px] leading-snug font-normal text-center z-30'>
-                    Feel free to reach out to us at any time! Whether you have questions, feedback, or inquiries about our services, our team is here to assist you.
+                    {data?.subCategoryText}
                 </p>
                 <Link href='/' className='sm:mt-2 mt-1'>
                     <Button className='bg-amber rounded-full px-8 h-12 hover:bg-amber text-base'>

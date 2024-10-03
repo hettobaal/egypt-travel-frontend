@@ -8,15 +8,11 @@ const CatalogHero = dynamic(() => import('@/components/catalog/CatalogHero'));
 const CatalogTour = dynamic(() => import('@/components/catalog/CatalogTour'));
 
 export async function generateStaticParams() {
-// req acess
     const data = await getSubCategories()
-
-
     const posts = data?.data
     const array = posts?.map((post) => ({
-        catalogId: post?.slug ,
+        catalogId: post?.slug,
     }));
-    // console.log("array", array);
     return array;
 
 }
@@ -37,9 +33,12 @@ async function page({ params }) {
         ? `https://dccvcdil526gz.cloudfront.net/${ImageData.subCategoryMobHeroImage}?v=${Date.now()}`
         : '';
 
+
+
     return (
         <>
             <CatalogHero
+                data={data?.data}
                 ImageUrl={heroImageDesktop}
                 MobImageUrl={heroImageMobile}
             />

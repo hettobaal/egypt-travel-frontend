@@ -436,8 +436,8 @@ export const updateInfo = async (data, id, pointId) => {
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
     const formData = new FormData();
     formData?.append('heading', data?.infoHeading);
-    formData?.append('points', data?.infoPoint);
-    formData?.append('importantInfoId', pointId);
+    formData?.append('importantInfoPoint', data?.infoPoint);
+    formData?.append('importantInfoPointId', pointId);
 
     return fetch(Url, {
         method: 'PUT',
@@ -733,6 +733,132 @@ export const booking = async (data) => {
 export const getBookingTours = async () => {
 
     const Url = SERVER_URL + 'admin/booking/get-bookings';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+
+export const approveBooking = async (id) => {
+
+    const Url = SERVER_URL + `admin/booking/update-booking/${id}`;
+
+    const jsonData = {
+        status: "Confirmed"
+    }
+
+    return fetch(Url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(jsonData),
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
+export const cancelBooking = async (id) => {
+
+    const Url = SERVER_URL + `admin/booking/update-booking/${id}`;
+
+    const jsonData = {
+        status: "Cancelled"
+    }
+
+    return fetch(Url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(jsonData),
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
+export const deleteBooking = async (id) => {
+
+    const url = SERVER_URL + `admin/booking/delete-booking/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+}
+
+
+// MetaData Apis
+export const addCategoryMetaData = async (data) => {
+
+    const Url = SERVER_URL + 'admin/metadata/add-metadata';
+    const formData = new FormData();
+
+    formData?.append('entityId', data?.entityId);
+    formData?.append('title', data?.title);
+    formData?.append('description', data?.description);
+    formData?.append('canonical', data?.canonical);
+    formData?.append('ogSitename', data?.ogSitename);
+    formData?.append('ogTitle', data?.ogTitle);
+    formData?.append('ogDescription', data?.ogDescription);
+    formData?.append('ogURL', data?.ogURL);
+    formData?.append('ogImageAlt', data?.ogImageAlt);
+    formData?.append('ogImage', data?.ogImage[0]);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const getCategoryMetaData = async () => {
+
+    const Url = SERVER_URL + 'admin/metadata/get-all-metadata';
 
     return fetch(Url, {
         method: 'GET',

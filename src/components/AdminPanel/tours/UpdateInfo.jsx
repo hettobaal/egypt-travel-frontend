@@ -41,6 +41,7 @@ function UpdateInfo({ TourData, id, setData }) {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await updateInfo(data, id, TourData?._id)
+        console.log("res", res);
 
         setLoader(false)
         if (res?.status == "Success") {

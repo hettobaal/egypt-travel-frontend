@@ -3,9 +3,8 @@ import React, { useMemo, useState } from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input, Chip } from "@nextui-org/react";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { Loader2, SearchIcon } from "lucide-react";
-import { approveBooking, cancelBooking, deleteBooking, DeleteTour } from "@/lib/siteApis";
+import { approveBooking, deleteBooking } from "@/lib/siteApis";
 import toast from "react-hot-toast";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 
@@ -31,8 +30,8 @@ const columns = [
 ];
 
 
-function ViewPending({ TourData }) {
-  
+function ViewCancelled({ TourData }) {
+
     const sortedData = useMemo(() => {
         return [...TourData]?.sort((a, b) => {
             if (a?._id > b?._id) return -1;
@@ -44,7 +43,6 @@ function ViewPending({ TourData }) {
 
     const [data, setData] = React?.useState(sortedData || []);
     const [confirmLoader, setConfirmLoader] = useState(false);
-    const [cancelLoader, setCancelLoader] = useState(false);
     const [deleteLoader, setDeleteLoader] = useState(false);
 
     const [filterValue, setFilterValue] = React?.useState("");
@@ -141,7 +139,7 @@ function ViewPending({ TourData }) {
             case "status":
                 return (
                     <div className="whitespace-nowrap">
-                        <Chip className="capitalize" color={'warning'} size="sm" variant="flat">
+                        <Chip className="capitalize" color={'danger'} size="sm" variant="flat">
                             {TourData?.status}
                         </Chip>
                     </div>
@@ -170,14 +168,6 @@ function ViewPending({ TourData }) {
                             >
                                 {confirmLoader ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Confirm'}
 
-                            </Button>
-                        </span>
-                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                            <Button
-                                onClick={() => cancel(TourData?._id)}
-                                className="w-32  text-white bg-blue hover:bg-darkBlue"
-                            >
-                                {cancelLoader ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Cancel'}
                             </Button>
                         </span>
 
@@ -215,22 +205,6 @@ function ViewPending({ TourData }) {
         [setData]
     );
 
-    // cancel
-    const cancel = React.useCallback(
-        async (id) => {
-            setCancelLoader(true)
-            const res = await cancelBooking(id);
-            if (res?.status === "Success") {
-                setCancelLoader(false)
-                toast?.success(res?.message);
-                setData((prev) => prev?.filter((data) => data?._id !== id));
-            } else {
-                toast?.error(res?.message);
-                setCancelLoader(false)
-            }
-        },
-        [setData]
-    );
 
     // Delete
     const Delete = React.useCallback(
@@ -307,4 +281,4 @@ function ViewPending({ TourData }) {
     )
 }
 
-export default ViewPending;
+export default ViewCancelled;

@@ -1,11 +1,9 @@
 "use client"
 import React, { useMemo, useState } from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input, Chip } from "@nextui-org/react";
-import ImageModal from "@/components/reuseable/ImageModal";
 import { Loader2, SearchIcon } from "lucide-react";
-import { approveBooking, cancelBooking, deleteBooking, DeleteTour } from "@/lib/siteApis";
+import { cancelBooking, deleteBooking } from "@/lib/siteApis";
 import toast from "react-hot-toast";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 
@@ -31,8 +29,9 @@ const columns = [
 ];
 
 
-function ViewPending({ TourData }) {
-  
+function ViewConfirmed({ TourData }) {
+    // console.log("TourData", TourData);
+
     const sortedData = useMemo(() => {
         return [...TourData]?.sort((a, b) => {
             if (a?._id > b?._id) return -1;
@@ -43,7 +42,6 @@ function ViewPending({ TourData }) {
 
 
     const [data, setData] = React?.useState(sortedData || []);
-    const [confirmLoader, setConfirmLoader] = useState(false);
     const [cancelLoader, setCancelLoader] = useState(false);
     const [deleteLoader, setDeleteLoader] = useState(false);
 
@@ -141,7 +139,7 @@ function ViewPending({ TourData }) {
             case "status":
                 return (
                     <div className="whitespace-nowrap">
-                        <Chip className="capitalize" color={'warning'} size="sm" variant="flat">
+                        <Chip className="capitalize" color={'success'} size="sm" variant="flat">
                             {TourData?.status}
                         </Chip>
                     </div>
@@ -163,15 +161,6 @@ function ViewPending({ TourData }) {
             case "actions":
                 return (
                     <div className="relative flex flex-col items-start gap-2">
-                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                            <Button
-                                onClick={() => approved(TourData?._id)}
-                                className="w-32  text-white bg-blue hover:bg-darkBlue"
-                            >
-                                {confirmLoader ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Confirm'}
-
-                            </Button>
-                        </span>
                         <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                             <Button
                                 onClick={() => cancel(TourData?._id)}
@@ -197,23 +186,6 @@ function ViewPending({ TourData }) {
     }, []);
 
 
-
-    // approved
-    const approved = React.useCallback(
-        async (id) => {
-            setConfirmLoader(true)
-            const res = await approveBooking(id);
-            if (res?.status === "Success") {
-                setConfirmLoader(false)
-                toast?.success(res?.message);
-                setData((prev) => prev?.filter((data) => data?._id !== id));
-            } else {
-                toast?.error(res?.message);
-                setConfirmLoader(false)
-            }
-        },
-        [setData]
-    );
 
     // cancel
     const cancel = React.useCallback(
@@ -307,4 +279,4 @@ function ViewPending({ TourData }) {
     )
 }
 
-export default ViewPending;
+export default ViewConfirmed;

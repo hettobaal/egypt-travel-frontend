@@ -6,6 +6,7 @@ import { MdOutlineReviews } from "react-icons/md";
 import { TbBrandBooking } from "react-icons/tb";
 import { FaBattleNet } from "react-icons/fa";
 import { FaSellsy } from "react-icons/fa";
+import { FaMeta } from "react-icons/fa6";
 export const Menu = [
     { heading: 'Main Menu' },
 
@@ -99,26 +100,39 @@ export const Menu = [
         ]
     },
 
+    {
+        Icon: TbBrandBooking,
+        title: 'Tours Booking',
+        subMenu: [
+            {
+                subTitle: 'Pending Tours',
+                url: '/view-pending-tours'
+            },
+            {
+                subTitle: 'Confirmed Tours',
+                url: '/view-confirmed-tours'
+            },
+            {
+                subTitle: 'Canceled Tours',
+                url: '/view-cancelled-tours'
+            },
+        ]
+    },
 
     // {
-    //     Icon: TbBrandBooking,
-    //     title: 'Tours Booking',
+    //     Icon: FaMeta,
+    //     title: 'Meta Data',
     //     subMenu: [
     //         {
-    //             subTitle: 'Pending Tours',
-    //             url: '/view-pending-tours'
+    //             subTitle: 'Create Category MetaData',
+    //             url: '/create-category-metadata'
     //         },
     //         {
-    //             subTitle: 'Confirmed Tours',
-    //             url: '/view-selling-tour'
-    //         },
-    //         {
-    //             subTitle: 'canceled Tours',
-    //             url: '/view-selling-tour'
+    //             subTitle: 'View Category MetaData',
+    //             url: '/view-category-metaData'
     //         },
     //     ]
     // },
-
 
 
     // {
