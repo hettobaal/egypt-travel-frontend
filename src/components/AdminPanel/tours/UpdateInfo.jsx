@@ -20,8 +20,8 @@ import { updateInfo } from '@/lib/siteApis'
 
 
 const formSchema = z.object({
-    infoHeading: z.string().optional(),
-    infoPoint: z.string().optional(),
+    importantInfoHeading: z.string().optional(),
+    importantInfoPoint: z.string().optional(),
 })
 
 function UpdateInfo({ TourData, id, setData }) {
@@ -33,30 +33,29 @@ function UpdateInfo({ TourData, id, setData }) {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            infoHeading: TourData?.heading,
-            infoPoint: pointData,
+            importantInfoHeading: TourData?.heading,
+            importantInfoPoint: pointData,
         },
     })
 
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await updateInfo(data, id, TourData?._id)
-        console.log("res", res);
-
         setLoader(false)
         if (res?.status == "Success") {
             toast?.success(res?.message)
+
             setData((prevData) => {
                 return {
                     ...prevData,
-                    includes: prevData?.includes?.map((include) =>
-                        include?._id === TourData?._id
+                    importantInformation: prevData?.importantInformation?.map((item) =>
+                        item?._id === TourData?._id
                             ? {
-                                ...include,
-                                infoHeading: data?.infoHeading,
-                                infoPoint: data?.infoPoint,
+                                ...item,
+                                heading: data?.importantInfoHeading,
+                                points: [data?.importantInfoPoint],
                             }
-                            : include
+                            : item
                     ),
                 };
             });
@@ -92,7 +91,7 @@ function UpdateInfo({ TourData, id, setData }) {
                                     <div className='gap-6 grid  sm:grid-cols-2 grid-cols-1  w-full'>
                                         <FormField
                                             control={form.control}
-                                            name="infoHeading"
+                                            name="importantInfoHeading"
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-base dark:text-white  font-semibold">Heading</FormLabel>
@@ -109,7 +108,7 @@ function UpdateInfo({ TourData, id, setData }) {
                                         />
                                         <FormField
                                             control={form.control}
-                                            name="infoPoint"
+                                            name="importantInfoPoint"
                                             render={({ field }) => (
                                                 <FormItem>
                                                     <FormLabel className="text-base dark:text-white  font-semibold">Point</FormLabel>

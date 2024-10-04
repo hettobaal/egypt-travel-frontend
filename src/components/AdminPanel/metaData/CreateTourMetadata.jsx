@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { Select, SelectItem } from '@nextui-org/react'
-import { addCategoryMetaData } from '@/lib/siteApis'
+import { addTourMetaData } from '@/lib/siteApis'
 
 const formSchema = z.object({
     entityId: z.string().min(1, { message: "Please select Name" }),
@@ -34,7 +34,7 @@ const formSchema = z.object({
 })
 
 
-function CreateCategoryMetadata({ data }) {
+function CreateTourMetadata({ data }) {
     const DataArray = data?.data
 
     const sortedData = useMemo(() => {
@@ -73,7 +73,7 @@ function CreateCategoryMetadata({ data }) {
 
     const onSubmit = async (data) => {
         setLoader(true)
-        const res = await addCategoryMetaData(data)
+        const res = await addTourMetaData(data)
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -101,7 +101,7 @@ function CreateCategoryMetadata({ data }) {
                                     <FormItem
 
                                     >
-                                        <FormLabel>Select Category </FormLabel>
+                                        <FormLabel>Select SubCategory </FormLabel>
                                         <FormControl
                                         >
 
@@ -128,7 +128,7 @@ function CreateCategoryMetadata({ data }) {
                                                                 className=' '
                                                                 key={item?._id
                                                                 }>
-                                                                {item?.categoryName}
+                                                                {item?.title}
                                                             </SelectItem>
                                                         )
                                                     })
@@ -317,4 +317,4 @@ function CreateCategoryMetadata({ data }) {
     )
 }
 
-export default CreateCategoryMetadata;
+export default CreateTourMetadata;

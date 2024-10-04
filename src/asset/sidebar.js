@@ -119,20 +119,37 @@ export const Menu = [
         ]
     },
 
-    // {
-    //     Icon: FaMeta,
-    //     title: 'Meta Data',
-    //     subMenu: [
-    //         {
-    //             subTitle: 'Create Category MetaData',
-    //             url: '/create-category-metadata'
-    //         },
-    //         {
-    //             subTitle: 'View Category MetaData',
-    //             url: '/view-category-metaData'
-    //         },
-    //     ]
-    // },
+    {
+        Icon: FaMeta,
+        title: 'Meta Data',
+        subMenu: [
+            {
+                subTitle: 'Create Category MetaData',
+                url: '/create-category-metadata'
+            },
+            {
+                subTitle: 'View Category MetaData',
+                url: '/view-category-metaData'
+            },
+            {
+                subTitle: 'Create SubCategory MetaData',
+                url: '/create-subcategory-metadata'
+            },
+            {
+                subTitle: 'View SubCategory MetaData',
+                url: '/view-subcategory-metaData'
+            },
+
+            {
+                subTitle: 'Create Tour MetaData',
+                url: '/create-tour-metadata'
+            },
+            {
+                subTitle: 'View Tour MetaData',
+                url: '/view-tour-metadata'
+            },
+        ]
+    },
 
 
     // {

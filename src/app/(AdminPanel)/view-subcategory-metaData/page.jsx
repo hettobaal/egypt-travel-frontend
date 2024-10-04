@@ -1,16 +1,16 @@
 import React from 'react'
 import Heading from '@/components/reuseable/Heading'
-import { getCategoryMetaData } from '@/lib/siteApis'
+import { getSubCategoryMetaData } from '@/lib/siteApis'
 import ViewMetaData from '@/components/AdminPanel/metaData/ViewMetaData';
 
 async function page() {
 
-    const data = await getCategoryMetaData()
+    const data = await getSubCategoryMetaData()
 
     return (
         <>
             <Heading>
-                View Categories MetaData
+                View SubCategories MetaData
             </Heading>
             <ViewMetaData CategoryData={data?.data || []} />
         </>

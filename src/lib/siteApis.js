@@ -435,9 +435,9 @@ export const updateInfo = async (data, id, pointId) => {
 
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
     const formData = new FormData();
-    formData?.append('heading', data?.infoHeading);
-    formData?.append('importantInfoPoint', data?.infoPoint);
-    formData?.append('importantInfoPointId', pointId);
+    formData?.append('importantInfoHeading', data?.importantInfoHeading);
+    formData?.append('importantInfoPoint', data?.importantInfoPoint);
+    formData?.append('importantInfoId', pointId);
 
     return fetch(Url, {
         method: 'PUT',
@@ -830,6 +830,7 @@ export const addCategoryMetaData = async (data) => {
     const Url = SERVER_URL + 'admin/metadata/add-metadata';
     const formData = new FormData();
 
+    formData?.append('entityType', "category");
     formData?.append('entityId', data?.entityId);
     formData?.append('title', data?.title);
     formData?.append('description', data?.description);
@@ -858,7 +859,7 @@ export const addCategoryMetaData = async (data) => {
 
 export const getCategoryMetaData = async () => {
 
-    const Url = SERVER_URL + 'admin/metadata/get-all-metadata';
+    const Url = SERVER_URL + 'admin/metadata/get-all-metadata?entityType=category';
 
     return fetch(Url, {
         method: 'GET',
@@ -871,5 +872,157 @@ export const getCategoryMetaData = async () => {
         })
         .catch((error) => {
             return error;
+        });
+};
+
+export const addSubCategoryMetaData = async (data) => {
+
+    const Url = SERVER_URL + 'admin/metadata/add-metadata';
+    const formData = new FormData();
+
+    formData?.append('entityType', "subcategory");
+    formData?.append('entityId', data?.entityId);
+    formData?.append('title', data?.title);
+    formData?.append('description', data?.description);
+    formData?.append('canonical', data?.canonical);
+    formData?.append('ogSitename', data?.ogSitename);
+    formData?.append('ogTitle', data?.ogTitle);
+    formData?.append('ogDescription', data?.ogDescription);
+    formData?.append('ogURL', data?.ogURL);
+    formData?.append('ogImageAlt', data?.ogImageAlt);
+    formData?.append('ogImage', data?.ogImage[0]);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const getSubCategoryMetaData = async () => {
+
+    const Url = SERVER_URL + 'admin/metadata/get-all-metadata?entityType=subcategory';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const addTourMetaData = async (data) => {
+
+    const Url = SERVER_URL + 'admin/metadata/add-metadata';
+    const formData = new FormData();
+
+    formData?.append('entityType', "tour");
+    formData?.append('entityId', data?.entityId);
+    formData?.append('title', data?.title);
+    formData?.append('description', data?.description);
+    formData?.append('canonical', data?.canonical);
+    formData?.append('ogSitename', data?.ogSitename);
+    formData?.append('ogTitle', data?.ogTitle);
+    formData?.append('ogDescription', data?.ogDescription);
+    formData?.append('ogURL', data?.ogURL);
+    formData?.append('ogImageAlt', data?.ogImageAlt);
+    formData?.append('ogImage', data?.ogImage[0]);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const getTourMetaData = async () => {
+
+    const Url = SERVER_URL + 'admin/metadata/get-all-metadata?entityType=tour';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+export const deleteMetaData = async (id) => {
+
+    const url = SERVER_URL + `admin/metadata/delete-metadata/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+}
+
+export const updateMetaDataById = async (data, id) => {
+
+
+    const Url = SERVER_URL + `admin/metadata/update-metadata/${id}`;
+    const formData = new FormData();
+    if (data?.ogImage?.length > 0) {
+        formData?.append('ogImageId', data?.ogImage[0]);
+    }
+    formData?.append('title', data?.title);
+    formData?.append('description', data?.description);
+    formData?.append('canonical', data?.canonical);
+    formData?.append('ogSitename', data?.ogSitename);
+    formData?.append('ogTitle', data?.ogTitle);
+    formData?.append('ogDescription', data?.ogDescription);
+    formData?.append('ogURL', data?.ogURL);
+    formData?.append('ogImageAlt', data?.ogImageAlt);
+
+    return fetch(Url, {
+        method: 'PUT',
+        body: formData,
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
         });
 };

@@ -15,7 +15,7 @@ function MobileImageModal({ id }) {
             <DialogTrigger>
                 <Image
                     className="rounded-md"
-                    src={`https://dccvcdil526gz.cloudfront.net/${id}?v=${Date.now()}`}
+                    src={`https://dccvcdil526gz.cloudfront.net/${id}`}
                     width={100}
                     height={100}
                     loading="lazy"
@@ -26,7 +26,7 @@ function MobileImageModal({ id }) {
                 <div className='relative md:w-[70%] w-[90%] h-[60%]  mx-auto flex justify-center items-center '>
                     <Image
                         className="rounded-md max-h-[80vh]"
-                        src={`https://dccvcdil526gz.cloudfront.net/${id}?v=${Date.now()}`}
+                        src={`https://dccvcdil526gz.cloudfront.net/${id}`}
                         width={500}
                         height={300}
                         loading="lazy"
