@@ -1000,7 +1000,7 @@ export const updateMetaDataById = async (data, id) => {
     const Url = SERVER_URL + `admin/metadata/update-metadata/${id}`;
     const formData = new FormData();
     if (data?.ogImage?.length > 0) {
-        formData?.append('ogImageId', data?.ogImage[0]);
+        formData?.append('ogImage', data?.ogImage[0]);
     }
     formData?.append('title', data?.title);
     formData?.append('description', data?.description);
