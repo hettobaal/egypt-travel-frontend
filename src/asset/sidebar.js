@@ -57,14 +57,10 @@ export const Menu = [
 
     {
         Icon: MdDiscount,
-        title: 'Discount Tours',
+        title: 'Discounted Tours',
         subMenu: [
-            // {
-            //     subTitle: 'Add Discount Tour',
-            //     url: '/create-discount-tour'
-            // },
             {
-                subTitle: 'View Discount Tours',
+                subTitle: 'View Discounted Tours',
                 url: '/view-discount-tours'
             },
         ]
@@ -105,15 +101,15 @@ export const Menu = [
         title: 'Tours Booking',
         subMenu: [
             {
-                subTitle: 'Pending Tours',
+                subTitle: 'Pending Booking',
                 url: '/view-pending-tours'
             },
             {
-                subTitle: 'Confirmed Tours',
+                subTitle: 'Confirmed Booking',
                 url: '/view-confirmed-tours'
             },
             {
-                subTitle: 'Canceled Tours',
+                subTitle: 'Canceled Booking',
                 url: '/view-cancelled-tours'
             },
         ]
