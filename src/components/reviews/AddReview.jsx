@@ -1,6 +1,6 @@
 "use client"
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import HeadingOne from '../reuseable/HeadingOne';
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -16,6 +16,8 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Link from 'next/link';
 import { IoIosStar, IoIosStarOutline } from "react-icons/io";
+import SelectTour from "./SelectTour";
+// import React, { , useState } from 'react'
 
 
 const formSchema = z.object({
@@ -33,7 +35,12 @@ const formSchema = z.object({
         message: "Review should be At least 4 Character",
     }),
 })
-function AddReview() {
+function AddReview({toursData}) {
+
+
+
+    const [tourName, setTourName] = useState("Select Tour")
+    const [tourId, setTourId] = useState(null)
     const [rating, setRating] = useState(0);
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -48,7 +55,7 @@ function AddReview() {
 
     function onSubmit(values) {
         values.rating = rating;
-        // console.log("values", values)
+
     }
 
     return (
@@ -67,6 +74,7 @@ function AddReview() {
                 <Form {...form}>
                     <form onSubmit={form?.handleSubmit(onSubmit)} className="w-full">
                         <div className='flex items-center flex-col sm:gap-y-6 gap-y-4'>
+                        <SelectTour toursData={toursData} setTourName={setTourName} tourName={tourName} setTourId={setTourId}/>
                             <div className='w-full flex lg:flex-row flex-col gap-x-4 gap-y-4'>
                                 <FormField
                                     className='relative w-full'

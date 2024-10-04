@@ -832,6 +832,7 @@ export const addCategoryMetaData = async (data) => {
 
     formData?.append('entityType', "category");
     formData?.append('entityId', data?.entityId);
+    formData?.append('entityType', "category");
     formData?.append('title', data?.title);
     formData?.append('description', data?.description);
     formData?.append('canonical', data?.canonical);
