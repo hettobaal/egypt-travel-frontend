@@ -6,13 +6,14 @@ import CreateSubCategoryMetaData from '@/components/AdminPanel/metaData/CreateSu
 async function page() {
 
     const data = await getSubCategories()
+    const serializableData = JSON?.parse(JSON?.stringify(data))
 
     return (
         <>
             <Heading>
                 Create Sub Category MetaData
             </Heading>
-            <CreateSubCategoryMetaData data={data} />
+            <CreateSubCategoryMetaData data={serializableData} />
         </>
     )
 }

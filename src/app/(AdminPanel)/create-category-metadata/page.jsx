@@ -6,6 +6,7 @@ import CreateCategoryMetadata from '@/components/AdminPanel/metaData/CreateCateg
 async function page() {
 
     const data = await getCategories()
+    const serializableData = JSON?.parse(JSON?.stringify(data))
 
 
     return (
@@ -13,7 +14,7 @@ async function page() {
             <Heading>
                 Create Category MetaData
             </Heading>
-            <CreateCategoryMetadata data={data}/>
+            <CreateCategoryMetadata data={data} />
         </>
     )
 }

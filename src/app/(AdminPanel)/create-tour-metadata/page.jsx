@@ -6,6 +6,7 @@ import CreateTourMetadata from '@/components/AdminPanel/metaData/CreateTourMetad
 async function page() {
 
     const data = await getTours()
+    const serializableData = JSON?.parse(JSON?.stringify(data))
 
 
     return (
@@ -13,7 +14,7 @@ async function page() {
             <Heading>
                 Create Tour MetaData
             </Heading>
-            <CreateTourMetadata data={data} />
+            <CreateTourMetadata data={serializableData} />
         </>
     )
 }
