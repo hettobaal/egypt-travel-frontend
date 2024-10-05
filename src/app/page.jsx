@@ -24,7 +24,6 @@ async function page() {
 
   const data = await getCategories()
 
-  
   const categories = data?.data || []; 
   const firstCategory = categories?.length > 0 ? categories[0] : null;
   const secondCategory = categories?.length > 1 ? categories[1] : null;
