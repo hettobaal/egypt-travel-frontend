@@ -45,7 +45,7 @@ function ViewMetaData({ CategoryData }) {
         let filteredUsers = [...data];
         if (hasSearchFilter) {
             filteredUsers = filteredUsers?.filter((data) =>
-                data?.categoryName?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+                data?.title?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
         return filteredUsers;
@@ -181,7 +181,7 @@ function ViewMetaData({ CategoryData }) {
                     <TableHeader>
                         {columns?.map((column) =>
                             <TableColumn
-                                className="dark:bg-darkModeSecondary dark:text-white text-[15px]"
+                                className="dark:bg-darkModeSecondary text-center dark:text-white text-[15px]"
                                 key={column?.uid}>
                                 {column?.name}
                             </TableColumn>

@@ -7,25 +7,19 @@ import ViewPopularTour from '@/components/AdminPanel/popularTours/ViewPopularTou
 import { useState, useEffect } from "react";
 
 function ViewPopularTourPage() {
-    const [popularTours, setPopularTours] = useState([]); // Initialize state
+    const [popularTours, setPopularTours] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // const data = await getSellingTours(); // Fetch data
                 const data = await getPopularTours()
-                setPopularTours(data?.data); // Update state with the fetched data
+                setPopularTours(data?.data);
             } catch (error) {
                 console.error("Error fetching tours:", error);
             }
         };
-        fetchData(); // Invoke the async function
-    }, []); // Empty dependency array ensures this runs once on mount
-
-    // console.log("inside useEffect");
-
-    // const tourData = data?.data;
-
+        fetchData();
+    }, []);
 
 
 
@@ -34,8 +28,8 @@ function ViewPopularTourPage() {
             <Heading>
                 View Popular Tours
             </Heading>
-{            popularTours.length > 0 &&
-            <ViewPopularTour TourData={popularTours?.length > 0 ? popularTours[0]?.tourId : []} />}
+            {popularTours.length > 0 &&
+                <ViewPopularTour TourData={popularTours?.length > 0 ? popularTours[0]?.tourId : []} />}
         </>
     )
 }

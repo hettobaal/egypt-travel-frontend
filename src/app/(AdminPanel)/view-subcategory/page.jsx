@@ -2,27 +2,25 @@
 import Heading from '@/components/reuseable/Heading'
 import { getSubCategories } from '@/lib/siteApis'
 import ViewSubCategories from '@/components/AdminPanel/subcategories/ViewSubCategories'
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
 function ViewSubCategoriesPage() {
 
 
-    const [SubCategoryData, setSubCategoryData] = useState([]); // Initialize state
+    const [SubCategoryData, setSubCategoryData] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const data = await getSubCategories()
-                // const data = await getSellingTours(); // Fetch data
-                setSubCategoryData(data?.data); // Update state with the fetched data
+                setSubCategoryData(data?.data);
             } catch (error) {
                 console.error("Error fetching tours:", error);
             }
         };
-        fetchData(); // Invoke the async function
-    }, []); // Empty dependency array ensures this runs once on mount
+        fetchData();
+    }, []);
 
-    // console.log("inside useEffect");
 
 
     return (
@@ -31,8 +29,8 @@ function ViewSubCategoriesPage() {
                 View SubCategory
             </Heading>
 
-{            SubCategoryData.length > 0 &&
-            <ViewSubCategories SubCategoryData={SubCategoryData || []} />}
+            {SubCategoryData.length > 0 &&
+                <ViewSubCategories SubCategoryData={SubCategoryData || []} />}
         </>
     )
 }

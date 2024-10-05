@@ -1,20 +1,36 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Heading from '@/components/reuseable/Heading'
 import { getCategoryMetaData } from '@/lib/siteApis'
 import ViewMetaData from '@/components/AdminPanel/metaData/ViewMetaData';
 
-async function page() {
+function CategoryMetaData() {
 
-    const data = await getCategoryMetaData()
+    const [CategoryMetaData, setCategoryMetaData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getCategoryMetaData()
+                setCategoryMetaData(data?.data);
+            } catch (error) {
+                console.error("Error fetching tours:", error);
+            }
+        };
+        fetchData();
+    }, []);
+
 
     return (
         <>
             <Heading>
                 View Categories MetaData
             </Heading>
-            <ViewMetaData CategoryData={data?.data || []} />
+            {CategoryMetaData?.length > 0 &&
+                <ViewMetaData CategoryData={CategoryMetaData || []} />
+            }
         </>
     )
 }
 
-export default page
+export default CategoryMetaData

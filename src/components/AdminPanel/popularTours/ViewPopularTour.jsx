@@ -165,7 +165,7 @@ function ViewPopularTour({ TourData }) {
                     <TableHeader>
                         {columns?.map((column) =>
                             <TableColumn
-                                className="dark:bg-darkModeSecondary dark:text-white text-[15px]"
+                                className="dark:bg-darkModeSecondary text-center dark:text-white text-[15px]"
                                 key={column?.uid}>
                                 {column?.name}
                             </TableColumn>

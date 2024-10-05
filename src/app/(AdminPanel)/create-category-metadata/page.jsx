@@ -14,7 +14,7 @@ async function page() {
             <Heading>
                 Create Category MetaData
             </Heading>
-            <CreateCategoryMetadata data={data} />
+            <CreateCategoryMetadata data={serializableData} />
         </>
     )
 }

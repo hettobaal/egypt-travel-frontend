@@ -1,18 +1,31 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
 import Heading from '@/components/reuseable/Heading'
 import { getTourMetaData } from '@/lib/siteApis'
 import ViewMetaData from '@/components/AdminPanel/metaData/ViewMetaData';
 
-async function page() {
+function page() {
 
-    const data = await getTourMetaData()
-
+    const [TourMetaData, setTourMetaData] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getTourMetaData()
+                setTourMetaData(data?.data);
+            } catch (error) {
+                console.error("Error fetching tours:", error);
+            }
+        };
+        fetchData();
+    }, []);
     return (
         <>
             <Heading>
                 View Tour MetaData
             </Heading>
-            <ViewMetaData CategoryData={data?.data || []} />
+            {TourMetaData?.length > 0 &&
+                <ViewMetaData CategoryData={TourMetaData || []} />
+            }
         </>
     )
 }
