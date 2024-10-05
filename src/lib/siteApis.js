@@ -3,6 +3,7 @@ const SERVER_URL = process?.env?.NEXT_PUBLIC_SERVER_URL
 
 
 // Category
+// req acess
 export const createCategory = async (data) => {
 
     const Url = SERVER_URL + 'admin/category/add-category';
