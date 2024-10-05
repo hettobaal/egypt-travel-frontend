@@ -5,7 +5,7 @@ import ViewTours from '@/components/AdminPanel/tours/ViewTours'
 import { getTours } from '@/lib/siteApis'
     import React, {useEffect, useState} from 'react'
 
-    function page() {
+    function ViewToursPage() {
     
     
         const [toursData, setToursData] = useState([]); // Initialize state
@@ -36,4 +36,4 @@ import { getTours } from '@/lib/siteApis'
     )
 }
 
-export default page
+export default ViewToursPage

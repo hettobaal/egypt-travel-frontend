@@ -5,7 +5,7 @@ import ViewCategories from '@/components/AdminPanel/categories/ViewCategories'
 import { getCategories } from '@/lib/siteApis'
 import React, {useEffect, useState} from 'react'
 
-    function page() {
+    function ViewCategoriesPage() {
     
     
         const [categoryData, setCategoryData] = useState([]); // Initialize state
@@ -39,4 +39,4 @@ import React, {useEffect, useState} from 'react'
     )
 }
 
-export default page
+export default ViewCategoriesPage

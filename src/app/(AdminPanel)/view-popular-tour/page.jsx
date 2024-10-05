@@ -6,7 +6,7 @@ import ViewPopularTour from '@/components/AdminPanel/popularTours/ViewPopularTou
 
 import { useState, useEffect } from "react";
 
-function page() {
+function ViewPopularTourPage() {
     const [popularTours, setPopularTours] = useState([]); // Initialize state
 
     useEffect(() => {
@@ -40,4 +40,4 @@ function page() {
     )
 }
 
-export default page
+export default ViewPopularTourPage

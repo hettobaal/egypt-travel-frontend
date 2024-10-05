@@ -4,7 +4,7 @@ import { getSubCategories } from '@/lib/siteApis'
 import ViewSubCategories from '@/components/AdminPanel/subcategories/ViewSubCategories'
 import React, {useEffect, useState} from 'react'
 
-function page() {
+function ViewSubCategoriesPage() {
 
 
     const [SubCategoryData, setSubCategoryData] = useState([]); // Initialize state
@@ -37,4 +37,4 @@ function page() {
     )
 }
 
-export default page
+export default ViewSubCategoriesPage
