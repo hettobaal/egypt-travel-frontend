@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+// import React from 'react'
 import Heading from '@/components/reuseable/Heading'
 import ViewTours from '@/components/AdminPanel/tours/ViewTours'
 import { getTours } from '@/lib/siteApis'
