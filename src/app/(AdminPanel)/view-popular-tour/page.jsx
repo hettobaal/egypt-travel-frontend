@@ -1,12 +1,30 @@
+"use client"
 import React from 'react'
 import Heading from '@/components/reuseable/Heading'
 import { getPopularTours } from '@/lib/siteApis'
 import ViewPopularTour from '@/components/AdminPanel/popularTours/ViewPopularTour';
 
-async function page() {
+import { useState, useEffect } from "react";
 
-    const data = await getPopularTours()
-    const tourData = data?.data;
+function page() {
+    const [popularTours, setPopularTours] = useState([]); // Initialize state
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                // const data = await getSellingTours(); // Fetch data
+                const data = await getPopularTours()
+                setPopularTours(data?.data); // Update state with the fetched data
+            } catch (error) {
+                console.error("Error fetching tours:", error);
+            }
+        };
+        fetchData(); // Invoke the async function
+    }, []); // Empty dependency array ensures this runs once on mount
+
+    // console.log("inside useEffect");
+
+    // const tourData = data?.data;
 
 
 
@@ -16,7 +34,8 @@ async function page() {
             <Heading>
                 View Popular Tours
             </Heading>
-            <ViewPopularTour TourData={tourData?.length > 0 ? tourData[0]?.tourId : []} />
+{            popularTours.length > 0 &&
+            <ViewPopularTour TourData={popularTours?.length > 0 ? popularTours[0]?.tourId : []} />}
         </>
     )
 }

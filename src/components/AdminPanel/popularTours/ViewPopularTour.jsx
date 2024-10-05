@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input } from "@nextui-org/react";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
-import { DeleteSellingTour } from "@/lib/siteApis";
+import { DeletePopularTour, DeleteSellingTour } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 
@@ -121,7 +121,9 @@ function ViewPopularTour({ TourData }) {
     // Actions
     const Delete = React.useCallback(
         async (id) => {
-            const res = await DeleteSellingTour(id);
+            const res = await DeletePopularTour(id);
+            // console.log(res);
+            
             if (res?.status === "Success") {
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));
