@@ -95,7 +95,7 @@ function UpdateMetadata({ data, setData, id }) {
     };
 
 
-    const fileRef = form.register("newImageId");
+    const fileRef = form.register("ogImage");
     return (
         <>
             <Button

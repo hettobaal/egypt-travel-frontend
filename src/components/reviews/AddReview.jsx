@@ -1,6 +1,6 @@
 "use client"
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import HeadingOne from '../reuseable/HeadingOne';
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -16,11 +16,16 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import Link from 'next/link';
 import { IoIosStar, IoIosStarOutline } from "react-icons/io";
-import SelectTour from "./SelectTour";
-// import React, { , useState } from 'react'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '../ui/select';
+import { writeReview } from '@/lib/siteApis';
+import toast from 'react-hot-toast';
+import { Loader2 } from 'lucide-react';
 
 
 const formSchema = z.object({
+    tourId: z.string().min(2, {
+        message: "Please Select Tour",
+    }),
     firstName: z.string().min(2, {
         message: "First Name is Required",
     }),
@@ -35,16 +40,14 @@ const formSchema = z.object({
         message: "Review should be At least 4 Character",
     }),
 })
-function AddReview({toursData}) {
+function AddReview({ toursData }) {
 
-
-
-    const [tourName, setTourName] = useState("Select Tour")
-    const [tourId, setTourId] = useState(null)
     const [rating, setRating] = useState(0);
+    const [loader, setLoader] = useState(false);
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            tourId: "",
             firstName: "",
             lastName: "",
             email: "",
@@ -53,8 +56,20 @@ function AddReview({toursData}) {
         },
     })
 
-    function onSubmit(values) {
+    async function onSubmit(values) {
         values.rating = rating;
+        console.log("values", values);
+
+        setLoader(true)
+        const res = await writeReview(values)
+        setLoader(false)
+        if (res?.status == "Success") {
+            setLoader(false)
+            toast?.success(res?.message)
+        } else {
+            setLoader(false)
+            toast?.error(res?.message)
+        }
 
     }
 
@@ -74,7 +89,46 @@ function AddReview({toursData}) {
                 <Form {...form}>
                     <form onSubmit={form?.handleSubmit(onSubmit)} className="w-full">
                         <div className='flex items-center flex-col sm:gap-y-6 gap-y-4'>
-                        <SelectTour toursData={toursData} setTourName={setTourName} tourName={tourName} setTourId={setTourId}/>
+                            <FormField
+                                className='relative w-full'
+                                control={form.control}
+                                name="tourId"
+                                render={({ field }) => (
+                                    <FormItem className='w-full'>
+                                        <FormControl>
+                                            <Select
+                                                onValueChange={field?.onChange}
+                                                defaultValue={field?.value}
+                                                className='w-full'
+                                            >
+                                                <SelectTrigger className="w-full focus:ring-0 focus:ring-offset-0 h-12  border-[#04326359] border-1 rounded-lg">
+                                                    <SelectValue
+                                                        className='placeholder:text-ocean placeholder:text-base'
+                                                        placeholder="Select Tour" />
+                                                </SelectTrigger>
+                                                <SelectContent>
+                                                    <SelectGroup>
+                                                        <SelectLabel>Tours</SelectLabel>
+
+                                                        {
+                                                            toursData?.map((item,index) => {
+                                                                return (
+                                                                    <SelectItem
+                                                                        key={index}
+                                                                        value={item._id}>
+                                                                        {item?.title}
+                                                                    </SelectItem>
+                                                                )
+                                                            })
+                                                        }
+                                                    </SelectGroup>
+                                                </SelectContent>
+                                            </Select>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                             <div className='w-full flex lg:flex-row flex-col gap-x-4 gap-y-4'>
                                 <FormField
                                     className='relative w-full'
@@ -182,7 +236,10 @@ function AddReview({toursData}) {
                             <Link href="/" className='lg:w-max w-full'>
                                 <Button className='px-8 lg:w-max w-full rounded-full bg-white hover:bg-white h-11 border-2 border-navy text-navy'>CANCEl</Button>
                             </Link>
-                            <Button type="submit" className='px-10 lg:w-max w-full rounded-full bg-navy hover:bg-navy h-11  text-white'>POST</Button>
+                            <Button type="submit" className='px-10 lg:w-max w-full rounded-full bg-navy hover:bg-navy h-11  text-white'>
+
+                                {loader ? <Loader2 className="h-4 w-4 animate-spin" /> : 'POST'}
+                            </Button>
                         </div>
                     </form>
                 </Form>

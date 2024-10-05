@@ -232,49 +232,6 @@ export const updateSubCategoryById = async (data, id) => {
 };
 
 
-// Reviews
-export const addReview = async (data) => {
-    const Url = SERVER_URL + 'admin/subCategory/add-subcategory';
-    const formData = new FormData();
-    formData?.append('categoryId', data?.categoryId);
-    formData?.append('subCategoryName', data?.subCategoryName);
-    formData?.append('subCategoryImage', data?.subCategoryImage[0]);
-
-    return fetch(Url, {
-        method: 'POST',
-        body: formData,
-        mode: 'cors',
-        cache: "no-store"
-    },
-    )
-        .then((response) => response?.json())
-        .then((data) => {
-            return data
-        })
-        .catch((error) => {
-            return error
-        });
-};
-
-
-export const getReviews = async () => {
-
-    const Url = SERVER_URL + 'api/public/get-reviews';
-
-    return fetch(Url, {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'no-cache'
-    })
-        .then((response) => response?.json())
-        .then((data) => {
-            return data;
-        })
-        .catch((error) => {
-            return error;
-        });
-};
-
 
 // tours 
 export const addTour = async (data) => {
@@ -997,6 +954,7 @@ export const deleteMetaData = async (id) => {
 export const updateMetaDataById = async (data, id) => {
 
 
+
     const Url = SERVER_URL + `admin/metadata/update-metadata/${id}`;
     const formData = new FormData();
     if (data?.ogImage?.length > 0) {
@@ -1023,5 +981,55 @@ export const updateMetaDataById = async (data, id) => {
         })
         .catch((error) => {
             return error
+        });
+};
+
+
+
+
+// Reviews
+export const writeReview = async (data) => {
+    const Url = SERVER_URL + 'api/public/add-review';
+    const formData = new FormData();
+    formData?.append('tourId', data?.categoryId);
+    formData?.append('firstName', data?.subCategoryName);
+    formData?.append('lastName', data?.subCategoryName);
+    formData?.append('phone', data?.subCategoryName);
+    formData?.append('email', data?.subCategoryName);
+    formData?.append('email', data?.subCategoryName);
+    formData?.append('rating', data?.subCategoryName);
+    formData?.append('reviewText', data?.subCategoryName);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+        cache: "no-store"
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const getReviews = async () => {
+
+    const Url = SERVER_URL + 'api/public/get-reviews';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
         });
 };
