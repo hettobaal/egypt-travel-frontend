@@ -42,7 +42,7 @@ const formSchema = z.object({
 })
 function AddReview({ toursData }) {
 
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(1);
     const [loader, setLoader] = useState(false);
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -58,10 +58,10 @@ function AddReview({ toursData }) {
 
     async function onSubmit(values) {
         values.rating = rating;
-        console.log("values", values);
-
+        const findTour = toursData?.filter((item) => item?._id === values?.tourId)
+        const tourName = findTour[0]?.title
         setLoader(true)
-        const res = await writeReview(values)
+        const res = await writeReview(values, tourName)
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -111,7 +111,7 @@ function AddReview({ toursData }) {
                                                         <SelectLabel>Tours</SelectLabel>
 
                                                         {
-                                                            toursData?.map((item,index) => {
+                                                            toursData?.map((item, index) => {
                                                                 return (
                                                                     <SelectItem
                                                                         key={index}
@@ -203,7 +203,7 @@ function AddReview({ toursData }) {
                             </div>
                             <div className='w-full flex flex-col gap-y-2'>
                                 <span className="flex gap-x-2 cursor-pointer">
-                                    {[0, 1, 2, 3, 4].map((star) => (
+                                    {[1, 2, 3, 4, 5].map((star) => (
                                         <span key={star} onClick={() => setRating(star)}>
                                             {rating >= star ? (
                                                 <IoIosStar size={30} color="gold" />
@@ -213,6 +213,7 @@ function AddReview({ toursData }) {
                                         </span>
                                     ))}
                                 </span>
+
                                 <FormField
                                     className='relative '
                                     control={form.control}

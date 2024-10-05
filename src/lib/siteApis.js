@@ -3,7 +3,6 @@ const SERVER_URL = process?.env?.NEXT_PUBLIC_SERVER_URL
 
 
 // Category
-// req acess
 export const createCategory = async (data) => {
 
     const Url = SERVER_URL + 'admin/category/add-category';
@@ -986,36 +985,40 @@ export const updateMetaDataById = async (data, id) => {
 };
 
 
-
-
 // Reviews
-export const writeReview = async (data) => {
+export const writeReview = async (data, tourName) => {
+
     const Url = SERVER_URL + 'api/public/add-review';
-    const formData = new FormData();
-    formData?.append('tourId', data?.categoryId);
-    formData?.append('firstName', data?.subCategoryName);
-    formData?.append('lastName', data?.subCategoryName);
-    formData?.append('phone', data?.subCategoryName);
-    formData?.append('email', data?.subCategoryName);
-    formData?.append('email', data?.subCategoryName);
-    formData?.append('rating', data?.subCategoryName);
-    formData?.append('reviewText', data?.subCategoryName);
+
+    const jsonData = {
+        tourId: data?.tourId,
+        tourName: tourName,
+        firstName: data?.firstName,
+        lastName: data?.lastName,
+        phone: data?.phoneNumber,
+        email: data?.email,
+        rating: data?.rating,
+        reviewText: data?.review
+    };
 
     return fetch(Url, {
         method: 'POST',
-        body: formData,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonData),
         mode: 'cors',
         cache: "no-store"
-    },
-    )
+    })
         .then((response) => response?.json())
         .then((data) => {
-            return data
+            return data;
         })
         .catch((error) => {
-            return error
+            return error;
         });
 };
+
 
 export const getReviews = async () => {
 

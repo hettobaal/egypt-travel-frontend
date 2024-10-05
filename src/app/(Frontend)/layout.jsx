@@ -9,10 +9,12 @@ export const metadata = {
 };
 
 import "@/app/globals.css";
+import { Toaster } from 'react-hot-toast';
 export default function Layout({ children }) {
 
     return (
         <>
+            <Toaster autoClose={10000} position="top-center" />
             <WebHeader />
             {children}
             <WebFooter />
