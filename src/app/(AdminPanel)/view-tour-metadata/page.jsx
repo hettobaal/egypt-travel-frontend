@@ -4,7 +4,7 @@ import Heading from '@/components/reuseable/Heading'
 import { getTourMetaData } from '@/lib/siteApis'
 import ViewMetaData from '@/components/AdminPanel/metaData/ViewMetaData';
 
-function page() {
+function TourMetaData() {
 
     const [TourMetaData, setTourMetaData] = useState([]);
     useEffect(() => {
@@ -30,4 +30,4 @@ function page() {
     )
 }
 
-export default page
+export default TourMetaData;
