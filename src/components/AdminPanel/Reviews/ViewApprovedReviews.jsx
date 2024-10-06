@@ -1,49 +1,38 @@
 "use client"
-import React, { useMemo, useState } from "react";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input, Chip } from "@nextui-org/react";
+import React, { useMemo } from "react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input } from "@nextui-org/react";
 import ImageModal from "@/components/reuseable/ImageModal";
-import { Loader2, SearchIcon } from "lucide-react";
-import { approveBooking, deleteBooking } from "@/lib/siteApis";
+import { SearchIcon } from "lucide-react";
+import { DeleteCategory } from "@/lib/siteApis";
 import toast from "react-hot-toast";
+import UpdateCategory from "./UpdateCategory";
+import Link from "next/link";
+import MobileImageModal from "@/components/reuseable/MobileImageModal";
 import { Button } from "@/components/ui/button";
 
 
 const columns = [
-    { name: "TOUR NAME", uid: "tourName" },
-    { name: "NAME", uid: "name" },
-    { name: "PHONE NUMBER", uid: "phoneNumber" },
-    { name: "EMAIL", uid: "email" },
-    { name: "LANGUAGE", uid: "language" },
-    { name: "BOOKING DATE", uid: "bookingDate" },
-    { name: "DATE", uid: "date" },
-    { name: "PARTICIPANTS", uid: "participant" },
-    { name: "STATUS", uid: "status" },
-    { name: "ADULT PRICE", uid: "totalAdultPrice" },
-    { name: "DISCOUNTED ADULT PRICE", uid: "discountAdultPrice" },
-    { name: "CHILDREN PRICE", uid: "totalChildrenPrice" },
-    { name: "DISCOUNTED CHILDREN PRICE", uid: "discountChildPrice" },
-    { name: "INFANT PRICE", uid: "totalInfantPrice" },
-    { name: "DISCOUNTED AMOUNT", uid: "discountAmount" },
-    { name: "FINAL PRICE", uid: "totalPrice" },
-    { name: "FINAL PRICE AFTER DISCOUNT", uid: "totalPriceAfterDiscount" },
+    { name: "CATEGORY MOBILE IMAGE", uid: "categoryMobImage" },
+    { name: "CATEGORY IMAGE", uid: "categoryImage" },
+    { name: "CATEGORY NAME", uid: "categoryName" },
+    { name: "BANNER Title", uid: "bannerText" },
+    { name: "BANNER TEXT", uid: "bannerSlogan" },
     { name: "ACTIONS", uid: "actions" },
 ];
 
 
-function ViewCancelled({ TourData }) {
+function ViewApprovedReviews({ reviewData }) {
 
     const sortedData = useMemo(() => {
-        return [...TourData]?.sort((a, b) => {
+        return [...reviewData]?.sort((a, b) => {
             if (a?._id > b?._id) return -1;
             if (a?._id < b?._id) return 1;
             return 0;
         });
-    }, [TourData]);
+    }, [reviewData]);
 
 
     const [data, setData] = React?.useState(sortedData || []);
-    const [confirmLoader, setConfirmLoader] = useState(false);
-    const [deleteLoader, setDeleteLoader] = useState(false);
 
     const [filterValue, setFilterValue] = React?.useState("");
     const [page, setPage] = React.useState(1);
@@ -54,7 +43,7 @@ function ViewCancelled({ TourData }) {
         let filteredUsers = [...data];
         if (hasSearchFilter) {
             filteredUsers = filteredUsers?.filter((data) =>
-                data?.name?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+                data?.categoryName?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
         return filteredUsers;
@@ -108,75 +97,48 @@ function ViewCancelled({ TourData }) {
         return filteredItems?.slice(start, end);
     }, [page, filteredItems]);
 
-    const renderCell = React.useCallback((TourData, columnKey) => {
 
-        const cellValue = TourData[columnKey];
-        const date = TourData?.date;
-        const dateOnly = date?.split("T")[0];
-
-        const bookingDate = TourData?.bookingDate;
-        const bookingDateOnly = bookingDate?.split("T")[0];
-
-
-        // participants
-        const adultCount = TourData?.participants?.adults
-        const childCount = TourData?.participants?.children
-        const infantCount = TourData?.participants?.infant
+    const renderCell = React.useCallback((reviewData, columnKey) => {
+        const cellValue = reviewData[columnKey];
 
         switch (columnKey) {
-            case "bookingDate":
+            case "categoryMobImage":
                 return (
-                    <div className="whitespace-nowrap">
-                        {bookingDateOnly}
+                    <div className="cursor-pointer">
+                        <MobileImageModal id={reviewData?.categoryMobImage} />
                     </div>
                 );
-            case "date":
+            case "categoryImage":
                 return (
-                    <div className="whitespace-nowrap">
-                        {dateOnly}
-                    </div>
-                );
-            case "status":
-                return (
-                    <div className="whitespace-nowrap">
-                        <Chip className="capitalize" color={'danger'} size="sm" variant="flat">
-                            {TourData?.status}
-                        </Chip>
-                    </div>
-                );
-            case "participant":
-                return (
-                    <div className="flex flex-col gap-y-2 whitespace-nowrap">
-                        <p>
-                            Adult x {adultCount}
-                        </p>
-                        <p>
-                            Child x {childCount}
-                        </p>
-                        <p>
-                            Adult x {infantCount}
-                        </p>
+                    <div className="cursor-pointer">
+                        <ImageModal id={reviewData?.categoryImage} />
                     </div>
                 );
             case "actions":
                 return (
-                    <div className="relative flex flex-col items-start gap-2">
+                    <div className="relative flex flex-col  items-start gap-2">
                         <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                            <Button
-                                onClick={() => approved(TourData?._id)}
-                                className="w-32  text-white bg-blue hover:bg-darkBlue"
-                            >
-                                {confirmLoader ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Confirm'}
-
-                            </Button>
+                            <Link href={`/view-categoryDetail/${reviewData?.slug}`}>
+                                <Button
+                                    className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                >
+                                    View Detail
+                                </Button>
+                            </Link>
                         </span>
-
+                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                            <UpdateCategory
+                                data={reviewData}
+                                setData={setData}
+                                id={reviewData?._id}
+                            />
+                        </span>
                         <span className="text-lg text-danger cursor-pointer active:opacity-50">
                             <Button
-                                onClick={() => Delete(TourData?._id)}
                                 className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                onClick={() => Delete(reviewData?._id)}
                             >
-                                {deleteLoader ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Delete'}
+                                Delete
                             </Button>
                         </span>
                     </div>
@@ -186,43 +148,19 @@ function ViewCancelled({ TourData }) {
         }
     }, []);
 
-
-
-    // approved
-    const approved = React.useCallback(
-        async (id) => {
-            setConfirmLoader(true)
-            const res = await approveBooking(id);
-            if (res?.status === "Success") {
-                setConfirmLoader(false)
-                toast?.success(res?.message);
-                setData((prev) => prev?.filter((data) => data?._id !== id));
-            } else {
-                toast?.error(res?.message);
-                setConfirmLoader(false)
-            }
-        },
-        [setData]
-    );
-
-
-    // Delete
+    // Actions
     const Delete = React.useCallback(
         async (id) => {
-            setDeleteLoader(true)
-            const res = await deleteBooking(id);
+            const res = await DeleteCategory(id);
             if (res?.status === "Success") {
-                setDeleteLoader(false)
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));
             } else {
                 toast?.error(res?.message);
-                setDeleteLoader(false)
             }
         },
         [setData]
     );
-
 
 
     return (
@@ -280,4 +218,4 @@ function ViewCancelled({ TourData }) {
     )
 }
 
-export default ViewCancelled;
+export default ViewApprovedReviews;

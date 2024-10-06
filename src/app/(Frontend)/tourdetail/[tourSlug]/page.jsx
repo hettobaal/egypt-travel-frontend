@@ -2,6 +2,7 @@ export const dynamicParams = true
 import React from 'react'
 import dynamic from 'next/dynamic';
 import { getRelatedTours, getSingleTour, getTours } from '@/lib/siteApis';
+import ReviewsContainer from '@/components/tourDetail/ReviewsContainer';
 const Activity = dynamic(() => import('@/components/tourDetail/Activity'));
 const BookingForm = dynamic(() => import('@/components/tourDetail/BookingForm'));
 const DetailHero = dynamic(() => import('@/components/tourDetail/DetailHero'));
@@ -14,7 +15,7 @@ export async function generateStaticParams() {
     const data = await getTours()
     const posts = data?.data
     const array = posts?.map((tour) => ({
-        tourSlug: tour?.slug ,
+        tourSlug: tour?.slug,
     }));
     return array;
 }
@@ -37,6 +38,7 @@ async function page({ params }) {
                 <BookingForm data={tour?.data} />
             </div>
             <Description data={tour?.data} />
+            {/* <ReviewsContainer /> */}
             <RelatedTours data={similarTour?.data} />
             <Reviews />
         </>

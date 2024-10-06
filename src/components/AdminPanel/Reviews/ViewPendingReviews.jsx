@@ -1,45 +1,55 @@
 "use client"
-import React, {useMemo, useState, useCallback}  from "react";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Tooltip, Pagination, Input } from "@nextui-org/react";
-import { EyeIcon } from "@/components/reuseable/EyeIcon";
-import { DeleteIcon } from "@/components/reuseable/DeleteIcon";
+import React, { useMemo } from "react";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input } from "@nextui-org/react";
 import ImageModal from "@/components/reuseable/ImageModal";
 import { SearchIcon } from "lucide-react";
 import { DeleteCategory } from "@/lib/siteApis";
 import toast from "react-hot-toast";
+import UpdateCategory from "./UpdateCategory";
 import Link from "next/link";
-import UpdateCategory from "../categories/UpdateCategory";
+import MobileImageModal from "@/components/reuseable/MobileImageModal";
+import { Button } from "@/components/ui/button";
 
 
 const columns = [
-    { name: "IMAGE", uid: "imageURL" },
-    { name: "NAME", uid: "name" },
-    { name: "RATING", uid: "rating" },
-    { name: "COMMENT", uid: "comment" },
+    { name: "CATEGORY MOBILE IMAGE", uid: "categoryMobImage" },
+    { name: "CATEGORY IMAGE", uid: "categoryImage" },
+    { name: "CATEGORY NAME", uid: "categoryName" },
+    { name: "BANNER Title", uid: "bannerText" },
+    { name: "BANNER TEXT", uid: "bannerSlogan" },
     { name: "ACTIONS", uid: "actions" },
 ];
 
 
-function ViewReviews({ reviewsData }) {
+function ViewPendingReviews({ reviewData }) {
+
+    const sortedData = useMemo(() => {
+        return [...reviewData]?.sort((a, b) => {
+            if (a?._id > b?._id) return -1;
+            if (a?._id < b?._id) return 1;
+            return 0;
+        });
+    }, [reviewData]);
 
 
-    const [data, setData] = useState(reviewsData);
-    const [filterValue, setFilterValue] = useState("");
-    const [page, setPage] = useState(1);
+    const [data, setData] = React?.useState(sortedData || []);
+
+    const [filterValue, setFilterValue] = React?.useState("");
+    const [page, setPage] = React.useState(1);
 
     // Search bar
     const hasSearchFilter = Boolean(filterValue);
-    const filteredItems = useMemo(() => {
+    const filteredItems = React?.useMemo(() => {
         let filteredUsers = [...data];
         if (hasSearchFilter) {
             filteredUsers = filteredUsers?.filter((data) =>
-                data?.name?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+                data?.categoryName?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
         return filteredUsers;
     }, [data, filterValue, hasSearchFilter]);
 
-    const onSearchChange = useCallback((value) => {
+    const onSearchChange = React.useCallback((value) => {
         if (value) {
             setFilterValue(value);
             setPage(1);
@@ -48,12 +58,12 @@ function ViewReviews({ reviewsData }) {
         }
     }, [setFilterValue, setPage]);
 
-    const onClear = useCallback(() => {
+    const onClear = React.useCallback(() => {
         setFilterValue("")
         setPage(1)
     }, [setFilterValue, setPage])
 
-    const topContent = useMemo(() => {
+    const topContent = React.useMemo(() => {
         return (
             <Input
                 isClearable
@@ -80,7 +90,7 @@ function ViewReviews({ reviewsData }) {
     // pagination
     const rowsPerPage = 4;
     const pages = Math?.ceil(filteredItems?.length / rowsPerPage);
-    const items = useMemo(() => {
+    const items = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         const end = start + rowsPerPage;
 
@@ -88,36 +98,49 @@ function ViewReviews({ reviewsData }) {
     }, [page, filteredItems]);
 
 
-    const renderCell = useCallback((categoryData, columnKey) => {
-        const cellValue = categoryData[columnKey];
+    const renderCell = React.useCallback((reviewData, columnKey) => {
+        const cellValue = reviewData[columnKey];
 
         switch (columnKey) {
-            // case "categoryImage":
-            //     return (
-            //         <div className="cursor-pointer">
-            //             <ImageModal id={categoryData?.categoryImage} />
-            //         </div>
-            //     );
+            case "categoryMobImage":
+                return (
+                    <div className="cursor-pointer">
+                        <MobileImageModal id={reviewData?.categoryMobImage} />
+                    </div>
+                );
+            case "categoryImage":
+                return (
+                    <div className="cursor-pointer">
+                        <ImageModal id={reviewData?.categoryImage} />
+                    </div>
+                );
             case "actions":
                 return (
-                    <div className="relative flex items-center gap-2">
-                        <Tooltip content="Details">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <Link href={`/view-categoryDetail/${categoryData?.slug}`}>
-                                    <EyeIcon />
-                                </Link>
-                            </span>
-                        </Tooltip>
-                        <Tooltip content="Edit">
-                            <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                                <UpdateCategory data={categoryData} setData={setData} id={categoryData?._id} />
-                            </span>
-                        </Tooltip>
-                        <Tooltip color="danger" content="Delete">
-                            <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                                <DeleteIcon onClick={() => Delete(categoryData?._id)} />
-                            </span>
-                        </Tooltip>
+                    <div className="relative flex flex-col  items-start gap-2">
+                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                            <Link href={`/view-categoryDetail/${reviewData?.slug}`}>
+                                <Button
+                                    className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                >
+                                    View Detail
+                                </Button>
+                            </Link>
+                        </span>
+                        <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
+                            <UpdateCategory
+                                data={reviewData}
+                                setData={setData}
+                                id={reviewData?._id}
+                            />
+                        </span>
+                        <span className="text-lg text-danger cursor-pointer active:opacity-50">
+                            <Button
+                                className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                onClick={() => Delete(reviewData?._id)}
+                            >
+                                Delete
+                            </Button>
+                        </span>
                     </div>
                 );
             default:
@@ -126,7 +149,7 @@ function ViewReviews({ reviewsData }) {
     }, []);
 
     // Actions
-    const Delete = useCallback(
+    const Delete = React.useCallback(
         async (id) => {
             const res = await DeleteCategory(id);
             if (res?.status === "Success") {
@@ -140,12 +163,9 @@ function ViewReviews({ reviewsData }) {
     );
 
 
-
-
     return (
         <section className="mt-10 pb-4 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg ">
             <ScrollShadow
-                hideScrollBar
                 offset={100}
                 orientation="vertical"
                 className="w-full relative h-full mt-2 ">
@@ -173,7 +193,7 @@ function ViewReviews({ reviewsData }) {
                     <TableHeader>
                         {columns?.map((column) =>
                             <TableColumn
-                                className="dark:bg-darkModeSecondary dark:text-white text-[15px]"
+                                className="dark:bg-darkModeSecondary text-center dark:text-white text-[15px]"
                                 key={column?.uid}>
                                 {column?.name}
                             </TableColumn>
@@ -198,4 +218,4 @@ function ViewReviews({ reviewsData }) {
     )
 }
 
-export default ViewReviews;
+export default ViewPendingReviews;

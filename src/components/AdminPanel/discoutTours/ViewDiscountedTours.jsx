@@ -110,7 +110,6 @@ function ViewDiscountedTours({ TourData }) {
     return (
         <section className="mt-10 pb-4 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg ">
             <ScrollShadow
-                hideScrollBar
                 offset={100}
                 orientation="vertical"
                 className="w-full relative h-full mt-2 ">

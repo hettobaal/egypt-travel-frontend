@@ -1019,7 +1019,6 @@ export const writeReview = async (data, tourName) => {
         });
 };
 
-
 export const getReviews = async () => {
 
     const Url = SERVER_URL + 'api/public/get-reviews';
@@ -1028,6 +1027,25 @@ export const getReviews = async () => {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+export const getPendingReviewsByStatus = async () => {
+
+    const Url = SERVER_URL + 'api/public/get-reviews?status=Approved';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
     })
         .then((response) => response?.json())
         .then((data) => {
