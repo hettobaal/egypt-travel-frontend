@@ -1,7 +1,8 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import Heading from '@/components/reuseable/Heading'
-import { getPendingReviewsByStatus } from '@/lib/siteApis'
+import { getApprovedReviewsByStatus } from '@/lib/siteApis'
+import ViewApprovedReviews from '@/components/AdminPanel/Reviews/ViewApprovedReviews';
 
 function ApprovedReviews() {
 
@@ -10,8 +11,8 @@ function ApprovedReviews() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getPendingReviewsByStatus()
-                setReviewData(data);
+                const data = await getApprovedReviewsByStatus()
+                setReviewData(data?.data);
             } catch (error) {
                 console.error("Error fetching tours:", error);
             }
@@ -25,9 +26,9 @@ function ApprovedReviews() {
             <Heading>
                 View Approved Reviews
             </Heading>
-            {/* {reviewData?.length > 0 &&
-                <ViewMetaData CategoryData={reviewData || []} />
-            } */}
+            {reviewData?.length > 0 &&
+                <ViewApprovedReviews reviewData={reviewData || []} />
+            }
         </>
     )
 }

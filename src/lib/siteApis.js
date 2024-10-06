@@ -1038,9 +1038,82 @@ export const getReviews = async () => {
 };
 
 
+export const DeleteReview = async (id) => {
+
+    const url = SERVER_URL + `admin/review/delete-review/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+}
+
+
+export const approveReview = async (id) => {
+
+    const Url = SERVER_URL + `admin/review/update-review/${id}`;
+
+    const jsonData = {
+        status: "Approved"
+    }
+
+    return fetch(Url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(jsonData),
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const rejectReview = async (id) => {
+
+    const Url = SERVER_URL + `admin/review/update-review/${id}`;
+
+    const jsonData = {
+        status: "Rejected"
+    }
+
+    return fetch(Url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(jsonData),
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
 export const getPendingReviewsByStatus = async () => {
 
-    const Url = SERVER_URL + 'api/public/get-reviews?status=Approved';
+    const Url = SERVER_URL + 'admin/review/get-reviews-status?status=Pending';
 
     return fetch(Url, {
         method: 'GET',
@@ -1055,3 +1128,42 @@ export const getPendingReviewsByStatus = async () => {
             return error;
         });
 };
+
+
+
+export const getApprovedReviewsByStatus = async () => {
+
+    const Url = SERVER_URL + 'admin/review/get-reviews-status?status=Approved';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const getRejectedReviewsByStatus = async () => {
+
+    const Url = SERVER_URL + 'admin/review/get-reviews-status?status=Rejected';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+

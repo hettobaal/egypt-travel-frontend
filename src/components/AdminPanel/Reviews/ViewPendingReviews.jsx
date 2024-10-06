@@ -1,22 +1,22 @@
 "use client"
 import React, { useMemo } from "react";
-import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input } from "@nextui-org/react";
-import ImageModal from "@/components/reuseable/ImageModal";
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input, Chip } from "@nextui-org/react";
 import { SearchIcon } from "lucide-react";
-import { DeleteCategory } from "@/lib/siteApis";
+import { approveReview, DeleteCategory, DeleteReview, rejectReview } from "@/lib/siteApis";
 import toast from "react-hot-toast";
-import UpdateCategory from "./UpdateCategory";
-import Link from "next/link";
-import MobileImageModal from "@/components/reuseable/MobileImageModal";
 import { Button } from "@/components/ui/button";
 
 
 const columns = [
-    { name: "CATEGORY MOBILE IMAGE", uid: "categoryMobImage" },
-    { name: "CATEGORY IMAGE", uid: "categoryImage" },
-    { name: "CATEGORY NAME", uid: "categoryName" },
-    { name: "BANNER Title", uid: "bannerText" },
-    { name: "BANNER TEXT", uid: "bannerSlogan" },
+    { name: "TOUR NAME", uid: "tourName" },
+    { name: "EMAIL", uid: "email" },
+    { name: "FIRST NAME", uid: "firstName" },
+    { name: "LAST NAME", uid: "lastName" },
+    { name: "PHONE", uid: "phone" },
+    { name: "RATING", uid: "rating" },
+    { name: "DATE", uid: "reviewDate" },
+    { name: "REVIEW", uid: "reviewText" },
+    { name: "STATUS", uid: "status" },
     { name: "ACTIONS", uid: "actions" },
 ];
 
@@ -43,7 +43,7 @@ function ViewPendingReviews({ reviewData }) {
         let filteredUsers = [...data];
         if (hasSearchFilter) {
             filteredUsers = filteredUsers?.filter((data) =>
-                data?.categoryName?.toLowerCase()?.includes(filterValue?.toLowerCase()),
+                data?.firstName?.toLowerCase()?.includes(filterValue?.toLowerCase()),
             );
         }
         return filteredUsers;
@@ -100,38 +100,41 @@ function ViewPendingReviews({ reviewData }) {
 
     const renderCell = React.useCallback((reviewData, columnKey) => {
         const cellValue = reviewData[columnKey];
-
+        const date = reviewData?.reviewDate;
+        const dateOnly = date?.split("T")[0];
         switch (columnKey) {
-            case "categoryMobImage":
+            case "reviewDate":
                 return (
-                    <div className="cursor-pointer">
-                        <MobileImageModal id={reviewData?.categoryMobImage} />
+                    <div className="whitespace-nowrap">
+                        {dateOnly}
                     </div>
                 );
-            case "categoryImage":
+            case "status":
                 return (
-                    <div className="cursor-pointer">
-                        <ImageModal id={reviewData?.categoryImage} />
+                    <div className="whitespace-nowrap">
+                        <Chip className="capitalize" color={'warning'} size="sm" variant="flat">
+                            {reviewData?.status}
+                        </Chip>
                     </div>
                 );
             case "actions":
                 return (
                     <div className="relative flex flex-col  items-start gap-2">
                         <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                            <Link href={`/view-categoryDetail/${reviewData?.slug}`}>
-                                <Button
-                                    className="w-32  text-white bg-blue hover:bg-darkBlue"
-                                >
-                                    View Detail
-                                </Button>
-                            </Link>
+                            <Button
+                                className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                onClick={() => Approve(reviewData?._id)}
+                            >
+                                Approved
+                            </Button>
                         </span>
                         <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                            <UpdateCategory
-                                data={reviewData}
-                                setData={setData}
-                                id={reviewData?._id}
-                            />
+                            <Button
+                                className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                onClick={() => Reject(reviewData?._id)}
+                            >
+                                Reject
+                            </Button>
                         </span>
                         <span className="text-lg text-danger cursor-pointer active:opacity-50">
                             <Button
@@ -151,7 +154,9 @@ function ViewPendingReviews({ reviewData }) {
     // Actions
     const Delete = React.useCallback(
         async (id) => {
-            const res = await DeleteCategory(id);
+            const res = await DeleteReview(id);
+            console.log("res", res);
+
             if (res?.status === "Success") {
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));
@@ -161,6 +166,36 @@ function ViewPendingReviews({ reviewData }) {
         },
         [setData]
     );
+
+
+
+    const Approve = React.useCallback(
+        async (id) => {
+            const res = await approveReview(id);
+            if (res?.status === "Success") {
+                toast?.success(res?.message);
+                setData((prev) => prev?.filter((data) => data?._id !== id));
+            } else {
+                toast?.error(res?.message);
+            }
+        },
+        [setData]
+    );
+
+
+    const Reject = React.useCallback(
+        async (id) => {
+            const res = await rejectReview(id);
+            if (res?.status === "Success") {
+                toast?.success(res?.message);
+                setData((prev) => prev?.filter((data) => data?._id !== id));
+            } else {
+                toast?.error(res?.message);
+            }
+        },
+        [setData]
+    );
+
 
 
     return (

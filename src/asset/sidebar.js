@@ -155,6 +155,14 @@ export const Menu = [
                 subTitle: 'Pending Reviews',
                 url: '/view-pending-reviews'
             },
+            {
+                subTitle: 'Approved Reviews',
+                url: '/view-approved-reviews'
+            },
+            {
+                subTitle: 'Rejected Reviews',
+                url: '/view-rejected-reviews'
+            },
         ]
     },
 ]

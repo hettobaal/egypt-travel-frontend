@@ -1,7 +1,7 @@
 export const dynamicParams = true
 import React from 'react'
 import dynamic from 'next/dynamic';
-import { getRelatedTours, getSingleTour, getTours } from '@/lib/siteApis';
+import { getRelatedTours, getReviews, getSingleTour, getTours } from '@/lib/siteApis';
 import ReviewsContainer from '@/components/tourDetail/ReviewsContainer';
 const Activity = dynamic(() => import('@/components/tourDetail/Activity'));
 const BookingForm = dynamic(() => import('@/components/tourDetail/BookingForm'));
@@ -27,6 +27,8 @@ async function page({ params }) {
     const decodedSlug = decodeURIComponent(slug);
     const tour = await getSingleTour(decodedSlug)
     const similarTour = await getRelatedTours(tour?.data?.tag)
+    const ReviewsData = await getReviews()
+    console.log("Reviews", ReviewsData);
 
 
 
@@ -38,7 +40,7 @@ async function page({ params }) {
                 <BookingForm data={tour?.data} />
             </div>
             <Description data={tour?.data} />
-            {/* <ReviewsContainer /> */}
+            <ReviewsContainer ReviewsData={ReviewsData?.data} />
             <RelatedTours data={similarTour?.data} />
             <Reviews />
         </>

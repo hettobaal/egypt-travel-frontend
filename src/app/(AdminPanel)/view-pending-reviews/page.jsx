@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Heading from '@/components/reuseable/Heading'
 import { getPendingReviewsByStatus } from '@/lib/siteApis'
+import ViewPendingReviews from '@/components/AdminPanel/Reviews/ViewPendingReviews';
 
 function PendingReviews() {
 
@@ -11,7 +12,7 @@ function PendingReviews() {
         const fetchData = async () => {
             try {
                 const data = await getPendingReviewsByStatus()
-                setReviewData(data);
+                setReviewData(data?.data);
             } catch (error) {
                 console.error("Error fetching tours:", error);
             }
@@ -19,15 +20,15 @@ function PendingReviews() {
         fetchData();
     }, []);
 
-
+    // console.log("reviewData", reviewData);
     return (
         <>
             <Heading>
                 View Pending Reviews
             </Heading>
-            {/* {reviewData?.length > 0 &&
-                <ViewMetaData CategoryData={reviewData || []} />
-            } */}
+            {reviewData?.length > 0 &&
+                <ViewPendingReviews reviewData={reviewData || []} />
+            }
         </>
     )
 }
