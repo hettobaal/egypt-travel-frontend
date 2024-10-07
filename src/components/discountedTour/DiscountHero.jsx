@@ -1,6 +1,4 @@
-import Link from 'next/link';
 import React from 'react'
-import { Button } from '../ui/button';
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 function DiscountHero() {
     return (
@@ -12,11 +10,6 @@ function DiscountHero() {
                 <p className='md:text-[26px] text-[17px] leading-snug font-normal text-center z-30'>
                     Feel free to reach out to us at any time! Whether you have questions, feedback, or inquiries about our services, our team is here to assist you.
                 </p>
-                <Link href='/' className='sm:mt-2 mt-1'>
-                    <Button className='bg-amber rounded-full px-8 h-12 hover:bg-amber text-base'>
-                        BOOK A TRIP
-                    </Button>
-                </Link>
             </MaxWidthWrapper>
         </section >
     )

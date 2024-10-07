@@ -1,8 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
-import { Button } from '../ui/button';
-import Link from 'next/link';
 
 function CatalogHero({ ImageUrl, MobImageUrl, data }) {
 
@@ -29,17 +27,13 @@ function CatalogHero({ ImageUrl, MobImageUrl, data }) {
             className="sm:h-[90vh] h-[80vh]  bg-cover bg-center  bg-no-repeat relative  text-white   flex flex-col justify-end items-center" >
             <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 justify-center items-center max-w-screen-lg mx-auto h-full   lg:px-0 md:px-8 mt-8'
             >
+                {/* <div className="sm:block hidden absolute  inset-0 bg-black opacity-50"></div> */}
                 <h1 className='md:text-[34px] text-2xl font-medium text-center z-30 '>
                     {data?.subCategoryTitle}
                 </h1>
                 <p className='md:text-[26px] text-[17px] leading-snug font-normal text-center z-30'>
                     {data?.subCategoryText}
                 </p>
-                <Link href='/' className='sm:mt-2 mt-1'>
-                    <Button className='bg-amber rounded-full px-8 h-12 hover:bg-amber text-base'>
-                        BOOK A TRIP
-                    </Button>
-                </Link>
             </MaxWidthWrapper>
         </section >
     )

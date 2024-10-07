@@ -57,7 +57,7 @@ function CategoryCarousel({ id, data }) {
                             scroll={false}
                             onClick={() => handleSlideClick(index)}
                             href={`/category/${item?.slug}`}
-                            className={`${id === item?.slug && 'bg-white'} flex xl:flex-row flex-col justify-center items-center gap-x-2 gap-y-2 py-4 px-8 rounded-t-xl  whitespace-nowrap`}
+                            className={`${id === item?.slug && 'bg-white'} flex xl:flex-row flex-col justify-center items-center gap-x-2 gap-y-2 py-4 px-8 rounded-t-xl  whitespace-nowrap z-30 w-full`}
                         >
                             <Image
                                 src={id === item?.slug ? '/images/worldBlack.svg' : '/images/world.svg'}

@@ -1,6 +1,4 @@
 import React from 'react'
-import Link from 'next/link';
-import { Button } from '../ui/button';
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 
 function Hero() {
@@ -15,11 +13,6 @@ function Hero() {
                     Schaffen Sie Erinnerungen Bei Ihrer nächsten Reise
                     Schaffen Sie Erinnerungen Bei Ihrer nächsten Reise
                 </p>
-                <Link href='/' className='sm:mt-2 mt-1'>
-                    <Button className='bg-amber rounded-full px-8 h-12 hover:bg-amber text-base'>
-                        BOOK A TRIP
-                    </Button>
-                </Link>
             </MaxWidthWrapper>
         </section >
     )

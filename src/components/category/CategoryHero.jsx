@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
-import { Button } from '../ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 import CategoryCarousel from './CategoryCarousel';
@@ -31,6 +30,7 @@ function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
             }}
             className="sm:h-[90vh] h-[80vh] bg-cover bg-center bg-no-repeat relative text-white flex flex-col justify-end items-center"
         >
+            {/* <div className="sm:block hidden absolute  inset-0 bg-black opacity-50"></div> */}
             <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 justify-center items-center max-w-screen-lg mx-auto h-full   lg:px-0 md:px-8 mt-8'
             >
                 <h1 className='md:text-[34px] text-2xl font-medium text-center z-30'>
@@ -39,15 +39,10 @@ function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
                 <p className='md:text-[26px] text-[17px] leading-snug font-normal text-center z-30'>
                     {singleData[0]?.bannerSlogan}
                 </p>
-                <Link href='/' className='sm:mt-2 mt-1'>
-                    <Button className='bg-amber rounded-full px-8 h-12 hover:bg-amber text-base'>
-                        BOOK A TRIP
-                    </Button>
-                </Link>
 
             </MaxWidthWrapper>
-            <MaxWidthWrapper className='' >
-                <div className='w-full xl:flex hidden justify-between '>
+            <MaxWidthWrapper className='w-full' >
+                <div className='w-full xl:flex hidden justify-between  '>
                     {
                         data?.map((item, index) => {
                             return (
@@ -55,7 +50,7 @@ function CategoryHero({ id, data, ImageUrl, MobImageUrl }) {
                                     key={index}
                                     href={`/category/${item?.slug}`}
                                     scroll={false}
-                                    className={`${id === item?.slug && 'bg-white'} flex justify-center items-center gap-x-2     py-2 px-8 rounded-t-xl  whitespace-nowrap`}>
+                                    className={`${id === item?.slug && 'bg-white'} flex justify-center items-center gap-x-2     py-2 px-8 rounded-t-xl  whitespace-nowrap z-30`}>
                                     {
                                         id === item?.slug ?
                                             < Image

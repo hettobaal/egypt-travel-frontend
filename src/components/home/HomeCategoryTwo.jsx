@@ -14,7 +14,7 @@ function HomeCategoryTwo({ data }) {
                     <div className='w-full flex justify-end items-end'>
                         <div className='lg:w-[58%] w-full flex justify-between items-center '>
                             <span >
-                                <h2 className='sm:text-2xl text-lg sm:font-semibold font-bold'>
+                                <h2 className='sm:text-2xl text-lg sm:font-semibold font-bold' >
                                     {data?.categoryName}
                                 </h2>
                             </span>

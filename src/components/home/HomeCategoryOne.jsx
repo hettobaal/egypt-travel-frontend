@@ -7,7 +7,7 @@ import Link from 'next/link';
 import HomeCard from './HomeCard';
 
 function HomeCategoryOne({ data }) {
-// console.log("Beliebtesten",data);
+    // console.log("Beliebtesten",data);
 
 
     return (
@@ -46,7 +46,7 @@ function HomeCategoryOne({ data }) {
                             data?.subCategoryId?.length ?
                                 <HomeCard subCategory={data?.subCategoryId} />
                                 :
-                                <HeadingOne className='text-center'>No SubCategory Available</HeadingOne>
+                                <HeadingThree className='text-center'>No SubCategory Available</HeadingThree>
                         }
                     </div>
                 </div>
