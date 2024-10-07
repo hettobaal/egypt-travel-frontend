@@ -23,7 +23,7 @@ function DetailMobileCarousel({ imageUrls }) {
                     onSlideChange={(swiper) => setCurrentIndex(swiper.realIndex + 1)}
                     loop
                     modules={[Navigation]}
-                    className="mySwiper custom-pagination"
+                    className="mySwiper custom-pagination w-full h-full"
                 >
                     {
                         imageUrls?.map((item, index) => {
@@ -32,7 +32,7 @@ function DetailMobileCarousel({ imageUrls }) {
                                     key={index}>
                                     <div className='h-full flex items-center justify-center sm:max-h-[55vh] max-h-[45vh]'>
                                         <Image
-                                            className='mx-auto w-full h-full object-cover'
+                                            className='mx-auto w-full h-full '
                                             src={item}
                                             width={800}
                                             height={500}
