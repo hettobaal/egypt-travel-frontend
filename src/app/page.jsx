@@ -38,6 +38,7 @@ async function page() {
   const discountedTours = DiscountedTours?.data?.[0]?.tourId || [];
   const sellingTours = SellingTours?.data?.[0]?.tourId || [];
 
+  
   return (
     <>
       <WebHeader />
