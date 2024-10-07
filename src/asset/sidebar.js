@@ -7,6 +7,7 @@ import { TbBrandBooking } from "react-icons/tb";
 import { FaBattleNet } from "react-icons/fa";
 import { FaSellsy } from "react-icons/fa";
 import { FaMeta } from "react-icons/fa6";
+import { IoMdContact } from "react-icons/io";
 export const Menu = [
     { heading: 'Main Menu' },
 
@@ -162,6 +163,16 @@ export const Menu = [
             {
                 subTitle: 'Rejected Reviews',
                 url: '/view-rejected-reviews'
+            },
+        ]
+    },
+    {
+        Icon: IoMdContact,
+        title: 'Contacts',
+        subMenu: [
+            {
+                subTitle: 'View Contacts',
+                url: '/view-contacts'
             },
         ]
     },

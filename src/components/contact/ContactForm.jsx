@@ -1,6 +1,6 @@
 "use client"
 import { Card, CardBody, CardHeader } from '@nextui-org/react';
-import React from 'react'
+import React, { useState } from 'react'
 import HeadingOne from '../reuseable/HeadingOne';
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -14,6 +14,9 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import toast from 'react-hot-toast';
+import { ContactMessage } from '@/lib/siteApis';
+import { Loader2 } from 'lucide-react';
 
 
 const formSchema = z.object({
@@ -28,7 +31,7 @@ const formSchema = z.object({
     }),
 })
 function ContactForm() {
-
+    const [loader, setLoader] = useState(false);
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -38,8 +41,17 @@ function ContactForm() {
         },
     })
 
-    function onSubmit(values) {
-        // console.log(values)
+    async function onSubmit(values) {
+        setLoader(true)
+        const res = await ContactMessage(values)
+        setLoader(false)
+        if (res?.status == "Success") {
+            setLoader(false)
+            toast?.success(res?.message)
+        } else {
+            setLoader(false)
+            toast?.error(res?.message)
+        }
     }
 
     return (
@@ -110,7 +122,9 @@ function ContactForm() {
                                 )}
                             />
                         </div>
-                        <Button type="submit" className='mt-4 w-full rounded-full bg-amber hover:bg-amber h-11'>SEND</Button>
+                        <Button type="submit" className='mt-4 w-full rounded-full bg-amber hover:bg-amber h-11'>
+                            {loader ? <Loader2 className="h-4 w-4 animate-spin" /> : 'SEND'}
+                        </Button>
                     </form>
                 </Form>
 

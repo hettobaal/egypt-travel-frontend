@@ -1167,3 +1167,70 @@ export const getRejectedReviewsByStatus = async () => {
         });
 };
 
+
+// Contact 
+export const ContactMessage = async (data) => {
+
+    const Url = SERVER_URL + 'api/public/send-message';
+
+    const json = {
+        name: data?.name,
+        email: data?.email,
+        message: data?.message,
+    }   
+
+    return fetch(Url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(json),
+        mode: 'cors',
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+export const GetContactMessage = async () => {
+
+    const Url = SERVER_URL + 'admin/message/get-messages';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+export const DeleteContactMessage = async (id) => {
+
+    const url = SERVER_URL + `admin/message/delete-message/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+}
