@@ -37,7 +37,7 @@ async function page({ params }) {
                 <BookingForm data={tour?.data} />
             </div>
             <Description data={tour?.data} />
-            <ReviewsContainer ReviewsData={tour?.data?.reviews} />
+            <ReviewsContainer ReviewsData={tour?.data?.reviewsId} />
             <RelatedTours data={similarTour?.data} />
             <Reviews />
         </>

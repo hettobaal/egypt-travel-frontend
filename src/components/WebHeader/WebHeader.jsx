@@ -10,7 +10,7 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-o
 import { ChevronDown } from 'lucide-react';
 import { getCategories } from '@/lib/siteApis';
 
-function WebHeader({categoryData}) {
+function WebHeader({ categoryData }) {
     const [scrolled, setScrolled] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     // const [categoryData, setCategoryData] = useState([]);
@@ -55,7 +55,7 @@ function WebHeader({categoryData}) {
                     <Image
                         className='lg:block hidden'
                         src='/nav/webLogo.webp'
-                        
+
                         priority
                         width={130}
                         height={100}
@@ -64,7 +64,7 @@ function WebHeader({categoryData}) {
                     <Image
                         className='lg:hidden'
                         src='/nav/webLogo.webp'
-                        
+
                         priority
                         width={105}
                         height={100}
@@ -74,7 +74,7 @@ function WebHeader({categoryData}) {
                 <ul className='lg:flex hidden items-center gap-x-8'>
                     <li>
                         <Link
-                        prefetch={false}
+                            prefetch={false}
                             href='/'
                             className={`text-base font-medium tracking-wider ${route === '/' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
@@ -83,7 +83,7 @@ function WebHeader({categoryData}) {
                     </li>
                     <li>
                         <Link
-                        prefetch={false}
+                            prefetch={false}
                             href='/about-us'
                             className={`text-base font-medium tracking-wider ${route === '/about-us' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
@@ -124,11 +124,11 @@ function WebHeader({categoryData}) {
                                         return (
                                             <DropdownItem
                                                 key={index}
-                                                className='data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
+                                                className=' data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
                                             >
                                                 <Link
-                                        prefetch={false}
-                                        href={`/category/${item?.slug}`}
+                                                    prefetch={false}
+                                                    href={`/category/${item?.slug}`}
                                                     className='text-base font-medium text-black'
                                                 >
                                                     {item?.categoryName}
@@ -142,7 +142,7 @@ function WebHeader({categoryData}) {
                     </li>
                     <li>
                         <Link
-                        prefetch={false}
+                            prefetch={false}
                             href='/blogs'
                             className={`text-base font-medium tracking-wider ${route === '/blogs' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
@@ -151,7 +151,7 @@ function WebHeader({categoryData}) {
                     </li>
                     <li>
                         <Link
-                        prefetch={false}
+                            prefetch={false}
                             href='/discounted-tours'
                             className={`text-base font-medium tracking-wider ${route === '/discounted-tours' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
