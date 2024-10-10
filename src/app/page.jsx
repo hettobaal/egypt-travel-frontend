@@ -2,9 +2,9 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import './globals.css'
 import { getCategories, getDiscountTours, getPopularTours, getSellingTours } from '@/lib/siteApis';
-const Hero = dynamic(() => import('@/components/home/Hero'));
-const WebHeader = dynamic(() => import('@/components/WebHeader/WebHeader'));
-const Search = dynamic(() => import('@/components/home/Search'));
+import Hero from '@/components/home/Hero';
+import WebHeader from '@/components/WebHeader/WebHeader';
+import Search from '@/components/home/Search';
 const PopularTour = dynamic(() => import('@/components/home/PopularTour'));
 const HomeCategoryOne = dynamic(() => import('@/components/home/HomeCategoryOne'));
 const HomeCategoryTwo = dynamic(() => import('@/components/home/HomeCategoryTwo'));
@@ -23,7 +23,10 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 async function page() {
 
   const data = await getCategories()
-
+  const popularToursData = await getPopularTours()
+  const DiscountedTours = await getDiscountTours()
+  const SellingTours = await getSellingTours()
+ 
   const categories = data?.data || []; 
   const firstCategory = categories?.length > 0 ? categories[0] : null;
   const secondCategory = categories?.length > 1 ? categories[1] : null;
@@ -31,9 +34,6 @@ async function page() {
   const fourCategory = categories?.length > 3 ? categories[3] : null;
   const fiveCategory = categories?.length > 4 ? categories[4] : null;
 
-  const popularToursData = await getPopularTours()
-  const DiscountedTours = await getDiscountTours()
-  const SellingTours = await getSellingTours()
   const popularTours = popularToursData?.data?.[0]?.tourId || [];
   const discountedTours = DiscountedTours?.data?.[0]?.tourId || [];
   const sellingTours = SellingTours?.data?.[0]?.tourId || [];
