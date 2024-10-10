@@ -27,7 +27,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                             {writeReview || isTourDetailPage || scrolled ? (
                                 <Image
          loading='lazy'
-         placeholder='blur'
+         
                                 src='/nav/blackToggle.svg'
                                     width={24}
                                     height={20}
@@ -36,7 +36,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                             ) : (
                                 <Image
                            loading='lazy'
-         placeholder='blur'
+         
                                 src='/nav/toggle.svg'
                                     width={24}
                                     height={20}
@@ -57,14 +57,14 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                                     className='lg:block hidden'
                                     src='/nav/webLogo.webp'
                            priority
-         placeholder='blur'
+         
                                     width={130}
                                     height={100}
                                     alt='web Logo'
                                 />
                                 <Image
                            priority
-                           placeholder='blur'     
+                                
                                     className='lg:hidden'
                                     src='/nav/webLogo.webp'
                                     width={105}
