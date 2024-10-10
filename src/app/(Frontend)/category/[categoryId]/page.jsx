@@ -1,9 +1,9 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
 import { getCategories, getSingleCategory } from '@/lib/siteApis';
-const CategoryHero = dynamic(() => import('@/components/category/CategoryHero'));
-const CategoryRelatedTour = dynamic(() => import('@/components/category/CategoryRelatedTour'));
-const CategoryTour = dynamic(() => import('@/components/category/CategoryTour'));
+import CategoryHero from '@/components/category/CategoryHero';
+import CategoryRelatedTour from '@/components/category/CategoryRelatedTour';
+import CategoryTour from '@/components/category/CategoryTour';
 const Reviews = dynamic(() => import('@/components/reuseable/Reviews'));
 const Journey = dynamic(() => import('@/components/reuseable/Journey'));
 

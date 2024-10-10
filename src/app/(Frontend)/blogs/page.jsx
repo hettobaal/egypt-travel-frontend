@@ -1,8 +1,7 @@
 import React from 'react'
-import dynamic from 'next/dynamic';
-const BlogHero = dynamic(() => import('@/components/blogs/BlogHero'));
-const BlogCards = dynamic(() => import('@/components/blogs/BlogCards'));
-const Journey = dynamic(() => import('@/components/reuseable/Journey'));
+import BlogHero from '@/components/blogs/BlogHero';
+import BlogCards from '@/components/blogs/BlogCards';
+import Journey from '@/components/reuseable/Journey';
 async function page() {
 
     return (

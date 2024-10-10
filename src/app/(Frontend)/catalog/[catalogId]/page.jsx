@@ -1,12 +1,10 @@
 export const dynamicParams = true
 import React from 'react'
-import dynamic from 'next/dynamic';
 import Reviews from '@/components/reuseable/Reviews';
 import Journey from '@/components/reuseable/Journey';
 import { getSingleSubCategory, getSubCategories } from '@/lib/siteApis';
-const CatalogHero = dynamic(() => import('@/components/catalog/CatalogHero'));
-const CatalogTour = dynamic(() => import('@/components/catalog/CatalogTour'));
-
+import CatalogHero from '@/components/catalog/CatalogHero';
+import CatalogTour from '@/components/catalog/CatalogTour';
 export async function generateStaticParams() {
     const data = await getSubCategories()
     const posts = data?.data
@@ -23,6 +21,7 @@ async function page({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
+    // console.log("data", data?.data?.tourId);
 
     const ImageData = data?.data
     const heroImageDesktop = ImageData?.subCategoryHeroImage
