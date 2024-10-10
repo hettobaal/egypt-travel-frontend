@@ -23,6 +23,9 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 async function page() {
 
   const data = await getCategories()
+  const popularToursData = await getPopularTours()
+  const DiscountedTours = await getDiscountTours()
+  const SellingTours = await getSellingTours()
 
   const categories = data?.data || [];
   const firstCategory = categories?.length > 0 ? categories[0] : null;
