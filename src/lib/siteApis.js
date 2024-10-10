@@ -1019,24 +1019,6 @@ export const writeReview = async (data, tourName) => {
         });
 };
 
-export const getReviews = async () => {
-
-    const Url = SERVER_URL + 'api/public/get-reviews';
-
-    return fetch(Url, {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'no-cache'
-    })
-        .then((response) => response?.json())
-        .then((data) => {
-            return data;
-        })
-        .catch((error) => {
-            return error;
-        });
-};
-
 
 export const DeleteReview = async (id) => {
 

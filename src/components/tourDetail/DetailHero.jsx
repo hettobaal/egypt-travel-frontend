@@ -7,7 +7,7 @@ import DetailModal from './DetailModal'
 import DetailMobileCarousel from './DetailMobileCarousel'
 
 function DetailHero({ data }) {
-
+  
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageClick = (imageUrl) => {

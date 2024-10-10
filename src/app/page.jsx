@@ -5,14 +5,14 @@ import { getCategories, getDiscountTours, getPopularTours, getSellingTours } fro
 import Hero from '@/components/home/Hero';
 import WebHeader from '@/components/WebHeader/WebHeader';
 import Search from '@/components/home/Search';
-const PopularTour = dynamic(() => import('@/components/home/PopularTour'));
-const HomeCategoryOne = dynamic(() => import('@/components/home/HomeCategoryOne'));
-const HomeCategoryTwo = dynamic(() => import('@/components/home/HomeCategoryTwo'));
-const HomeCategoryThree = dynamic(() => import('@/components/home/HomeCategoryThree'));
-const HomeCategoryFour = dynamic(() => import('@/components/home/HomeCategoryFour'));
-const HomeCategoryFive = dynamic(() => import('@/components/home/HomeCategoryFive'));
-const DiscountedTour = dynamic(() => import('@/components/home/DiscountedTour'));
-const HomeSellingTour = dynamic(() => import('@/components/home/HomeSellingTour'));
+import PopularTour from '@/components/home/PopularTour';
+import HomeCategoryOne from '@/components/home/HomeCategoryOne';
+import HomeCategoryTwo from '@/components/home/HomeCategoryTwo';
+import HomeCategoryThree from '@/components/home/HomeCategoryThree';
+import HomeCategoryFour from '@/components/home/HomeCategoryFour';
+import HomeCategoryFive from '@/components/home/HomeCategoryFive';
+import DiscountedTour from '@/components/home/DiscountedTour';
+import HomeSellingTour from '@/components/home/HomeSellingTour';
 const WhyChooseUs = dynamic(() => import('@/components/home/WhyChooseUs'));
 const Reviews = dynamic(() => import('@/components/reuseable/Reviews'));
 const Journey = dynamic(() => import('@/components/reuseable/Journey'));
@@ -26,8 +26,8 @@ async function page() {
   const popularToursData = await getPopularTours()
   const DiscountedTours = await getDiscountTours()
   const SellingTours = await getSellingTours()
- 
-  const categories = data?.data || []; 
+
+  const categories = data?.data || [];
   const firstCategory = categories?.length > 0 ? categories[0] : null;
   const secondCategory = categories?.length > 1 ? categories[1] : null;
   const thirdCategory = categories?.length > 2 ? categories[2] : null;
@@ -38,7 +38,7 @@ async function page() {
   const discountedTours = DiscountedTours?.data?.[0]?.tourId || [];
   const sellingTours = SellingTours?.data?.[0]?.tourId || [];
 
-  
+
   return (
     <>
       <WebHeader categoryData={data?.data} />
