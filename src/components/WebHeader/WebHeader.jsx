@@ -50,10 +50,13 @@ function WebHeader() {
             <MaxWidthWrapper className='w-full flex justify-between items-center'>
                 <Link
                     href='/'
+                    prefetch={false}
                 >
                     <Image
                         className='lg:block hidden'
                         src='/nav/webLogo.webp'
+                        placeholder='blur'
+                        priority
                         width={130}
                         height={100}
                         alt='web Logo'
@@ -61,6 +64,8 @@ function WebHeader() {
                     <Image
                         className='lg:hidden'
                         src='/nav/webLogo.webp'
+                        placeholder='blur'
+                        priority
                         width={105}
                         height={100}
                         alt='web Logo'
@@ -69,6 +74,7 @@ function WebHeader() {
                 <ul className='lg:flex hidden items-center gap-x-8'>
                     <li>
                         <Link
+                        prefetch={false}
                             href='/'
                             className={`text-base font-medium tracking-wider ${route === '/' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
@@ -77,6 +83,7 @@ function WebHeader() {
                     </li>
                     <li>
                         <Link
+                        prefetch={false}
                             href='/about-us'
                             className={`text-base font-medium tracking-wider ${route === '/about-us' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
@@ -120,7 +127,8 @@ function WebHeader() {
                                                 className='data-[hover=true]:bg-default-0  border-b-1 border-[#F1870059] rounded-none px-0'
                                             >
                                                 <Link
-                                                    href={`/category/${item?.slug}`}
+                                        prefetch={false}
+                                        href={`/category/${item?.slug}`}
                                                     className='text-base font-medium text-black'
                                                 >
                                                     {item?.categoryName}
@@ -134,6 +142,7 @@ function WebHeader() {
                     </li>
                     <li>
                         <Link
+                        prefetch={false}
                             href='/blogs'
                             className={`text-base font-medium tracking-wider ${route === '/blogs' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
@@ -142,6 +151,7 @@ function WebHeader() {
                     </li>
                     <li>
                         <Link
+                        prefetch={false}
                             href='/discounted-tours'
                             className={`text-base font-medium tracking-wider ${route === '/discounted-tours' ? 'text-amber border-b-2 pb-[1px] border-amber' : writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >

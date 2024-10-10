@@ -31,9 +31,6 @@ async function page() {
   const fourCategory = categories?.length > 3 ? categories[3] : null;
   const fiveCategory = categories?.length > 4 ? categories[4] : null;
 
-  const popularToursData = await getPopularTours()
-  const DiscountedTours = await getDiscountTours()
-  const SellingTours = await getSellingTours()
   const popularTours = popularToursData?.data?.[0]?.tourId || [];
   const discountedTours = DiscountedTours?.data?.[0]?.tourId || [];
   const sellingTours = SellingTours?.data?.[0]?.tourId || [];
