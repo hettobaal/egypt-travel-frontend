@@ -24,7 +24,7 @@ function ReviewsContainer({ ReviewsData }) {
     };
 
     useEffect(() => {
-        if (selectedStars.length === 0) {
+        if (selectedStars?.length === 0) {
             setFilteredReviews(ReviewsData);
         } else {
             setFilteredReviews(ReviewsData.filter(review => selectedStars.includes(review.rating)));
@@ -43,7 +43,7 @@ function ReviewsContainer({ ReviewsData }) {
                             className='cursor-pointer w-5 h-5 border-1 border-black'
                             type="checkbox"
                             onChange={() => toggleStarFilter('all')}
-                            checked={selectedStars.length === 0}
+                            checked={selectedStars?.length === 0}
                         />
                         <Para className={'text-[#1A2B49]'}>All Star ratings</Para>
                     </span>
@@ -69,8 +69,8 @@ function ReviewsContainer({ ReviewsData }) {
                     ))}
                 </div>
                 <div className='w-full flex flex-col gap-y-4'>
-                    {filteredReviews.length > 0 ? (
-                        filteredReviews.map(review => {
+                    {filteredReviews?.length > 0 ? (
+                        filteredReviews?.map(review => {
                             const date = review?.reviewDate;
                             const dateOnly = date?.split("T")[0];
 
