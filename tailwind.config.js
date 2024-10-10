@@ -1,6 +1,7 @@
 import { nextui } from "@nextui-org/react";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  purge: ['./src/**/*.jsx'],
   darkMode: ["class"],
   content: [
     './pages/**/*.{js,jsx}',
