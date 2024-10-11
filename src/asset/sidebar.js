@@ -8,6 +8,7 @@ import { FaBattleNet } from "react-icons/fa";
 import { FaSellsy } from "react-icons/fa";
 import { FaMeta } from "react-icons/fa6";
 import { IoMdContact } from "react-icons/io";
+import { MdUnsubscribe } from "react-icons/md";
 export const Menu = [
     { heading: 'Main Menu' },
 
@@ -166,6 +167,7 @@ export const Menu = [
             },
         ]
     },
+
     {
         Icon: IoMdContact,
         title: 'Contacts',
@@ -176,4 +178,15 @@ export const Menu = [
             },
         ]
     },
+
+    // {
+    //     Icon: MdUnsubscribe,
+    //     title: 'Subscribers',
+    //     subMenu: [
+    //         {
+    //             subTitle: 'View Subscribers',
+    //             url: '/view-subscribers'
+    //         },
+    //     ]
+    // },
 ]

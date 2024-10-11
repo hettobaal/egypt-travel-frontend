@@ -1,6 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
-import { getCategories, getSingleCategory } from '@/lib/siteApis';
+import { getCategories, getSingleCategory, getSingleMetaData } from '@/lib/siteApis';
 import CategoryHero from '@/components/category/CategoryHero';
 import CategoryRelatedTour from '@/components/category/CategoryRelatedTour';
 import CategoryTour from '@/components/category/CategoryTour';
@@ -12,10 +12,71 @@ export async function generateStaticParams() {
     const data = await getCategories()
     const posts = data?.data
     const array = posts?.map((post) => ({
-        categoryId: post?.slug ,
+        categoryId: post?.slug,
     }));
     return array;
 }
+
+
+
+
+export async function generateMetadata({ params }) {
+    const id = params?.categoryId;
+    const decodedId = decodeURIComponent(id);
+    const data = await getSingleCategory(decodedId)
+    const categoryId = data?.data?._id
+    const categoryMetaData = await getSingleMetaData(categoryId)
+    const metaData = categoryMetaData?.data
+    const title = metaData?.title || 'Default Title';
+    const description = metaData?.description || 'Default Description';
+    const canonical = metaData?.canonical || 'https://egypt-travel-frontend.vercel.app';
+    const ogSitename = metaData?.ogSitename || 'Agypten';
+    const ogTitle = metaData?.ogTitle || title;
+    const ogDescription = metaData?.ogDescription || description;
+    const ogURL = metaData?.ogURL || `https://egypt-travel-frontend.vercel.app/catalog/${decodedId}`;
+    const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
+    const ogImage = metaData?.ogImage || '';
+
+    return {
+        title,
+        description,
+        canonical: canonical,
+        openGraph: {
+            siteName: ogSitename,
+            title: ogTitle,
+            description: ogDescription,
+            url: ogURL,
+            images: [
+                {
+                    url: ogImage,
+                    secureUrl: `https://dccvcdil526gz.cloudfront.net/${metaData?.ogImage}`,
+                    width: 1200,
+                    height: 627,
+                    alt: `${ogImageAlt}`,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: ogTitle,
+            description: ogDescription,
+            images: [
+                {
+                    url: ogImage,
+                    secureUrl: `https://dccvcdil526gz.cloudfront.net/${metaData?.ogImage}`,
+                    width: 1200,
+                    height: 627,
+                    alt: `${ogImageAlt}`,
+                },
+            ],
+        },
+    };
+
+}
+
+
+
+
 
 
 async function page({ params }) {

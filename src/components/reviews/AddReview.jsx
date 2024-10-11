@@ -206,7 +206,7 @@ function AddReview({ toursData }) {
                                     {[1, 2, 3, 4, 5].map((star) => (
                                         <span key={star} onClick={() => setRating(star)}>
                                             {rating >= star ? (
-                                                <IoIosStar size={30} color="gold" />
+                                                <IoIosStar size={30} color="#FFC107" />
                                             ) : (
                                                 <IoIosStarOutline size={30} />
                                             )}

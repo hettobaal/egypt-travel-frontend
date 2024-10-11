@@ -10,10 +10,10 @@ import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-o
 import { ChevronDown } from 'lucide-react';
 import { getCategories } from '@/lib/siteApis';
 
-function WebHeader({ categoryData }) {
+function WebHeader() {
     const [scrolled, setScrolled] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    // const [categoryData, setCategoryData] = useState([]);
+    const [categoryData, setCategoryData] = useState([]);
     const route = usePathname();
 
     useEffect(() => {
@@ -35,14 +35,14 @@ function WebHeader({ categoryData }) {
     const writeReview = route?.startsWith('/write-review');
 
 
-    // useEffect(() => {
-    //     // const getData = async () => {
-    //     //     const data = await getCategories()
-    //     //     setCategoryData(data?.data)
-    //     // }
-    //     // getData()
+    useEffect(() => {
+        const getData = async () => {
+            const data = await getCategories()
+            setCategoryData(data?.data)
+        }
+        getData()
 
-    // }, [])
+    }, [])
 
 
     return (

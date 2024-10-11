@@ -864,6 +864,25 @@ export const addSubCategoryMetaData = async (data) => {
         });
 };
 
+export const getSingleMetaData = async (id) => {
+
+
+    const Url = SERVER_URL + `api/public/get-metadata/${id}`;
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
 export const getSubCategoryMetaData = async () => {
 
     const Url = SERVER_URL + 'admin/metadata/get-all-metadata?entityType=subcategory';
@@ -1159,7 +1178,7 @@ export const ContactMessage = async (data) => {
         name: data?.name,
         email: data?.email,
         message: data?.message,
-    }   
+    }
 
     return fetch(Url, {
         method: 'POST',

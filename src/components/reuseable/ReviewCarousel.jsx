@@ -92,7 +92,7 @@ function ReviewCarousel() {
                                                                 {item?.rating}
                                                             </h4>
                                                             {[...Array(5)].map((_, starIndex) => (
-                                                                <IoStar key={starIndex} color='#FFB623' size={23} />
+                                                                <IoStar key={starIndex} color='#FFC107' size={23} />
                                                             ))}
                                                         </div>
 

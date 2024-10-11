@@ -41,7 +41,7 @@ async function page() {
 
   return (
     <>
-      <WebHeader categoryData={data?.data} />
+      <WebHeader />
       <Hero />
       <Search />
       <PopularTour popularToursData={popularTours} />

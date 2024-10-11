@@ -6,9 +6,33 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Link from 'next/link';
 import Image from 'next/image';
-import { IoStar } from 'react-icons/io5';
+import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 function CatalogCardCarousel({ data }) {
+
+
+    const renderStars = (rating) => {
+        const totalStars = 5;
+        const fullStars = Math?.floor(rating);
+        const halfStar = rating % 1 >= 0.5;
+        const emptyStars = totalStars - fullStars - (halfStar ? 1 : 0);
+
+        return (
+            <>
+                {Array.from({ length: fullStars }).map((_, index) => (
+                    <IoStar key={`full-${index}`} color='#FFC107' size={20} />
+                ))}
+                {halfStar && <IoStarHalf key="half" color='#FFC107' size={20} />}
+                {Array.from({ length: emptyStars }).map((_, index) => (
+                    <IoStarOutline key={`empty-${index}`} color='#FFBB4A' size={20} />
+                ))}
+            </>
+        );
+    };
+
+
+
+
 
     const swiperRef = useRef(null);
 
@@ -81,13 +105,9 @@ function CatalogCardCarousel({ data }) {
                                                 }
                                                 <h5 className='text-amber font-bold sm:text-xl text-base'>Away {price} {` `} <span className='text-[#363636] font-normal sm:text-base text-sm '> per person</span></h5>
                                                 <div className='mt-1 flex gap-x-2 items-center'>
-                                                    {
-                                                        Array.from({ length: 5 }, (_, index) => (
-                                                            <IoStar key={index} color='#FFBB4A' size={20} />
-                                                        ))
-                                                    }
+                                                    {renderStars(2.5 || 0)} {/* Call renderStars with the rating */}
                                                     <h6 className='text-base font-bold'>
-                                                        5
+                                                        {2.5 || 0} {/* Show rating value */}
                                                     </h6>
                                                 </div>
                                             </div>
