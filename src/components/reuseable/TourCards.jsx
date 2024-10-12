@@ -6,18 +6,24 @@ import { Button } from '../ui/button';
 import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
 function TourCards({ ToursData }) {
 
+    const calculateAverageRating = (reviews) => {
+        if (!reviews?.length) return 0;
+        const totalRating = reviews?.reduce((sum, review) => sum + review.rating, 0);
+        return totalRating / reviews?.length;
+    };
+
     const renderStars = (rating) => {
         const totalStars = 5;
-        const fullStars = Math.floor(rating); // Full stars
-        const halfStar = rating % 1 >= 0.5; // Check if half star is needed
-        const emptyStars = totalStars - fullStars - (halfStar ? 1 : 0); // Remaining empty stars
+        const fullStars = Math?.floor(rating);
+        const halfStar = rating % 1 >= 0.5;
+        const emptyStars = totalStars - fullStars - (halfStar ? 1 : 0);
 
         return (
             <>
                 {Array.from({ length: fullStars }).map((_, index) => (
-                    <IoStar key={`full-${index}`} color='#FFBB4A' size={20} />
+                    <IoStar key={`full-${index}`} color='#FFC107' size={20} />
                 ))}
-                {halfStar && <IoStarHalf key="half" color='#FFBB4A' size={20} />}
+                {halfStar && <IoStarHalf key="half" color='#FFC107' size={20} />}
                 {Array.from({ length: emptyStars }).map((_, index) => (
                     <IoStarOutline key={`empty-${index}`} color='#FFBB4A' size={20} />
                 ))}
@@ -33,7 +39,7 @@ function TourCards({ ToursData }) {
 
                         const strikePrice = item?.discountAmount > 0 && item?.priceAdult
                         const price = item?.discountAmount > 0 ? item?.adultPriceAfterDiscount : item?.priceAdult
-
+                        const averageRating = calculateAverageRating(item?.reviewsId);
                         return (
                             <Link
                                 key={index}
@@ -79,10 +85,13 @@ function TourCards({ ToursData }) {
                                             }
                                             <h5 className='text-amber font-bold sm:text-xl text-lg'>Away {price} {` `} <span className='text-[#363636] font-normal text-base '> per person</span></h5>
                                             <div className='mt-1 flex gap-x-2 items-center'>
-                                                {renderStars(3 || 0)} {/* Call renderStars with the rating */}
+                                                {renderStars(averageRating)}
                                                 <h6 className='text-base font-bold'>
-                                                    {4 || 0} {/* Show rating value */}
+                                                    {averageRating?.toFixed(1)}
                                                 </h6>
+                                                <span className='text-sm text-gray-500'>
+                                                    ({item?.reviewsId?.length || 0} reviews)
+                                                </span>
                                             </div>
                                         </div>
                                     </CardBody>

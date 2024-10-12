@@ -1235,3 +1235,70 @@ export const DeleteContactMessage = async (id) => {
             return error;
         });
 }
+
+
+// subscribe
+export const addSubscribe = async (data) => {
+
+    const Url = SERVER_URL + "api/public/add-subscriber";
+
+    const jsonData = {
+        email: data?.email
+    }
+
+    return fetch(Url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(jsonData),
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
+export const getSubscribers = async () => {
+
+    const Url = SERVER_URL + "admin/subscribe/get-subscribers";
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+export const DeleteSubscriber = async (id) => {
+
+    const url = SERVER_URL + `admin/subscribe/delete-subscriber/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+}

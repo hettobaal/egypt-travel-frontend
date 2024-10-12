@@ -1,8 +1,8 @@
 "use client"
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, ScrollShadow, Pagination, Input } from "@nextui-org/react";
 import { SearchIcon } from "lucide-react";
-import { deleteBooking } from "@/lib/siteApis";
+import { DeleteSubscriber } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
 
@@ -13,15 +13,16 @@ const columns = [
 ];
 
 
-function ViewSubscribers({ TourData }) {
+function ViewSubscribers({ SubscribersData }) {
+    const [deleteLoader, setDeleteLoader] = useState(false);
 
     const sortedData = useMemo(() => {
-        return [...TourData]?.sort((a, b) => {
+        return [...SubscribersData]?.sort((a, b) => {
             if (a?._id > b?._id) return -1;
             if (a?._id < b?._id) return 1;
             return 0;
         });
-    }, [TourData]);
+    }, [SubscribersData]);
 
 
     const [data, setData] = React?.useState(sortedData || []);
@@ -90,15 +91,15 @@ function ViewSubscribers({ TourData }) {
         return filteredItems?.slice(start, end);
     }, [page, filteredItems]);
 
-    const renderCell = React.useCallback((TourData, columnKey) => {
-        const cellValue = TourData[columnKey];
+    const renderCell = React.useCallback((SubscribersData, columnKey) => {
+        const cellValue = SubscribersData[columnKey];
         switch (columnKey) {
             case "actions":
                 return (
                     <div className="relative flex flex-col items-start gap-2">
                         <span className="text-lg text-danger cursor-pointer active:opacity-50">
                             <Button
-                                onClick={() => Delete(TourData?._id)}
+                                onClick={() => Delete(SubscribersData?._id)}
                                 className="w-32  text-white bg-blue hover:bg-darkBlue"
                             >
                                 Delete
@@ -118,8 +119,8 @@ function ViewSubscribers({ TourData }) {
     const Delete = React.useCallback(
         async (id) => {
             setDeleteLoader(true)
-            const res = await deleteBooking(id);
-            if (res?.status === "Success") {
+            const res = await DeleteSubscriber(id);
+            if (res?.status === "success") {
                 setDeleteLoader(false)
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));
@@ -163,7 +164,7 @@ function ViewSubscribers({ TourData }) {
                     <TableHeader>
                         {columns?.map((column) =>
                             <TableColumn
-                                className="dark:bg-darkModeSecondary text-center dark:text-white text-[15px]"
+                                className="dark:bg-darkModeSecondary  dark:text-white text-[15px]"
                                 key={column?.uid}>
                                 {column?.name}
                             </TableColumn>

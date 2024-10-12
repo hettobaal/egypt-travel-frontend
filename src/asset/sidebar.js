@@ -179,14 +179,14 @@ export const Menu = [
         ]
     },
 
-    // {
-    //     Icon: MdUnsubscribe,
-    //     title: 'Subscribers',
-    //     subMenu: [
-    //         {
-    //             subTitle: 'View Subscribers',
-    //             url: '/view-subscribers'
-    //         },
-    //     ]
-    // },
+    {
+        Icon: MdUnsubscribe,
+        title: 'Subscribers',
+        subMenu: [
+            {
+                subTitle: 'View Subscribers',
+                url: '/view-subscribers'
+            },
+        ]
+    },
 ]

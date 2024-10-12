@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React, { useState } from 'react'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import {
@@ -12,6 +12,9 @@ import {
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { Loader2 } from 'lucide-react'
+import toast from 'react-hot-toast'
+import { addSubscribe } from '@/lib/siteApis'
 
 const formSchema = z.object({
     email: z.string().min(2, {
@@ -19,7 +22,7 @@ const formSchema = z.object({
     }),
 })
 function Subscribe() {
-
+    const [loader, setLoader] = useState(false);
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -27,9 +30,16 @@ function Subscribe() {
         },
     })
 
-    function onSubmit(values) {
-
-        // console.log("hello world", values)
+    async function onSubmit(values) {
+        setLoader(true)
+        const res = await addSubscribe(values)
+        if (res?.status == "success") {
+            setLoader(false)
+            toast?.success(res?.message)
+        } else {
+            setLoader(false)
+            toast?.error(res?.message)
+        }
     }
 
     return (
@@ -53,7 +63,11 @@ function Subscribe() {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className='rounded-full bg-amber hover:bg-amber h-11'>Subscribe</Button>
+                    <Button type="submit" className='rounded-full bg-amber hover:bg-amber h-11'>
+                        {loader ? <span className='flex items-center'>
+                            <Loader2 className="h-4 w-4 animate-spin mr-2" /> {` `} Subscribe
+                        </span> : 'Subscribe'}
+                    </Button>
                 </form>
             </Form>
 

@@ -76,15 +76,15 @@ async function page({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
-    // console.log("data", data?.data?.tourId);
+    // console.log("data", data?.data);
 
     const ImageData = data?.data
-    const heroImageDesktop = ImageData?.subCategoryHeroImage
-        ? `https://dccvcdil526gz.cloudfront.net/${ImageData.subCategoryHeroImage}?v=${Date.now()}`
+    const heroImageDesktop = ImageData[0]?.subCategoryHeroImage
+        ? `https://dccvcdil526gz.cloudfront.net/${ImageData[0]?.subCategoryHeroImage}?v=${Date.now()}`
         : '';
 
-    const heroImageMobile = ImageData?.subCategoryMobHeroImage
-        ? `https://dccvcdil526gz.cloudfront.net/${ImageData.subCategoryMobHeroImage}?v=${Date.now()}`
+    const heroImageMobile = ImageData[0]?.subCategoryMobHeroImage
+        ? `https://dccvcdil526gz.cloudfront.net/${ImageData[0]?.subCategoryMobHeroImage}?v=${Date.now()}`
         : '';
 
 
@@ -92,11 +92,11 @@ async function page({ params }) {
     return (
         <>
             <CatalogHero
-                data={data?.data}
+                data={data?.data[0]}
                 ImageUrl={heroImageDesktop}
                 MobImageUrl={heroImageMobile}
             />
-            <CatalogTour data={data?.data} />
+            <CatalogTour data={data?.data[0]} />
             <Reviews />
             <Journey />
         </>

@@ -8,6 +8,12 @@ import CatalogCardCarousel from './CatalogCardCarousel';
 
 function CatalogCards({ data }) {
 
+    const calculateAverageRating = (reviews) => {
+        if (!reviews?.length) return 0;
+        const totalRating = reviews?.reduce((sum, review) => sum + review.rating, 0);
+        return totalRating / reviews?.length;
+    };
+
     const renderStars = (rating) => {
         const totalStars = 5;
         const fullStars = Math?.floor(rating);
@@ -27,7 +33,6 @@ function CatalogCards({ data }) {
         );
     };
 
-
     return (
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
@@ -35,6 +40,7 @@ function CatalogCards({ data }) {
                     data?.tourId?.map((item, index) => {
                         const strikePrice = item?.discountAmount > 0 && item?.priceAdult
                         const price = item?.discountAmount > 0 ? item?.adultPriceAfterDiscount : item?.priceAdult
+                        const averageRating = calculateAverageRating(item?.reviewsId);
                         return (
                             <Link
                                 key={index}
@@ -78,10 +84,13 @@ function CatalogCards({ data }) {
                                             }
                                             <h5 className='text-amber font-bold sm:text-xl text-lg'>Away {price} {` `} <span className='text-[#363636] font-normal text-base '> per person</span></h5>
                                             <div className='mt-1 flex gap-x-2 items-center'>
-                                                {renderStars(4.5 || 0)} {/* Call renderStars with the rating */}
+                                                {renderStars(averageRating)}
                                                 <h6 className='text-base font-bold'>
-                                                    {4.5 || 0} {/* Show rating value */}
+                                                    {averageRating?.toFixed(1)}
                                                 </h6>
+                                                <span className='text-sm text-gray-500'>
+                                                    ({item?.reviewsId?.length || 0} reviews)
+                                                </span>
                                             </div>
                                         </div>
                                     </CardBody>
