@@ -9,6 +9,7 @@ import { FaSellsy } from "react-icons/fa";
 import { FaMeta } from "react-icons/fa6";
 import { IoMdContact } from "react-icons/io";
 import { MdUnsubscribe } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
 export const Menu = [
     { heading: 'Main Menu' },
 
@@ -186,6 +187,20 @@ export const Menu = [
             {
                 subTitle: 'View Subscribers',
                 url: '/view-subscribers'
+            },
+        ]
+    },
+    {
+        Icon: FaUser,
+        title: 'Users',
+        subMenu: [
+            {
+                subTitle: 'Add User',
+                url: '/add-user'
+            },
+            {
+                subTitle: 'View User',
+                url: '/view-user'
             },
         ]
     },

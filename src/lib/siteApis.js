@@ -387,7 +387,6 @@ export const updateTourIncludePoint = async (data, id, pointId) => {
 };
 
 
-
 export const updateInfo = async (data, id, pointId) => {
 
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
@@ -523,7 +522,6 @@ export const getDiscountTours = async () => {
 
 
 // Popular tour
-
 export const addPopularTour = async (data) => {
 
     const Url = SERVER_URL + 'admin/populartour/add-populartour';
@@ -588,7 +586,6 @@ export const DeletePopularTour = async (id) => {
 
 
 // Selling tour
-
 export const addSellingTour = async (data) => {
 
     const Url = SERVER_URL + 'admin/besttour/add-besttour';
@@ -704,8 +701,6 @@ export const getBookingTours = async () => {
             return error;
         });
 };
-
-
 
 export const approveBooking = async (id) => {
 
@@ -1302,3 +1297,96 @@ export const DeleteSubscriber = async (id) => {
             return error;
         });
 }
+
+
+// user 
+export const addUser = async (data) => {
+
+    const Url = SERVER_URL + "admin/user/add-user";
+
+    const jsonData = {
+        email: data?.email,
+        password: data?.password,
+    }
+
+    return fetch(Url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(jsonData),
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const getUsers = async () => {
+
+    const Url = SERVER_URL + "admin/user/get-users";
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const DeleteUser = async (id) => {
+
+    const url = SERVER_URL + `admin/user/delete-user/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+}
+
+export const userLogin = async (data) => {
+
+    const Url = SERVER_URL + "admin/user/add-user";
+
+    const jsonData = {
+        email: data?.email,
+        password: data?.password,
+    }
+
+    return fetch(Url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON?.stringify(jsonData),
+        mode: 'cors',
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
