@@ -15,12 +15,13 @@ export const createCategory = async (data) => {
     formData?.append('bannerSlogan', data?.bannerSlogan);
 
     return fetch(Url, {
+
         method: 'POST',
         body: formData,
         mode: 'cors',
-        // headers: {
-        //     "token": `${token}`,
-        // },
+        headers:{
+            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MGU1YWJkMjUxNjkyNDJjZDkzM2JiMCIsImlhdCI6MTcyODk5Mzk4OX0.0QwHUdN_yucsTXtT5JZkz0dFyHAVMe3Q_cadyfBAZeg`
+        }
     },
     )
         .then((response) => response?.json())
