@@ -18,6 +18,7 @@ import toast from 'react-hot-toast'
 import { addUser } from '@/lib/siteApis'
 
 const formSchema = z.object({
+    name: z.string().min(1, { message: "Name is required " }),
     email: z.string().min(2, {
         message: "Email is Required",
     }),
@@ -34,6 +35,7 @@ function AddUser() {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            name: "",
             email: "",
             password: "",
         },
@@ -43,7 +45,6 @@ function AddUser() {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await addUser(data)
-        console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -62,6 +63,23 @@ function AddUser() {
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                         <div className='gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
+                            <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Name</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                type="text"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+                                    </FormItem>
+                                )}
+                            />
                             <FormField
                                 control={form.control}
                                 name="email"

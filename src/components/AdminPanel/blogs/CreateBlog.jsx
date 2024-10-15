@@ -18,20 +18,15 @@ import { createCategory } from '@/lib/siteApis'
 import toast from 'react-hot-toast'
 
 const formSchema = z.object({
-    categoryName: z.string().min(1, { message: "Category Name is required" }),
-    categoryName: z.string().min(1, { message: "This field is  required" }),
-    categoryImage: z
+    title: z.string().min(1, { message: "Title is required" }),
+    cardImage: z
         .any()
         .refine((file) => file?.length == 1, 'File is required.'),
-    categoryMobImage: z
-        .any()
-        .refine((file) => file?.length == 1, 'File is required.'),
-    bannerText: z.string().min(1, { message: "This field is  required" }),
-    bannerSlogan: z.string().min(1, { message: "This field is  required" }),
+    desc: z.string().min(1, { message: "This field is  required" }),
 })
 
 
-function CreateCategory() {
+function CreateBlog() {
 
     const [loader, setLoader] = useState(false);
 
@@ -50,8 +45,6 @@ function CreateCategory() {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await createCategory(data)
-        console.log("res", res);
-
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -64,7 +57,6 @@ function CreateCategory() {
     };
 
     const fileRef = form.register("categoryImage");
-    const fileRef2 = form.register("categoryMobImage");
 
     return (
         <section className="mt-10 bg-white dark:bg-darkMode px-4 py-6  rounded-md shadow-lg ">
@@ -100,26 +92,6 @@ function CreateCategory() {
                                             <Input
                                                 className='dark:bg-darkModeSecondary  outline-none '
                                                 {...fileRef} onChange={(event) => {
-                                                    field.onChange(event.target?.files?.[0] ?? undefined);
-                                                }}
-                                                type="file"
-                                            />
-                                        </FormControl>
-                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
-
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="categoryMobImage"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel className="text-base dark:text-white  font-semibold">Category Mobile Image</FormLabel>
-                                        <FormControl>
-                                            <Input
-                                                className='dark:bg-darkModeSecondary  outline-none '
-                                                {...fileRef2} onChange={(event) => {
                                                     field.onChange(event.target?.files?.[0] ?? undefined);
                                                 }}
                                                 type="file"
@@ -182,4 +154,4 @@ function CreateCategory() {
     )
 }
 
-export default CreateCategory;
+export default CreateBlog;

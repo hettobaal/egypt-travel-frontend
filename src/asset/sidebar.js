@@ -169,6 +169,23 @@ export const Menu = [
         ]
     },
 
+
+    {
+        Icon: IoMdContact,
+        title: 'Blogs',
+        subMenu: [
+            {
+                subTitle: 'Create Blogs',
+                url: '/create-blog'
+            },
+            {
+                subTitle: 'View Blogs',
+                url: '/view-blogs'
+            },
+        ]
+    },
+
+
     {
         Icon: IoMdContact,
         title: 'Contacts',
@@ -190,6 +207,7 @@ export const Menu = [
             },
         ]
     },
+
     {
         Icon: FaUser,
         title: 'Users',
