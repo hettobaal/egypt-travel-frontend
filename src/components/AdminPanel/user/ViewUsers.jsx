@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 
 
 const columns = [
+    { name: "NAME", uid: "name" },
     { name: "EMAIL", uid: "email" },
     { name: "ACTIONS", uid: "actions" },
 ];
@@ -118,7 +119,7 @@ function ViewUsers({ Users }) {
     const Delete = React.useCallback(
         async (id) => {
             const res = await DeleteUser(id);
-            if (res?.status === "success") {
+            if (res?.status === "Success") {
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));
             } else {

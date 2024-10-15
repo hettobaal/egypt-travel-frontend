@@ -7,7 +7,17 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { IoIosArrowDown } from "react-icons/io";
+import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 export function Profile() {
+
+    const router = useRouter()
+
+    const logOut = () => {
+        Cookies?.remove("authToken")
+        Cookies?.remove("isLogin")
+        router?.push("/sign-in")
+    }
 
     return (
         <DropdownMenu>
@@ -20,7 +30,10 @@ export function Profile() {
                 </span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40 ">
-                <Button variant='secondary' className='w-full dark:bg-darkModeSecondary'>
+                <Button
+                    onClick={logOut}
+                    variant='secondary'
+                    className='w-full dark:bg-darkModeSecondary'>
                     Logout
                 </Button>
             </DropdownMenuContent>

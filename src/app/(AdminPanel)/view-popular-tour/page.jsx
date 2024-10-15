@@ -28,7 +28,7 @@ function ViewPopularTourPage() {
             <Heading>
                 View Popular Tours
             </Heading>
-            {popularTours.length > 0 &&
+            {popularTours?.length > 0 &&
                 <ViewPopularTour TourData={popularTours?.length > 0 ? popularTours[0]?.tourId : []} />}
         </>
     )

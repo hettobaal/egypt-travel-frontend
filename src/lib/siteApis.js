@@ -1,6 +1,7 @@
+import Cookies from "js-cookie";
 
 const SERVER_URL = process?.env?.NEXT_PUBLIC_SERVER_URL
-
+const token = Cookies?.get("authToken");
 
 // Category
 export const createCategory = async (data) => {
@@ -1309,6 +1310,7 @@ export const addUser = async (data) => {
     const Url = SERVER_URL + "admin/user/add-user";
 
     const jsonData = {
+        name: data?.name,
         email: data?.email,
         password: data?.password,
     }
@@ -1370,7 +1372,7 @@ export const DeleteUser = async (id) => {
 
 export const userLogin = async (data) => {
 
-    const Url = SERVER_URL + "admin/user/add-user";
+    const Url = SERVER_URL + "api/public/admin-login";
 
     const jsonData = {
         email: data?.email,

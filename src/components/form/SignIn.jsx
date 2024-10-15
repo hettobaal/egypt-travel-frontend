@@ -11,6 +11,10 @@ import { Button } from '../../components/ui/button';
 import { zodResolver } from "@hookform/resolvers/zod"
 import '../../app/globals.css'
 import { Loader2 } from 'lucide-react';
+import { userLogin } from '@/lib/siteApis';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 
 const FormSchema = z.object({
     email: z.string().min(4, {
@@ -24,7 +28,7 @@ const FormSchema = z.object({
 function SignIn() {
 
     const [showPassword, setShowPassword] = useState(false);
-    const [loader, setloader] = useState(false);
+    const [loader, setLoader] = useState(false);
 
     const form = useForm({
         resolver: zodResolver(FormSchema),
@@ -34,10 +38,24 @@ function SignIn() {
         },
     })
 
+    const router = useRouter()
+
     const onSubmit = async (userData) => {
-        // setloader(true)
-        // console.log(userData);
-        // console.log(process.env.customKey);
+        setLoader(true)
+        const res = await userLogin(userData)
+        setLoader(false)
+        if (res?.status == "success") {
+            setLoader(false)
+            if (res?.token) {
+                Cookies.set("authToken", res?.token);
+                Cookies.set("isLogin", true);
+            }
+            router?.push('/view-categories')
+            toast?.success(res?.message)
+        } else {
+            setLoader(false)
+            toast?.error(res?.message)
+        }
 
     }
 
