@@ -19,8 +19,8 @@ export const createCategory = async (data) => {
         method: 'POST',
         body: formData,
         mode: 'cors',
-        headers:{
-            authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MGU1YWJkMjUxNjkyNDJjZDkzM2JiMCIsImlhdCI6MTcyODk5Mzk4OX0.0QwHUdN_yucsTXtT5JZkz0dFyHAVMe3Q_cadyfBAZeg`
+        headers: {
+            authorization: `Bearer ${token}`
         }
     },
     )
@@ -77,6 +77,7 @@ export const DeleteCategory = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -106,6 +107,9 @@ export const updateCategoryById = async (data, id) => {
         method: 'PUT',
         body: formData,
         mode: 'cors',
+        headers: {
+            authorization: `Bearer ${token}`
+        }
     },
     )
         .then((response) => response?.json())
@@ -134,6 +138,9 @@ export const createSubCategory = async (data) => {
         method: 'POST',
         body: formData,
         mode: 'cors',
+        headers: {
+            authorization: `Bearer ${token}`
+        }
     },
     )
         .then((response) => response?.json())
@@ -189,6 +196,7 @@ export const DeleteSubCategory = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -224,7 +232,10 @@ export const updateSubCategoryById = async (data, id) => {
         method: 'PUT',
         body: formData,
         mode: 'cors',
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        },
     },
     )
         .then((response) => response?.json())
@@ -266,6 +277,9 @@ export const addTour = async (data) => {
         method: 'POST',
         body: formData,
         mode: 'cors',
+        headers: {
+            authorization: `Bearer ${token}`
+        },
     },
     )
         .then((response) => response?.json())
@@ -333,7 +347,10 @@ export const updateTourById = async (data, id) => {
         method: 'PUT',
         body: formData,
         mode: 'cors',
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        },
     },
     )
         .then((response) => response?.json())
@@ -356,7 +373,10 @@ export const updateTourPoint = async (data, id, pointId) => {
         method: 'PUT',
         body: formData,
         mode: 'cors',
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        },
     },
     )
         .then((response) => response?.json())
@@ -379,7 +399,10 @@ export const updateTourIncludePoint = async (data, id, pointId) => {
         method: 'PUT',
         body: formData,
         mode: 'cors',
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        },
     },
     )
         .then((response) => response?.json())
@@ -404,7 +427,10 @@ export const updateInfo = async (data, id, pointId) => {
         method: 'PUT',
         body: formData,
         mode: 'cors',
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        },
     },
     )
         .then((response) => response?.json())
@@ -428,7 +454,10 @@ export const updateTourImage = async (data, id, TourData) => {
         method: 'PUT',
         body: formData,
         mode: 'cors',
-        cache: "no-store"
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        },
     },
     )
         .then((response) => response?.json())
@@ -448,6 +477,7 @@ export const DeleteTour = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -480,30 +510,7 @@ export const getRelatedTours = async (id) => {
 
 
 // discount tour
-export const addDiscountTour = async (data) => {
 
-    const Url = SERVER_URL + 'admin/discountedtour/add-discountedtour';
-
-    const json = {
-        tourId: data?.tourId
-    }
-
-    return fetch(Url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON?.stringify(json),
-        mode: 'cors',
-    })
-        .then((response) => response?.json())
-        .then((data) => {
-            return data;
-        })
-        .catch((error) => {
-            return error;
-        });
-};
 
 export const getDiscountTours = async () => {
 
@@ -539,6 +546,7 @@ export const addPopularTour = async (data) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
         body: JSON?.stringify(json),
         mode: 'cors',
@@ -578,6 +586,7 @@ export const DeletePopularTour = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -603,6 +612,7 @@ export const addSellingTour = async (data) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
         body: JSON?.stringify(json),
         mode: 'cors',
@@ -642,6 +652,7 @@ export const DeleteSellingTour = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -696,7 +707,11 @@ export const getBookingTours = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`
+        },
+
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -719,6 +734,7 @@ export const approveBooking = async (id) => {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
         body: JSON?.stringify(jsonData),
         mode: 'cors',
@@ -746,6 +762,7 @@ export const cancelBooking = async (id) => {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
         body: JSON?.stringify(jsonData),
         mode: 'cors',
@@ -769,6 +786,7 @@ export const deleteBooking = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -803,6 +821,9 @@ export const addCategoryMetaData = async (data) => {
         method: 'POST',
         body: formData,
         mode: 'cors',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     },
     )
         .then((response) => response?.json())
@@ -821,7 +842,10 @@ export const getCategoryMetaData = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -853,6 +877,10 @@ export const addSubCategoryMetaData = async (data) => {
         method: 'POST',
         body: formData,
         mode: 'cors',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
+
     },
     )
         .then((response) => response?.json())
@@ -890,7 +918,10 @@ export const getSubCategoryMetaData = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -922,6 +953,9 @@ export const addTourMetaData = async (data) => {
         method: 'POST',
         body: formData,
         mode: 'cors',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     },
     )
         .then((response) => response?.json())
@@ -940,7 +974,10 @@ export const getTourMetaData = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -959,6 +996,7 @@ export const deleteMetaData = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -992,6 +1030,9 @@ export const updateMetaDataById = async (data, id) => {
         method: 'PUT',
         body: formData,
         mode: 'cors',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     },
     )
         .then((response) => response?.json())
@@ -1047,6 +1088,7 @@ export const DeleteReview = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -1071,6 +1113,7 @@ export const approveReview = async (id) => {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
         body: JSON?.stringify(jsonData),
         mode: 'cors',
@@ -1097,6 +1140,7 @@ export const rejectReview = async (id) => {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
         body: JSON?.stringify(jsonData),
         mode: 'cors',
@@ -1119,7 +1163,11 @@ export const getPendingReviewsByStatus = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
+
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1139,7 +1187,10 @@ export const getApprovedReviewsByStatus = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1157,7 +1208,10 @@ export const getRejectedReviewsByStatus = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1205,7 +1259,10 @@ export const GetContactMessage = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1225,6 +1282,7 @@ export const DeleteContactMessage = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -1250,6 +1308,7 @@ export const addSubscribe = async (data) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
         body: JSON?.stringify(jsonData),
         mode: 'cors',
@@ -1272,7 +1331,10 @@ export const getSubscribers = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1292,6 +1354,7 @@ export const DeleteSubscriber = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
@@ -1319,6 +1382,7 @@ export const addUser = async (data) => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
         body: JSON?.stringify(jsonData),
         mode: 'cors',
@@ -1340,7 +1404,10 @@ export const getUsers = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store'
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1359,6 +1426,7 @@ export const DeleteUser = async (id) => {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
         },
     })
         .then(response => response?.json())
