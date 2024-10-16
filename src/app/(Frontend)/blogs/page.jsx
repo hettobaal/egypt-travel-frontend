@@ -2,12 +2,17 @@ import React from 'react'
 import BlogHero from '@/components/blogs/BlogHero';
 import BlogCards from '@/components/blogs/BlogCards';
 import Journey from '@/components/reuseable/Journey';
-async function page() {
+import { getBlogs } from '@/lib/siteApis';
 
-    return (
+async function page() {
+const  blogs = await getBlogs()
+
+
+
+return (
         <>
             <BlogHero />
-            <BlogCards />
+            <BlogCards blogsData={blogs?.data[2]} />
             <Journey />
         </>
     )

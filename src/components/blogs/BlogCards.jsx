@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper'
 import Link from 'next/link'
 import { Card, CardBody, CardHeader } from '@nextui-org/react'
@@ -7,10 +7,26 @@ import Image from 'next/image'
 import { blogs } from '@/asset/blog'
 import { Button } from '../ui/button'
 import { motion, AnimatePresence } from 'framer-motion'
+import StarterKit from '@tiptap/starter-kit'
+import { generateHTML } from '@tiptap/react'
 
-function BlogCards() {
+
+function BlogCards({blogsData}) {
     const [show, setShow] = useState(6)
     const [expanded, setExpanded] = useState(false)
+    const [content, setContent] = useState(null)
+
+
+    // For usman,
+    // yeh generateHTML  ka function client sside pe kam krega , componenet mpount hone k bad, eslie es useffect ko nahi hatana
+    // abhi mene blog[2] pass kiya hua hai page.jsx me se to uska content dikha rha hai, blog[0] wale ka content theek se save nahi hua eslie wh issue kr rha hai,
+    // tu structure wagera set krle fir me old blogs delete krta hu Db se, or new data add kr dena proper, 
+    useEffect(() => {
+        if (blogsData?.content) {
+          const htmlContent = generateHTML(blogsData.content, [StarterKit]);
+          setContent(htmlContent);
+        }
+      }, [blogsData]);
 
     const toggleShowMore = () => {
         setExpanded(!expanded)
@@ -20,6 +36,11 @@ function BlogCards() {
 
     return (
         <MaxWidthWrapper className='md:mt-16 sm:mt-10 mt-8 flex flex-col justify-center items-center'>
+          { content &&
+          
+    <div dangerouslySetInnerHTML={{ __html: content }} />
+ } 
+          
             <div
                 className={`w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6`}
             >
@@ -72,6 +93,9 @@ function BlogCards() {
 
                 </AnimatePresence>
             </div>
+
+
+
             <div className='w-full flex justify-center items-center sm:mt-10 mt-6'>
                 <Button
                     onClick={toggleShowMore}
