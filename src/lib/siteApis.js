@@ -1464,3 +1464,35 @@ export const userLogin = async (data) => {
             return error
         });
 };
+
+
+// Blogs
+export const createBlog = async (data) => {
+console.log("content in api func ", data);
+
+    const Url = SERVER_URL + "admin/blog/add-blog";
+
+    const jsonData = {
+        name: data?.name,
+        email: data?.email,
+        password: data?.password,
+    }
+return "abc"
+    // return fetch(Url, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //         authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON?.stringify(jsonData),
+    //     mode: 'cors',
+    // },
+    // )
+    //     .then((response) => response?.json())
+    //     .then((data) => {
+    //         return data
+    //     })
+    //     .catch((error) => {
+    //         return error
+    //     });
+};
