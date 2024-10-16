@@ -45,6 +45,8 @@ export default function CreateBlog() {
         setLoader(true)
         let dataWithContent = { ...data, content }
         const res = await createBlog(dataWithContent)
+        console.log("res", res);
+
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -82,7 +84,7 @@ export default function CreateBlog() {
                                     </FormItem>
                                 )}
                             />
-                            
+
                             <FormField
                                 control={form.control}
                                 name="shortDesc"
@@ -122,8 +124,6 @@ export default function CreateBlog() {
                         </div>
                         <h3 className='font-bold text-base'>Content</h3>
                         <Tiptap setContent={setContent} />
-
-
                         <div className="mt-[1.5rem]">
                             <Button
                                 type="submit"
