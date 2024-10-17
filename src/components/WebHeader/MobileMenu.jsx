@@ -13,7 +13,7 @@ import Link from 'next/link';
 import { Input } from '../ui/input';
 import { ChevronDown } from 'lucide-react';
 
-function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
+function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blog }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const handleLinkClick = () => {
@@ -25,20 +25,20 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                 <SheetTrigger>
                     {
                         isOpen ? '' : <>
-                            {writeReview || isTourDetailPage || scrolled ? (
+                            {blog || writeReview || isTourDetailPage || scrolled ? (
                                 <Image
-         loading='lazy'
-         
-                                src='/nav/blackToggle.svg'
+                                    loading='lazy'
+
+                                    src='/nav/blackToggle.svg'
                                     width={24}
                                     height={20}
                                     alt='web Logo'
                                 />
                             ) : (
                                 <Image
-                           loading='lazy'
-         
-                                src='/nav/toggle.svg'
+                                    loading='lazy'
+
+                                    src='/nav/toggle.svg'
                                     width={24}
                                     height={20}
                                     alt='web Logo'
@@ -51,21 +51,21 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                     <div className="w-full flex flex-col gap-y-8">
                         <div className='w-full flex justify-between items-center '>
                             <Link
-                            prefetch={false}
+                                prefetch={false}
                                 href='/'
                             >
                                 <Image
                                     className='lg:block hidden'
                                     src='/nav/webLogo.webp'
-                           priority
-         
+                                    priority
+
                                     width={130}
                                     height={100}
                                     alt='web Logo'
                                 />
                                 <Image
-                           priority
-                                
+                                    priority
+
                                     className='lg:hidden'
                                     src='/nav/webLogo.webp'
                                     width={105}
@@ -85,7 +85,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                         </span>
                         <ul className='w-full flex  flex-col items-start gap-y-3 ps-2'>
                             <Link
-                            prefetch={false}
+                                prefetch={false}
                                 onClick={handleLinkClick}
                                 href='/'
                                 className='w-full border-b-1 border-[#00000038]  pb-3 text-base font-medium tracking-wider text-slate '
@@ -93,7 +93,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                                 Home
                             </Link>
                             <Link
-                            prefetch={false}
+                                prefetch={false}
                                 onClick={handleLinkClick}
                                 href='/about-us'
                                 className='w-full border-b-1 border-[#00000038] pb-3 text-base font-medium tracking-wider text-slate'
@@ -120,8 +120,8 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                                             categoryData?.map((item, index) => {
                                                 return (
                                                     <Link
-                                                    prefetch={false}
-                                                    key={index}
+                                                        prefetch={false}
+                                                        key={index}
                                                         onClick={handleLinkClick}
                                                         href={`/category/${item?.slug}`}
                                                         className='w-full border-b-1 border-[#00000038] pb-3 ps-4 text-base font-medium tracking-wider text-slate'
@@ -135,7 +135,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                                 )
                             }
                             <Link
-                            prefetch={false}
+                                prefetch={false}
                                 onClick={handleLinkClick}
                                 href='/blogs'
                                 className='w-full border-b-1 border-[#00000038] pb-3 text-base font-medium tracking-wider text-slate'
@@ -143,7 +143,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                                 Blogs
                             </Link>
                             <Link
-                            prefetch={false}
+                                prefetch={false}
                                 onClick={handleLinkClick}
                                 href='/discounted-tours'
                                 className='w-full border-b-1 border-[#00000038] pb-3 text-base font-medium tracking-wider text-slate'
@@ -151,7 +151,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                                 Discounted Tours
                             </Link>
                             <Link
-                            prefetch={false}
+                                prefetch={false}
                                 onClick={handleLinkClick}
                                 href='/contact'
                                 className='w-full border-b-1 border-[#00000038] pb-3 text-base font-medium tracking-wider text-slate'
@@ -161,7 +161,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData }) {
                         </ul>
                     </div>
                     <Link
-                    prefetch={false}
+                        prefetch={false}
                         onClick={handleLinkClick}
                         href='/' className='w-full flex justify-center items-center mb-4'>
                         <Button className='sm:w-max w-[95%] bg-navy hover:bg-navy rounded-full  px-16 h-12 text-base'>

@@ -5,14 +5,15 @@ import Journey from '@/components/reuseable/Journey';
 import { getBlogs } from '@/lib/siteApis';
 
 async function page() {
-const  blogs = await getBlogs()
 
+    const blogs = await getBlogs()
 
-
-return (
+    return (
         <>
             <BlogHero />
-            <BlogCards blogsData={blogs?.data[2]} />
+            <div className='md:mt-16 sm:mt-10 mt-8'>
+                <BlogCards />
+            </div>
             <Journey />
         </>
     )
