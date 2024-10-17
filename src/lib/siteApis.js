@@ -1468,37 +1468,37 @@ export const userLogin = async (data) => {
 
 // Blogs
 export const createBlog = async (data) => {
-    console.log("content in api func ", data);
+    console.log("content in api func", data);
 
     const Url = SERVER_URL + "admin/blog/add-blog";
 
-    const jsonData = {
-        title: data?.title,
-        image: "test",
-        category: "test",
-        shortdesc: data?.shortDesc,
-        date: data?.date,
-        content: data?.content,
-    }
+    const formData = new FormData();
+
+    formData.append('title', data?.title);
+    formData.append('cardImage', data?.cardImage);
+    formData.append('mainImage', data?.mainImage);
+    formData.append('category', data?.category);
+    formData.append('shortdesc', data?.shortDesc);
+    formData.append('date', data?.date);
+    formData.append('content', data?.content);
 
     return fetch(Url, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
             authorization: `Bearer ${token}`,
         },
-        body: JSON?.stringify(jsonData),
+        body: formData,
         mode: 'cors',
-    },
-    )
+    })
         .then((response) => response?.json())
         .then((data) => {
-            return data
+            return data;
         })
         .catch((error) => {
-            return error
+            return error;
         });
 };
+
 
 export const getBlogs = async () => {
 

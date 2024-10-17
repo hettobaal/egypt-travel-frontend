@@ -19,8 +19,15 @@ import toast from 'react-hot-toast'
 import Tiptap from './Tiptap'
 
 const formSchema = z.object({
-    title: z.string().min(1, { message: "Blog title is required" }),
-    shortDesc: z.string().min(1, { message: "Card description is required" }),
+    title: z.string().min(1, { message: "required" }),
+    cardImage: z
+        .any()
+        .refine((file) => file?.length == 1, 'File is required.'),
+    mainImage: z
+        .any()
+        .refine((file) => file?.length == 1, 'File is required.'),
+    shortDesc: z.string().min(1, { message: " required" }),
+    // category: z.string().min(1, { message: " required" }),
     date: z.string().min(1, { message: "Date is required" }),
 })
 
@@ -33,7 +40,10 @@ export default function CreateBlog() {
         resolver: zodResolver(formSchema),
         defaultValues: {
             title: "",
+            cardImage: "",
+            mainImage: "",
             shortDesc: "",
+            // category: "",
             date: "",
 
         },
@@ -58,7 +68,8 @@ export default function CreateBlog() {
 
     };
 
-
+    const fileRef = form.register("cardImage");
+    const fileRef2 = form.register("mainImage");
 
     return (
         <section className="mt-10 bg-white dark:bg-darkMode px-4 py-6  rounded-md shadow-lg ">
@@ -84,13 +95,53 @@ export default function CreateBlog() {
                                     </FormItem>
                                 )}
                             />
-
                             <FormField
                                 control={form.control}
-                                name="shortDesc"
+                                name="cardImage"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-base dark:text-white  font-semibold">Short Description</FormLabel>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Card Image</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                {...fileRef} onChange={(event) => {
+                                                    field.onChange(event.target?.files?.[0] ?? undefined);
+                                                }}
+                                                type="file"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="mainImage"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Detail Image</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                {...fileRef2}
+                                                onChange={(event) => {
+                                                    field.onChange(event.target?.files?.[0] ?? undefined);
+                                                }}
+                                                type="file"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="date"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">date</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
@@ -105,10 +156,10 @@ export default function CreateBlog() {
                             />
                             <FormField
                                 control={form.control}
-                                name="date"
+                                name="shortDesc"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-base dark:text-white  font-semibold">date</FormLabel>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Short Description</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
