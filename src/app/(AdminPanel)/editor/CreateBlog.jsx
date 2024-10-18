@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
-import { createBlog, createCategory } from '@/lib/siteApis'
+import { addBlog, } from '@/lib/siteApis'
 import toast from 'react-hot-toast'
 import Tiptap from './Tiptap'
 
@@ -54,7 +54,7 @@ export default function CreateBlog() {
     const onSubmit = async (data) => {
         setLoader(true)
         let dataWithContent = { ...data, content }
-        const res = await createBlog(dataWithContent)
+        const res = await addBlog(dataWithContent)
         console.log("res", res);
 
         setLoader(false)

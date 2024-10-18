@@ -1,6 +1,6 @@
 import React from 'react'
 import Heading from '@/components/reuseable/Heading'
-import CreateBlog from '@/components/AdminPanel/blogs/CreateBlog'
+// import CreateBlog from '@/components/AdminPanel/blogs/CreateBlog'
 
 function page() {
 
@@ -9,7 +9,7 @@ function page() {
             <Heading>
                 Create Blog
             </Heading>
-            <CreateBlog />
+            {/* <CreateBlog /> */}
         </>
     )
 }

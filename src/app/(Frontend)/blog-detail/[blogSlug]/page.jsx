@@ -8,12 +8,12 @@ import React from 'react'
 async function page() {
 
     const blogs = await getBlogs()
-    console.log("blogs", blogs);
+    console.log("blogs detail", blogs);
 
     return (
         <>
             <BlogDetailHero />
-            <BlogContent />
+            <BlogContent data={blogs?.data[0]} />
             <RelatedBlogs />
             <Journey />
         </>

@@ -1467,7 +1467,7 @@ export const userLogin = async (data) => {
 
 
 // Blogs
-export const createBlog = async (data) => {
+export const addBlog = async (data) => {
     console.log("content in api func", data);
 
     const Url = SERVER_URL + "admin/blog/add-blog";
@@ -1475,8 +1475,8 @@ export const createBlog = async (data) => {
     const formData = new FormData();
 
     formData.append('title', data?.title);
-    formData.append('cardImage', data?.cardImage);
-    formData.append('mainImage', data?.mainImage);
+    formData.append('cardImage', data?.cardImage[0]);
+    formData.append('mainImage', data?.mainImage[0]);
     formData.append('category', data?.category);
     formData.append('shortdesc', data?.shortDesc);
     formData.append('date', data?.date);
