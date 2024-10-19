@@ -35,6 +35,8 @@ const formSchema = z.object({
 export default function CreateBlog() {
     const [loader, setLoader] = useState(false);
     const [content, setContent] = useState(null);
+    console.log(content);
+    
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -55,7 +57,7 @@ export default function CreateBlog() {
         setLoader(true)
         let dataWithContent = { ...data, content }
         const res = await addBlog(dataWithContent)
-        console.log("res", res);
+        
 
         setLoader(false)
         if (res?.status == "Success") {

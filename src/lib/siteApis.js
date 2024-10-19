@@ -1467,8 +1467,29 @@ export const userLogin = async (data) => {
 
 
 // Blogs
+
+
+export const getSingleBlog = async (slug) => {
+
+    const Url = SERVER_URL + `api/public/get-single-blog/${slug}`;
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-cache'
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
 export const addBlog = async (data) => {
-    console.log("content in api func", data);
+    console.log("content in api func", data.content);
 
     const Url = SERVER_URL + "admin/blog/add-blog";
 
@@ -1480,7 +1501,8 @@ export const addBlog = async (data) => {
     formData.append('category', data?.category);
     formData.append('shortdesc', data?.shortDesc);
     formData.append('date', data?.date);
-    formData.append('content', data?.content);
+    formData.append('content', JSON.stringify(data.content));
+    // let formData = data.content
 
     return fetch(Url, {
         method: 'POST',

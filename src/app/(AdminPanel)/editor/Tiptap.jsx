@@ -33,6 +33,8 @@ extensions: [StarterKit
     return <p>Loading editor...</p>; 
   }
 
+  const content2 = editor.getHTML(); 
+console.log("content2 ", content2);
 
 
   const handleSubmit = async (event) => {
