@@ -19,7 +19,6 @@ const Journey = dynamic(() => import('@/components/reuseable/Journey'));
 const InstagramFeed = dynamic(() => import('@/components/reuseable/InstagramFeed'));
 const WebFooter = dynamic(() => import('@/components/WebFooter'));
 
-
 async function page() {
 
   const data = await getCategories()
