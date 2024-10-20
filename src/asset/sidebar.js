@@ -147,6 +147,15 @@ export const Menu = [
                 subTitle: 'View Tour MetaData',
                 url: '/view-tour-metadata'
             },
+
+            {
+                subTitle: 'Create Blog MetaData',
+                url: '/create-blog-metadata'
+            },
+            {
+                subTitle: 'View Blog MetaData',
+                url: '/view-blog-metadata'
+            },
         ]
     },
 

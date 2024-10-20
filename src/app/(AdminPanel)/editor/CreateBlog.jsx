@@ -27,7 +27,7 @@ const formSchema = z.object({
         .any()
         .refine((file) => file?.length == 1, 'File is required.'),
     shortDesc: z.string().min(1, { message: " required" }),
-    // category: z.string().min(1, { message: " required" }),
+    category: z.string().min(1, { message: " required" }),
     date: z.string().min(1, { message: "Date is required" }),
 })
 
@@ -36,7 +36,7 @@ export default function CreateBlog() {
     const [loader, setLoader] = useState(false);
     const [content, setContent] = useState(null);
     console.log(content);
-    
+
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -45,7 +45,7 @@ export default function CreateBlog() {
             cardImage: "",
             mainImage: "",
             shortDesc: "",
-            // category: "",
+            category: "",
             date: "",
 
         },
@@ -57,7 +57,7 @@ export default function CreateBlog() {
         setLoader(true)
         let dataWithContent = { ...data, content }
         const res = await addBlog(dataWithContent)
-        
+
 
         setLoader(false)
         if (res?.status == "Success") {
@@ -140,10 +140,10 @@ export default function CreateBlog() {
                             />
                             <FormField
                                 control={form.control}
-                                name="date"
+                                name="category"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel className="text-base dark:text-white  font-semibold">date</FormLabel>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">Category</FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
@@ -158,16 +158,30 @@ export default function CreateBlog() {
                             />
                             <FormField
                                 control={form.control}
+                                name="date"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel className="text-base dark:text-white  font-semibold">date</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                className='dark:bg-darkModeSecondary  outline-none '
+                                                type="date"
+                                            />
+                                        </FormControl>
+                                        <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
                                 name="shortDesc"
                                 render={({ field }) => (
                                     <FormItem>
                                         <FormLabel className="text-base dark:text-white  font-semibold">Short Description</FormLabel>
                                         <FormControl>
-                                            <Input
-                                                {...field}
-                                                className='dark:bg-darkModeSecondary  outline-none '
-                                                type="text"
-                                            />
+                                            <textarea {...field} className='outline-none dark:bg-darkModeSecondary flex h-10 max-h-52 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50' />
                                         </FormControl>
                                         <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
 

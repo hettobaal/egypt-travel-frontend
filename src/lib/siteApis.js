@@ -1045,6 +1045,66 @@ export const updateMetaDataById = async (data, id) => {
 };
 
 
+
+export const addBlogMetaData = async (data) => {
+
+    const Url = SERVER_URL + 'admin/metadata/add-metadata';
+    const formData = new FormData();
+
+    formData?.append('entityType', "blog");
+    formData?.append('entityId', data?.entityId);
+    formData?.append('title', data?.title);
+    formData?.append('description', data?.description);
+    formData?.append('canonical', data?.canonical);
+    formData?.append('ogSitename', data?.ogSitename);
+    formData?.append('ogTitle', data?.ogTitle);
+    formData?.append('ogDescription', data?.ogDescription);
+    formData?.append('ogURL', data?.ogURL);
+    formData?.append('ogImageAlt', data?.ogImageAlt);
+    formData?.append('ogImage', data?.ogImage[0]);
+
+    return fetch(Url, {
+        method: 'POST',
+        body: formData,
+        mode: 'cors',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
+
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+export const getBlogMetaData = async () => {
+
+    const Url = SERVER_URL + 'admin/metadata/get-all-metadata?entityType=blog';
+
+    return fetch(Url, {
+        method: 'GET',
+        mode: 'cors',
+        cache: 'no-store',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+
 // Reviews
 export const writeReview = async (data, tourName) => {
 
@@ -1468,7 +1528,6 @@ export const userLogin = async (data) => {
 
 // Blogs
 
-
 export const getSingleBlog = async (slug) => {
 
     const Url = SERVER_URL + `api/public/get-single-blog/${slug}`;
@@ -1489,7 +1548,6 @@ export const getSingleBlog = async (slug) => {
 
 
 export const addBlog = async (data) => {
-    console.log("content in api func", data.content);
 
     const Url = SERVER_URL + "admin/blog/add-blog";
 

@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { Select, SelectItem } from '@nextui-org/react'
-import { addBlogMetaData, addCategoryMetaData } from '@/lib/siteApis'
+import { addCategoryMetaData } from '@/lib/siteApis'
 
 const formSchema = z.object({
     entityId: z.string().min(1, { message: "Please select Name" }),
@@ -34,7 +34,7 @@ const formSchema = z.object({
 })
 
 
-function CreateCategoryMetadata({ data }) {
+function CreateBlogMetaData({ data }) {
     const DataArray = data?.data
 
     const sortedData = useMemo(() => {
@@ -48,7 +48,7 @@ function CreateCategoryMetadata({ data }) {
         return [];
     }, [DataArray]);
 
-    const [categoryData, setCategoryData] = useState(sortedData || [])
+    const [blogData, setBlogData] = useState(sortedData || [])
 
     const [value, setValue] = React.useState(new Set([]));
     const [loader, setLoader] = useState(false);
@@ -73,7 +73,7 @@ function CreateCategoryMetadata({ data }) {
 
     const onSubmit = async (data) => {
         setLoader(true)
-        const res = await addBlogMetaData(data)
+        const res = await addCategoryMetaData(data)
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -101,14 +101,14 @@ function CreateCategoryMetadata({ data }) {
                                     <FormItem
 
                                     >
-                                        <FormLabel>Select Category </FormLabel>
+                                        <FormLabel>Select Blog </FormLabel>
                                         <FormControl
                                         >
 
                                             <Select
                                                 {...field}
-                                                aria-label='Select Category '
-                                                placeholder="Select Category "
+                                                aria-label='Select Blog '
+                                                placeholder="Select Blog "
                                                 selectedKeys={value}
                                                 className="border border-gray-400 outline-none rounded-lg focus-visible:ring-0 focus:ring-0 dark:bg-darkModeSecondary  "
                                                 onSelectionChange={setValue}
@@ -121,14 +121,14 @@ function CreateCategoryMetadata({ data }) {
                                             >
 
                                                 {
-                                                    categoryData?.map((item) => {
+                                                    blogData?.map((item) => {
                                                         return (
 
                                                             <SelectItem
                                                                 className=' '
                                                                 key={item?._id
                                                                 }>
-                                                                {item?.categoryName}
+                                                                {item?.title}
                                                             </SelectItem>
                                                         )
                                                     })
@@ -317,4 +317,4 @@ function CreateCategoryMetadata({ data }) {
     )
 }
 
-export default CreateCategoryMetadata;
+export default CreateBlogMetaData;
