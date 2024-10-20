@@ -3,11 +3,16 @@ import React, { useState } from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper'
 import HeadingOne from '../reuseable/HeadingOne'
 import Image from 'next/image'
-import DetailModal from './DetailModal'
-import DetailMobileCarousel from './DetailMobileCarousel'
+import dynamic from 'next/dynamic';
+const DetailModal = dynamic(() => import('./DetailModal'), {
+    loading: () => <div>Loading...</div>,
+});
+const DetailMobileCarousel = dynamic(() => import('./DetailMobileCarousel'), {
+    loading: () => <div>Loading...</div>,
+});
 
 function DetailHero({ data }) {
-  
+
     const [selectedImage, setSelectedImage] = useState(null);
 
     const handleImageClick = (imageUrl) => {
@@ -41,9 +46,8 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
-
                                 className='w-full h-full'
-
+                                priority={true}
                                 onClick={() => handleImageClick(imageUrls[0])} />
                         </div>
                         <div className='col-span-1 row-span-2 cursor-pointer'>
@@ -52,6 +56,7 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
+                                priority={true}
                                 className='w-full h-full object-cover'
                                 onClick={() => handleImageClick(imageUrls[1])}
 
@@ -63,6 +68,7 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
+                                priority={true}
                                 className='w-full h-full'
                                 onClick={() => handleImageClick(imageUrls[2])}
 
@@ -74,6 +80,7 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
+                                priority={true}
                                 className='w-full h-full relative'
                                 onClick={() => handleImageClick(imageUrls[3])}
                             />
