@@ -6,7 +6,7 @@ import { SearchIcon } from "lucide-react";
 import { deleteMetaData } from "@/lib/siteApis";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/button";
-import UpdateCategoryMetadata from "./UpdateMetadata";
+import UpdateMetadata from "./UpdateMetadata";
 
 
 const columns = [
@@ -100,30 +100,30 @@ function ViewMetaData({ CategoryData }) {
     }, [page, filteredItems]);
 
 
-    const renderCell = React.useCallback((categoryData, columnKey) => {
-        const cellValue = categoryData[columnKey];
+    const renderCell = React.useCallback((MetaData, columnKey) => {
+        const cellValue = MetaData[columnKey];
 
         switch (columnKey) {
             case "ogImageId":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={categoryData?.ogImageId} />
+                        <ImageModal id={MetaData?.ogImageId} />
                     </div>
                 );
             case "actions":
                 return (
                     <div className="relative flex flex-col  items-start gap-2">
                         <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                            <UpdateCategoryMetadata
-                                data={categoryData}
+                            <UpdateMetadata
+                                data={MetaData}
                                 setData={setData}
-                                id={categoryData?._id}
+                                id={MetaData?._id}
                             />
                         </span>
                         <span className="text-lg text-danger cursor-pointer active:opacity-50">
                             <Button
                                 className="w-32  text-white bg-blue hover:bg-darkBlue"
-                                onClick={() => Delete(categoryData?._id)}
+                                onClick={() => Delete(MetaData?._id)}
                             >
                                 Delete
                             </Button>

@@ -160,7 +160,9 @@ function WebHeader() {
                         </Link>
                     </li>
                 </ul>
-                <Link href='/contact' className='lg:block hidden'>
+                <Link
+                    prefetch={false}
+                    href='/contact' className='lg:block hidden'>
                     <Button className='bg-amber rounded-full px-6 hover:bg-amber text-lg'>
                         Contact US
                     </Button>

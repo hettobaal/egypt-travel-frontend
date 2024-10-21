@@ -1045,7 +1045,6 @@ export const updateMetaDataById = async (data, id) => {
 };
 
 
-
 export const addBlogMetaData = async (data) => {
 
     const Url = SERVER_URL + 'admin/metadata/add-metadata';
@@ -1597,3 +1596,23 @@ export const getBlogs = async () => {
             return error;
         });
 };
+
+export const DeleteBlog = async (id) => {
+
+    const url = SERVER_URL + `admin/blog/delete-blog/${id}`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
+        },
+    })
+        .then(response => response?.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            return error;
+        });
+}

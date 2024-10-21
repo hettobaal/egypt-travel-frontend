@@ -20,8 +20,6 @@ function BlogMetaData() {
         fetchData();
     }, []);
 
-    // console.log("BlogMetaData", BlogMetaData);
-
     return (
         <>
             <Heading>

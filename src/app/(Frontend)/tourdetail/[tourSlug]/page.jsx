@@ -8,7 +8,9 @@ import BookingForm from '@/components/tourDetail/BookingForm';
 import DetailHero from '@/components/tourDetail/DetailHero';
 import Description from '@/components/tourDetail/Description';
 import RelatedTours from '@/components/tourDetail/RelatedTours';
-const Reviews = dynamic(() => import('@/components/reuseable/Reviews'));
+const Reviews = dynamic(() => import('@/components/reuseable/Reviews'), {
+    ssr: false,
+});
 
 
 export async function generateStaticParams() {
