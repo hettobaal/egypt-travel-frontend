@@ -82,7 +82,7 @@ function CatalogCardCarousel({ data }) {
                                     >
                                         <CardHeader className="p-0  flex-col items-start">
                                             <Image
-                                                src={`https://dccvcdil526gz.cloudfront.net/${item?.cardImage}`}
+                                                src={`https://vps-650845.dogado-cloud.de/imageslocal/subCategory/${item?.cardImage}`}
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'
