@@ -10,6 +10,7 @@ const InstagramFeed = dynamic(() => import('@/components/reuseable/InstagramFeed
 async function page() {
 
     const data = await getDiscountTours()
+    console.log("data", data);
 
     return (
         <>
