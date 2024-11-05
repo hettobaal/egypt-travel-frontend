@@ -8,14 +8,14 @@ import React from 'react'
 
 export async function generateStaticParams() {
     const blogsData = await getBlogs()
-    const blogs = blogsData?.data
+    const blogs = blogsData?.data || {}
     const array = blogs?.map((blog) => ({
         blogSlug: blog?.slug,
     }));
     return array;
 }
 
-async function page({params}) {
+async function page({ params }) {
     const slug = params?.blogSlug;
     const blog = await getSingleBlog(slug)
     console.log("blog detail", blog);
