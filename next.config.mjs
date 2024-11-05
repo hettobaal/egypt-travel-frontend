@@ -7,8 +7,9 @@ const nextConfig = {
             'drive.google.com',
             'drive.usercontent.google.com',
             'lh3.googleusercontent.com',
+            'vps-650845.dogado-cloud.de',
         ],
-        unoptimized: true,
+        // unoptimized: true,
     },
 };
 // req access3
