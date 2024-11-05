@@ -8,7 +8,7 @@ import {
 import Image from 'next/image';
 import { X } from 'lucide-react';
 
-function ImageModal({ id }) {
+function ImageModal({ id, folder }) {
 
 
     return (
@@ -16,7 +16,6 @@ function ImageModal({ id }) {
             <DialogTrigger>
 
                 <Image
-                    src={`https://dccvcdil526gz.cloudfront.net/${id}`}
                     width={200}
                     height={150}
                     loading="lazy"
@@ -28,7 +27,7 @@ function ImageModal({ id }) {
                 <div className='relative md:w-[70%] w-[90%] h-[60%]  mx-auto flex justify-center items-center '>
                     <Image
                         className="rounded-md max-h-[80vh]"
-                        src={`https://dccvcdil526gz.cloudfront.net/${id}`}
+                        src={`https://vps-650845.dogado-cloud.de/imageslocal/subCategory/${folder}/${id}`}
                         width={1000}
                         height={800}
                         loading="lazy"

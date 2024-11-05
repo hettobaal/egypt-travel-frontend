@@ -97,7 +97,7 @@ function ViewPopularTour({ TourData }) {
             case "cardImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={TourData?.cardImage} />
+                        <ImageModal folder={"tour"} id={TourData?.cardImage} />
                     </div>
                 );
             case "actions":
@@ -123,7 +123,7 @@ function ViewPopularTour({ TourData }) {
         async (id) => {
             const res = await DeletePopularTour(id);
             // console.log(res);
-            
+
             if (res?.status === "Success") {
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));

@@ -103,19 +103,19 @@ function CategoryDetails({ CategoryData }) {
             case "subCategoryMobHeroImage":
                 return (
                     <div className="cursor-pointer">
-                        <MobileImageModal id={categoryData?.subCategoryImage} />
+                        <MobileImageModal folder={"tour"} id={categoryData?.subCategoryImage} />
                     </div>
                 );
             case "subCategoryHeroImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={categoryData?.subCategoryImage} />
+                        <ImageModal folder={"tour"} id={categoryData?.subCategoryImage} />
                     </div>
                 );
             case "subCategoryImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={categoryData?.subCategoryImage} />
+                        <ImageModal folder={"tour"} id={categoryData?.subCategoryImage} />
                     </div>
                 );
             case "actions":

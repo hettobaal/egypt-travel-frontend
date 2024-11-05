@@ -105,13 +105,13 @@ function ViewCategories({ CategoryData }) {
             case "categoryMobImage":
                 return (
                     <div className="cursor-pointer">
-                        <MobileImageModal id={categoryData?.categoryMobImage} />
+                        <MobileImageModal folder={"category"} id={categoryData?.categoryMobImage} />
                     </div>
                 );
             case "categoryImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={categoryData?.categoryImage} />
+                        <ImageModal  folder={"category"} id={categoryData?.categoryImage} />
                     </div>
                 );
             case "actions":

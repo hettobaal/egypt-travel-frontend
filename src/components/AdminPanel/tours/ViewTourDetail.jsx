@@ -9,7 +9,7 @@ import UpdateImage from './UpdateImage';
 import UpdateInfo from './UpdateInfo';
 
 function ViewTourDetail({ tourDetail }) {
- 
+
     const [data, setData] = useState(tourDetail)
     const strikePrice = data?.discountAmount > 0 && data?.priceAdult
     return (
@@ -19,7 +19,7 @@ function ViewTourDetail({ tourDetail }) {
                 <div className='flex justify-center items-center '>
                     <Image
                         className='rounded-lg'
-                        src={`https://dccvcdil526gz.cloudfront.net/${data?.cardImage}?v=${Date.now()}`}
+                        src={`https://vps-650845.dogado-cloud.de/imageslocal/tour/${data?.cardImage}?v=${Date.now()}`}
                         width={400}
                         height={180}
                         loading='lazy'
@@ -235,7 +235,7 @@ function ViewTourDetail({ tourDetail }) {
                                 >
                                     <Image
                                         className="rounded-md"
-                                        src={`https://dccvcdil526gz.cloudfront.net/${item}?v=${Date.now()}`}
+                                        src={`https://vps-650845.dogado-cloud.de/imageslocal/tour/${item}?v=${Date.now()}`}
                                         width={400}
                                         height={200}
                                         loading="lazy"

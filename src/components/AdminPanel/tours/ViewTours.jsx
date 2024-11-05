@@ -103,7 +103,7 @@ function ViewTours({ TourData }) {
             case "cardImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={TourData?.cardImage} />
+                        <ImageModal folder={"tour"} id={TourData?.cardImage} />
                     </div>
                 );
             case "actions":

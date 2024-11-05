@@ -107,7 +107,7 @@ function ViewMetaData({ CategoryData }) {
             case "ogImageId":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal id={MetaData?.ogImageId} />
+                        <ImageModal folder={"metadata"} id={MetaData?.ogImageId} />
                     </div>
                 );
             case "actions":

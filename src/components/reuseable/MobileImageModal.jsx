@@ -8,7 +8,7 @@ import {
 import Image from 'next/image';
 import { X } from 'lucide-react';
 
-function MobileImageModal({ id }) {
+function MobileImageModal({ id, folder }) {
 
     return (
         <Dialog>

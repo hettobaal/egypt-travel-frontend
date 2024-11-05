@@ -47,6 +47,7 @@ function BlogCards() {
                                     <CardHeader className="p-0 flex-col items-start">
                                         <Image
                                             src={item?.image}
+                                            // src={`https://vps-650845.dogado-cloud.de/imageslocal/blog/${item?.image}`}
                                             width={700}
                                             height={200}
                                             loading='lazy'

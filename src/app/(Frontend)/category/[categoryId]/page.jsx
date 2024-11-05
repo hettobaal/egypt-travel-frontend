@@ -49,7 +49,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://dccvcdil526gz.cloudfront.net/${metaData?.ogImage}`,
+                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://dccvcdil526gz.cloudfront.net/${metaData?.ogImage}`,
+                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -92,11 +92,11 @@ async function page({ params }) {
 
 
     const heroImageDesktop = currentData?.categoryImage
-        ? `https://dccvcdil526gz.cloudfront.net/${currentData?.categoryImage}?v=${Date.now()}`
+        ? `https://vps-650845.dogado-cloud.de/imageslocal/category/${currentData?.categoryImage}?v=${Date.now()}`
         : '';
 
     const heroImageMobile = currentData?.categoryMobImage
-        ? `https://dccvcdil526gz.cloudfront.net/${currentData?.categoryMobImage}?v=${Date.now()}`
+        ? `https://vps-650845.dogado-cloud.de/imageslocal/category/${currentData?.categoryMobImage}?v=${Date.now()}`
         : '';
 
 

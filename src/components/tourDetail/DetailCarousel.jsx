@@ -49,7 +49,7 @@ function DetailCarousel({ images, selectedImage, setSelectedImage }) {
                                         <Image
                                             className='mx-auto'
                                             src={item}
-                                            // src='https://fastly.picsum.photos/id/385/600/400.jpg?hmac=FzH4BJIpsE8XYDW8tWE6kHgIMm0LKCtG8UqNAjHkaJY'
+                                            // src={'https://vps-650845.dogado-cloud.de/imageslocal/tour/${item}'}
                                             width={800}
                                             height={300}
                                             loading='lazy'

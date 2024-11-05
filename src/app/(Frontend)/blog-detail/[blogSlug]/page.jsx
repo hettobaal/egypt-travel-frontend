@@ -9,7 +9,7 @@ import React from 'react'
 export async function generateStaticParams() {
     const blogsData = await getBlogs()
     const blogs = blogsData?.data || {}
-    const array = blogs?.map((blog) => ({
+    const array = [blogs]?.map((blog) => ({
         blogSlug: blog?.slug,
     }));
     return array;
