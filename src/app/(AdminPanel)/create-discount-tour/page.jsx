@@ -1,4 +1,3 @@
-import CreateDiscountTour from '@/components/AdminPanel/discoutTours/CreateDiscountTour'
 import Heading from '@/components/reuseable/Heading'
 import { getTours } from '@/lib/siteApis'
 import React from 'react'
@@ -12,7 +11,6 @@ async function page() {
             <Heading>
                 Add Discount Tour
             </Heading>
-            <CreateDiscountTour data={data?.data} />
         </>
     )
 }
