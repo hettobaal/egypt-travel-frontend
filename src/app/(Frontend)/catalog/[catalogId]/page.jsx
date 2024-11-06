@@ -7,7 +7,7 @@ import CatalogHero from '@/components/catalog/CatalogHero';
 import CatalogTour from '@/components/catalog/CatalogTour';
 export async function generateStaticParams() {
     const data = await getSubCategories()
-    const posts = data?.data
+    const posts = data?.data || []
     const array = posts?.map((post) => ({
         catalogId: post?.slug,
     }));
