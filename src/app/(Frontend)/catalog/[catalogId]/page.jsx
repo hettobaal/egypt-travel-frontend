@@ -23,8 +23,8 @@ export async function generateMetadata({ params }) {
     const SubcategoryMetaData = await getSingleMetaData(categoryId)
     const metaData = SubcategoryMetaData?.data
 
-    const title = metaData?.title || 'Default Title';
-    const description = metaData?.description || 'Default Description';
+    const title = metaData?.title || 'Agypten';
+    const description = metaData?.description || 'Agypten';
     const canonical = metaData?.canonical || 'https://egypt-travel-frontend.vercel.app';
     const ogSitename = metaData?.ogSitename || 'Agypten';
     const ogTitle = metaData?.ogTitle || title;
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://dccvcdil526gz.cloudfront.net/${metaData?.ogImage}`,
+                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://dccvcdil526gz.cloudfront.net/${metaData?.ogImage}`,
+                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -80,11 +80,11 @@ async function page({ params }) {
 
     const ImageData = data?.data
     const heroImageDesktop = ImageData[0]?.subCategoryHeroImage
-        ? `https://dccvcdil526gz.cloudfront.net/${ImageData[0]?.subCategoryHeroImage}?v=${Date.now()}`
+        ? `https://vps-650845.dogado-cloud.de/imageslocal/subCategory/${ImageData[0]?.subCategoryHeroImage}?v=${Date.now()}`
         : '';
 
     const heroImageMobile = ImageData[0]?.subCategoryMobHeroImage
-        ? `https://dccvcdil526gz.cloudfront.net/${ImageData[0]?.subCategoryMobHeroImage}?v=${Date.now()}`
+        ? `https://vps-650845.dogado-cloud.de/imageslocal/subCategory/${ImageData[0]?.subCategoryMobHeroImage}?v=${Date.now()}`
         : '';
 
 

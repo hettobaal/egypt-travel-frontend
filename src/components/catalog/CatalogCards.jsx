@@ -53,7 +53,7 @@ function CatalogCards({ data }) {
                                 >
                                     <CardHeader className="p-0  flex-col items-start">
                                         <Image
-                                            src={`https://dccvcdil526gz.cloudfront.net/${item?.cardImage}`}
+                                            src={`https://vps-650845.dogado-cloud.de/imageslocal/tour/${item?.cardImage}`}
                                             width={700}
                                             height={200}
                                             loading='lazy'

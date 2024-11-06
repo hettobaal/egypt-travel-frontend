@@ -105,13 +105,13 @@ function ViewBlogsData({ BlogData }) {
             case "cardImageId":
                 return (
                     <div className="cursor-pointer">
-                        <MobileImageModal folder={"blog"} id={BlogData?.cardImageId} />
+                        <MobileImageModal folder={"blogs"} id={BlogData?.cardImageId} />
                     </div>
                 );
             case "mainImageId":
                 return (
                     <div className="cursor-pointer">
-                        <MobileImageModal folder={"blog"} id={BlogData?.mainImageId} />
+                        <MobileImageModal folder={"blogs"} id={BlogData?.mainImageId} />
                     </div>
                 );
             case "actions":

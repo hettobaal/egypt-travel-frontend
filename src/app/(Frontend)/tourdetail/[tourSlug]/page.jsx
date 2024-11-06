@@ -32,13 +32,13 @@ export async function generateMetadata({ params }) {
     const tourId = data?.data?._id
     const tourMetaData = await getSingleMetaData(tourId)
     const metaData = tourMetaData?.data
-    const title = metaData?.title || 'Default Title';
-    const description = metaData?.description || 'Default Description';
+    const title = metaData?.title || 'Agypten';
+    const description = metaData?.description || 'Agypten';
     const canonical = metaData?.canonical || 'https://egypt-travel-frontend.vercel.app';
     const ogSitename = metaData?.ogSitename || 'Agypten';
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
-    const ogURL = metaData?.ogURL || `https://egypt-travel-frontend.vercel.app/catalog/${decodedId}`;
+    const ogURL = metaData?.ogURL || `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${decodedId}`;
     const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
     const ogImage = metaData?.ogImage || '';
 
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://dccvcdil526gz.cloudfront.net/${metaData?.ogImage}`,
+                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://dccvcdil526gz.cloudfront.net/${metaData?.ogImage}`,
+                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
