@@ -105,13 +105,13 @@ function ViewSubCategories({ SubCategoryData }) {
             case "subCategoryMobHeroImage":
                 return (
                     <div className="cursor-pointer">
-                        <MobileImageModal folder={"subCategory"} id={categoryData?.subCategoryImage} />
+                        <MobileImageModal folder={"subCategory"} id={categoryData?.subCategoryMobHeroImage} />
                     </div>
                 );
             case "subCategoryHeroImage":
                 return (
                     <div className="cursor-pointer">
-                        <ImageModal folder={"subCategory"} id={categoryData?.subCategoryImage} />
+                        <ImageModal folder={"subCategory"} id={categoryData?.subCategoryHeroImage} />
                     </div>
                 );
             case "subCategoryImage":
