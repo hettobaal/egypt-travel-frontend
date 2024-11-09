@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -80,11 +80,11 @@ async function page({ params }) {
 
     const ImageData = data?.data
     const heroImageDesktop = ImageData[0]?.subCategoryHeroImage
-        ? `https://vps-650845.dogado-cloud.de/imageslocal/subCategory/${ImageData[0]?.subCategoryHeroImage}?v=${Date.now()}`
+        ? `https://aegyptenmalanders.de/imageslocal/subCategory/${ImageData[0]?.subCategoryHeroImage}?v=${Date.now()}`
         : '';
 
     const heroImageMobile = ImageData[0]?.subCategoryMobHeroImage
-        ? `https://vps-650845.dogado-cloud.de/imageslocal/subCategory/${ImageData[0]?.subCategoryMobHeroImage}?v=${Date.now()}`
+        ? `https://aegyptenmalanders.de/imageslocal/subCategory/${ImageData[0]?.subCategoryMobHeroImage}?v=${Date.now()}`
         : '';
 
 

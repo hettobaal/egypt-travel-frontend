@@ -15,7 +15,7 @@ function HomeCard({ subCategory }) {
                         >
                             <Image
                                 // src={`https://dccvcdil526gz.cloudfront.net/${item?.subCategoryImage}`}
-                                src={`https://vps-650845.dogado-cloud.de/imageslocal/subCategory/${item?.subCategoryImage}`}
+                                src={`https://aegyptenmalanders.de/imageslocal/subCategory/${item?.subCategoryImage}`}
                                 width={1000}
                                 height={200}
                                 loading='lazy'

@@ -21,7 +21,7 @@ function DetailHero({ data }) {
 
     const imageUrls = data?.tourImages?.map((item) => {
         return (
-            `https://vps-650845.dogado-cloud.de/imageslocal/tour/${item}`
+            `https://aegyptenmalanders.de/imageslocal/tour/${item}`
         )
     })
 

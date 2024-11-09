@@ -19,7 +19,7 @@ function ViewTourDetail({ tourDetail }) {
                 <div className='flex justify-center items-center '>
                     <Image
                         className='rounded-lg'
-                        src={`https://vps-650845.dogado-cloud.de/imageslocal/tour/${data?.cardImage}?v=${Date.now()}`}
+                        src={`https://aegyptenmalanders.de/imageslocal/tour/${data?.cardImage}?v=${Date.now()}`}
                         width={400}
                         height={180}
                         loading='lazy'
@@ -235,7 +235,7 @@ function ViewTourDetail({ tourDetail }) {
                                 >
                                     <Image
                                         className="rounded-md"
-                                        src={`https://vps-650845.dogado-cloud.de/imageslocal/tour/${item}?v=${Date.now()}`}
+                                        src={`https://aegyptenmalanders.de/imageslocal/tour/${item}?v=${Date.now()}`}
                                         width={400}
                                         height={200}
                                         loading="lazy"

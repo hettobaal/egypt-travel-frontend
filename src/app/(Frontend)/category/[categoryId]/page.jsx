@@ -49,7 +49,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -92,11 +92,11 @@ async function page({ params }) {
 
 
     const heroImageDesktop = currentData?.categoryImage
-        ? `https://vps-650845.dogado-cloud.de/imageslocal/category/${currentData?.categoryImage}?v=${Date.now()}`
+        ? `https://aegyptenmalanders.de/imageslocal/category/${currentData?.categoryImage}?v=${Date.now()}`
         : '';
 
     const heroImageMobile = currentData?.categoryMobImage
-        ? `https://vps-650845.dogado-cloud.de/imageslocal/category/${currentData?.categoryMobImage}?v=${Date.now()}`
+        ? `https://aegyptenmalanders.de/imageslocal/category/${currentData?.categoryMobImage}?v=${Date.now()}`
         : '';
 
 

@@ -15,7 +15,7 @@ function MobileImageModal({ id, folder }) {
             <DialogTrigger>
                 <Image
                     className="rounded-md"
-                    src={`https://vps-650845.dogado-cloud.de/imageslocal/${folder}/${id}`}
+                    src={`https://aegyptenmalanders.de/imageslocal/${folder}/${id}`}
                     width={100}
                     height={100}
                     loading="lazy"
@@ -26,7 +26,7 @@ function MobileImageModal({ id, folder }) {
                 <div className='relative md:w-[70%] w-[90%] h-[60%]  mx-auto flex justify-center items-center '>
                     <Image
                         className="rounded-md max-h-[80vh]"
-                        src={`https://vps-650845.dogado-cloud.de/imageslocal/${folder}/${id}`}
+                        src={`https://aegyptenmalanders.de/imageslocal/${folder}/${id}`}
                         width={500}
                         height={300}
                         loading="lazy"

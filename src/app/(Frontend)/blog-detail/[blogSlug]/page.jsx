@@ -26,11 +26,11 @@ export async function generateMetadata({ params }) {
     const metaData = tourMetaData?.data
     const title = metaData?.title || 'Agypten';
     const description = metaData?.description || 'Agypten';
-    const canonical = metaData?.canonical || 'https://egypt-travel-frontend.vercel.app';
+    const canonical = metaData?.canonical || 'https://aegyptenmalanders.de';
     const ogSitename = metaData?.ogSitename || 'Agypten';
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
-    const ogURL = metaData?.ogURL || `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${decodedId}`;
+    const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${decodedId}`;
     const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
     const ogImage = metaData?.ogImage || '';
 
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://vps-650845.dogado-cloud.de/imageslocal/metadata/${metaData?.ogImage}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,

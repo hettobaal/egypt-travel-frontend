@@ -55,7 +55,7 @@ function DiscountTourCard({ ToursData }) {
                                 >
                                     <CardHeader className="p-0  flex-col items-start">
                                         <Image
-                                            src={`https://vps-650845.dogado-cloud.de/imageslocal/tour/${item?.cardImage}`}
+                                            src={`https://aegyptenmalanders.de/imageslocal/tour/${item?.cardImage}`}
                                             width={700}
                                             height={200}
                                             loading='lazy'
