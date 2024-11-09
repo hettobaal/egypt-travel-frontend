@@ -221,7 +221,7 @@ export const updateSubCategoryById = async (data, id) => {
         formData.append('subCategoryHeroImage', data?.subCategoryHeroImage);
     }
     if (data?.subCategoryMobHeroImage) {
-        formData.append('subCategoryHeroImage', data?.subCategoryHeroImage);
+        formData.append('subCategoryMobHeroImage', data?.subCategoryMobHeroImage);
     }
     formData?.append('subCategoryName', data?.subCategoryName);
     formData?.append('subCategoryTitle', data?.subCategoryTitle);

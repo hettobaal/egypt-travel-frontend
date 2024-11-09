@@ -88,6 +88,7 @@ async function page({ params }) {
         : '';
 
 
+console.log("image ", ImageData[0]?.subCategoryHeroImage);
 
     return (
         <>
