@@ -7,7 +7,6 @@ import { getBlogs } from '@/lib/siteApis';
 async function page() {
 
     const blogs = await getBlogs()
-    // console.log("blogs", blogs);
 
     return (
         <>

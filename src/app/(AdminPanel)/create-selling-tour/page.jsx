@@ -6,7 +6,6 @@ import React from 'react'
 async function page() {
 
     const data = await getTours()
-    console.log("getTours", data?.data);
 
 
     return (

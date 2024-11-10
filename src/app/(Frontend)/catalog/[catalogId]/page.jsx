@@ -76,7 +76,6 @@ async function page({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
-    console.log("data", data);
 
     const ImageData = data?.data
     const heroImageDesktop = ImageData[0]?.subCategoryHeroImage
@@ -88,8 +87,6 @@ async function page({ params }) {
         : '';
 
 
-    console.log("image ", ImageData[0]?.subCategoryHeroImage);
-
     return (
         <>
             <CatalogHero
@@ -97,7 +94,7 @@ async function page({ params }) {
                 ImageUrl={heroImageDesktop}
                 MobImageUrl={heroImageMobile}
             />
-            <CatalogTour data={data?.data[0]} />
+            <CatalogTour data={data?.data[0]?.tourId} />
             <Reviews />
             <Journey />
         </>

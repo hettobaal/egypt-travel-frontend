@@ -81,7 +81,6 @@ export async function generateMetadata({ params }) {
 async function page({ params }) {
     const slug = params?.blogSlug;
     const blog = await getSingleBlog(slug)
-    console.log("blog detail", blog);
 
     return (
         <>

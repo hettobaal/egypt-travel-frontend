@@ -34,7 +34,6 @@ extensions: [StarterKit
   }
 
   const content2 = editor.getHTML(); 
-console.log("content2 ", content2);
 
 
   const handleSubmit = async (event) => {

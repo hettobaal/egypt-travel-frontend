@@ -6,8 +6,6 @@ async function page({ params }) {
 
     const id = params?.blogId
     const data = await getSingleBlog(id)
-    console.log("data",data);
-
     return (
         <>
             <Heading>

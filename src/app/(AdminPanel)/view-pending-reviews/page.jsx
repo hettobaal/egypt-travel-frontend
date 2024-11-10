@@ -19,8 +19,6 @@ function PendingReviews() {
         };
         fetchData();
     }, []);
-
-    // console.log("reviewData", reviewData);
     return (
         <>
             <Heading>

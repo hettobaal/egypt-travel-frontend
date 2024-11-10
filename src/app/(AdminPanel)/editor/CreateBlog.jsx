@@ -35,7 +35,6 @@ const formSchema = z.object({
 export default function CreateBlog() {
     const [loader, setLoader] = useState(false);
     const [content, setContent] = useState(null);
-    console.log(content);
 
 
     const form = useForm({

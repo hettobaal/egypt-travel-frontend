@@ -38,7 +38,6 @@ export const metadata = {
 async function page() {
 
     const data = await getDiscountTours()
-    console.log("data", data);
 
     return (
         <>
