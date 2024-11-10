@@ -6,7 +6,7 @@ import HeadingThree from '../reuseable/HeadingThree';
 import CatalogCards from './CatalogCards';
 function CatalogTour({ data }) {
 
-    // console.log("data abc", data);
+    console.log("data abc", data);
 
     return (
         <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:py-14 py-8 px-2' >
@@ -17,7 +17,7 @@ function CatalogTour({ data }) {
                 </HeadingOne>
             </span>
             {
-                data ?
+                data[0]?.tourDetails?.length ?
                     <CatalogCards Catalog={data[0]?.tourDetails || []} />
                     :
                     <HeadingThree className='text-center'>No Tour Available</HeadingThree>
