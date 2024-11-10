@@ -210,18 +210,19 @@ export const DeleteSubCategory = async (id) => {
 
 export const updateSubCategoryById = async (data, id) => {
 
+    console.log("data", data);
 
     const Url = SERVER_URL + `admin/subcategory/update-subcategory/${id}`;
     const formData = new FormData();
 
     if (data?.subCategoryImage) {
-        formData.append('subCategoryImage', data?.subCategoryImage);
+        formData.append('subCategoryImage', data?.subCategoryImage[0]);
     }
     if (data?.subCategoryHeroImage) {
-        formData.append('subCategoryHeroImage', data?.subCategoryHeroImage);
+        formData.append('subCategoryHeroImage', data?.subCategoryHeroImage[0]);
     }
     if (data?.subCategoryMobHeroImage) {
-        formData.append('subCategoryMobHeroImage', data?.subCategoryMobHeroImage);
+        formData.append('subCategoryMobHeroImage', data?.subCategoryMobHeroImage[0]);
     }
     formData?.append('subCategoryName', data?.subCategoryName);
     formData?.append('subCategoryTitle', data?.subCategoryTitle);

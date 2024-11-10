@@ -53,6 +53,8 @@ function UpdateSubCategory({ data, setData, id }) {
     const onSubmit = async (subCategoryData) => {
         setLoader(true)
         const res = await updateSubCategoryById(subCategoryData, id)
+        console.log("res", res);
+
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -83,7 +85,7 @@ function UpdateSubCategory({ data, setData, id }) {
 
     };
 
-    const fileRef = form.register("categoryImage");
+    const fileRef = form.register("subCategoryImage");
     const fileRef2 = form.register("subCategoryHeroImage");
     const fileRef3 = form.register("subCategoryMobHeroImage");
 

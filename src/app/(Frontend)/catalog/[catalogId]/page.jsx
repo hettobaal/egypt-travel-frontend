@@ -76,7 +76,7 @@ async function page({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
-    // console.log("data", data?.data);
+    console.log("data", data);
 
     const ImageData = data?.data
     const heroImageDesktop = ImageData[0]?.subCategoryHeroImage
@@ -88,7 +88,7 @@ async function page({ params }) {
         : '';
 
 
-console.log("image ", ImageData[0]?.subCategoryHeroImage);
+    console.log("image ", ImageData[0]?.subCategoryHeroImage);
 
     return (
         <>
