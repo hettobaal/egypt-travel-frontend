@@ -36,6 +36,7 @@ function DiscountedTour({ DiscountedTours }) {
                 DiscountedTours?.length > 4 &&
 
                 <Link
+                    prefetch={false}
                     className='mx-auto'
                     href="/discounted-tours"
                 >

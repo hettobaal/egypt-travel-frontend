@@ -64,6 +64,7 @@ function ReviewCarousel() {
                                     key={index}
                                 >
                                     <Link
+                                        prefetch={false}
                                         href='/'
                                     >
                                         <Card

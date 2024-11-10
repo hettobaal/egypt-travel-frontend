@@ -27,7 +27,6 @@ function CatalogHero({ ImageUrl, MobImageUrl, data }) {
             className="sm:h-[90vh] h-[80vh]  bg-cover bg-center  bg-no-repeat relative  text-white   flex flex-col justify-end items-center" >
             <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 justify-center items-center max-w-screen-lg mx-auto h-full   lg:px-0 md:px-8 mt-8'
             >
-                {/* <div className="sm:block hidden absolute  inset-0 bg-black opacity-50"></div> */}
                 <h1 className='md:text-[34px] text-2xl font-medium text-center z-30 '>
                     {data?.subCategoryTitle}
                 </h1>

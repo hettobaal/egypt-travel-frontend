@@ -65,7 +65,6 @@ function WebHeader() {
                     <Image
                         className='lg:hidden'
                         src='/nav/webLogo.webp'
-
                         priority
                         width={105}
                         height={100}

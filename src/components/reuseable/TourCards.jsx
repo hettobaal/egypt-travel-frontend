@@ -45,6 +45,7 @@ function TourCards({ ToursData }) {
                         return (
                             <Link
                                 key={index}
+                                prefetch={false}
                                 className='w-full'
                                 href={`/tourdetail/${item?.slug}`}
                             >

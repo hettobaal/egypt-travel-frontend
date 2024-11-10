@@ -70,6 +70,7 @@ function TourCardsCarousel({ data }) {
                                 key={index}
                             >
                                 <Link
+                                    prefetch={false}
                                     className='w-full'
                                     href={`/tourdetail/${item?.slug}`}
                                 >

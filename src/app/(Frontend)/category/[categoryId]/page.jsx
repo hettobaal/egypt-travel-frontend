@@ -1,6 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
-import { getCategories, getSingleCategory, getSingleMetaData } from '@/lib/siteApis';
+import { getCategories, getRelatedTours, getSingleCategory, getSingleMetaData } from '@/lib/siteApis';
 import CategoryHero from '@/components/category/CategoryHero';
 import CategoryRelatedTour from '@/components/category/CategoryRelatedTour';
 import CategoryTour from '@/components/category/CategoryTour';
@@ -112,7 +112,7 @@ async function page({ params }) {
 
             />
             <CategoryTour data={SingleCategoryData?.data} />
-            <CategoryRelatedTour />
+            {/* <CategoryRelatedTour /> */}
             <Reviews />
             <Journey />
         </>

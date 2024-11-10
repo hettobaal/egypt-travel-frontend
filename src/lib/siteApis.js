@@ -493,7 +493,7 @@ export const DeleteTour = async (id) => {
 
 export const getRelatedTours = async (id) => {
 
-    const Url = SERVER_URL + `/api/public/get-related-tours?tag=${id}`;
+    const Url = SERVER_URL + `/api/public/get-related-tours`;
 
     return fetch(Url, {
         method: 'GET',

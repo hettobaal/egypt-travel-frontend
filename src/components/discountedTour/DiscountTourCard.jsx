@@ -45,6 +45,7 @@ function DiscountTourCard({ ToursData }) {
                         const averageRating = calculateAverageRating(item?.reviewsId);
                         return (
                             <Link
+                                prefetch={false}
                                 key={index}
                                 className='w-full'
                                 href={`/tourdetail/${item?.slug}`}

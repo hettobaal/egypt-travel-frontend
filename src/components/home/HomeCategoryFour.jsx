@@ -19,6 +19,7 @@ function HomeCategoryFour({ data }) {
                                 </h2>
                             </span>
                             <Link
+                                prefetch={false}
                                 href={`/category/${data?.slug}`}
                                 className=' flex justify-end items-end'
                             >

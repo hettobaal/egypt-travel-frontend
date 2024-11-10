@@ -36,6 +36,7 @@ function BlogCards() {
                             className='w-full'
                         >
                             <Link
+                                prefetch={false}
                                 key={index}
                                 className='w-full'
                                 href={item?.url}

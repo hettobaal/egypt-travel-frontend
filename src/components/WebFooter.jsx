@@ -24,7 +24,9 @@ function WebFooter() {
                         </Para>
                     </span>
                     <span className='flex gap-x-4'>
-                        <Link href={'/'}>
+                        <Link
+                            prefetch={false}
+                            href={'/'}>
                             <Image
                                 className='sm:block hidden'
                                 src='/images/Youtube.svg'
