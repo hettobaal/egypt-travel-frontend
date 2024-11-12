@@ -12,7 +12,7 @@ function CatalogTour({ data }) {
             <span className='text-center sm:px-0 px-2'>
                 <HeadingThree>Ausgewählte Touren</HeadingThree>
                 <HeadingOne className='mt-2'>
-                    {data?.subCategoryName || 'Tour List'}
+                    {data?.subCategoryName}
                 </HeadingOne>
             </span>
             {
