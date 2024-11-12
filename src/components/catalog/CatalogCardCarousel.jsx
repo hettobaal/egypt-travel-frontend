@@ -8,8 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
-function CatalogCardCarousel({ data }) {
-
+function CatalogCardCarousel({ Catalog }) {
 
     const calculateAverageRating = (reviews) => {
         if (!reviews?.length) return 0;
@@ -64,7 +63,7 @@ function CatalogCardCarousel({ data }) {
                 ref={swiperRef}
             >
                 {
-                    data?.map((item, index) => {
+                    Catalog?.map((item, index) => {
                         const strikePrice = item?.discountAmount > 0 && item?.priceAdult
                         const price = item?.discountAmount > 0 ? item?.adultPriceAfterDiscount : item?.priceAdult
                         const averageRating = calculateAverageRating(item?.reviewsId);
