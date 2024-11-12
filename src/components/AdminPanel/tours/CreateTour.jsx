@@ -124,7 +124,7 @@ function CreateTour({ data }) {
 
 
     const onSubmit = async (data) => {
-      
+
         setLoader(true)
         const res = await addTour(data)
         setLoader(false)
@@ -196,7 +196,7 @@ function CreateTour({ data }) {
                                     name="title"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-base dark:text-white  font-semibold">Title</FormLabel>
+                                            <FormLabel className="text-base dark:text-white  font-semibold">Tour Name</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}
@@ -214,7 +214,7 @@ function CreateTour({ data }) {
                                     name="tag"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel className="text-base dark:text-white  font-semibold">Tag</FormLabel>
+                                            <FormLabel className="text-base dark:text-white  font-semibold">Sight</FormLabel>
                                             <FormControl>
                                                 <Input
                                                     {...field}

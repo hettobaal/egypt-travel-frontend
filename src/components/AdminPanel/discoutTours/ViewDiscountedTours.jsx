@@ -7,7 +7,7 @@ import { SearchIcon } from "lucide-react";
 
 const columns = [
     { name: "CARD IMAGE", uid: "cardImage" },
-    { name: "TITLE", uid: "title" },
+    { name: "TOUR NAME", uid: "title" },
     { name: "DISCOUNT", uid: "discountAmount" },
     { name: "ADULT PRICE", uid: "adultPriceAfterDiscount" },
     { name: "CHILD PRICE", uid: "childPriceAfterDiscount" },

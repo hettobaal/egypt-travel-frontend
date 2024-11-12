@@ -11,8 +11,8 @@ import UpdateMetadata from "./UpdateMetadata";
 
 const columns = [
     { name: "OG IMAGE", uid: "ogImageId" },
-    { name: "TITLE", uid: "title" },
-    { name: "DESCRIPTION", uid: "description" },
+    { name: "META TITLE", uid: "title" },
+    { name: "META DESCRIPTION", uid: "description" },
     { name: "CANONICAL", uid: "canonical" },
     { name: "OG SITE NAME", uid: "ogSitename" },
     { name: "OG TITLE", uid: "ogTitle" },

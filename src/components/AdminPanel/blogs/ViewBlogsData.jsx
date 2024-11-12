@@ -4,7 +4,6 @@ import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, Scroll
 import { SearchIcon } from "lucide-react";
 import { DeleteBlog } from "@/lib/siteApis";
 import toast from "react-hot-toast";
-import Link from "next/link";
 import MobileImageModal from "@/components/reuseable/MobileImageModal";
 import { Button } from "@/components/ui/button";
 import UpdateCategory from "../categories/UpdateCategory";
@@ -13,7 +12,7 @@ import UpdateCategory from "../categories/UpdateCategory";
 const columns = [
     { name: "CARD IMAGE", uid: "cardImageId" },
     { name: "MAIN IMAGE", uid: "mainImageId" },
-    { name: "TITLE", uid: "title" },
+    { name: "BLOG NAME ", uid: "title" },
     { name: "DESCRIPTION", uid: "shortdesc" },
     { name: "DATE", uid: "date" },
     { name: "category", uid: "category" },

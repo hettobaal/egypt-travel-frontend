@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Card, CardHeader, CardBody } from "@nextui-org/react";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,7 +7,7 @@ import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
 import CatalogCardCarousel from './CatalogCardCarousel';
 
 function CatalogCards({ Catalog }) {
-    const [data, setData] = useState([Catalog])
+
     const calculateAverageRating = (reviews) => {
         if (!reviews?.length) return 0;
         const totalRating = reviews?.reduce((sum, review) => sum + review.rating, 0);
@@ -37,7 +37,7 @@ function CatalogCards({ Catalog }) {
         <>
             <section className='w-full md:grid hidden xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-y-6 gap-x-5'>
                 {
-                    data?.map((item, index) => {
+                    Catalog?.map((item, index) => {
                         const strikePrice = item?.discountAmount > 0 && item?.priceAdult
                         const price = item?.discountAmount > 0 ? item?.adultPriceAfterDiscount : item?.priceAdult
 
@@ -102,7 +102,7 @@ function CatalogCards({ Catalog }) {
                     })
                 }
             </section>
-            <CatalogCardCarousel data={data} />
+            <CatalogCardCarousel Catalog={Catalog} />
         </>
 
 

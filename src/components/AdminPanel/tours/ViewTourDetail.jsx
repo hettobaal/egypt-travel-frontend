@@ -29,7 +29,7 @@ function ViewTourDetail({ tourDetail }) {
                 <div className='grid lg:grid-cols-2 grid-cols-1 gap-8'>
                     <div >
                         <Heading>
-                            Title
+                            Tour Name
                         </Heading>
                         <h6 className='mt-1'>
                             {data?.title}
@@ -37,7 +37,7 @@ function ViewTourDetail({ tourDetail }) {
                     </div>
                     <div >
                         <Heading>
-                            Tag
+                            Sight
                         </Heading>
                         <h6 className='mt-1'>
                             {data?.tag}

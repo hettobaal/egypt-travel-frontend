@@ -1,30 +1,31 @@
 "use client"
-import React from 'react'
+import React from 'react';
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 import HeadingOne from '../reuseable/HeadingOne';
 import HeadingThree from '../reuseable/HeadingThree';
 import CatalogCards from './CatalogCards';
+
 function CatalogTour({ data }) {
 
-    console.log("data abc", data);
+    console.log("data", data);
 
     return (
-        <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:py-14 py-8 px-2' >
+        <MaxWidthWrapper className='flex flex-col sm:gap-y-12 gap-y-8 sm:py-14 py-8 px-2'>
             <span className='text-center sm:px-0 px-2'>
                 <HeadingThree>Ausgewählte Touren</HeadingThree>
                 <HeadingOne className='mt-2'>
-                    {data?.subCategoryName}
+                    {data?.subCategoryName || 'Tour List'}
                 </HeadingOne>
             </span>
             {
-                data[0]?.tourDetails?.length ?
-                    <CatalogCards Catalog={data[0]?.tourDetails || []} />
-                    :
+                data[0]?._id ? (
+                    <CatalogCards Catalog={data} />
+                ) : (
                     <HeadingThree className='text-center'>No Tour Available</HeadingThree>
+                )
             }
-
         </MaxWidthWrapper>
-    )
+    );
 }
 
-export default CatalogTour
+export default CatalogTour;

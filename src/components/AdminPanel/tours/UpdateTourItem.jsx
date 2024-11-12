@@ -146,7 +146,9 @@ function UpdateTourItem({ TourData, id, setData }) {
                                             name="tag"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">Tag</FormLabel>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">
+                                                        Sight
+                                                    </FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             {...field}
@@ -164,7 +166,7 @@ function UpdateTourItem({ TourData, id, setData }) {
                                             name="title"
                                             render={({ field }) => (
                                                 <FormItem>
-                                                    <FormLabel className="text-base dark:text-white  font-semibold">Title</FormLabel>
+                                                    <FormLabel className="text-base dark:text-white  font-semibold">Tour Name</FormLabel>
                                                     <FormControl>
                                                         <Input
                                                             {...field}

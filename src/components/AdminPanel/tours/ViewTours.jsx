@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 
 const columns = [
     { name: "CARD IMAGE", uid: "cardImage" },
-    { name: "TITLE", uid: "title" },
+    { name: "TOUR NAME", uid: "title" },
     { name: "DURATION", uid: "duration" },
     { name: "ADULT PRICE", uid: "adultPriceAfterDiscount" },
     { name: "CHILD PRICE", uid: "childPriceAfterDiscount" },
