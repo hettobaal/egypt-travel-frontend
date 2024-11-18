@@ -40,6 +40,8 @@ function UpdateImage({ TourData, id, setData }) {
 
         setLoader(true)
         const res = await updateTourImage(data, id, TourData)
+        console.log("res",res);
+        
         setLoader(false)
         if (res?.status == "Success") {
             toast?.success(res?.message)

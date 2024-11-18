@@ -92,11 +92,11 @@ async function page({ params }) {
 
 
     const heroImageDesktop = currentData?.categoryImage
-        ? `https://aegyptenmalanders.de/imageslocal/category/${currentData?.categoryImage}?v=${Date.now()}`
+        ? `https://aegyptenmalanders.de/imageslocal/category/${currentData?.categoryImage}`
         : '';
 
     const heroImageMobile = currentData?.categoryMobImage
-        ? `https://aegyptenmalanders.de/imageslocal/category/${currentData?.categoryMobImage}?v=${Date.now()}`
+        ? `https://aegyptenmalanders.de/imageslocal/category/${currentData?.categoryMobImage}`
         : '';
 
 
