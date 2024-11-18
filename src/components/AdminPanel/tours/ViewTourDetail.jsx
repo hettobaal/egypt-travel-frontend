@@ -7,6 +7,8 @@ import UpdateHighlight from './UpdateHighlight';
 import UpdateInclude from './UpdateInclude';
 import UpdateImage from './UpdateImage';
 import UpdateInfo from './UpdateInfo';
+import AddMoreImages from './AddMoreImages';
+import DeleteImage from './DeleteImage';
 
 function ViewTourDetail({ tourDetail }) {
 
@@ -59,7 +61,7 @@ function ViewTourDetail({ tourDetail }) {
                             {data?.fullDescription}
                         </h6>
                     </div>
-                    {
+                    {/* {
                         data?.discountAmount > 0 && < div >
                             <Heading>
                                 Strike Price
@@ -68,7 +70,7 @@ function ViewTourDetail({ tourDetail }) {
                                 {strikePrice}
                             </h6>
                         </div>
-                    }
+                    } */}
                     <div >
                         <Heading>
                             Adult Price
@@ -218,6 +220,12 @@ function ViewTourDetail({ tourDetail }) {
                 </ul>
             </div>
 
+<div className='border-2 dark:border-white border-gray px-4 py-6 rounded-xl'>
+<Heading>
+                    Add More Images
+                </Heading>
+<AddMoreImages tourId={data?._id}/>
+</div>
 
             {/* Images */}
 
@@ -235,13 +243,16 @@ function ViewTourDetail({ tourDetail }) {
                                 >
                                     <Image
                                         className="rounded-md"
-                                        src={`https://aegyptenmalanders.de/imageslocal/tour/${item}?v=${Date.now()}`}
+                                        src={`https://aegyptenmalanders.de/imageslocal/tour/${item}`}
                                         width={400}
                                         height={200}
                                         loading="lazy"
                                         alt="category"
                                     />
+                                    <div className='flex gap-x-4'>
                                     <UpdateImage TourData={item} id={data?._id} setData={setData} />
+                                    <DeleteImage tourId={data?._id} ImageId={item}/>
+                                    </div>
                                 </span>
                             )
                         })

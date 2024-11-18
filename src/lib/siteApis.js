@@ -444,6 +444,72 @@ export const updateInfo = async (data, id, pointId) => {
 };
 
 
+export const addMoreImages = async (tourId,data) => {
+
+    const Url = SERVER_URL + `admin/tour/update-tour/${tourId}`;
+    const formData = new FormData();
+    if (data.newtourImages && data.newtourImages.length > 0) {
+        data.newtourImages.forEach((image) => {
+          formData.append(`newtourImages`, image);
+        });
+      }
+
+    return fetch(Url, {
+        method: 'PUT',
+        body: formData,
+        mode: 'cors',
+        cache: "no-store",
+        headers: {
+            authorization: `Bearer ${token}`
+        },
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
+
+
+// deleteImage( tourId , ImageId
+
+    export const deleteImage = async (tourId , ImageId) => {
+
+        const Url = SERVER_URL + `admin/tour/update-tour/${tourId}`;
+        
+    
+        const data = {
+            deleteImageId: ImageId
+        }
+
+        return fetch(Url, {
+            method: 'PUT',
+            body: JSON.stringify(data), // Convert `data` to JSON string
+
+            mode: 'cors',
+            cache: "no-store",
+            headers: {
+                'Content-Type': 'application/json', 
+
+                authorization: `Bearer ${token}`
+            },
+        },
+        )
+            .then((response) => response?.json())
+            .then((data) => {
+                return data
+            })
+            .catch((error) => {
+                return error
+            });
+    };
+
+
+
+
 export const updateTourImage = async (data, id, TourData) => {
 
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
@@ -473,6 +539,8 @@ export const updateTourImage = async (data, id, TourData) => {
 export const DeleteTour = async (id) => {
 
     const url = SERVER_URL + `admin/tour/delete-tour/${id}`;
+
+
 
     return fetch(url, {
         method: 'DELETE',
