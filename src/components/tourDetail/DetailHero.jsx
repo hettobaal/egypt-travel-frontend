@@ -12,7 +12,6 @@ const DetailMobileCarousel = dynamic(() => import('./DetailMobileCarousel'), {
 });
 
 function DetailHero({ data }) {
-    console.log("data", data);
 
 
     const [selectedImage, setSelectedImage] = useState(null);
@@ -45,19 +44,18 @@ function DetailHero({ data }) {
                         <div className='col-span-2 row-span-2  cursor-pointer'>
                             <Image
                                 src={imageUrls[0]}
-                                width={100}
-                                height={100}
-                                alt='abc'
+                                width={1000}
+                                height={600}
+                                alt='Agypten'
                                 className='w-full h-full'
                                 onClick={() => handleImageClick(imageUrls[0])} />
                         </div>
                         <div className='col-span-1 row-span-2 cursor-pointer'>
                             <Image
                                 src={imageUrls[1]}
-                                width={100}
-                                height={100}
-                                alt='abc'
-
+                                width={1000}
+                                height={600}
+                                alt='Agypten'
                                 className='w-full h-full object-cover'
                                 onClick={() => handleImageClick(imageUrls[1])}
 
@@ -66,10 +64,9 @@ function DetailHero({ data }) {
                         <div className='col-span-1 row-span-1 cursor-pointer'>
                             <Image
                                 src={imageUrls[2]}
-                                width={100}
-                                height={100}
-                                alt='abc'
-
+                                width={1000}
+                                height={600}
+                                alt='Agypten'
                                 className='w-full h-full' onClick={() => handleImageClick(imageUrls[2])}
 
                             />
@@ -77,10 +74,9 @@ function DetailHero({ data }) {
                         <div className='col-start-4 row-start-2  relative cursor-pointer  '>
                             <Image
                                 src={imageUrls[3]}
-                                width={100}
-                                height={100}
-                                alt='abc'
-
+                                width={1000}
+                                height={600}
+                                alt='Agypten'
                                 className='w-full h-full relative'
                                 onClick={() => handleImageClick(imageUrls[3])}
                             />
