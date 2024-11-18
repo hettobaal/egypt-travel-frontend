@@ -12,6 +12,8 @@ const DetailMobileCarousel = dynamic(() => import('./DetailMobileCarousel'), {
 });
 
 function DetailHero({ data }) {
+    console.log("data", data);
+
 
     const [selectedImage, setSelectedImage] = useState(null);
 
@@ -55,7 +57,7 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
-                             
+
                                 className='w-full h-full object-cover'
                                 onClick={() => handleImageClick(imageUrls[1])}
 
@@ -67,8 +69,8 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
-                             
-                                className='w-full h-full'   onClick={() => handleImageClick(imageUrls[2])}
+
+                                className='w-full h-full' onClick={() => handleImageClick(imageUrls[2])}
 
                             />
                         </div>
@@ -78,7 +80,7 @@ function DetailHero({ data }) {
                                 width={100}
                                 height={100}
                                 alt='abc'
-                             
+
                                 className='w-full h-full relative'
                                 onClick={() => handleImageClick(imageUrls[3])}
                             />
@@ -95,7 +97,7 @@ function DetailHero({ data }) {
                 <div className='md:hidden flex  flex-col sm:gap-y-2.5 gap-y-1 mt-4'>
                     <div>
                         <HeadingOne className='md:text-4xl sm:text-4xl text-2xl'>
-                            Hurghada: Dolphin Watching Boat Tour with Snorkeling & Lunch
+                            {data?.title}
                         </HeadingOne>
                     </div>
                 </div>
