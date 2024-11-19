@@ -15,7 +15,6 @@ const columns = [
     { name: "DURATION", uid: "duration" },
     { name: "ADULT PRICE", uid: "adultPriceAfterDiscount" },
     { name: "CHILD PRICE", uid: "childPriceAfterDiscount" },
-    { name: "STRIKE PRICE", uid: "strikePrice" },
     { name: "ACTIONS", uid: "actions" },
 ];
 

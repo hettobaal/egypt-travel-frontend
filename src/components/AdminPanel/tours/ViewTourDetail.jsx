@@ -12,6 +12,8 @@ function ViewTourDetail({ tourDetail }) {
 
     const [data, setData] = useState(tourDetail)
     const strikePrice = data?.discountAmount > 0 && data?.priceAdult
+    console.log("tourDetail", tourDetail);
+
     return (
         <section className="mt-10 pb-8 pt-8 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg flex flex-col gap-y-8 ">
             {/* First Item */}
@@ -19,7 +21,7 @@ function ViewTourDetail({ tourDetail }) {
                 <div className='flex justify-center items-center '>
                     <Image
                         className='rounded-lg'
-                        src={`https://aegyptenmalanders.de/imageslocal/tour/${data?.cardImage}?v=${Date.now()}`}
+                        src={`https://aegyptenmalanders.de/imageslocal/tour/${data?.cardImage}?`}
                         width={400}
                         height={180}
                         loading='lazy'
@@ -235,7 +237,7 @@ function ViewTourDetail({ tourDetail }) {
                                 >
                                     <Image
                                         className="rounded-md"
-                                        src={`https://aegyptenmalanders.de/imageslocal/tour/${item}?v=${Date.now()}`}
+                                        src={`https://aegyptenmalanders.de/imageslocal/tour/${item}`}
                                         width={400}
                                         height={200}
                                         loading="lazy"
