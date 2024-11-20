@@ -26,7 +26,7 @@ function WebFooter() {
                     <span className='flex gap-x-4'>
                         <Link
                             prefetch={false}
-                            href={'/'}>
+                            href={'https://www.youtube.com/@hurghadaurlaub'}>
                             <Image
                                 className='sm:block hidden'
                                 src='/images/Youtube.svg'
@@ -44,7 +44,7 @@ function WebFooter() {
                                 alt='youtube'
                             />
                         </Link>
-                        <Link href={'/'}>
+                        <Link href={'https://www.tiktok.com/@adventuresegypt.com'}>
                             <Image
                                 className='sm:block hidden'
                                 src='/images/Tiktok.svg'
@@ -80,7 +80,7 @@ function WebFooter() {
                                 alt='linkedin'
                             />
                         </Link>
-                        <Link href={'/'}>
+                        <Link href={'https://www.instagram.com/adventuresegypt/'}>
                             <Image
                                 className='sm:block hidden'
                                 src='/images/Instagram.svg'
@@ -113,7 +113,7 @@ function WebFooter() {
                                 width={40}
                                 height={35}
                                 loading='lazy'
-                                alt='instagram'
+                                alt='Facebook'
                             />
                         </Link>
                     </span>
