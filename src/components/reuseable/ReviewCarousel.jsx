@@ -64,8 +64,9 @@ function ReviewCarousel() {
                                     key={index}
                                 >
                                     <Link
+                                        target='_blank'
                                         prefetch={false}
-                                        href='/'
+                                        href={item?.url}
                                     >
                                         <Card
                                             radius="none"
