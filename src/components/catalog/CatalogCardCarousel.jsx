@@ -86,6 +86,7 @@ function CatalogCardCarousel({ Catalog }) {
                                                 width={800}
                                                 height={400}
                                                 loading='lazy'
+                                                className='h-[200px]'
                                                 alt="Popular Tour"
                                             />
                                             {item?.tag && <Button className='bg-amber hover:bg-amber px-6 -mt-4 h-8 mx-auto rounded-full'>
@@ -95,7 +96,7 @@ function CatalogCardCarousel({ Catalog }) {
                                         <CardBody className="py-6 px-2 flex flex-col justify-between h-full ">
                                             <div  >
                                                 <h4 className='text-black font-bold sm:text-xl text-base leading-tight'> {item?.title}</h4>
-                                                <p className='mt-2 text-black font-medium sm:text-base text-sm'>
+                                                <p className='mt-2 text-black font-medium sm:text-base text-sm line-clamp-3'>
                                                     {item?.description}
                                                 </p>
                                             </div>

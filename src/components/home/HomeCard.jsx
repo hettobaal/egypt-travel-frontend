@@ -17,11 +17,11 @@ function HomeCard({ subCategory }) {
                             <Image
                                 // src={`https://dccvcdil526gz.cloudfront.net/${item?.subCategoryImage}`}
                                 src={`https://aegyptenmalanders.de/imageslocal/subCategory/${item?.subCategoryImage}`}
-                                width={1000}
-                                height={200}
+                                width={400}
+                                height={400}
                                 loading='lazy'
                                 alt={item?.subCategoryName}
-                                className='lg:rounded-[10px] rounded-[8px]'
+                                className='h-[180px] lg:h-[320px] lg:rounded-[10px] rounded-[8px]'
                             />
                             <span className='absolute inset-0 bg-black bg-opacity-40 lg:rounded-[10px] rounded-[8px]'></span>
                             <span className='absolute bottom-4  left-0 right-0 flex justify-center items-center'>

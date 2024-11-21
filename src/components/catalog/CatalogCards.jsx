@@ -59,6 +59,7 @@ function CatalogCards({ Catalog }) {
                                             width={700}
                                             height={200}
                                             loading='lazy'
+                                            className='lg:h-[250px] h-[200px]'
                                             alt="Popular Tour"
                                         />
 
@@ -69,7 +70,7 @@ function CatalogCards({ Catalog }) {
                                     <CardBody className="py-6 px-2 flex flex-col justify-between h-full ">
                                         <div  >
                                             <h4 className='text-black font-bold sm:text-xl text-lg leading-tight'>{item?.title}</h4>
-                                            <p className='mt-2 text-black font-medium text-base'>
+                                            <p className='mt-2 text-black font-medium text-base line-clamp-3'>
                                                 {item?.description}
                                             </p>
                                         </div>
