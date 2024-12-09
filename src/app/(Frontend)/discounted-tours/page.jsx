@@ -42,7 +42,7 @@ async function page() {
     return (
         <>
             <DiscountHero />
-            <Search />
+            {/* <Search /> */}
             <DiscountCards data={data?.data?.length > 0 ? data?.data[0] : []} />
             <Reviews />
             <Journey />

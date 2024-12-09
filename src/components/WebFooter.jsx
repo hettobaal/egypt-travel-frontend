@@ -119,10 +119,11 @@ function WebFooter() {
                     </span>
 
                 </div>
-                <div className='xl:w-[60%] w-full grid md:grid-cols-4 grid-cols-2 gap-y-5   md:pt-16 pt-8 '>
-                    <span>
-                        <h4 className='text-slate text-xl font-bold'>Company</h4>
-                        <ul className='flex flex-col gap-y-2 mt-4'>
+                {/* <div className='br w-full'> */}
+                <ul className='xl:w-[50%] w-full grid md:grid-cols-4 grid-cols-2 gap-y-5 ml-8   md:pt-16 pt-8 '>
+                    <li>
+                        <Link href={"/about-us"} className='text-[#344054] text-base font-normal'>About Us</Link >
+                        {/* <ul className='flex flex-col gap-y-2 mt-4'>
                             <li>
                                 <Link href={'/'} className='text-[#344054] text-base font-normal'>
                                     About Us
@@ -148,11 +149,11 @@ function WebFooter() {
                                     Data Policy
                                 </Link>
                             </li>
-                        </ul>
-                    </span>
-                    <span>
-                        <h4 className='text-slate text-xl font-bold'>Resource</h4>
-                        <ul className='flex flex-col gap-y-2 mt-4'>
+                        </ul> */}
+                    </li>
+                    <li>
+                        <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Contact Us</Link >
+                        {/* <ul className='flex flex-col gap-y-2 mt-4'>
                             <li>
                                 <Link href={'/'} className='text-[#344054] text-base font-normal'>
                                     Legal
@@ -178,11 +179,11 @@ function WebFooter() {
                                     Payments
                                 </Link>
                             </li>
-                        </ul>
-                    </span>
-                    <span>
-                        <h4 className='text-slate text-xl font-bold'>Career</h4>
-                        <ul className='flex flex-col gap-y-2 mt-4'>
+                        </ul> */}
+                    </li>
+                    <li>
+                        <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Data Policy</Link >
+                        {/* <ul className='flex flex-col gap-y-2 mt-4'>
                             <li>
                                 <Link href={'/'} className='text-[#344054] text-base font-normal'>
                                     Jobs
@@ -208,11 +209,11 @@ function WebFooter() {
                                     Data Policy
                                 </Link>
                             </li>
-                        </ul>
-                    </span>
-                    <span>
-                        <h4 className='text-slate text-xl font-bold'>Help</h4>
-                        <ul className='flex flex-col gap-y-2 mt-4'>
+                        </ul> */}
+                    </li>
+                    <li>
+                        <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Payments</Link >
+                        {/* <ul className='flex flex-col gap-y-2 mt-4'>
                             <li>
                                 <Link href={'/'} className='text-[#344054] text-base font-normal'>
                                     FAQ
@@ -228,9 +229,10 @@ function WebFooter() {
                                     Support
                                 </Link>
                             </li>
-                        </ul>
-                    </span>
-                </div>
+                        </ul> */}
+                    </li>
+                </ul>
+                {/* </div> */}
             </div>
             <div className='w-full flex md:flex-row flex-col sm:gap-y-6 gap-y-2 justify-between items-center'>
                 <span className='w-full'>

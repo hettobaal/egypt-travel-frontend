@@ -70,7 +70,7 @@ async function page() {
     <>
       <WebHeader />
       <Hero />
-      <Search />
+      {/* <Search /> */}
       <PopularTour popularToursData={popularTours} />
       {firstCategory && <HomeCategoryOne data={firstCategory} />}
       {secondCategory && <HomeCategoryTwo data={secondCategory} />}
