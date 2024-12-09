@@ -12,7 +12,7 @@ function HomeCard({ subCategory }) {
                             prefetch={false}
                             href={`/catalog/${item?.slug}`}
                             key={index}
-                            className='overflow-hidden  relative group lg:rounded-[10px] rounded-[8px] xl:w-[23.8%] lg:w-[31%] w-[48%]'
+                            className='overflow-hidden  relative group lg:rounded-[10px] rounded-[8px] xl:w-[23.8%] lg:w-[31%] w-[48%] md:h-[250px] h-[170px] br'
                         >
                             <Image
                                 // src={`https://dccvcdil526gz.cloudfront.net/${item?.subCategoryImage}`}
@@ -21,7 +21,7 @@ function HomeCard({ subCategory }) {
                                 height={400}
                                 loading='lazy'
                                 alt={item?.subCategoryName}
-                                className='h-[180px] lg:h-[320px] lg:rounded-[10px] rounded-[8px]'
+                                className=' h-full lg:rounded-[10px] rounded-[8px]'
                             />
                             <span className='absolute inset-0 bg-black bg-opacity-40 lg:rounded-[10px] rounded-[8px]'></span>
                             <span className='absolute bottom-4  left-0 right-0 flex justify-center items-center'>

@@ -29,11 +29,11 @@ export async function generateMetadata({ params }) {
     const metaData = categoryMetaData?.data
     const title = metaData?.title || 'Default Title';
     const description = metaData?.description || 'Default Description';
-    const canonical = metaData?.canonical || 'https://egypt-travel-frontend.vercel.app';
+    const canonical = metaData?.canonical || 'https://aegyptenmalanders.de';
     const ogSitename = metaData?.ogSitename || 'Agypten';
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
-    const ogURL = metaData?.ogURL || `https://egypt-travel-frontend.vercel.app/catalog/${decodedId}`;
+    const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/catalog/${decodedId}`;
     const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
     const ogImage = metaData?.ogImage || '';
 
