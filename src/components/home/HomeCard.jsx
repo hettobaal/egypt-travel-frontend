@@ -12,7 +12,7 @@ function HomeCard({ subCategory }) {
                             prefetch={false}
                             href={`/catalog/${item?.slug}`}
                             key={index}
-                            className='overflow-hidden  relative group lg:rounded-[10px] rounded-[8px] xl:w-[23.8%] lg:w-[31%] w-[48%] md:h-[250px] h-[170px] br'
+                            className='overflow-hidden  relative group lg:rounded-[10px] rounded-[8px] xl:w-[23.8%] lg:w-[31%] w-[48%] md:h-[250px] h-[170px] '
                         >
                             <Image
                                 // src={`https://dccvcdil526gz.cloudfront.net/${item?.subCategoryImage}`}
