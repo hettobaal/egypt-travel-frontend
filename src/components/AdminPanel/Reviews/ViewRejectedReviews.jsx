@@ -147,8 +147,6 @@ function ViewRejectedReviews({ reviewData }) {
     const Delete = React.useCallback(
         async (id) => {
             const res = await DeleteReview(id);
-            console.log("res", res);
-
             if (res?.status === "Success") {
                 toast?.success(res?.message);
                 setData((prev) => prev?.filter((data) => data?._id !== id));

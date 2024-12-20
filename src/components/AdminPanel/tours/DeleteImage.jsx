@@ -8,7 +8,6 @@ function DeleteImage({tourId, ImageId}) {
     const [loader, setLoader] = useState(false);
 
     const onSubmit = async () => {
-// console.log("button clicked");
 
         setLoader(true)
         const res = await deleteImage( tourId , ImageId )

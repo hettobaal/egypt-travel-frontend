@@ -7,9 +7,7 @@ import Link from 'next/link';
 import HomeCard from './HomeCard';
 
 function HomeCategoryOne({ data }) {
-    // console.log("Beliebtesten",data);
-
-
+  
     return (
         <MaxWidthWrapper className='lg:px-10 md:px-8 sm:px-6 px-4'>
             <span className='text-center sm:px-0 px-2'>

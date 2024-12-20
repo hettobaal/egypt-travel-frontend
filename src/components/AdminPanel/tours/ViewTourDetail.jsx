@@ -9,12 +9,83 @@ import UpdateImage from './UpdateImage';
 import UpdateInfo from './UpdateInfo';
 import AddMoreImages from './AddMoreImages';
 import DeleteImage from './DeleteImage';
+import AddHighlight from './AddIncludes';
+import AddIncludes from './AddIncludes';
+import { DeleteHighlights, DeleteInclude, DeleteInfo } from '@/lib/siteApis';
+import toast from 'react-hot-toast';
+import { Button } from '@/components/ui/button';
+import AddHighlights from './AddHighlights';
+import AddInfoPoint from './AddInfoPoint';
 
 function ViewTourDetail({ tourDetail }) {
 
     const [data, setData] = useState(tourDetail)
     const strikePrice = data?.discountAmount > 0 && data?.priceAdult
-    console.log("tourDetail", tourDetail);
+
+    const DeleteIncludePoint = React.useCallback(
+        async (id) => {
+            const res = await DeleteInclude(id);
+            if (res?.status === "Success") {
+                toast?.success(res?.message);
+                setData((prev) => {
+                    if (!prev || !Array.isArray(prev.includes)) {
+                        return prev;
+                    }
+                    return {
+                        ...prev,
+                        includes: prev.includes.filter((item) => String(item._id) !== String(id)),
+                    };
+                });
+            } else {
+                toast?.error(res?.message);
+            }
+        },
+        [setData]
+    );
+
+
+    const DeleteHighlightsPoint = React.useCallback(
+        async (id) => {
+            const res = await DeleteHighlights(id);
+            if (res?.status === "Success") {
+                toast?.success(res?.message);
+                setData((prev) => {
+                    if (!prev || !Array.isArray(prev.highlights)) {
+                        return prev;
+                    }
+                    return {
+                        ...prev,
+                        highlights: prev.highlights.filter((item) => String(item._id) !== String(id)),
+                    };
+                });
+            } else {
+                toast?.error(res?.message);
+            }
+        },
+        [setData]
+    );
+
+    const DeleteInfoPoint = React.useCallback(
+        async (id) => {
+            const res = await DeleteInfo(id);
+            if (res?.status === "Success") {
+                toast?.success(res?.message);
+                setData((prev) => {
+                    if (!prev || !Array.isArray(prev.importantInformation)) {
+                        return prev;
+                    }
+                    return {
+                        ...prev,
+                        importantInformation: prev.importantInformation.filter((item) => String(item._id) !== String(id)),
+                    };
+                });
+            } else {
+                toast?.error(res?.message);
+            }
+        },
+        [setData]
+    );
+
 
     return (
         <section className="mt-10 pb-8 pt-8 h-full bg-white dark:bg-darkMode px-4 py-2  rounded-xl shadow-lg flex flex-col gap-y-8 ">
@@ -166,11 +237,20 @@ function ViewTourDetail({ tourDetail }) {
                                         {item?.points}
                                     </p>
                                     <UpdateHighlight TourData={item} id={data?._id} setData={setData} />
+                                    <Button
+                                        className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                        onClick={() => DeleteHighlightsPoint(item?._id)}
+                                    >
+                                        Delete
+                                    </Button>
+
                                 </li>
                             )
                         })
                     }
                 </ul>
+                <AddHighlights id={data?._id} setData={setData} />
+
             </div>
 
             {/* Includes */}
@@ -189,11 +269,19 @@ function ViewTourDetail({ tourDetail }) {
                                         {item?.point}
                                     </p>
                                     <UpdateInclude TourData={item} id={data?._id} setData={setData} />
+                                    <Button
+                                        className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                        onClick={() => DeleteIncludePoint(item?._id)}
+                                    >
+                                        Delete
+                                    </Button>
                                 </li>
                             )
                         })
                     }
                 </ul>
+                <AddIncludes id={data?._id} setData={setData} />
+
             </div>
 
             <div className='border-2 dark:border-white border-gray px-4 py-6 rounded-xl'>
@@ -215,19 +303,26 @@ function ViewTourDetail({ tourDetail }) {
                                             {item?.points}
                                         </p>
                                         <UpdateInfo TourData={item} id={data?._id} setData={setData} />
+                                        <Button
+                                            className="w-32  text-white bg-blue hover:bg-darkBlue"
+                                            onClick={() => DeleteInfoPoint(item?._id)}
+                                        >
+                                            Delete
+                                        </Button>
                                     </li>
                                 )
                             })
                     }
                 </ul>
+                <AddInfoPoint id={data?._id} setData={setData} />
             </div>
 
-<div className='border-2 dark:border-white border-gray px-4 py-6 rounded-xl'>
-<Heading>
+            <div className='border-2 dark:border-white border-gray px-4 py-6 rounded-xl'>
+                <Heading>
                     Add More Images
                 </Heading>
-<AddMoreImages tourId={data?._id}/>
-</div>
+                <AddMoreImages tourId={data?._id} />
+            </div>
 
             {/* Images */}
 
@@ -252,8 +347,8 @@ function ViewTourDetail({ tourDetail }) {
                                         alt="category"
                                     />
                                     <div className='flex gap-x-4'>
-                                    <UpdateImage TourData={item} id={data?._id} setData={setData} />
-                                    <DeleteImage tourId={data?._id} ImageId={item}/>
+                                        <UpdateImage TourData={item} id={data?._id} setData={setData} />
+                                        <DeleteImage tourId={data?._id} ImageId={item} />
                                     </div>
                                 </span>
                             )

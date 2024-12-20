@@ -8,11 +8,9 @@ import TourCardsCarousel from '../reuseable/TourCardsCarousel';
 function DiscountTourCard({ ToursData }) {
 
     const calculateAverageRating = (reviews) => {
-        // console.log("reviews", reviews);
-
+      
         if (!reviews?.length) return 0;
         const totalRating = reviews?.reduce((sum, review) => sum + review?.rating, 0);
-        // console.log("totalRating", totalRating);
         return totalRating / reviews?.length;
     };
 

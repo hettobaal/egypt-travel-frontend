@@ -122,7 +122,6 @@ function ViewPopularTour({ TourData }) {
     const Delete = React.useCallback(
         async (id) => {
             const res = await DeletePopularTour(id);
-            // console.log(res);
 
             if (res?.status === "Success") {
                 toast?.success(res?.message);

@@ -30,7 +30,6 @@ const columns = [
 
 
 function ViewConfirmed({ TourData }) {
-    // console.log("TourData", TourData);
 
     const sortedData = useMemo(() => {
         return [...TourData]?.sort((a, b) => {

@@ -210,7 +210,7 @@ export const DeleteSubCategory = async (id) => {
 
 export const updateSubCategoryById = async (data, id) => {
 
-    console.log("data", data);
+
 
     const Url = SERVER_URL + `admin/subcategory/update-subcategory/${id}`;
     const formData = new FormData();
@@ -444,15 +444,107 @@ export const updateInfo = async (data, id, pointId) => {
 };
 
 
-export const addMoreImages = async (tourId,data) => {
+
+export const addIncludePoint = async (data, id) => {
+
+    const Url = SERVER_URL + `admin/tour/add-include/${id}`;
+
+    return fetch(Url, {
+        method: 'PUT',
+        body: JSON?.stringify(data),
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`,
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const DeleteInclude = async (id) => {
+    const url = SERVER_URL + `admin/tour/delete-include`;
+
+
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`, // Ensure token is correctly set
+        },
+        body: JSON.stringify({ includePointId: id }), // Send ID in the request body
+    })
+        .then(response => response.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            return error;
+        });
+};
+
+
+export const addHighlightsPoint = async (data, id) => {
+    
+    const Url = SERVER_URL + `admin/tour/add-highlight/${id}`;
+
+    return fetch(Url, {
+        method: 'PUT',
+        body: JSON?.stringify(data), // Send JSON directly
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json', // Set the content type to JSON
+            authorization: `Bearer ${token}`,  // Authorization header
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+export const DeleteHighlights = async (id) => {
+
+    const url = SERVER_URL + `admin/tour/delete-highlight`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`, // Ensure token is correctly set
+        },
+        body: JSON.stringify({ highlightPointId: id }), // Send ID in the request body
+    })
+        .then(response => response.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            return error;
+        });
+};
+
+
+export const addMoreImages = async (tourId, data) => {
 
     const Url = SERVER_URL + `admin/tour/update-tour/${tourId}`;
     const formData = new FormData();
     if (data.newtourImages && data.newtourImages.length > 0) {
         data.newtourImages.forEach((image) => {
-          formData.append(`newtourImages`, image);
+            formData.append(`newtourImages`, image);
         });
-      }
+    }
 
     return fetch(Url, {
         method: 'PUT',
@@ -474,38 +566,91 @@ export const addMoreImages = async (tourId,data) => {
 };
 
 
+export const addImportantInfo = async (data, id) => {
+  
+    const updatedData = data?.ImportantInformation[0]
+    const Url = SERVER_URL + `admin/tour/add-importantInfo/${id}`;
+    const transformedData = {
+
+        heading: updatedData.heading,
+        points: updatedData.points,
+
+    };
+   
+    return fetch(Url, {
+        method: 'PUT',
+        body: JSON?.stringify(transformedData), // Send JSON directly
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json', // Set the content type to JSON
+            authorization: `Bearer ${token}`,  // Authorization header
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+export const DeleteInfo = async (id) => {
+
+    const url = SERVER_URL + `admin/tour/delete-highlight`;
+
+    return fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`, // Ensure token is correctly set
+        },
+        body: JSON.stringify({ highlightPointId: id }), // Send ID in the request body
+    })
+        .then(response => response.json())
+        .then(data => {
+            return data;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            return error;
+        });
+};
+
+
 // deleteImage( tourId , ImageId
 
-    export const deleteImage = async (tourId , ImageId) => {
+export const deleteImage = async (tourId, ImageId) => {
 
-        const Url = SERVER_URL + `admin/tour/update-tour/${tourId}`;
-        
-    
-        const data = {
-            deleteImageId: ImageId
-        }
+    const Url = SERVER_URL + `admin/tour/update-tour/${tourId}`;
 
-        return fetch(Url, {
-            method: 'PUT',
-            body: JSON.stringify(data), // Convert `data` to JSON string
 
-            mode: 'cors',
-            cache: "no-store",
-            headers: {
-                'Content-Type': 'application/json', 
+    const data = {
+        deleteImageId: ImageId
+    }
 
-                authorization: `Bearer ${token}`
-            },
+    return fetch(Url, {
+        method: 'PUT',
+        body: JSON.stringify(data), // Convert `data` to JSON string
+
+        mode: 'cors',
+        cache: "no-store",
+        headers: {
+            'Content-Type': 'application/json',
+
+            authorization: `Bearer ${token}`
         },
-        )
-            .then((response) => response?.json())
-            .then((data) => {
-                return data
-            })
-            .catch((error) => {
-                return error
-            });
-    };
+    },
+    )
+        .then((response) => response?.json())
+        .then((data) => {
+            return data
+        })
+        .catch((error) => {
+            return error
+        });
+};
 
 
 

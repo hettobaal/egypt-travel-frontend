@@ -59,8 +59,6 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blo
 
     // Handle input changes
     const handleInputChange = (e) => {
-        console.log("input", e.target.value);
-
         setSearchQuery(e.target.value);
     };
 

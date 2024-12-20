@@ -63,8 +63,6 @@ function UpdateTourItem({ TourData, id, setData }) {
 
         setLoader(true)
         const res = await updateTourById(data, id)
-        console.log("res", res);
-
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)

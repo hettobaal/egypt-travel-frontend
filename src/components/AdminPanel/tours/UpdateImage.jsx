@@ -39,9 +39,7 @@ function UpdateImage({ TourData, id, setData }) {
     const onSubmit = async (data) => {
 
         setLoader(true)
-        const res = await updateTourImage(data, id, TourData)
-        console.log("res",res);
-        
+        const res = await updateTourImage(data, id, TourData)        
         setLoader(false)
         if (res?.status == "Success") {
             toast?.success(res?.message)

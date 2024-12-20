@@ -7,15 +7,11 @@ import Link from '@tiptap/extension-link'
 import "./blogstyle.css"
 
 function BlogContent({ blog }) {
-    // console.log("blogs", blogs.content);
-// console.log(blogs);
-
+ 
     const [content, setContent] = useState('');
-    console.log("content outisde", blog?.content);
-
+ 
     useEffect(() => {
-        console.log("content insde", blog?.content);
-
+ 
         if (blog?.content) {
             const htmlContent = generateHTML(blog?.content, [StarterKit, Link]);
             setContent(htmlContent);
