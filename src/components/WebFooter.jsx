@@ -121,7 +121,7 @@ function WebFooter() {
 
                     </div>
                     {/* <div className='br w-full'> */}
-                    <ul className='xl:w-[50%] w-full grid md:grid-cols-4 grid-cols-2 gap-y-5 ml-8   md:pt-16 pt-8 '>
+                    <ul className='xl:w-[50%] w-full grid md:grid-cols-4 grid-cols-2 gap-y-5 lg:ml-8    md:pt-16 pt-8 '>
                         <li>
                             <Link href={"/about-us"} className='text-[#344054] text-base font-normal'>About Us</Link >
                             {/* <ul className='flex flex-col gap-y-2 mt-4'>
@@ -253,16 +253,18 @@ function WebFooter() {
                 </div>
 
             </footer>
-            <Para className='text-[#667085]  text-center pb-2'>
-                A Creation of {` `}
-                <Link
-                    className='text-blue-800'
-                    target='_blank'
-                    href='https://infusiontechnologies.co'
-                >
-                    Infusion
-                </Link>
-            </Para>
+           
+
+                <Para className='text-[#667085]  text-center pb-2'>
+                    A Creation of {` `}
+                    <Link
+                        className='text-blue-800'
+                        target='_blank'
+                        href='https://infusiontechnologies.co'
+                    >
+                        Infusion
+                    </Link>
+                </Para>
 
         </>
     )
