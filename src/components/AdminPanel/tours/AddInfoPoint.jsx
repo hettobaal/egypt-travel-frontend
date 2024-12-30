@@ -61,7 +61,7 @@ function AddInfoPoint({ id, setData }) {
                 return {
                     ...prevData,
                     importantInformation: [...res?.data?.importantInformation
-                    ], 
+                    ],
                 };
             });
 
@@ -80,7 +80,7 @@ function AddInfoPoint({ id, setData }) {
                         <form onSubmit={form?.handleSubmit(onSubmit)} className="space-y-8">
                             <div>
                                 <Heading>
-                                    Important Information
+                                    Add More
                                 </Heading>
                                 {importantInfoFields.map((section, sectionIndex) => (
                                     <div key={section.id} className='mt-4' >

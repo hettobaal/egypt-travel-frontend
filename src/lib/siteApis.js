@@ -492,7 +492,8 @@ export const DeleteInclude = async (id) => {
 
 
 export const addHighlightsPoint = async (data, id) => {
-    
+    // console.log("highlight", data);
+
     const Url = SERVER_URL + `admin/tour/add-highlight/${id}`;
 
     return fetch(Url, {
@@ -567,7 +568,7 @@ export const addMoreImages = async (tourId, data) => {
 
 
 export const addImportantInfo = async (data, id) => {
-  
+
     const updatedData = data?.ImportantInformation[0]
     const Url = SERVER_URL + `admin/tour/add-importantInfo/${id}`;
     const transformedData = {
@@ -576,7 +577,7 @@ export const addImportantInfo = async (data, id) => {
         points: updatedData.points,
 
     };
-   
+
     return fetch(Url, {
         method: 'PUT',
         body: JSON?.stringify(transformedData), // Send JSON directly

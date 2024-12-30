@@ -42,11 +42,12 @@ function AddHighlights({ id, setData }) {
     });
 
     const onSubmit = async (data) => {
+        // console.log("data", data);
 
         setLoader(true)
         const res = await addHighlightsPoint(data, id)
-        console.log("res",res);
-        
+        // console.log("res", res);
+
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)
@@ -73,7 +74,7 @@ function AddHighlights({ id, setData }) {
                             <div className='flex flex-col gap-y-8'>
                                 <div>
                                     <Heading>
-                                        Highlights
+                                        Add More
                                     </Heading>
                                     <div className='mt-4 gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
                                         {fields?.map((field, index) => (

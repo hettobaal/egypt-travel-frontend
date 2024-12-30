@@ -78,7 +78,7 @@ function AddIncludes({ id, setData }) {
                         <form onSubmit={form?.handleSubmit(onSubmit)} className="space-y-8">
                             <div>
                                 <Heading>
-                                    Includes
+                                    Add More
                                 </Heading>
                                 <div className='mt-4 gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
                                     {includeFields?.map((field, index) => (
