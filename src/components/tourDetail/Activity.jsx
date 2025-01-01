@@ -26,7 +26,7 @@ function Activity({ data }) {
                         <RiCalendarCheckLine size={25} className='mt-1' />
                         <div>
                             <HeadingThree >
-                                Free cancellation
+                                kostenfreie Stornierung
                             </HeadingThree>
                             <Para>
                                 Cancel up to 24 hours in advance for a full refund
@@ -37,7 +37,7 @@ function Activity({ data }) {
                         <MdPayment size={25} className='mt-1' />
                         <div>
                             <HeadingThree >
-                                Reserve now & pay later
+                                jetzt buchen & später zahlen
                             </HeadingThree>
                             <Para>
                                 Keep your travel plans flexible — book your spot and pay nothing today
@@ -48,7 +48,7 @@ function Activity({ data }) {
                         <TbClockCancel size={25} className='mt-1' />
                         <div>
                             <HeadingThree >
-                                Duration {data?.duration} hours
+                                Dauer  {data?.duration} Stunden
                             </HeadingThree>
                             <Para>
                                 Check availability to see starting times.
@@ -67,7 +67,7 @@ function Activity({ data }) {
                         <IoPersonOutline size={25} className='mt-1' />
                         <div>
                             <HeadingThree >
-                                Live tour guide
+                                Reiseführer
                             </HeadingThree>
                             <Para>
                                 English, German
@@ -76,7 +76,7 @@ function Activity({ data }) {
                     </span>
                 </div>
             </div>
-            <DiscountCard data={data}/>
+            <DiscountCard data={data} />
         </MaxWidthWrapper>
     )
 }

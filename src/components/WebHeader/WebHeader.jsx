@@ -78,7 +78,7 @@ function WebHeader() {
                             href='/'
                             className={`text-base font-medium tracking-wider ${route === '/' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
-                            Home
+                            Startseite
                         </Link>
                     </li>
                     <li>
@@ -87,7 +87,7 @@ function WebHeader() {
                             href='/about-us'
                             className={`text-base font-medium tracking-wider ${route === '/about-us' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
-                            About Us
+                            Über uns
                         </Link>
                     </li>
                     <li className='ms-1'>
@@ -104,7 +104,7 @@ function WebHeader() {
 
                                         className={`cursor-pointer text-base font-medium tracking-wider ${route?.startsWith('/category') ? 'text-amber ' : blog || writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                                     >
-                                        Categories
+                                        Kategorien
                                     </span>
                                     <span className='p-0'>
                                         <ChevronDown
@@ -146,7 +146,7 @@ function WebHeader() {
                             href='/blogs'
                             className={`text-base font-medium tracking-wider ${route === '/blogs' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
-                            Blogs
+                            Reiseblog
                         </Link>
                     </li>
                     <li>
@@ -155,7 +155,7 @@ function WebHeader() {
                             href='/discounted-tours'
                             className={`text-base font-medium tracking-wider ${route === '/discounted-tours' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
-                            Discounted Tours
+                            ermäßigte Touren
                         </Link>
                     </li>
                 </ul>
@@ -163,7 +163,7 @@ function WebHeader() {
                     prefetch={false}
                     href='/contact' className='lg:block hidden'>
                     <Button className='bg-amber rounded-full px-6 hover:bg-amber text-lg'>
-                        Contact US
+                        Kontakt
                     </Button>
                 </Link>
                 <span className='lg:hidden'>

@@ -39,7 +39,7 @@ function Description({ data }) {
                 <div className='md:w-[70%] w-full flex gap-x-[142px] lg:flex-row flex-col '>
                     <span>
                         <HeadingThree className='text-xl font-semibold whitespace-nowrap '>
-                            Full description
+                            Beschreibung
                         </HeadingThree>
                     </span>
                     <MoreDescription data={data} />
@@ -50,7 +50,7 @@ function Description({ data }) {
                 <div className='md:w-[75%] w-full flex gap-x-[195px] lg:flex-row flex-col '>
                     <span>
                         <HeadingThree className='text-xl font-semibold'>
-                            Includes
+                            Inklusive
                         </HeadingThree>
                     </span>
                     <span className='lg:mt-0 mt-2'>
@@ -84,7 +84,7 @@ function Description({ data }) {
                 <div className='md:w-[70%] w-full flex gap-x-[92px] lg:flex-row flex-col '>
                     <span>
                         <HeadingThree className='lg:mt-0 mt-2 text-xl font-semibold whitespace-nowrap'>
-                            Important information
+                            Wichtige Infos
                         </HeadingThree>
                     </span>
                     <span className='max-w-screen-sm'>

@@ -34,7 +34,7 @@ function ReviewsContainer({ ReviewsData }) {
     return (
         <MaxWidthWrapper className='flex flex-col sm:gap-y-6 gap-y-4 sm:mt-10 mt-6'>
             <div>
-                <HeadingThree>Customers Reviews</HeadingThree>
+                <HeadingThree>Kundenrezensionen</HeadingThree>
             </div>
             <div className='flex lg:flex-row flex-col sm:gap-y-8 gap-y-6 gap-x-16'>
                 <div className='flex flex-col gap-y-4'>

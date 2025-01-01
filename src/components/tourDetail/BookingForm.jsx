@@ -112,7 +112,7 @@ function BookingForm({ data }) {
             <MaxWidthWrapper className='sm:mt-8 mt-8'>
                 <div className='lg:w-[80%] w-full bg-navy py-8 sm:px-6 px-4 rounded-2xl '>
                     <HeadingThree className='text-white sm:text-xl'>
-                        Select participants, date, and language
+                        Reisende, Datum und Sprache
                     </HeadingThree>
 
                     <Form {...form}>
@@ -362,7 +362,7 @@ function BookingForm({ data }) {
                                                     {...field}
                                                     className='w-full max-w-full outline-none focus:outline-none h-12 border-[#04326359] border-1 rounded-full placeholder:text-ocean placeholder:pl-2 text-ocean placeholder:text-base'
                                                     type="text"
-                                                    placeholder="Phone" />
+                                                    placeholder="Telefon" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
@@ -379,7 +379,7 @@ function BookingForm({ data }) {
                                                     {...field}
                                                     className='w-full max-w-full outline-none focus:outline-none h-12 border-[#04326359] border-1 rounded-full placeholder:text-ocean placeholder:pl-2 text-ocean placeholder:text-base'
                                                     type="text"
-                                                    placeholder="Email" />
+                                                    placeholder="E-mail" />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>

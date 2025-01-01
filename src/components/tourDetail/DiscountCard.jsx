@@ -30,7 +30,7 @@ function DiscountCard({ data }) {
 
                         data?.discountAmount > 0 && (
                             <h4 className='text-end text-amber font-semibold text-lg'>
-                                Save upto {discountPercentage}%
+                                bis zu  {discountPercentage}% sparen
                             </h4>
                         )
                     }
@@ -41,7 +41,7 @@ function DiscountCard({ data }) {
                         <span>
                             {
                                 discountAmount > 0 && <Para className='text-slate font-semibold'>
-                                    From ${strikePrice}
+                                    Ab {strikePrice}$
                                 </Para>
                             }
 
@@ -49,14 +49,14 @@ function DiscountCard({ data }) {
                                 $ {tourPrice}
                             </h4>
                             <Para className='text-slate font-semibold'>
-                                per Person
+                                Pro Person
                             </Para>
                         </span>
                         <span>
                             <Button
                                 onClick={handleScroll}
                                 className='w-max mx-auto rounded-full bg-navy hover:bg-navy px-10 h-11'>
-                                BOOK NOW
+                                Jetzt buchen
                             </Button>
                         </span>
                     </span>

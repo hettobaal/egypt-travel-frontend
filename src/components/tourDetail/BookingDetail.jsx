@@ -183,7 +183,7 @@ function BookingDetail({ data, formData }) {
                                 <span className='text-amber'> {Math?.round(((strickPrice - totalPrice) / strickPrice) * 100)}%</span>
                             </Para>)
                         }
-                        <Para>All taxes & fees included</Para>
+                        <Para>Unsere Preise einschließlich sämtlicher Steuern und Gebühren</Para>
                     </span>
                     <span>
                         <Button
