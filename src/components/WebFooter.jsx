@@ -127,7 +127,7 @@ function WebFooter() {
 
                             <ul className=' grid md:grid-cols-4 grid-cols-2 gap-y-5     md:pt-16 pt-8 '>
                                 <li>
-                                    <Link href={"/about-us"} className='text-[#344054] text-base font-normal'>About Us</Link >
+                                    <Link href={"/about-us"} className='text-[#344054] text-base font-normal'>Über uns</Link >
                                     {/* <ul className='flex flex-col gap-y-2 mt-4'>
                             <li>
                                 <Link href={'/'} className='text-[#344054] text-base font-normal'>
@@ -157,7 +157,7 @@ function WebFooter() {
                         </ul> */}
                                 </li>
                                 <li>
-                                    <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Contact Us</Link >
+                                    <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Kontakt</Link >
                                     {/* <ul className='flex flex-col gap-y-2 mt-4'>
                             <li>
                                 <Link href={'/'} className='text-[#344054] text-base font-normal'>
@@ -187,7 +187,7 @@ function WebFooter() {
                         </ul> */}
                                 </li>
                                 <li>
-                                    <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Data Policy</Link >
+                                    <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Datenrichtlinie</Link >
                                     {/* <ul className='flex flex-col gap-y-2 mt-4'>
                             <li>
                                 <Link href={'/'} className='text-[#344054] text-base font-normal'>
@@ -217,7 +217,7 @@ function WebFooter() {
                         </ul> */}
                                 </li>
                                 <li>
-                                    <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Payments</Link >
+                                    <Link href={"/contact"} className='text-[#344054] text-base font-normal'>Zahlungen</Link >
                                     {/* <ul className='flex flex-col gap-y-2 mt-4'>
                             <li>
                                 <Link href={'/'} className='text-[#344054] text-base font-normal'>

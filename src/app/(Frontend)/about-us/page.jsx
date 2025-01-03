@@ -39,9 +39,9 @@ function page() {
     return (
         <>
             <AboutHero />
-            <AboutVideo />
-            <AboutJourney />
-            <AboutClients />
+            {/* <AboutVideo /> */}
+            {/* <AboutJourney /> */}
+            {/* <AboutClients /> */}
             <Reviews />
             <Journey />
             <InstagramFeed />

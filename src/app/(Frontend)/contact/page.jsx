@@ -36,8 +36,8 @@ function page() {
         <>
             <ContactHero />
             <ContactBook />
-            <OurLocation />
-            <Frequently />
+            {/* <OurLocation /> */}
+            {/* <Frequently /> */}
             <Journey />
         </>
     )
