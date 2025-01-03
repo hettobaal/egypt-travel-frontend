@@ -169,7 +169,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blo
                                 href='/'
                                 className='w-full border-b-1 border-[#00000038]  pb-3 text-base font-medium tracking-wider text-slate '
                             >
-                                Home
+                                Startseite
                             </Link>
                             <Link
                                 prefetch={false}
@@ -177,7 +177,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blo
                                 href='/about-us'
                                 className='w-full border-b-1 border-[#00000038] pb-3 text-base font-medium tracking-wider text-slate'
                             >
-                                About Us
+                                Über uns
                             </Link>
                             <button
                                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -185,7 +185,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blo
                                 <span
                                     className=' text-base font-medium tracking-wider text-slate'
                                 >
-                                    Categories
+                                    Kategorien
                                 </span>
                                 <ChevronDown color='#000000' size={18}
                                     className={`transition-transform duration-300 ${isDropdownOpen ? 'transform rotate-180' : ''}`}
@@ -219,7 +219,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blo
                                 href='/blogs'
                                 className='w-full border-b-1 border-[#00000038] pb-3 text-base font-medium tracking-wider text-slate'
                             >
-                                Blogs
+                                Reiseblog
                             </Link>
                             <Link
                                 prefetch={false}
@@ -227,7 +227,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blo
                                 href='/discounted-tours'
                                 className='w-full border-b-1 border-[#00000038] pb-3 text-base font-medium tracking-wider text-slate'
                             >
-                                Discounted Tours
+                                ermäßigte Touren
                             </Link>
                             <Link
                                 prefetch={false}
@@ -235,7 +235,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blo
                                 href='/contact'
                                 className='w-full border-b-1 border-[#00000038] pb-3 text-base font-medium tracking-wider text-slate'
                             >
-                                Contact Us
+                                Kontakt
                             </Link>
                         </ul>
                     </div>
