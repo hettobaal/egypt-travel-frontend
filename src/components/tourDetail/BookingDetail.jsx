@@ -118,7 +118,7 @@ function BookingDetail({ data, formData }) {
                     </div> */}
                     <div className='border-t-2 border-b-2 border-[#e0e0e0] pt-6 flex lg:flex-row flex-col gap-y-6 justify-between lg:items-center items-start mt-6'>
                         <div className='flex lg:flex-row flex-col  gap-x-6  items-start'>
-                            <div className='lg:w-[60%] w-full  flex-col gap-y-6'>
+                            {/* <div className='lg:w-[60%] w-full  flex-col gap-y-6'>
                                 <span className='flex gap-x-2'>
                                     <Calendar size={28} strokeWidth={1.25} />
                                     <Para className='text-ocean font-semibold'>
@@ -135,7 +135,7 @@ function BookingDetail({ data, formData }) {
                                         with this activity option
                                     </Para>
                                 </span>
-                            </div>
+                            </div> */}
                             <div className='flex justify-between items-center lg:mt-0 mt-4'>
                                 <span className='flex flex-col gap-y-2'>
                                     <Para className='text-ocean font-semibold whitespace-nowrap'>
@@ -159,7 +159,7 @@ function BookingDetail({ data, formData }) {
                                 </span>
                             </div>
                         </div>
-                        <span className='flex lg:hidden gap-x-2'>
+                        {/* <span className='flex lg:hidden gap-x-2'>
                             <MdPayment size={28} />
                             <Para className='text-ocean font-semibold'>
                                 You can{' '}
@@ -168,12 +168,12 @@ function BookingDetail({ data, formData }) {
                                 </span>{' '}
                                 with this activity option
                             </Para>
-                        </span>
+                        </span> */}
                     </div>
                 </div>
                 <div className='bg-[#e6ebef] flex justify-between items-center gap-x-2 py-4 lg:px-6 px-3 rounded-b-[18px]'>
                     <span>
-                        <Para>Total price</Para>
+                        <Para>Gesamtpreis</Para>
                         <h6 className='text-amber font-semibold lg:text-2xl text-lg'>
                             ${totalPrice}
                         </h6>

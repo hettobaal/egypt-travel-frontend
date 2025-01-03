@@ -32,12 +32,17 @@ function WhyChooseUs() {
                     </HeadingOne>
                     <ol className='sm:mt-4 mt-2 flex flex-col gap-y-2 sm:ps-4 ps-2 list-disc list-inside text-sm' >
                         <li className='text-[#313131] text-base font-normal '>
-
-                            A quality standard service.</li>
-                        <li className='text-[#313131] text-base font-normal'> Affordable prices.</li>
-                        <li className='text-[#313131] text-base font-normal'> Free cancellation.</li>
-                        <li className='text-[#313131] text-base font-normal'>Unforgettable experience.</li>
-                        <li className='text-[#313131] text-base font-normal'>Our team is well trained & Can fulfill all your needs.</li>
+                            Hohe Qualität und erstklassiger Service.
+                        </li>
+                        <li className='text-[#313131] text-base font-normal'>
+                            Kostenfreie Stornierung
+                        </li>
+                        <li className='text-[#313131] text-base font-normal'>
+                            Lokale Expertise.
+                        </li>
+                        <li className='text-[#313131] text-base font-normal'>Individuelle Angebote..</li>
+                        <li className='text-[#313131] text-base font-normal'>Faire Preise.</li>
+                        <li className='text-[#313131] text-base font-normal'>Erfahrenes Team</li>
 
                     </ol>
                 </span>

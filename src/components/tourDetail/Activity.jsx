@@ -19,7 +19,7 @@ function Activity({ data }) {
                 <div className='flex flex-col gap-y-3'>
                     <span>
                         <HeadingOne className='md:text-4xl sm:text-3xl text-2xl'>
-                            About this activity
+                            Über diesen Ausflug
                         </HeadingOne>
                     </span>
                     <span className='flex gap-x-2 items-start'>
@@ -53,14 +53,6 @@ function Activity({ data }) {
                             <Para>
                                 Check availability to see starting times.
                             </Para>
-                        </div>
-                    </span>
-                    <span className='flex gap-x-2 items-start'>
-                        <FaArrowTrendDown size={25} className='mt-1' />
-                        <div>
-                            <HeadingThree >
-                                Skip the line through a separate entrance
-                            </HeadingThree>
                         </div>
                     </span>
                     <span className='flex gap-x-2 items-start'>

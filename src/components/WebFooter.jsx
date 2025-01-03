@@ -20,7 +20,7 @@ function WebFooter() {
                             />
                             <span >
                                 <p className='text-slate text-base font-medium'>
-                                    475 Cherry Dr, Troy, Michigan 48083 United States
+                                    Touristic Villages, Hurghada 1,  Red Sea Governorate 1963002,   Ägypten
                                 </p>
                                 <Para className='mt-2'>
                                     +20 1507 650 920
