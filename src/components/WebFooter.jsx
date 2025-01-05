@@ -254,6 +254,9 @@ function WebFooter() {
                                     <Para className='mt-1'>
                                         Ägypten
                                     </Para>
+                                    <Para className='mt-1'>
+                                        Mohamed Ibrahim
+                                    </Para>
                                 </span>
                             </div>
                         </div>
@@ -278,9 +281,8 @@ function WebFooter() {
                             <HeadingThree>
                                 Geschäftsführer
                             </HeadingThree>
-                            <Para className='mt-2'>
-                                Mohamed Ibrahim
-                            </Para>
+                            {/* <Para className='mt-2'>
+                            </Para> */}
 
                         </span>
                     </div>

@@ -10,14 +10,14 @@ function ContactBook() {
         <MaxWidthWrapper className='flex lg:flex-row flex-col lg:justify-between justify-center lg:items-start items-center gap-x-4  sm:gap-y-12 gap-y-8 sm:py-10 py-6'>
             <div className='lg:w-1/2 lg:max-w-lg w-full flex flex-col sm:gap-y-6 gap-y-4 lg:text-start text-center'>
                 <HeadingOne>
-                    Buchen
+                    Abenteuer
                     {` `} <span className='text-amber'>
-                        Sie jetzt Ihre
+                        erwarten Sie–jetzt
                     </span> {` `}
-                    unvergessliche Reise!
+                    Ihre Ausflüge sichern!
                 </HeadingOne>
                 <Para className='text-ocean'>
-                    Embark on an unforgettable travel journey with our expert assistance. Let us handle the details while you focus on creating lasting memories. Our dedicated team is here to ensure your trip is seamless and stress-free from start to finish. Let us turn your travel dreams into reality.
+                    Buchen Sie jetzt Ihre unvergesslichen und erlebnisreichen Ausflüge in Ägypten von Hurghada aus! Entdecken Sie die faszinierenden Schätze des alten Ägyptens, erleben Sie aufregende Wüstensafaris, und genießen Sie entspannende Stunden an den traumhaften Stränden des Roten Meeres. Von den majestätischen Pyramiden in Gizeh bis zu den Unterwasserwundern im Roten Meer – Ihre Abenteuer beginnen direkt in Hurghada. Sichern Sie sich noch heute Ihr unvergessliches Erlebnis!
                 </Para>
                 <Image
                     src='/images/contactBook.webp'
