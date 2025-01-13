@@ -19,12 +19,16 @@ function WebFooter() {
                                 alt='Footer Logo'
                             />
                             <span >
-                                <p className='text-slate text-base font-medium'>
+                                <Para className=''>
+                                    Aegypten Malanders ist Ihr Tor zur Erkundung der Wunder Ägyptens. Unser Reiseunternehmen ist auf personalisierte Touren spezialisiert, die die reiche Geschichte, die atemberaubenden Landschaften und die lebendige Kultur dieses alten Landes präsentieren. Von den majestätischen Pyramiden von Gizeh bis zu den ruhigen Nilkreuzfahrten stellen wir unvergessliche Erlebnisse zusammen, die auf Ihre Interessen zugeschnitten sind. Lassen Sie sich von unseren sachkundigen Reiseführern auf eine Zeitreise mitnehmen und sorgen Sie dafür, dass jedes Abenteuer unvergesslich und bereichernd ist. Entdecken Sie Ägypten mit uns!
+                                </Para>
+                                <p className='text-slate text-base font-medium mt-2'>
                                     Touristic Villages, Hurghada 1,  Red Sea Governorate 1963002,   Ägypten
                                 </p>
                                 <Para className='mt-2'>
                                     +20 1507 650 920
                                 </Para>
+
                             </span>
                             <span className='flex gap-x-4'>
                                 <Link
