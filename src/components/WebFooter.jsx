@@ -309,9 +309,11 @@ function WebFooter() {
                         <Para className='text-[#667085]'>
                             Term of Service
                         </Para>
-                        <Para className='text-[#667085]'>
+                        <Link 
+                        href='privacy-policy'
+                        className='text-base text-[#667085]'>
                             Privacy Policy
-                        </Para>
+                        </Link>
                     </span>
                 </div>
             </footer>

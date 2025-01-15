@@ -15,7 +15,7 @@ import { ChevronDown } from 'lucide-react';
 import { getTours } from '@/lib/siteApis';
 import { FaArrowRight } from 'react-icons/fa';
 
-function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blog, DataPolicy }) {
+function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blog, DataPolicy, PrivacyPolicy }) {
     const [isOpen, setIsOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const handleLinkClick = () => {
@@ -73,7 +73,7 @@ function MobileMenu({ scrolled, isTourDetailPage, writeReview, categoryData, blo
                 <SheetTrigger>
                     {
                         isOpen ? '' : <>
-                            {blog || writeReview || isTourDetailPage || DataPolicy || scrolled ? (
+                            {blog || writeReview || isTourDetailPage || DataPolicy || PrivacyPolicy || scrolled ? (
                                 <Image
                                     loading='lazy'
 

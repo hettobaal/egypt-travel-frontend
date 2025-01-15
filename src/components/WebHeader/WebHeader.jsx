@@ -35,6 +35,7 @@ function WebHeader() {
     const writeReview = route?.startsWith('/write-review');
     const blog = route?.startsWith('/blog-detail');
     const DataPolicy = route?.startsWith('/data-policy');
+    const PrivacyPolicy = route?.startsWith('/privacy-policy');
 
 
     useEffect(() => {
@@ -77,7 +78,7 @@ function WebHeader() {
                         <Link
                             prefetch={false}
                             href='/'
-                            className={`text-base font-medium tracking-wider ${route === '/' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || DataPolicy || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                            className={`text-base font-medium tracking-wider ${route === '/' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || DataPolicy || PrivacyPolicy || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
                             Startseite
                         </Link>
@@ -86,7 +87,7 @@ function WebHeader() {
                         <Link
                             prefetch={false}
                             href='/about-us'
-                            className={`text-base font-medium tracking-wider ${route === '/about-us' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || DataPolicy || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                            className={`text-base font-medium tracking-wider ${route === '/about-us' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || DataPolicy || PrivacyPolicy || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
                             Über uns
                         </Link>
@@ -103,13 +104,13 @@ function WebHeader() {
                                 <div className={`flex items-center aria-expanded:opacity-100 aria-expanded:scale-[1] ${route?.startsWith('/category') && 'border-b-2 pb-[2px] border-amber'} `}>
                                     <span
 
-                                        className={`cursor-pointer text-base font-medium tracking-wider ${route?.startsWith('/category') ? 'text-amber ' : blog || DataPolicy || writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                                        className={`cursor-pointer text-base font-medium tracking-wider ${route?.startsWith('/category') ? 'text-amber ' : blog || DataPolicy || PrivacyPolicy || writeReview || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                                     >
                                         Kategorien
                                     </span>
                                     <span className='p-0'>
                                         <ChevronDown
-                                            color={`${route?.startsWith('/category') ? '#F18700' : blog || writeReview || DataPolicy || isTourDetailPage ? '#252525' : scrolled ? '#000000' : '#FFFFFF'}`}
+                                            color={`${route?.startsWith('/category') ? '#F18700' : blog || writeReview || DataPolicy || PrivacyPolicy || isTourDetailPage ? '#252525' : scrolled ? '#000000' : '#FFFFFF'}`}
                                             size={20}
                                             className={`transition-transform duration-300 ${isDropdownOpen ? 'transform rotate-180' : ''}`}
                                         />
@@ -145,7 +146,7 @@ function WebHeader() {
                         <Link
                             prefetch={false}
                             href='/blogs'
-                            className={`text-base font-medium tracking-wider ${route === '/blogs' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || DataPolicy || writeReview || DataPolicy || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                            className={`text-base font-medium tracking-wider ${route === '/blogs' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || DataPolicy || writeReview || DataPolicy || PrivacyPolicy || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
                             Reiseblog
                         </Link>
@@ -154,7 +155,7 @@ function WebHeader() {
                         <Link
                             prefetch={false}
                             href='/discounted-tours'
-                            className={`text-base font-medium tracking-wider ${route === '/discounted-tours' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || DataPolicy || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
+                            className={`text-base font-medium tracking-wider ${route === '/discounted-tours' ? 'text-amber border-b-2 pb-[1px] border-amber' : blog || writeReview || DataPolicy || PrivacyPolicy || isTourDetailPage ? 'text-[#252525]' : scrolled ? 'text-black' : 'text-white'}`}
                         >
                             ermäßigte Touren
                         </Link>
@@ -168,7 +169,7 @@ function WebHeader() {
                     </Button>
                 </Link>
                 <span className='lg:hidden'>
-                    <MobileMenu scrolled={scrolled} isTourDetailPage={isTourDetailPage} writeReview={writeReview} blog={blog} categoryData={categoryData} DataPolicy={DataPolicy} />
+                    <MobileMenu scrolled={scrolled} isTourDetailPage={isTourDetailPage} writeReview={writeReview} blog={blog} categoryData={categoryData} DataPolicy={DataPolicy} PrivacyPolicy={PrivacyPolicy} />
                 </span>
             </MaxWidthWrapper>
         </header >

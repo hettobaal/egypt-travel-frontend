@@ -17,7 +17,7 @@ import MaxWidthWrapper from '../reuseable/MaxWidthWrapper'
 import HeadingThree from '../reuseable/HeadingThree'
 import { HiOutlineUsers } from "react-icons/hi";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, SelectItem, Select } from "@nextui-org/react";
-
+import { RiEnglishInput } from "react-icons/ri";
 import { RxMinusCircled, RxPlusCircled } from "react-icons/rx";
 import { IoMdArrowDropdown } from 'react-icons/io'
 import Para from '../reuseable/Para'
@@ -270,65 +270,56 @@ function BookingForm({ data }) {
                                     )}
                                 />
                                 <FormField
-                                    className='relative w-full'
+                                    className="relative w-full"
                                     control={form.control}
                                     name="language"
                                     render={({ field }) => (
-                                        <FormItem className='w-full'>
+                                        <FormItem className="w-full">
                                             <FormControl>
-                                                <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-                                                    <DropdownTrigger className='w-full bg-white aria-expanded:opacity-100 h-12  rounded-full aria-expanded:scale-[1]'>
-                                                        <Button
-                                                            variant="bordered"
-                                                            className='w-full bg-white h-12 rounded-full 
-                                                            '
-                                                        >
-                                                            <div className="flex items-center relative w-full">
-                                                                <Globe strokeWidth={1.25} className="absolute text-ocean" size={20} />
-                                                                <Input
-                                                                    {...field}
-                                                                    className="w-full h-12 border-none focus:outline-none pl-10 pr-12 placeholder:text-ocean placeholder:text-base cursor-pointer"
-                                                                    type="text"
-                                                                    placeholder="Select Language"
-                                                                    value={selectedLanguage || ""}
-                                                                    readOnly
-                                                                />
-                                                                <IoMdArrowDropdown className="absolute right-1 text-ocean" size={25} />
-                                                            </div>
-                                                        </Button>
-                                                    </DropdownTrigger>
-                                                    <DropdownMenu className="w-[100%] p-0"
-                                                        aria-label="Static Actions"
+                                                <div className="relative w-full">
+                                                    <button
+                                                        type='button'
+                                                        onClick={() => setIsDropdownOpen((prev) => !prev)}
+                                                        className="w-full bg-white h-12 rounded-full flex items-center justify-between px-4"
                                                     >
-                                                        <DropdownItem textValue="English">
+                                                        <div className="flex items-center w-full">
+                                                            <Globe strokeWidth={1.25} className="text-ocean" size={20} />
+                                                            <input
+                                                                {...field}
+                                                                className="w-full h-12 border-none focus:outline-none pl-4 placeholder:text-ocean placeholder:text-base cursor-pointer bg-white"
+                                                                type="text"
+                                                                placeholder="Select Language"
+                                                                value={selectedLanguage || ""}
+                                                                readOnly
+                                                            />
+                                                        </div>
+                                                        <IoMdArrowDropdown className="text-ocean" size={25} />
+                                                    </button>
+                                                    {isDropdownOpen && (
+                                                        <div className="absolute top-full left-0 w-full bg-white shadow-lg rounded-lg mt-2 p-2 z-10">
                                                             <div
-                                                                className="w-full cursor-pointer hover:bg-gray-100 p-2 rounded flex items-center gap-x-6 "
-                                                                onClick={() => handleLanguageSelect("English")}
+                                                                className="w-full cursor-pointer hover:bg-gray-100 p-2 rounded flex items-center gap-x-6"
+                                                                onClick={() => {
+                                                                    handleLanguageSelect("English");
+                                                                    setIsDropdownOpen(false);
+                                                                }}
                                                             >
-                                                                <span>
-                                                                    <IoLanguageOutline size={18} />
-                                                                </span>
-                                                                <p className='text-base font-semibold'>
-                                                                    English
-                                                                </p>
+                                                                <RiEnglishInput size={18} />
+                                                                <p className="text-base font-semibold">English</p>
                                                             </div>
-                                                        </DropdownItem>
-                                                        <DropdownItem textValue="German">
                                                             <div
-                                                                className="w-full cursor-pointer hover:bg-gray-100 p-2 rounded flex items-center gap-x-6 "
-                                                                onClick={() => handleLanguageSelect("German")}
+                                                                className="w-full cursor-pointer hover:bg-gray-100 p-2 rounded flex items-center gap-x-6"
+                                                                onClick={() => {
+                                                                    handleLanguageSelect("German");
+                                                                    setIsDropdownOpen(false);
+                                                                }}
                                                             >
-                                                                <span>
-                                                                    <IoLanguageOutline size={18} />
-                                                                </span>
-                                                                <p className='text-base font-semibold'>
-                                                                    German
-                                                                </p>
+                                                                <IoLanguageOutline size={18} />
+                                                                <p className="text-base font-semibold">German</p>
                                                             </div>
-                                                        </DropdownItem>
-
-                                                    </DropdownMenu>
-                                                </Dropdown>
+                                                        </div>
+                                                    )}
+                                                </div>
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
