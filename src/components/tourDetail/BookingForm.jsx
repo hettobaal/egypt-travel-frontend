@@ -34,8 +34,8 @@ const formSchema = z.object({
     date: z.string().min(2, {
         message: "Email is Required",
     }),
-    language: z.string().min(5, {
-        message: "Message should be atleast 5 character",
+    language: z.string().min(1, {
+        message: "Please Select language",
     }),
     name: z.string().min(2, {
         message: "Name is Required",

@@ -226,7 +226,7 @@ function WebFooter() {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link href={'/'} className='text-[#344054] text-base font-normal'>
+                                            <Link href={'/data-policy'} className='text-[#344054] text-base font-normal'>
                                                 Datenrichtlinie
                                             </Link>
                                         </li>
