@@ -31,17 +31,17 @@ export const metadata = {
     // alternates: {
     //   canonical: 'https://infusiontechnologies.co/',
     // },
-  
-  };
+
+};
 
 
 function page() {
     return (
         <>
             <AboutHero />
-            {/* <AboutVideo /> */}
-            {/* <AboutJourney /> */}
-            {/* <AboutClients /> */}
+            {/* <AboutVideo />
+            <AboutJourney />
+            <AboutClients /> */}
             <Reviews />
             <Journey />
             <InstagramFeed />
