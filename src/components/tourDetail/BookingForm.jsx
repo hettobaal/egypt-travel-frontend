@@ -298,9 +298,9 @@ function BookingForm({ data }) {
                                                         </Button>
                                                     </DropdownTrigger>
                                                     <DropdownMenu className="w-[100%] p-0"
-                                                        aria-label="Static Actions"
+                                                        aria-label="Static Actions" tabIndex={1}
                                                     >
-                                                        <DropdownItem textValue="English">
+                                                        <DropdownItem  textValue="English" aria-label='english'>
                                                             <div
                                                                 className="w-full cursor-pointer hover:bg-gray-100 p-2 rounded flex items-center gap-x-6 "
                                                                 onClick={() => handleLanguageSelect("English")}
@@ -313,9 +313,9 @@ function BookingForm({ data }) {
                                                                 </p>
                                                             </div>
                                                         </DropdownItem>
-                                                        <DropdownItem textValue="German">
+                                                        <DropdownItem textValue="German" aria-label='german'>
                                                             <div
-                                                                className="w-full cursor-pointer hover:bg-gray-100 p-2 rounded flex items-center gap-x-6 "
+                                                                className="w-full cursor-pointer active:bg-red-300 hover:bg-gray-100 p-2 rounded flex items-center gap-x-6 "
                                                                 onClick={() => handleLanguageSelect("German")}
                                                             >
                                                                 <span>
