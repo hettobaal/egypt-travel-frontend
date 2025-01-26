@@ -222,27 +222,48 @@ function WebFooter() {
                                         <li className='text-[#344054] text-base font-normal'>
                                             Ägypten
                                         </li>
-                                        <Link
-                                            target='_blank'
-                                            href='https://maps.app.goo.gl/6pq5FRwYqq2ub6M79'
-                                            className='flex gap-x-2 items-center text-[#344054] text-base font-normal'>
-                                            <FaLocationDot /> {` `}
-                                            5RXF+5VQ Hurghada
-                                        </Link>
-                                        <Link
-                                            href="tel:+4915236601419"
-                                            className='flex gap-x-2 items-center text-[#344054] text-base font-normal'>
-                                            <IoCallSharp />
-                                            {` `}
-                                            +49(0)1523 660 1419
-                                        </Link>
-                                        <Link
-                                            href="https://wa.me/201507650920"
-                                            className='flex gap-x-2 items-center text-[#344054] text-base font-normal'>
-                                            <IoLogoWhatsapp />
-                                            {` `}
-                                            +20 1507 650 920
-                                        </Link>
+                                        <li className='flex gap-x-4'>
+                                            <Link
+                                                target='_blank'
+                                                href='https://maps.app.goo.gl/6pq5FRwYqq2ub6M79'
+                                                className='flex gap-x-2 items-center text-[#344054] text-base font-normal'>
+                                                <Image
+                                                    src='/images/location.png'
+                                                    height={50}
+                                                    width={40}
+                                                    alt='location'
+
+                                                />
+                                                {/* {` `}
+                                            5RXF+5VQ Hurghada */}
+                                            </Link>
+                                            <Link
+                                                href="tel:+4915236601419"
+                                                className='flex gap-x-2 items-center text-[#344054] text-base font-normal'>
+                                                <Image
+                                                    src='/images/call.png'
+                                                    height={50}
+                                                    width={40}
+                                                    alt='call'
+
+                                                />
+                                                {/* {` `}
+                                            +49(0)1523 660 1419 */}
+                                            </Link>
+                                            <Link
+                                                href="https://wa.me/201507650920"
+                                                className='flex gap-x-2 items-center text-[#344054] text-base font-normal'>
+                                                <Image
+                                                    src='/images/whatsapp.png'
+                                                    height={50}
+                                                    width={40}
+                                                    alt='whatsapp'
+
+                                                />
+                                                {/* {` `}
+                                            +20 1507 650 920 */}
+                                            </Link>
+                                        </li>
                                         <Link
                                             href="mailto:info@aegyptenmalanders.de"
                                             className='flex gap-x-2 items-center text-[#344054] text-base font-normal'>
