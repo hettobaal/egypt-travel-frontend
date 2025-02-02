@@ -18,7 +18,6 @@ import AddHighlights from './AddHighlights';
 import AddInfoPoint from './AddInfoPoint';
 
 function ViewTourDetail({ tourDetail }) {
-    console.log("tourDetail", tourDetail);
 
     const [data, setData] = useState(tourDetail)
     const strikePrice = data?.discountAmount > 0 && data?.priceAdult
