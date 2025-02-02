@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -16,12 +16,14 @@ import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { Modal, ModalBody, ModalContent, ModalHeader, useDisclosure } from '@nextui-org/react'
-import { updateTourById } from '@/lib/siteApis'
+import { getSubCategories, updateTourById } from '@/lib/siteApis'
+import { Select, SelectItem } from '@nextui-org/react'
 
 
 const formSchema = z.object({
     cardImage: z
         .any(),
+    subCategoryId: z.string().optional(),
     title: z.string().optional(),
     tag: z.string().optional(),
     heading: z.string().optional(),
@@ -45,6 +47,7 @@ function UpdateTourItem({ TourData, id, setData }) {
         resolver: zodResolver(formSchema),
         defaultValues: {
             cardImage: '',
+            subCategoryId: '',
             title: TourData?.title,
             tag: TourData?.tag,
             description: TourData?.description,
@@ -75,6 +78,7 @@ function UpdateTourItem({ TourData, id, setData }) {
                     return {
                         ...prevData,
                         title: data?.title,
+                        subCategoryId: data?.subCategoryId,
                         tag: data?.tag,
                         cardImage: newImageId,
                         description: data?.description,
@@ -99,6 +103,25 @@ function UpdateTourItem({ TourData, id, setData }) {
 
     const fileRef = form.register("cardImage");
 
+
+
+    const [SubCategoryData, setSubCategoryData] = useState([]);
+    const [value, setValue] = React.useState(new Set([]));
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const data = await getSubCategories()
+                setSubCategoryData(data?.data);
+            } catch (error) {
+                console.error("Error fetching tours:", error);
+            }
+        };
+        fetchData();
+    }, []);
+
+
+
     return (
         <>
             <Button
@@ -119,6 +142,49 @@ function UpdateTourItem({ TourData, id, setData }) {
                             <Form {...form}>
                                 <form onSubmit={form?.handleSubmit(onSubmit)} className="space-y-8">
                                     <div className='gap-6 grid sm:grid-cols-2 grid-cols-1  w-full'>
+                                        <FormField
+                                            control={form.control}
+                                            name="subCategoryId"
+                                            render={({ field }) => (
+                                                <FormItem
+
+                                                >
+                                                    <FormLabel>Select SubCategory Name</FormLabel>
+                                                    <FormControl
+                                                    >
+                                                        <Select
+                                                            {...field}
+                                                            aria-label='Select SubCategory'
+                                                            placeholder="Select SubCategory"
+                                                            selectedKeys={value}
+                                                            className="   border border-gray-400 outline-none rounded-lg focus-visible:ring-0 focus:ring-0 dark:bg-darkModeSecondary  "
+                                                            onSelectionChange={setValue}
+                                                            classNames={{
+                                                                trigger: "bg-white dark:bg-darkModeSecondary hover:bg-white  rounded-lg",
+                                                                listboxWrapper: 'max-h-32 overflow-y-auto dark:bg-darkModeSecondary',
+                                                                mainWrapper: "dark:bg-darkModeSecondary rounded-lg",
+                                                                popoverContent: 'dark:bg-darkModeSecondary',
+                                                            }}
+                                                        >
+
+                                                            {
+                                                                SubCategoryData?.map((item) => {
+                                                                    return (
+                                                                        <SelectItem
+                                                                            key={item?._id
+                                                                            }>
+                                                                            {item?.subCategoryName}
+                                                                        </SelectItem>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </Select>
+                                                    </FormControl>
+                                                    <FormMessage className='dark:text-white dark:py-2 dark:px-2 dark:rounded-md dark:bg-[#9c2b2e] ' />
+
+                                                </FormItem>
+                                            )}
+                                        />
                                         <FormField
                                             control={form.control}
                                             name="cardImage"

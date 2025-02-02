@@ -329,6 +329,7 @@ export const getSingleTour = async (id) => {
 };
 
 export const updateTourById = async (data, id) => {
+    console.log("data", data);
 
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
     const formData = new FormData();
@@ -336,6 +337,7 @@ export const updateTourById = async (data, id) => {
         formData.append('cardImage', data?.cardImage[0]);
     }
     formData?.append('title', data?.title);
+    formData?.append('subCategoryId', data?.subCategoryId);
     formData?.append('tag', data?.tag);
     formData?.append('description', data?.description);
     formData?.append('fullDescription', data?.fullDescription);
