@@ -1,9 +1,9 @@
-import PrivacyPolicy from '@/components/policies/PrivacyPolicy';
+import DataPolicy from '@/components/policies/DataPolicy';
 import React from 'react'
 
 function page() {
     return (
-        <PrivacyPolicy />
+        <DataPolicy />
     )
 }
 
