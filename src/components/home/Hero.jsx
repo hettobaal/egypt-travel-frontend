@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 function Hero() {
-    ReactDOM.preload('/images/testhero.webp', { as: 'image' })
+    ReactDOM.preload('/images/heroNew.webp', { as: 'image' })
     ReactDOM.preload('/images/heroNew.jpg', { as: 'image' })
 
     return (
