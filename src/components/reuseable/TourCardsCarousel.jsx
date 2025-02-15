@@ -49,11 +49,11 @@ function TourCardsCarousel({ data }) {
 
     return (
         <section className='md:hidden flex items-center justify-center gap-x-2 '>
-            <button
+            {/* <button
                 onClick={handlePrev}
                 className='bg-navy p-2.5 rounded-full'>
                 <FaArrowLeftLong color='#ffffff' size={18} />
-            </button>
+            </button> */}
             <Swiper
                 spaceBetween={20}
                 slidesPerView={1}
@@ -129,11 +129,11 @@ function TourCardsCarousel({ data }) {
 
 
             </Swiper>
-            <button
+            {/* <button
                 onClick={handleNext}
                 className='bg-navy p-2.5 rounded-full'>
                 <FaArrowRightLong color='#ffffff' size={18} />
-            </button>
+            </button> */}
         </section>
     )
 }

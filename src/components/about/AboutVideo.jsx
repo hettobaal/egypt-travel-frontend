@@ -68,7 +68,7 @@ function AboutVideo() {
                                 </HeadingOne>
                             </span>
                             <Para className='text-ocean text-center mt-2'>
-                                At The Agypten Travel, our foundation is built upon a steadfast commitment to excellence, a visionary approach to travel, a clear mission, and a set of deeply ingrained values. Our commitment drives every aspect of our operations, ensuring that every traveler&apos;s experience exceeds expectations. From meticulously curated itineraries to personalized customer service, we spare no effort in delivering unforgettable journeys.
+                                Willkommen bei aegyptenmalanders.de, dem Experten für unvergessliche Ausflüge in Ägypten! Wir bieten Ihnen maßgeschneiderte Reiseerlebnisse, die das Beste dieses faszinierenden Landes zeigen – von den beeindruckenden Pyramiden von Gizeh bis zu den bezaubernden Stränden des Roten Meeres.
                             </Para>
                         </div>
 
