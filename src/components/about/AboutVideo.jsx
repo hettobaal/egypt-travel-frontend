@@ -74,7 +74,7 @@ function AboutVideo() {
 
                     </Card>
                 </div>
-                <DialogContent
+                {/* <DialogContent
                     aria-label='DialogContent'
                     className='bg-transparent border-none sm:max-w-[80%] max-w-[98%] sm:p-6 p-2 '
                 >
@@ -87,7 +87,7 @@ function AboutVideo() {
                             <IoIosClose size={40} />
                         </DialogClose>
                     </div>
-                </DialogContent>
+                </DialogContent> */}
             </Dialog>
 
         </MaxWidthWrapper >
