@@ -1,0 +1,130 @@
+.tiptap p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tiptap h1 {
+  font-size: 24px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.dark .prose h1 {
+  color: white;
+}
+
+
+.tiptap h2 {
+  margin: 0;
+}
+
+.dark .prose h2 {
+  color: white;
+}
+
+
+.tiptap h3 {
+  margin: 0;
+}
+
+.dark .prose h3 {
+  color: white;
+}
+
+
+.dark .prose h4 {
+  color: white;
+}
+
+.dark .prose h5 {
+  color: white;
+}
+
+.dark .prose h6 {
+  color: white;
+}
+
+
+
+.tiptap img {
+  margin: 0;
+}
+
+.prose ol li {
+  font-size: 16px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+
+.prose ul li {
+  font-size: 16px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+
+.prose ul li::marker {
+  color: black;
+  margin-bottom: 0;
+}
+
+
+.dark .prose strong {
+  color: white;
+  /* Or any suitable color for dark mode */
+}
+
+.dark .prose a {
+  color: white;
+  /* Adjust for dark mode */
+  text-decoration: underline;
+}
+
+
+.editor-width {
+  max-width: 100% !important;
+}
+
+.prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.prose :where(h1, h2, h3, h4, h5, h6):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+.prose :where(ol):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  list-style-type: decimal;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-inline-start: 1.625em;
+}
+
+
+.prose :where(img):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+@media (width >=640px) {
+  .sm\:prose :where(img):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+/* a {
+  text-decoration: underline;
+  font-weight: 500;
+} */
+
+
+
+.br {
+  border: 1px solid red;
+}

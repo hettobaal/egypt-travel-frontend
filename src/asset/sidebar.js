@@ -10,6 +10,7 @@ import { FaMeta } from "react-icons/fa6";
 import { IoMdContact } from "react-icons/io";
 import { MdUnsubscribe } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
+import { FaBlogger } from "react-icons/fa";
 export const Menu = [
     { heading: 'Main Menu' },
 
@@ -180,16 +181,16 @@ export const Menu = [
 
 
     {
-        Icon: IoMdContact,
+        Icon: FaBlogger,
         title: 'Blogs',
         subMenu: [
             {
-                subTitle: 'Create Blogs',
-                url: '/create-blog'
+                subTitle: 'Create Blog',
+                url: '/blog/create-blog'
             },
             {
-                subTitle: 'View Blogs',
-                url: '/view-blogs'
+                subTitle: 'View Blog',
+                url: '/blog/view-blogs'
             },
         ]
     },

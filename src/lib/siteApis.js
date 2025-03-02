@@ -1766,17 +1766,16 @@ export const getSingleBlog = async (slug) => {
 export const addBlog = async (data) => {
 
     const Url = SERVER_URL + "admin/blog/add-blog";
-
     const formData = new FormData();
-
+    formData.append('cardImage', data?.cardImage);
+    formData.append('blogBannerImage', data?.blogBannerImage);
     formData.append('title', data?.title);
-    formData.append('cardImage', data?.cardImage[0]);
-    formData.append('mainImage', data?.mainImage[0]);
     formData.append('category', data?.category);
-    formData.append('shortdesc', data?.shortDesc);
-    formData.append('date', data?.date);
-    formData.append('content', JSON.stringify(data.content));
+    formData.append('shortDesc', data?.shortDesc);
+    formData.append('content', data?.content);
     // let formData = data.content
+    // console.log("Card Image:", formData.get('cardImage'));
+    // console.log("Blog Banner Image:", formData.get('blogBannerImage'));
 
     return fetch(Url, {
         method: 'POST',
@@ -1800,18 +1799,23 @@ export const getBlogs = async () => {
 
     const Url = SERVER_URL + "api/public/get-blogs";
 
-    return fetch(Url, {
-        method: 'GET',
-        mode: 'cors',
-        cache: 'no-store',
-    })
-        .then((response) => response?.json())
-        .then((data) => {
-            return data;
+    try {
+
+        const response = await fetch(Url, {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-store',
         })
-        .catch((error) => {
-            return error;
-        });
+
+
+        const result = await response.json()
+        return result
+
+    } catch (error) {
+        console.error(error);
+        return error
+    }
+
 };
 
 export const DeleteBlog = async (id) => {
@@ -1833,3 +1837,48 @@ export const DeleteBlog = async (id) => {
             return error;
         });
 }
+
+
+
+export const updateBlogItem = async (data, id) => {
+
+    const Url = SERVER_URL + `admin/blog/update-blog/${id}`;
+    console.log("id",id);
+    console.log("Url",Url);
+    
+    const formData = new FormData();
+    if (data?.cardImage) formData.append('cardImage', data.cardImage);
+    if (data?.blogBannerImage) formData.append('blogBannerImage', data.blogBannerImage);
+    if (data?.category) formData.append('category', data.category);
+    if (data?.title) formData.append('title', data.title);
+    if (data?.shortDesc) formData.append('shortDesc', data.shortDesc);
+    if (data?.content) {
+        // Replace base64 URLs with Google Drive URLs
+        const updatedContent = replaceBase64WithGoogleDriveUrls(data.content);
+        //    console.log("updatedContent  ", updatedContent);
+
+        formData.append('content', updatedContent); // Append updated content to formData
+    }
+    // let formData = data.content
+    // console.log("Card Image:", formData.get('cardImage'));
+    // console.log("Blog Banner Image:", formData.get('blogBannerImage'));
+
+    return fetch(Url, {
+        method: 'PUT',
+        headers: {
+            authorization: `Bearer ${token}`,
+        },
+        body: formData,
+        mode: 'cors',
+    })
+        .then((response) => response?.json())
+        .then((data) => {
+            return data;
+        })
+        .catch((error) => {
+            return error;
+        });
+};
+
+
+// Blogs with editor

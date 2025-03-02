@@ -2,7 +2,7 @@ import BlogContent from '@/components/blogs/BlogContent';
 import BlogDetailHero from '@/components/blogs/BlogDetailHero';
 import RelatedBlogs from '@/components/blogs/RelatedBlogs';
 import Journey from '@/components/reuseable/Journey';
-import { getBlogs, getSingleBlog, getSingleMetaData } from '@/lib/siteApis';
+import { getBlogMetaData, getBlogs, getSingleBlog, getSingleMetaData } from '@/lib/siteApis';
 import React from 'react'
 
 
@@ -18,24 +18,23 @@ export async function generateStaticParams() {
 
 
 export async function generateMetadata({ params }) {
-    const id = params?.tourSlug;
-    const decodedId = decodeURIComponent(id);
-    const data = await getSingleBlog(decodedId)
+    const id = params?.blogSlug;
+    const data = await getSingleBlog(id)
     const tourId = data?.data?._id
-    const tourMetaData = await getSingleMetaData(tourId)
-    const metaData = tourMetaData?.data
+    const tourMetaData = await getBlogMetaData()
+    const metaData = tourMetaData?.data?.find(item => item?.entityId == tourId);
     const title = metaData?.title || 'Agypten';
     const description = metaData?.description || 'Agypten';
     const canonical = metaData?.canonical || 'https://aegyptenmalanders.de';
     const ogSitename = metaData?.ogSitename || 'Agypten';
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
-    const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${decodedId}`;
+    const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${id}`;
     const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
     const ogImage = metaData?.ogImage || '';
 
     return {
-        title,
+        title: title,
         description,
         canonical: canonical,
         openGraph: {
@@ -81,12 +80,18 @@ export async function generateMetadata({ params }) {
 async function page({ params }) {
     const slug = params?.blogSlug;
     const blog = await getSingleBlog(slug)
+    // console.log("blog", blog);
+    const bannerImage = blog?.data?.blogBannerImage
+    const entireBlog = await getBlogs()
+    // console.log("entireBlog", entireBlog);
+
+    const relatedBlogsData = entireBlog?.data?.filter((item) => item?.slug !== slug)
 
     return (
         <>
-            <BlogDetailHero />
+            <BlogDetailHero bannerImage={bannerImage} />
             <BlogContent blog={blog.data} />
-            <RelatedBlogs />
+            <RelatedBlogs relatedBlogsData={relatedBlogsData} />
             <Journey />
         </>
     )

@@ -7,24 +7,22 @@ import Link from '@tiptap/extension-link'
 import "./blogstyle.css"
 
 function BlogContent({ blog }) {
- 
-    const [content, setContent] = useState('');
- 
-    useEffect(() => {
- 
-        if (blog?.content) {
-            const htmlContent = generateHTML(blog?.content, [StarterKit, Link]);
-            setContent(htmlContent);
-        }
-    }, []);
+
+    // const [content, setContent] = useState('');
+
+    // useEffect(() => {
+
+    //     if (blog?.content) {
+    //         const htmlContent = generateHTML(blog?.content, [StarterKit, Link]);
+    //         setContent(htmlContent);
+    //     }
+    // }, []);
 
 
 
     return (
         <MaxWidthWrapper className='max-w-screen-lg mt-6'>
-            {content && (
-                <div dangerouslySetInnerHTML={{ __html: content }} />
-            )}
+            <div dangerouslySetInnerHTML={{ __html: blog?.content }} />
         </MaxWidthWrapper>
     );
 }

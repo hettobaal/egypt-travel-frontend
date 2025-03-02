@@ -3,7 +3,7 @@ import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 import HeadingOne from '../reuseable/HeadingOne';
 import BlogCards from './BlogCards';
 
-function RelatedBlogs() {
+function RelatedBlogs({ relatedBlogsData }) {
     return (
         <>
             <MaxWidthWrapper className='mt-6'>
@@ -12,7 +12,7 @@ function RelatedBlogs() {
                 </HeadingOne>
             </MaxWidthWrapper>
             <div className='sm:mt-6 mt-4'>
-                <BlogCards />
+                <BlogCards blogData={relatedBlogsData} />
             </div>
         </>
     )
