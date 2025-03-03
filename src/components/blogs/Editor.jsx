@@ -129,8 +129,8 @@ function Editor({ handleEditorChange, data }) {
         formData.append("blogInternalImage", file);
         const response = await fetch(
           // "http://localhost:3000/api/blog/upload-blog-image",
-          "http://localhost:4000/admin/internalImage/upload-blog-image",
-          // "https://aegyptenmalanders.de/admin/internalImage/upload-blog-image",
+          // "http://localhost:4000/admin/internalImage/upload-blog-image",
+          "https://aegyptenmalanders.de/admin/internalImage/upload-blog-image",
           {
             method: "POST",
             body: formData,
@@ -177,8 +177,8 @@ function Editor({ handleEditorChange, data }) {
 
         if (imageId) {
           const response = await fetch(
-            // "https://aegyptenmalanders.de/admin/internalImage/delete-blog-image",
-            "http://localhost:4000/admin/internalImage/delete-blog-image",
+            "https://aegyptenmalanders.de/admin/internalImage/delete-blog-image",
+            // "http://localhost:4000/admin/internalImage/delete-blog-image",
             {
               method: "DELETE",
               headers: {
