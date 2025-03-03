@@ -30,6 +30,7 @@ import { IoIosRedo } from "react-icons/io";
 import { IoArrowUndo } from "react-icons/io5";
 import { FcAddImage } from "react-icons/fc";
 import { Tooltip } from "@nextui-org/react";
+import toast from "react-hot-toast";
 // import {
 //   Select,
 //   SelectContent,
@@ -128,25 +129,26 @@ function Editor({ handleEditorChange, data }) {
         formData.append("blogInternalImage", file);
         const response = await fetch(
           // "http://localhost:3000/api/blog/upload-blog-image",
-          // "http://localhost:4000/admin/internalImage/upload-blog-image",
-          "https://aegyptenmalanders.de/admin/internalImage/upload-blog-image",
+          "http://localhost:4000/admin/internalImage/upload-blog-image",
+          // "https://aegyptenmalanders.de/admin/internalImage/upload-blog-image",
           {
             method: "POST",
             body: formData,
           }
         );
 
-
-        const data = await response.json();
+        const data = await response.json();;
 
         if (!response.ok) {
           editor.chain().focus().deleteSelection().run();
+
           throw new Error("Failed to upload image");
         }
-
+        toast?.success(data?.message)
         editor.chain().focus().updateAttributes("image", { name: data.fileId, style: "opacity: 1" }).run();
       } catch (error) {
         console.error("Error uploading image:", error);
+        toast?.error(data?.message)
       }
     } else {
       console.error("Please upload a valid image file");
@@ -171,20 +173,27 @@ function Editor({ handleEditorChange, data }) {
       if (isImageSelected) {
         const imageAttributes = editor.getAttributes("image");
         const imageId = imageAttributes?.name;
+        console.log("imageId", imageId);
 
         if (imageId) {
           const response = await fetch(
-            "https://aegyptenmalanders.de/admin/internalImage/delete-blog-image",
-            // "http://localhost:4000/admin/internalImage/delete-blog-image",
+            // "https://aegyptenmalanders.de/admin/internalImage/delete-blog-image",
+            "http://localhost:4000/admin/internalImage/delete-blog-image",
             {
               method: "DELETE",
+              headers: {
+                "Content-Type": "application/json", // Ensure JSON format
+              },
               body: JSON.stringify({ imageId: imageId }),
             }
-          );
 
+
+          );
+          const res = await response?.json()
 
           if (response.ok) {
             editor.chain().focus().deleteSelection().run();
+            toast?.success(res?.message)
           } else {
             alert("Failed to delete image");
           }

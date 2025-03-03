@@ -9,7 +9,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "https://aegyptenmalanders.de",
+        hostname: "aegyptenmalanders.de",
       },
     ]
     // unoptimized: true,
