@@ -1,7 +1,7 @@
 import React from 'react'
 import Heading from '@/components/reuseable/Heading';
-import { getBlogMetaData } from '@/lib/apis';
 import ViewBlogMetaData from '@/components/blogs/ViewBlogMetaData';
+import { getBlogMetaData } from '@/lib/siteApis';
 
 async function page() {
     const data = await getBlogMetaData('blog')
