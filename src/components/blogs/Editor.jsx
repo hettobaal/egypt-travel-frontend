@@ -7,7 +7,7 @@ import Italic from "@tiptap/extension-italic";
 import Strike from "@tiptap/extension-strike";
 import OrderedList from "@tiptap/extension-ordered-list";
 import BulletList from "@tiptap/extension-bullet-list";
-import Image from "@tiptap/extension-image";
+import Image from '@tiptap/extension-image'
 import ImageResize from "tiptap-extension-resize-image";
 import FontSize from "./FontSize";
 // import "./editor.css";

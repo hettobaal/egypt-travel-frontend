@@ -1,7 +1,7 @@
 import React from 'react'
 import Heading from '@/components/reuseable/Heading'
-import CreateBlogMetaData from '@/components/blogs/CreateBlogMetadata';
 import { getBlogs } from '@/lib/siteApis';
+import CreateBlogMetaData from '@/components/AdminPanel/metaData/CreateBlogMetaData';
 
 
 async function page() {

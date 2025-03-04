@@ -1,7 +1,7 @@
 import React from 'react'
 import Heading from '@/components/reuseable/Heading';
-import ViewBlogMetaData from '@/components/blogs/ViewBlogMetaData';
 import { getBlogMetaData } from '@/lib/siteApis';
+import ViewMetaData from '@/components/AdminPanel/metaData/ViewMetaData';
 
 async function page() {
     const data = await getBlogMetaData('blog')
@@ -12,7 +12,7 @@ async function page() {
             <Heading>
                 View Blog MetaData
             </Heading>
-            <ViewBlogMetaData metaData={metaData || []} />
+            <ViewMetaData metaData={metaData || []} />
         </>
     )
 }
