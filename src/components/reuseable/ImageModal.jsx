@@ -15,8 +15,8 @@ function ImageModal({ id, folder }) {
             <DialogTrigger>
 
                 <Image
-                    // src={`https://aegyptenmalanders.de/imageslocal/${folder}/${id}`}
-                    src={`http://localhost:4000/imageslocal/${folder}/${id}`}
+                    src={`https://aegyptenmalanders.de/imageslocal/${folder}/${id}`}
+                    // src={`http://localhost:4000/imageslocal/${folder}/${id}`}
                     width={200}
                     height={150}
                     loading="lazy"

@@ -9,7 +9,6 @@ async function page({ params }) {
     // console.log("data", data);
 
     const entireBlog = data?.data
-    console.log("entireBlog", entireBlog);
 
     return (
         <>

@@ -67,8 +67,7 @@ function UpdateBlog({ entireBlog }) {
         const id = entireBlog?._id;
 
         const res = await updateBlogItem(changedFields, id);
-        console.log("res form func", res);
-
+      
         if (res?.status === "Success") {
             toast.success(res?.message);
             setLoading(false);
@@ -82,14 +81,11 @@ function UpdateBlog({ entireBlog }) {
 
     const handleCardSubmit = async (event, fieldType) => {
         event.preventDefault();
-        console.log("changedFields", changedFields);
-
+      
         setLoading2(true);
         const id = entireBlog?._id;
-        console.log("entireBlog", entireBlog);
         const res = await updateBlogItem(changedFields, id);
-        console.log("res form func", res);
-
+      
         if (res?.status === "Success") {
             toast.success(res?.message);
             setLoading2(false);
@@ -102,13 +98,11 @@ function UpdateBlog({ entireBlog }) {
 
     const handleBannerSubmit = async (event, fieldType) => {
         event.preventDefault();
-        console.log("changedFields", changedFields);
-
+ 
         setLoading3(true);
         const id = entireBlog?._id;
         const res = await updateBlogItem(changedFields, id);
-        console.log("res form func", res);
-
+ 
         if (res?.status === "Success") {
             toast.success(res?.message);
             setLoading3(false);
