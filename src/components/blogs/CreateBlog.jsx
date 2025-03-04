@@ -6,6 +6,7 @@ import { Loader2 } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { addBlog } from '@/lib/siteApis';
 
+
 function CreateBlog() {
     const [formData, setFormData] = useState({
         category: 'design',
