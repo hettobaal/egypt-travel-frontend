@@ -15,5 +15,6 @@ const nextConfig = {
     // unoptimized: true,
   },
 };
+
 // req access3
 export default nextConfig;
