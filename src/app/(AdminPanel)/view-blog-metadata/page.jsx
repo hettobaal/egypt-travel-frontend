@@ -11,7 +11,7 @@ function BlogMetaData() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await getBlogMetaData()
+                const data = await getBlogMetaData('blog')
                 setBlogMetaData(data?.data);
             } catch (error) {
                 console.error("Error fetching tours:", error);

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import React from 'react'
 import Heading from '@/components/reuseable/Heading';
 import { getBlogMetaData } from '@/lib/siteApis';
@@ -12,7 +14,11 @@ async function page() {
             <Heading>
                 View Blog MetaData
             </Heading>
-            <ViewMetaData metaData={metaData || []} />
+            {/* <ViewMetaData metaData={metaData || []} /> */}
+
+            {metaData?.length > 0 &&
+                <ViewMetaData CategoryData={metaData || []} />
+            }
         </>
     )
 }
