@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynami';
 import React from 'react'
 import BlogHero from '@/components/blogs/BlogHero';
 import BlogCards from '@/components/blogs/BlogCards';

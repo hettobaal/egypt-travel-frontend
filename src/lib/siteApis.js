@@ -317,7 +317,7 @@ export const getSingleTour = async (id) => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-cache'
+
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1803,7 +1803,7 @@ export const getBlogs = async () => {
         const response = await fetch(Url, {
             method: 'GET',
             mode: 'cors',
-            cache: 'no-store',
+
         })
 
 

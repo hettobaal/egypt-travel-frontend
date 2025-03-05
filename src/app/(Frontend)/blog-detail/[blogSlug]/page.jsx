@@ -1,3 +1,7 @@
+export const dynamicParams = true
+export const dynamic = 'force-dynami';
+
+
 import BlogContent from '@/components/blogs/BlogContent';
 import BlogDetailHero from '@/components/blogs/BlogDetailHero';
 import RelatedBlogs from '@/components/blogs/RelatedBlogs';
@@ -80,7 +84,7 @@ export async function generateMetadata({ params }) {
 async function page({ params }) {
     const slug = params?.blogSlug;
     const blog = await getSingleBlog(slug)
-    console.log("getSingleBlog   ", getSingleBlog);
+    console.log("getSingleBlog   ", blog);
 
     const bannerImage = blog?.data?.blogBannerImage
     const entireBlog = await getBlogs()
