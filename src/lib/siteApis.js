@@ -1304,7 +1304,7 @@ export const getBlogMetaData = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store',
+
         headers: {
             authorization: `Bearer ${token}`,
         },
@@ -1750,7 +1750,7 @@ export const getSingleBlog = async (slug) => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache:"no-cache"
+
         
     })
         .then((response) => response?.json())
@@ -1804,7 +1804,7 @@ export const getBlogs = async () => {
         const response = await fetch(Url, {
             method: 'GET',
             mode: 'cors',
-            cache:"no-cache"
+
 
         })
 
