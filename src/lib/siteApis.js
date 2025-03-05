@@ -1750,7 +1750,7 @@ export const getSingleBlog = async (slug) => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-cache'
+        
     })
         .then((response) => response?.json())
         .then((data) => {
