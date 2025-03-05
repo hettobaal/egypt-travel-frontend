@@ -80,10 +80,11 @@ export async function generateMetadata({ params }) {
 async function page({ params }) {
     const slug = params?.blogSlug;
     const blog = await getSingleBlog(slug)
-    // console.log("blog", blog);
+    console.log("getSingleBlog   ", getSingleBlog);
+
     const bannerImage = blog?.data?.blogBannerImage
     const entireBlog = await getBlogs()
-    // console.log("entireBlog", entireBlog);
+    console.log("entireBlog length", entireBlog?.data?.length);
 
     const relatedBlogsData = entireBlog?.data?.filter((item) => item?.slug !== slug)
 

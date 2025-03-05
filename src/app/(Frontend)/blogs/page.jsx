@@ -8,7 +8,7 @@ async function page() {
 
     const data = await getBlogs()
     const blogData = data?.data
-    console.log("blogData", blogData);
+
 
 
 

@@ -329,8 +329,7 @@ export const getSingleTour = async (id) => {
 };
 
 export const updateTourById = async (data, id) => {
-    console.log("data", data);
-
+ 
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
     const formData = new FormData();
     if (data?.cardImage) {
@@ -709,7 +708,7 @@ export const DeleteTour = async (id) => {
 
 export const getRelatedTours = async (id) => {
 
-    const Url = SERVER_URL + `/api/public/get-related-tours`;
+    const Url = SERVER_URL + `api/public/get-related-tours`;
 
     return fetch(Url, {
         method: 'GET',
