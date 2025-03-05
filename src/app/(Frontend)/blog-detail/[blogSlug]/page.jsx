@@ -1,6 +1,4 @@
 export const dynamicParams = true
-export const dynamic = 'force-dynami';
-
 
 import BlogContent from '@/components/blogs/BlogContent';
 import BlogDetailHero from '@/components/blogs/BlogDetailHero';
