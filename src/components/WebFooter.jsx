@@ -406,7 +406,7 @@ function WebFooter() {
                                                 5RXF+5VQ Hurghada
                                             </Link>
                                             <Link
-                                                href="tel:+4915236601419"
+                                                href="tel:+4915236601719"
                                                 className='flex gap-x-2 items-center text-[#344054] text-base font-normal'>
                                                 <Image
                                                     src='/images/call.png'
@@ -416,7 +416,7 @@ function WebFooter() {
 
                                                 />
                                                 {` `}
-                                                +49(0)1523 660 1419
+                                                +49(0)1523 660 1719
                                             </Link>
                                             <Link
                                                 href="https://wa.me/201507650920"
