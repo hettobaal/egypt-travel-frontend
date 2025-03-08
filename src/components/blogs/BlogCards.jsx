@@ -16,7 +16,7 @@ function BlogCards({ blogData }) {
     const toggleShowMore = () => {
         setExpanded(!expanded)
         setShow(expanded ? 6 : blogData?.length)
-        console.log("show", show);
+        
 
     }
 

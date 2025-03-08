@@ -1,0 +1,26 @@
+# *
+User-agent: *
+Allow: /
+
+# *
+User-agent: *
+Disallow: /view-*
+
+# *
+User-agent: *
+Disallow: /create-*
+
+# *
+User-agent: *
+Disallow: /add-user
+
+# *
+User-agent: *
+Disallow: /blog/*
+
+# Host
+Host: https://aegyptenmalanders.de
+
+# Sitemaps
+Sitemap: https://aegyptenmalanders.de/sitemap.xml
+Sitemap: https://aegyptenmalanders.de/dynamic-urls.xml

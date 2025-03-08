@@ -168,12 +168,11 @@ function Editor({ handleEditorChange, data }) {
   const removeImage = async () => {
     if (editor) {
       const isImageSelected = editor.isActive("image");
-      console.log("isImageSelected", isImageSelected);
-
+    
       if (isImageSelected) {
         const imageAttributes = editor.getAttributes("image");
         const imageId = imageAttributes?.name;
-        console.log("imageId", imageId);
+        
 
         if (imageId) {
           const response = await fetch(

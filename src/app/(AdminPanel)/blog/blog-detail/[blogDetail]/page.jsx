@@ -5,9 +5,8 @@ async function page({ params }) {
 
     const slug = params?.blogDetail
     const data = await getSingleBlog(slug)
-    console.log("data", data);
     const blog = data?.data?.content
-    console.log("blog", blog);
+    
 
     return (
         <div

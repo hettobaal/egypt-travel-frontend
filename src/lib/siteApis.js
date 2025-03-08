@@ -317,7 +317,7 @@ export const getSingleTour = async (id) => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-cache'
+
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -329,8 +329,7 @@ export const getSingleTour = async (id) => {
 };
 
 export const updateTourById = async (data, id) => {
-    console.log("data", data);
-
+ 
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
     const formData = new FormData();
     if (data?.cardImage) {
@@ -709,7 +708,7 @@ export const DeleteTour = async (id) => {
 
 export const getRelatedTours = async (id) => {
 
-    const Url = SERVER_URL + `/api/public/get-related-tours`;
+    const Url = SERVER_URL + `api/public/get-related-tours`;
 
     return fetch(Url, {
         method: 'GET',
@@ -1305,7 +1304,7 @@ export const getBlogMetaData = async () => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-store',
+
         headers: {
             authorization: `Bearer ${token}`,
         },
@@ -1751,7 +1750,8 @@ export const getSingleBlog = async (slug) => {
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
-        cache: 'no-cache'
+
+        
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1804,7 +1804,8 @@ export const getBlogs = async () => {
         const response = await fetch(Url, {
             method: 'GET',
             mode: 'cors',
-            cache: 'no-store',
+
+
         })
 
 

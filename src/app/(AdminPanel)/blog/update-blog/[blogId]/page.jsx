@@ -6,7 +6,7 @@ async function page({ params }) {
 
     const slug = params?.blogId
     const data = await getSingleBlog(slug)
-    // console.log("data", data);
+
 
     const entireBlog = data?.data
 

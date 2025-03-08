@@ -1,3 +1,5 @@
+export const dynamicParams = true
+
 import BlogContent from '@/components/blogs/BlogContent';
 import BlogDetailHero from '@/components/blogs/BlogDetailHero';
 import RelatedBlogs from '@/components/blogs/RelatedBlogs';
@@ -14,6 +16,7 @@ export async function generateStaticParams() {
     }));
     return array;
 }
+// 
 
 
 
@@ -80,10 +83,9 @@ export async function generateMetadata({ params }) {
 async function page({ params }) {
     const slug = params?.blogSlug;
     const blog = await getSingleBlog(slug)
-    // console.log("blog", blog);
+
     const bannerImage = blog?.data?.blogBannerImage
     const entireBlog = await getBlogs()
-    // console.log("entireBlog", entireBlog);
 
     const relatedBlogsData = entireBlog?.data?.filter((item) => item?.slug !== slug)
 
