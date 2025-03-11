@@ -19,24 +19,6 @@
 
 
 
-/public
-
-
-src/assets/
-src/components/
-src/libs/
-src/app/api
-src/app/(Authentication)
-src/app/(AdminPanel)
-src/app/(Frontend)/about-us
-src/app/(Frontend)/catalog
-src/app/(Frontend)/category
-src/app/(Frontend)/contact
-src/app/(Frontend)/tour-detail
-
-
-
-
 # misc
 .DS_Store
 *.pem

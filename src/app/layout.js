@@ -19,18 +19,18 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning className={`${urbanist.variable} `}>
       <body id="container">
         
-    <div className='main'>
+    {/* <div className='main'>
       <h1 className="heading">ATTENTION</h1>
     <p className='child'>
     Infusion Technologies has taken down the website. This illiterate business owner wasted one year by not responding to us, but still, we waited for him and completed the website, which was handed over to him with zero issues. But in the end, he started asking for coding himself. We asked him to explain what he needed to do. He is not a developer. He doesnt even understand English he uses Google Translator to communicate. The website will be up when he sends us an apology letter for defaming and blaming us. 
 
 Thank you.</p>
-    </div>
+    </div> */}
         
-        {/* <Toaster autoClose={20000} position="top-center" />
+        <Toaster autoClose={20000} position="top-center" />
         <Providers>
           {children}
-        </Providers> */}
+        </Providers>
       </body>
     </html>
   );
