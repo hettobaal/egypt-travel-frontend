@@ -25,24 +25,24 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 export const metadata = {
   title: 'Agypten',
   description: 'Agypten',
-  openGraph: {
-    title: 'Website Design, Custom Development & SEO Services',
-    description: 'Infusion is a reliable website design, development, and SEO services company. We offer custom solutions to grow your business in digital marketing competition.',
-    url: 'https://infusiontechnologies.co/',
-    images: [
-      {
-        url: 'https://infusiontechnologies.co/ogImages/homepageOg.webp',
-        secureUrl: 'https://infusiontechnologies.co/ogImages/homepageOg.webp',
-        width: 1200,
-        height: 630,
-        alt: 'Preview image for Infusion Tech',
-      }
-    ],
-    site_name: 'Infusion Technologies',
-  },
-  alternates: {
-    canonical: 'https://infusiontechnologies.co/',
-  },
+  // openGraph: {
+  //   title: 'Website Design, Custom Development & SEO Services',
+  //   description: 'Infusion is a reliable website design, development, and SEO services company. We offer custom solutions to grow your business in digital marketing competition.',
+  //   url: 'https://infusiontechnologies.co/',
+  //   images: [
+  //     {
+  //       url: 'https://infusiontechnologies.co/ogImages/homepageOg.webp',
+  //       secureUrl: 'https://infusiontechnologies.co/ogImages/homepageOg.webp',
+  //       width: 1200,
+  //       height: 630,
+  //       alt: 'Preview image for Infusion Tech',
+  //     }
+  //   ],
+  //   site_name: 'Infusion Technologies',
+  // },
+  // alternates: {
+  //   canonical: 'https://infusiontechnologies.co/',
+  // },
 
 };
 
@@ -67,10 +67,9 @@ async function page() {
 
   return (
     <>
-
       <WebHeader />
       <Hero />
-      <Search />
+      {/* <Search /> */}
       <PopularTour popularToursData={popularTours} />
       {firstCategory && <HomeCategoryOne data={firstCategory} />}
       {secondCategory && <HomeCategoryTwo data={secondCategory} />}
