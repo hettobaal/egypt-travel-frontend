@@ -23,8 +23,8 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 
 
 export const metadata = {
-  title: 'Agypten',
-  description: 'Agypten',
+  title: 'Top 30 Ausflüge Ägyptens ab Hurghada 2025: bis zu 50% sparen!',
+  description: 'Abenteurer aufgepasst! Bis 40% sparen. Top-Ausflüge ab Hurghada in 2025: für alle Altersgruppen. Qualität statt Masse! Wir sprechen Deutsch! Jetzt buchen!',
   // openGraph: {
   //   title: 'Website Design, Custom Development & SEO Services',
   //   description: 'Infusion is a reliable website design, development, and SEO services company. We offer custom solutions to grow your business in digital marketing competition.',
