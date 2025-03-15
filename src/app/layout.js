@@ -36,8 +36,13 @@ export default function RootLayout({ children }) {
         </head>
       </head>
       <body id="container">
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZBFFTKQ"
-          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+           {/* Google Tag Manager (noscript) */}
+           <noscript
+          dangerouslySetInnerHTML={{
+            __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZBFFTKQ"
+              height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
+          }}
+        />
         <Toaster autoClose={20000} position="top-center" />
         <Providers>
           {children}
