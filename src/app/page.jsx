@@ -24,7 +24,7 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 
 export const metadata = {
   title: 'Top 30 Ausflüge Ägyptens ab Hurghada 2025: bis zu 50% sparen!',
-  description: 'Abenteurer aufgepasst! Bis 40% sparen. Top-Ausflüge ab Hurghada in 2025: für alle Altersgruppen. Qualität statt Masse! Wir sprechen Deutsch! Jetzt buchen!',
+  description: 'Erlebe exklusive Hurghada-Ausflüge 2025 mit deutschsprachigen Guides. Qualität statt Masse für alle Altersgruppen. Sichere dir bis zu 50% Rabatt, buche jetzt!',
   // openGraph: {
   //   title: 'Website Design, Custom Development & SEO Services',
   //   description: 'Infusion is a reliable website design, development, and SEO services company. We offer custom solutions to grow your business in digital marketing competition.',

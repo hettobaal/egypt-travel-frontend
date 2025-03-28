@@ -142,18 +142,18 @@ function BookingDetail({ data, formData }) {
                                         Price breakdown
                                     </Para>
                                     <Para>
-                                        Adult {adultCount} x ${adultPrice}  = ${totalAdultPrice}
+                                        Adult {adultCount} x €{adultPrice}  = €{totalAdultPrice}
                                     </Para>
                                     {
                                         childCount > 0 &&
                                         < Para >
-                                            Child {childCount} x ${childPrice} = ${totalChildPrice}
+                                            Child {childCount} x €{childPrice} = €{totalChildPrice}
                                         </Para>
                                     }
                                     {
                                         InfantCount > 0 &&
                                         < Para >
-                                            Infant {InfantCount} x ${InfantPrice} = ${totalInfantPrice}
+                                            Infant {InfantCount} x €{InfantPrice} = €{totalInfantPrice}
                                         </Para>
                                     }
                                 </span>
@@ -175,11 +175,11 @@ function BookingDetail({ data, formData }) {
                     <span>
                         <Para>Gesamtpreis</Para>
                         <h6 className='text-amber font-semibold lg:text-2xl text-lg'>
-                            ${totalPrice}
+                        €{totalPrice}
                         </h6>
                         {
                             data?.discountAmount > 0 && (<Para>
-                                $ {strickPrice}{' '}
+                                € {strickPrice}{' '}
                                 <span className='text-amber'> {Math?.round(((strickPrice - totalPrice) / strickPrice) * 100)}%</span>
                             </Para>)
                         }

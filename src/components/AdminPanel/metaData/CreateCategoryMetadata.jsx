@@ -74,6 +74,7 @@ function CreateCategoryMetadata({ data }) {
     const onSubmit = async (data) => {
         setLoader(true)
         const res = await addBlogMetaData(data)
+        console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
             setLoader(false)

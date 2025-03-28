@@ -46,7 +46,7 @@ function DiscountCard({ data }) {
                             }
 
                             <h4 className=' text-amber font-bold text-[22px]'>
-                                $ {tourPrice}
+                                € {tourPrice}
                             </h4>
                             <Para className='text-slate font-semibold'>
                                 Pro Person

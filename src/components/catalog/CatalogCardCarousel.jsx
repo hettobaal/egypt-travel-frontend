@@ -104,7 +104,7 @@ function CatalogCardCarousel({ Catalog }) {
                                                 {
                                                     item?.discountAmount > 0 && <h4 className="w-max text-base font-semibold  text-black relative">
                                                         <span className="line-through text-black">
-                                                            From ${strikePrice}
+                                                            From €{strikePrice}
                                                         </span>
                                                         <span
                                                             className="absolute  inset-0 h-px bg-amber top-[50%]"
