@@ -329,7 +329,7 @@ export const getSingleTour = async (id) => {
 };
 
 export const updateTourById = async (data, id) => {
- 
+
     const Url = SERVER_URL + `admin/tour/update-tour/${id}`;
     const formData = new FormData();
     if (data?.cardImage) {
@@ -1054,7 +1054,7 @@ export const addCategoryMetaData = async (data) => {
 export const getCategoryMetaData = async () => {
 
     const Url = SERVER_URL + 'admin/metadata/get-all-metadata?entityType=category';
-
+    
     return fetch(Url, {
         method: 'GET',
         mode: 'cors',
@@ -1751,7 +1751,7 @@ export const getSingleBlog = async (slug) => {
         method: 'GET',
         mode: 'cors',
 
-        
+
     })
         .then((response) => response?.json())
         .then((data) => {
@@ -1844,9 +1844,9 @@ export const DeleteBlog = async (id) => {
 export const updateBlogItem = async (data, id) => {
 
     const Url = SERVER_URL + `admin/blog/update-blog/${id}`;
-    console.log("id",id);
-    console.log("Url",Url);
-    
+    console.log("id", id);
+    console.log("Url", Url);
+
     const formData = new FormData();
     if (data?.cardImage) formData.append('cardImage', data.cardImage);
     if (data?.blogBannerImage) formData.append('blogBannerImage', data.blogBannerImage);

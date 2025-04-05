@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Loader2 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { Select, SelectItem } from '@nextui-org/react'
-import { addBlogMetaData, addCategoryMetaData } from '@/lib/siteApis'
+import { addCategoryMetaData } from '@/lib/siteApis'
 
 const formSchema = z.object({
     entityId: z.string().min(1, { message: "Please select Name" }),
@@ -73,7 +73,7 @@ function CreateCategoryMetadata({ data }) {
 
     const onSubmit = async (data) => {
         setLoader(true)
-        const res = await addBlogMetaData(data)
+        const res = await addCategoryMetaData(data)
         console.log("res", res);
         setLoader(false)
         if (res?.status == "Success") {
