@@ -41,7 +41,7 @@ function DiscountCard({ data }) {
                         <span>
                             {
                                 discountAmount > 0 && <Para className='text-slate font-semibold'>
-                                    Ab {strikePrice}$
+                                    Ab {strikePrice}€
                                 </Para>
                             }
 
