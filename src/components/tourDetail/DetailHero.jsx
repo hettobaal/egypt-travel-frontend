@@ -46,7 +46,7 @@ function DetailHero({ data }) {
                                 src={imageUrls[0]}
                                 width={1000}
                                 height={600}
-                                alt='Agypten'
+                                alt='Aegypten mal anders'
                                 className='w-full h-full'
                                 onClick={() => handleImageClick(imageUrls[0])} />
                         </div>
@@ -55,7 +55,7 @@ function DetailHero({ data }) {
                                 src={imageUrls[1]}
                                 width={1000}
                                 height={600}
-                                alt='Agypten'
+                                alt='Aegypten mal anders'
                                 className='w-full h-full object-cover'
                                 onClick={() => handleImageClick(imageUrls[1])}
 
@@ -66,7 +66,7 @@ function DetailHero({ data }) {
                                 src={imageUrls[2]}
                                 width={1000}
                                 height={600}
-                                alt='Agypten'
+                                alt='Aegypten mal anders'
                                 className='w-full h-full' onClick={() => handleImageClick(imageUrls[2])}
 
                             />
@@ -76,7 +76,7 @@ function DetailHero({ data }) {
                                 src={imageUrls[3]}
                                 width={1000}
                                 height={600}
-                                alt='Agypten'
+                                alt='Aegypten mal anders'
                                 className='w-full h-full relative'
                                 onClick={() => handleImageClick(imageUrls[3])}
                             />

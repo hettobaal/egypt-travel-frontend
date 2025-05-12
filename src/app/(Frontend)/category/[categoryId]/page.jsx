@@ -26,14 +26,12 @@ export async function generateMetadata({ params }) {
     const data = await getSingleCategory(decodedId)
     const categoryId = data?.data?._id
     const categoryMetaData = await getSingleMetaData(categoryId)
-    console.log("categoryMetaData",categoryMetaData);
-    console.log("categoryId",categoryId);
     
     const metaData = categoryMetaData?.data
     const title = metaData?.title || 'Default Title';
     const description = metaData?.description || 'Default Description';
     const canonical = metaData?.canonical || 'https://aegyptenmalanders.de';
-    const ogSitename = metaData?.ogSitename || 'Agypten';
+    const ogSitename = metaData?.ogSitename || 'Aegypten mal anders';
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
     const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/catalog/${decodedId}`;

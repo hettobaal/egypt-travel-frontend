@@ -26,10 +26,10 @@ export async function generateMetadata({ params }) {
     const tourId = data?.data?._id
     const tourMetaData = await getBlogMetaData()
     const metaData = tourMetaData?.data?.find(item => item?.entityId == tourId);
-    const title = metaData?.title || 'Agypten';
-    const description = metaData?.description || 'Agypten';
+    const title = metaData?.title || 'Aegypten mal anders';
+    const description = metaData?.description || 'Aegypten mal anders';
     const canonical = metaData?.canonical || 'https://aegyptenmalanders.de';
-    const ogSitename = metaData?.ogSitename || 'Agypten';
+    const ogSitename = metaData?.ogSitename || 'Aegypten mal anders';
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
     const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${id}`;
