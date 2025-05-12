@@ -32,8 +32,8 @@ export const metadata = {
     url: `https://aegyptenmalanders.de`,
     images: [
       {
-        url: "https://aegyptenmalanders.de/images/OGhome2.jpeg",
-        secureUrl: `https://aegyptenmalanders.de/images/OGhome2.jpeg`,
+        url: "https://aegyptenmalanders.de/images/openG2.jpeg",
+        secureUrl: `https://aegyptenmalanders.de/images/openG2.jpeg`,
         width: 1200,
         height: 630,
         alt: `Aegypten mal anders`,
@@ -47,7 +47,7 @@ export const metadata = {
     // siteId: '1467726470533754880',
     creator: 'Aegypten mal anders',
     // creatorId: '1467726470533754880',
-    images: ['https://aegyptenmalanders.de/images/OGhome2.jpeg'], // Must be an absolute URL
+    images: ['https://aegyptenmalanders.de/images/openG2.jpeg'], // Must be an absolute URL
   },
 
 };
