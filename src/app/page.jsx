@@ -47,7 +47,7 @@ export const metadata = {
     // siteId: '1467726470533754880',
     creator: 'Aegypten mal anders',
     // creatorId: '1467726470533754880',
-    images: ['https://aegyptenmalanders.de/OGHome.jpeg'], // Must be an absolute URL
+    images: ['https://aegyptenmalanders.de/images/OGHome.jpeg'], // Must be an absolute URL
   },
 
 };
