@@ -32,8 +32,8 @@ export const metadata = {
     url: `https://aegyptenmalanders.de`,
     images: [
       {
-        url: "https://aegyptenmalanders.de/OGHome.jpeg",
-        secureUrl: `https://aegyptenmalanders.de/OGHome.jpeg`,
+        url: "https://aegyptenmalanders.de/images/OGHome.jpeg",
+        secureUrl: `https://aegyptenmalanders.de/images/OGHome.jpeg`,
         width: 1200,
         height: 630,
         alt: `Aegypten mal anders`,
