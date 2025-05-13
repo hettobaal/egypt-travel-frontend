@@ -5,6 +5,7 @@ import { Button } from '../ui/button';
 
 function DiscountCard({ data }) {
     const { priceAdult, discountAmount } = data;
+console.log("data", data.priceAdult);
 
     const handleScroll = () => {
         const bookingFormElement = document?.getElementById('booking-form');

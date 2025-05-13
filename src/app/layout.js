@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${urbanist.variable} `}>
       <head>
-        <link rel="icon" href="favicon.ico" />
+
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-2Z5HHQ56CZ"
           strategy="afterInteractive"

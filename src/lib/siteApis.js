@@ -316,7 +316,7 @@ export const getSingleTour = async (id) => {
 
     return fetch(Url, {
         method: 'GET',
-        mode: 'cors',
+        
 
     })
         .then((response) => response?.json())
@@ -1115,7 +1115,7 @@ export const getSingleMetaData = async (id) => {
 
     return fetch(Url, {
         method: 'GET',
-        mode: 'cors',
+        
         cache: 'no-store'
     })
         .then((response) => response?.json())

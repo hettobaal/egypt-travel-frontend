@@ -5,9 +5,12 @@ import { getRelatedTours, getSingleMetaData, getSingleTour, getTours } from '@/l
 import ReviewsContainer from '@/components/tourDetail/ReviewsContainer';
 import Activity from '@/components/tourDetail/Activity';
 import BookingForm from '@/components/tourDetail/BookingForm';
-import DetailHero from '@/components/tourDetail/DetailHero';
+// import DetailHero from '@/components/tourDetail/DetailHero';
 import Description from '@/components/tourDetail/Description';
 import RelatedTours from '@/components/tourDetail/RelatedTours';
+const DetailHero = dynamic(() => import('@/components/tourDetail/DetailHero'), {
+    ssr: false,
+});
 const Reviews = dynamic(() => import('@/components/reuseable/Reviews'), {
     ssr: false,
 });
@@ -26,6 +29,7 @@ export async function generateStaticParams() {
 
 
 export async function generateMetadata({ params }) {
+
     const id = params?.tourSlug;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleTour(decodedId)
@@ -41,6 +45,7 @@ export async function generateMetadata({ params }) {
     const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${decodedId}`;
     const ogImageAlt = metaData?.ogImageAlt || 'Aegypten mal anders';
     const ogImage = metaData?.ogImage || '';
+
 
     return {
         title,

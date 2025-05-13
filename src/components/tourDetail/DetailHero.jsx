@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { Suspense, useState } from 'react'
 import MaxWidthWrapper from '../reuseable/MaxWidthWrapper'
 import HeadingOne from '../reuseable/HeadingOne'
 import Image from 'next/image'
@@ -27,8 +27,9 @@ function DetailHero({ data }) {
     })
 
 
-    return (
 
+    return (
+<Suspense>
         <section className='md:mt-[100px] mt-[70px]'>
             <MaxWidthWrapper>
                 <div className='md:flex hidden flex-col sm:gap-y-2.5 gap-y-1'>
@@ -100,6 +101,7 @@ function DetailHero({ data }) {
             </MaxWidthWrapper>
 
         </section>
+        </Suspense>
     )
 }
 
