@@ -44,7 +44,7 @@ export async function generateMetadata({ params }) {
     const ogDescription = metaData?.ogDescription || description;
     const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${decodedId}`;
     const ogImageAlt = metaData?.ogImageAlt || 'Aegypten mal anders';
-    const ogImage = metaData?.ogImage || '';
+    const ogImage =  `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImageId}`  || '';
 
 
     return {
