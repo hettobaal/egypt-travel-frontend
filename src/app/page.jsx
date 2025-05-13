@@ -23,8 +23,8 @@ const WebFooter = dynamic(() => import('@/components/WebFooter'));
 
 
 export const metadata = {
-  title: 'Top 30 Ausflüge Ägyptens ab Hurghada 2025: bis zu 50% sparen!',
-  description: 'Erlebe exklusive Hurghada-Ausflüge 2025 mit deutschsprachigen Guides. Qualität statt Masse für alle Altersgruppen. Sichere dir bis zu 50% Rabatt, buche jetzt!',
+  title: 'latest',
+  description: 'latest desc',
   openGraph: {
     siteName: "Aegypten mal anders",
     title: 'Top 30 Ausflüge Ägyptens ab Hurghada 2025: bis zu 50% sparen!',
