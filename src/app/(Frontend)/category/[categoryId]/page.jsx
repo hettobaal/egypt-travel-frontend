@@ -34,9 +34,10 @@ export async function generateMetadata({ params }) {
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
     const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${decodedId}?v=${Date.now()}`;
-
+    
     const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
-    const ogImage = metaData?.ogImageId || '';
+    const ogImage = `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImageId}` || '';
+    console.log("ogImage", ogImage);
 
     return {
         title,
