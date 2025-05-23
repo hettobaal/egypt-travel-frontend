@@ -26,7 +26,6 @@ export async function generateMetadata({ params }) {
     const data = await getSingleCategory(decodedId)
     const categoryId = data?.data?._id
     const categoryMetaData = await getSingleMetaData(categoryId)
-    
     const metaData = categoryMetaData?.data
     const title = metaData?.title || 'Default Title';
     const description = metaData?.description || 'Default Description';
@@ -34,9 +33,10 @@ export async function generateMetadata({ params }) {
     const ogSitename = metaData?.ogSitename || 'Aegypten mal anders';
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
-    const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/catalog/${decodedId}`;
+    const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${decodedId}`;
+
     const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
-    const ogImage = metaData?.ogImage || '';
+    const ogImage = metaData?.ogImageId || '';
 
     return {
         title,
@@ -50,7 +50,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}?v=${Date.now()}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImageId}?v=${Date.now()}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -64,7 +64,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}?v=${Date.now()}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImageId}?v=${Date.now()}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -83,6 +83,8 @@ export async function generateMetadata({ params }) {
 async function page({ params }) {
 
     const id = params?.categoryId;
+    console.log("id", id);
+
     const decodedId = decodeURIComponent(id);
     const CategoryData = await getCategories()
     const SingleCategoryData = await getSingleCategory(decodedId)

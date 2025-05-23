@@ -19,9 +19,12 @@ export async function generateMetadata({ params }) {
     const id = params?.catalogId;
     const decodedId = decodeURIComponent(id);
     const data = await getSingleSubCategory(decodedId)
-    const categoryId = data?.data?._id
+    console.log("data", data);
+    const categoryId = data?.data[0]?._id
+    console.log("categoryId", categoryId);
     const SubcategoryMetaData = await getSingleMetaData(categoryId)
     const metaData = SubcategoryMetaData?.data
+    console.log("SubcategoryMetaData", SubcategoryMetaData);
 
     const title = metaData?.title || 'Aegypten mal anders';
     const description = metaData?.description || 'Aegypten mal anders';
@@ -29,9 +32,10 @@ export async function generateMetadata({ params }) {
     const ogSitename = metaData?.ogSitename || 'Aegypten mal anders';
     const ogTitle = metaData?.ogTitle || title;
     const ogDescription = metaData?.ogDescription || description;
-    const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/catalog/${decodedId}`;
+    const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/imageslocal/metadata/${decodedId}`;
     const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
-    const ogImage = metaData?.ogImage || '';
+    const ogImage = metaData?.ogImageId || '';
+    console.log("ogImage", ogImage);
 
     return {
         title,
@@ -45,7 +49,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}?v=${Date.now()}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImageId}?v=${Date.now()}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -59,7 +63,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}?v=${Date.now()}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImageId}?v=${Date.now()}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
