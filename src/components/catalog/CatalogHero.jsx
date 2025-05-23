@@ -5,7 +5,7 @@ import MaxWidthWrapper from '../reuseable/MaxWidthWrapper';
 function CatalogHero({ ImageUrl, MobImageUrl, data }) {
 
     const [width, setWidth] = useState(null);
-    console.log("7");
+    console.log("10");
 
     useEffect(() => {
         const handleResize = () => {
