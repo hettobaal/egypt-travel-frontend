@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}?v=${Date.now()}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}?v=${Date.now()}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,

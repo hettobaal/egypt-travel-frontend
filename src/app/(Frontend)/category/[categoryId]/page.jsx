@@ -26,7 +26,6 @@ export async function generateMetadata({ params }) {
     const data = await getSingleCategory(decodedId)
     const categoryId = data?.data?._id
     const categoryMetaData = await getSingleMetaData(categoryId)
-    console.log("categoryMetaData", categoryMetaData);
     const metaData = categoryMetaData?.data
     const title = metaData?.title || 'Default Title';
     const description = metaData?.description || 'Default Description';
@@ -36,7 +35,6 @@ export async function generateMetadata({ params }) {
     const ogDescription = metaData?.ogDescription || description;
     const ogURL = metaData?.ogURL || `https://aegyptenmalanders.de/catalog/${decodedId}`;
     const ogImageAlt = metaData?.ogImageAlt || 'Image Description';
-    console.log("ogTitle", ogTitle);
     const ogImage = metaData?.ogImage || '';
 
     return {
@@ -51,7 +49,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}?v=${Date.now()}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
@@ -65,7 +63,7 @@ export async function generateMetadata({ params }) {
             images: [
                 {
                     url: ogImage,
-                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}?v=${Date.now()}`,
+                    secureUrl: `https://aegyptenmalanders.de/imageslocal/metadata/${metaData?.ogImage}`,
                     width: 1200,
                     height: 627,
                     alt: `${ogImageAlt}`,
