@@ -1115,7 +1115,6 @@ export const getSingleMetaData = async (id) => {
 
     return fetch(Url, {
         method: 'GET',
-        
         cache: 'no-store'
     })
         .then((response) => response?.json())
