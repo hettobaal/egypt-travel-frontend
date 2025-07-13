@@ -89,7 +89,7 @@ function BookingForm({ data }) {
     })
 
     useEffect(() => {
-        const personString = `Adult x ${adults}, Child x ${children}  infant x ${infant}`;
+        const personString = `erwachende x ${adults},  Kinder x ${children}  kleine Kinde x ${infant}`;
         form.setValue("person", personString);
     }, [adults, children, infant, form]);
 
@@ -136,7 +136,7 @@ function BookingForm({ data }) {
                                                                     {...field}
                                                                     className="w-full   h-12  border-none  pl-10 pr-12 placeholder:text-ocean placeholder:text-base cursor-pointer"
                                                                     type="text"
-                                                                    placeholder={`Adult ${adults} x ${adults > 1 ? '' : ''}   Child x ${children} ${children > 1 ? '' : ''}  Infant x ${infant} ${infant > 1 ? '' : ''}`
+                                                                    placeholder={`erwachende ${adults} x ${adults > 1 ? '' : ''}   Kinder x ${children} ${children > 1 ? '' : ''}  kleine Kinde x ${infant} ${infant > 1 ? '' : ''}`
                                                                     }
 
                                                                 />
@@ -151,9 +151,9 @@ function BookingForm({ data }) {
 
                                                             <div className='flex flex-row justify-between items-center gap-x-16'>
                                                                 <div>
-                                                                    <h5 className='text-base font-semibold'>An adult</h5>
+                                                                    <h5 className='text-base font-semibold'>erwachende</h5>
                                                                     <Para className='text-sm'>
-                                                                        (Age 18-64)
+                                                                        (ab 12 Jahre)
                                                                     </Para>
                                                                 </div>
                                                                 <div className="flex items-center space-x-2">
@@ -173,10 +173,10 @@ function BookingForm({ data }) {
 
                                                             <div className='flex flex-row justify-between items-center gap-x-16'>
                                                                 <div>
-                                                                    <h5 className='text-base font-semibold'>Children
+                                                                    <h5 className='text-base font-semibold'>Kinder
                                                                     </h5>
                                                                     <Para className='text-sm'>
-                                                                        (Age 4-17)
+                                                                        (alter 6-12 Jahre)
                                                                     </Para>
                                                                 </div>
                                                                 <div className="flex items-center space-x-2">
@@ -193,10 +193,10 @@ function BookingForm({ data }) {
                                                             className="data-[hover=true]:bg-white ata-[focus-visible=true]:outline-offset-0">
                                                             <div className='flex flex-row justify-between items-center gap-x-16'>
                                                                 <div>
-                                                                    <h5 className='text-base font-semibold'>infant
+                                                                    <h5 className='text-base font-semibold'>kleine Kinde
                                                                     </h5>
                                                                     <Para className='text-sm'>
-                                                                        (Above 1 Year )
+                                                                        (alter bis 6 Jahre)
                                                                     </Para>
                                                                 </div>
                                                                 <div className="flex items-center space-x-2">
